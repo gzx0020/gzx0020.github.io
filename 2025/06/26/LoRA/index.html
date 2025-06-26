@@ -19,21 +19,23 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Specialist Diffusion: Plug-and-Play Sample-Efficient Fine-Tuning of Text-to-Image Diffusion Models to Learn Any Unseen Style https:&#x2F;&#x2F;arxiv.org&#x2F;pdf&#x2F;2211.12572 主要内容 这篇论文提出Specialist Diffusion：相当于一">
+    <meta name="description" content="一.LoRA原理 参考：https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;702629428 原论文：https:&#x2F;&#x2F;arxiv.org&#x2F;pdf&#x2F;2106.09685 LoRA(Low-Rank Adaptation of LLMs)，即LLMs的低秩适应，是参数高效微调最常用的方法。 LoRA的本质就是用更少的训练参数来近似LLM全参数微调所得的增量参数，从而达到使用更少显存占用的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Specialist Diffusion">
-<meta property="og:url" content="http://example.com/2025/06/26/Specialist-Diffusion/index.html">
+<meta property="og:title" content="LoRA">
+<meta property="og:url" content="http://example.com/2025/06/26/LoRA/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Specialist Diffusion: Plug-and-Play Sample-Efficient Fine-Tuning of Text-to-Image Diffusion Models to Learn Any Unseen Style https:&#x2F;&#x2F;arxiv.org&#x2F;pdf&#x2F;2211.12572 主要内容 这篇论文提出Specialist Diffusion：相当于一">
+<meta property="og:description" content="一.LoRA原理 参考：https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;702629428 原论文：https:&#x2F;&#x2F;arxiv.org&#x2F;pdf&#x2F;2106.09685 LoRA(Low-Rank Adaptation of LLMs)，即LLMs的低秩适应，是参数高效微调最常用的方法。 LoRA的本质就是用更少的训练参数来近似LLM全参数微调所得的增量参数，从而达到使用更少显存占用的">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-06-26T09:20:22.000Z">
-<meta property="article:modified_time" content="2025-06-26T09:30:52.309Z">
+<meta property="og:image" content="http://example.com/2025/06/26/LoRA/v2-10ce9e224defb3732e09a257911821aa_1440w.png">
+<meta property="article:published_time" content="2025-06-26T12:48:33.000Z">
+<meta property="article:modified_time" content="2025-06-26T13:46:06.226Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2025/06/26/LoRA/v2-10ce9e224defb3732e09a257911821aa_1440w.png">
   
   
   
-  <title>Specialist Diffusion - Hexo</title>
+  <title>LoRA - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -203,7 +205,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Specialist Diffusion"></span>
+            <span id="subtitle" data-typed-text="LoRA"></span>
           
         </div>
 
@@ -214,8 +216,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-06-26 17:20" pubdate>
-          2025年6月26日 下午
+        <time datetime="2025-06-26 20:48" pubdate>
+          2025年6月26日 晚上
         </time>
       </span>
     
@@ -226,7 +228,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          425 字
+          472 字
         
       </span>
     
@@ -283,50 +285,66 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Specialist Diffusion</h1>
+            <h1 id="seo-header">LoRA</h1>
             
             
               <div class="markdown-body">
                 
-                <h1
-id="specialist-diffusion-plug-and-play-sample-efficient-fine-tuning-of-text-to-image-diffusion-models-to-learn-any-unseen-style">Specialist
-Diffusion: Plug-and-Play Sample-Efficient Fine-Tuning of Text-to-Image
-Diffusion Models to Learn Any Unseen Style</h1>
-<p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2211.12572"
-class="uri">https://arxiv.org/pdf/2211.12572</a></p>
-<h2 id="主要内容">主要内容</h2>
-<p>这篇论文提出Specialist
-Diffusion：相当于一个即插即用的微调工具包，包括文本到图像的定制数据增强，content
-loss to facilitate content-style disentanglement，sparsely updating
-diffusion time
-steps。主要适用于以少量已知风格的图片训练模型，使其能够通过特定的文本提示生成相应风格的图片。</p>
-<h3 id="data-augmentations-for-text2image-diffusion数据增强">Data
-Augmentations for Text2Image Diffusion（数据增强）</h3>
-<h4 id="image-augmentation">Image Augmentation</h4>
-<h4 id="text-prompt-augmentation">Text Prompt Augmentation</h4>
-<h5 id="caption-retrieval-augmentation-标题搜索增强">Caption Retrieval
-Augmentation 标题搜索增强</h5>
-<h5 id="synonym-augmentation-同义词增强">Synonym Augmentation
-同义词增强</h5>
-<h5 id="doubled-augmentation-双重增强">Doubled Augmentation
-双重增强</h5>
-<h3 id="content-loss">Content Loss</h3>
-<h3 id="sparse-updating">Sparse Updating</h3>
-<h2 id="相关概念">相关概念</h2>
-<h3 id="增强泄露问题-augmentation-leakage">增强泄露问题 augmentation
-leakage</h3>
-<p>生成模型在训练过程中，会记住训练样本及其经过增强后的版本，这样在推理（生成新内容）阶段，就容易生成与训练时相似的图像。
-举个文中例子，很多旋转后的图像理论上算自然照片，但在真实自然图像集合里，它们出现的概率其实更低。要是训练时过度用旋转增强，模型就可能
-“bias（偏向）” 生成更多带旋转的物体，可这些并非实际想要的（“un - tended”
-，即不符合自然场景常见分布 ），相当于增强操作的影响 “泄漏”
-到生成结果里，让生成内容偏离真实自然数据的合理分布，这就是 “augmentation
-leakage” 。简单说，就是数据增强的不当使用，让模型学到了增强带来的
-“虚假模式”，而非真实场景的合理特征，影响生成效果。</p>
-<h3 id="正则化-regularization">正则化 Regularization</h3>
-<p><strong>正则化是用来防止模型过拟合而采取的手段</strong>，对代价函数增加一个限制条件，限制其较高次的参数大小不能过大
-参考：<a
-target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41960890/article/details/104891561"
-class="uri">https://blog.csdn.net/weixin_41960890/article/details/104891561</a></p>
+                <h1 id="一.lora原理">一.LoRA原理</h1>
+<p>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/702629428"
+class="uri">https://zhuanlan.zhihu.com/p/702629428</a> 原论文：<a
+target="_blank" rel="noopener" href="https://arxiv.org/pdf/2106.09685"
+class="uri">https://arxiv.org/pdf/2106.09685</a> LoRA(Low-Rank
+Adaptation of LLMs)，即LLMs的低秩适应，是参数高效微调最常用的方法。</p>
+<p>LoRA的本质就是用更少的训练参数来近似LLM全参数微调所得的增量参数，从而达到使用更少显存占用的高效微调。</p>
+<h2 id="实现流程">1.1实现流程</h2>
+<p><img src="v2-10ce9e224defb3732e09a257911821aa_1440w.png" srcset="/img/loading.gif" lazyload /></p>
+<ol type="1">
+<li>在原始预训练语言模型旁边增加一个旁路，做降维再升维的操作来模拟内在秩；</li>
+<li>用随机高斯分布初始化
+A，用零矩阵初始化B，训练时固定预训练模型的参数，只训练矩阵 A 与矩阵
+B；</li>
+<li>训练完成后，将 B 矩阵与 A
+矩阵相乘后合并预训练模型参数作为微调后的模型参数。</li>
+</ol>
+<p>具体来讲，预训练权重矩阵 <span
+class="math inline"><strong>W</strong><sub>0</sub> ∈ ℝ<sup><em>d</em> × <em>d</em></sup></span>
+， 将增量参数矩阵 <span
+class="math inline"><em>Δ</em><strong>W</strong></span>
+，表示为两个参数量更小的矩阵 B 和 A 的低秩近似,如下式 <span
+class="math display"><strong>W</strong><sub>0</sub> + <em>Δ</em><strong>W</strong> = <strong>W</strong><sub>0</sub> + <strong>B</strong><strong>A</strong></span>
+其中 <span
+class="math inline"><strong>B</strong> ∈ ℝ<sup><em>d</em> × <em>r</em></sup></span>
+，<span
+class="math inline"><strong>A</strong> ∈ ℝ<sup><em>r</em> × <em>d</em></sup></span>
+，秩<span class="math inline">r</span>远小于<span
+class="math inline">d</span> 给定输入<span
+class="math inline">.<strong>x</strong> ∈ ℝ<sup><em>d</em></sup></span>
+,添加LoRA后的输出<span
+class="math inline">.<strong>h</strong> ∈ ℝ<sup><em>d</em></sup></span>
+<span
+class="math display"><strong>h</strong> = (<strong>W</strong><sub>0</sub> + <em>Δ</em><strong>W</strong>)<strong>x</strong> = <strong>W</strong><sub>0</sub><strong>x</strong> + <strong>B</strong><strong>A</strong><strong>x</strong></span>
+<span
+class="math display"><em>Δ</em><strong>h</strong> = <strong>B</strong><strong>A</strong><strong>x</strong></span></p>
+<h2 id="lora参数合并系数">1.2LoRA参数合并系数</h2>
+<p>实际实现时以以下形式合并，其中<span
+class="math inline"><em>α</em></span>为超参数 <span
+class="math display">$$\mathbf{h}=(\mathbf{W}_{0}+\frac{\alpha}{r}\Delta\mathbf{W})\mathbf{x}$$</span>
+系数<span
+class="math inline">$\frac{\alpha}{r}$</span>越大，LoRA微调权重的影响就越大，在下游任务上越容易过拟合
+系数<span
+class="math inline">$\frac{\alpha}{r}$</span>越小，LoRA微调权重的影响就越小（微调的效果不明显，原始模型参数受到的影响也较少）
+一般来说，在给定任务上LoRA微调，让<span
+class="math inline"><em>α</em></span>为<span
+class="math inline"><strong>r</strong></span>的2倍数。</p>
+<h2 id="lora的秩mathbfr如何选择">1.3 LoRA的秩<span
+class="math inline"><strong>r</strong></span>如何选择</h2>
+<p>目标：找到一个秩<span
+class="math inline"><strong>r</strong></span>，使<span
+class="math inline">BA</span>无限接近<span
+class="math inline"><em>Δ</em><strong>W</strong></span>的表达能力。
+秩<span
+class="math inline"><strong>r</strong></span>越大，拟合能力越强（甚至出现过拟合），但参与训练的参数量也随之增加。</p>
 
                 
               </div>
@@ -345,7 +363,7 @@ class="uri">https://blog.csdn.net/weixin_41960890/article/details/104891561</a><
     
       <span class="category-chain">
         
-  <a href="/categories/%E7%A7%91%E7%A0%94%E5%AE%9E%E4%B9%A0-RadioDiff%E5%BE%AE%E8%B0%83-Few-Shot%E7%9B%B8%E5%85%B3%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" class="category-chain-item">-科研实习 -RadioDiff微调 -Few-Shot相关论文阅读笔记</a>
+  <a href="/categories/%E7%A7%91%E7%A0%94%E5%AE%9E%E4%B9%A0-RadioDiff%E5%BE%AE%E8%B0%83/" class="category-chain-item">-科研实习 -RadioDiff微调</a>
   
   
 
@@ -365,8 +383,8 @@ class="uri">https://blog.csdn.net/weixin_41960890/article/details/104891561</a><
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Specialist Diffusion</div>
-      <div>http://example.com/2025/06/26/Specialist-Diffusion/</div>
+      <div>LoRA</div>
+      <div>http://example.com/2025/06/26/LoRA/</div>
     </div>
     <div class="license-meta">
       
@@ -410,18 +428,12 @@ class="uri">https://blog.csdn.net/weixin_41960890/article/details/104891561</a><
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/06/26/LoRA/LoRA/" title="LoRA">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">LoRA</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/06/26/Phasic%20Content%20Fusing%20Diffusion%20Model%20with%20Directional%20Distribution%20Consistency%20for%20Few-Shot%20Model%20Adaption/" title="Phasic Content Fusing Diffusion Model with Directional Distribution Consistency for Few-Shot Model Adaption">
-                        <span class="hidden-mobile">Phasic Content Fusing Diffusion Model with Directional Distribution Consistency for Few-Shot Model Adaption</span>
+                      <a href="/2025/06/26/LoRA/LoRA/" title="LoRA">
+                        <span class="hidden-mobile">LoRA</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
