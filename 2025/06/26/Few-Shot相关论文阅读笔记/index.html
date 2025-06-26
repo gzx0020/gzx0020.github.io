@@ -27,7 +27,7 @@
 <meta property="og:description" content="Few-Shot Phasic Content Fusing Diffusion Model with Directional Distribution Consistency for Few-Shot Model Adaption Abstract  当t较大时学习目标域内容和风格信息，当t较小时学习目标域的局部细节 引入一种新的方向分布一致性损失，确保生成分布和原分布之间的一致性">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-06-26T05:45:38.000Z">
-<meta property="article:modified_time" content="2025-06-26T05:47:22.027Z">
+<meta property="article:modified_time" content="2025-06-26T05:51:56.130Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -226,7 +226,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          922 字
+          921 字
         
       </span>
     
@@ -337,7 +337,8 @@ B})-G^{l}(x_{i}^{B})\|^{2}$$</span>
 用于计算生成图像和目标图像之间的分割损失，基于Gram矩阵 3. Diffusion Loss
 <span
 class="math display">ℒ<sub><em>d</em><em>i</em><em>f</em></sub> = ||<em>ϵ</em><sub><em>θ</em></sub>(<em>x</em><sub><em>t</em></sub><sup><em>B</em></sup>, <em>t</em>) − <em>ϵ</em>||<sup>2</sup></span></p>
-<p>最终的损失函数为： <span
+<p>最终的损失函数为：</p>
+<p><span
 class="math display">ℒ = <em>m</em>(<em>t</em>)(1 − <em>w</em>(<em>t</em>))(<em>λ</em><sub><em>D</em><em>D</em><em>C</em></sub>ℒ<sub><em>D</em><em>D</em><em>C</em></sub>(<em>x</em><sup><em>A</em></sup>, <em>x</em><sub>0</sub><sup><em>A</em> → <em>B</em></sup>) + <em>λ</em><sub><em>s</em><em>t</em><em>y</em><em>l</em><em>e</em></sub>ℒ<sub><em>s</em><em>t</em><em>y</em><em>l</em><em>e</em></sub>(<em>x</em><sub>0</sub><sup><em>A</em> → <em>B</em></sup>, <em>x</em><sup><em>B</em></sup>)) + <em>w</em>(<em>t</em>)ℒ<sub><em>d</em><em>i</em><em>f</em></sub>(<em>x</em><sup><em>B</em></sup>)</span></p>
 <h4
 id="迭代跨域结构引导-iterative-cross-domain-structure-guidanceicsg">迭代跨域结构引导
@@ -347,14 +348,16 @@ Iterative Cross-domain Structure Guidance(ICSG)</h4>
 <h3 id="相关概念">相关概念</h3>
 <h4 id="图像翻译-image-to-image-translation">图像翻译 Image-to-Image
 Translation</h4>
-<p>将图像中内容从一个图像域Ｘ转换到另一个图像域Ｙ，可以看作是将原始图像的某种属性Ｘ移除，重新赋予其新的属性Ｙ，也即是图像间的跨域转换。
-#### Gram矩阵 ##### 原理
-n维欧式空间中任意k个向量之间两两的内积所组成的矩阵，称为这k个向量的格拉姆矩阵(Gram
+<p>将图像中内容从一个图像域Ｘ转换到另一个图像域Ｙ，可以看作是将原始图像的某种属性Ｘ移除，重新赋予其新的属性Ｙ，也即是图像间的跨域转换。</p>
+<h4 id="gram矩阵">Gram矩阵</h4>
+<h5 id="原理">原理</h5>
+<p>n维欧式空间中任意k个向量之间两两的内积所组成的矩阵，称为这k个向量的格拉姆矩阵(Gram
 matrix)，很明显，这是一个对称矩阵。 输入图像的feature map为[ ch, h,
 w]。我们经过flatten（即是将h* w
 进行平铺成一维向量）和矩阵转置操作，可以变形为[ ch, h* w]和[ h*w,
-ch]的矩阵。再对两个作内积得到Gram矩阵。 ##### 应用 Gram
-matrix的应用-风格迁移： 1. 准备基准图像和风格图像</p>
+ch]的矩阵。再对两个作内积得到Gram矩阵。</p>
+<h5 id="应用">应用</h5>
+<p>Gram matrix的应用-风格迁移： 1. 准备基准图像和风格图像</p>
 <ol start="2" type="1">
 <li><p>使用深层网络分别提取基准图像（加白噪声）和风格图像的特征向量（或者说是特征图feature
 map）</p></li>
