@@ -26,13 +26,13 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Consistency Models和SR3的初步学习">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2025/05/20/week1/image%5C1747148746366.png">
-<meta property="og:image" content="http://example.com/2025/05/20/week1/image%5CSnipaste_2025-05-15_01-19-37.png">
+<meta property="og:image" content="http://example.com/2025/05/20/week1/1747148746366.png">
+<meta property="og:image" content="http://example.com/2025/05/20/week1/Snipaste_2025-05-15_01-19-37.png">
 <meta property="article:published_time" content="2025-05-20T02:14:13.000Z">
-<meta property="article:modified_time" content="2025-06-25T14:48:40.667Z">
+<meta property="article:modified_time" content="2025-06-26T06:14:36.368Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2025/05/20/week1/image%5C1747148746366.png">
+<meta name="twitter:image" content="http://example.com/2025/05/20/week1/1747148746366.png">
   
   
   
@@ -321,17 +321,16 @@ $$f_\theta(\mathbf{x}<em>t,t)=C</em>{\mathrm{skip}}(t)\mathbf{x}<em>t+C</em>{\ma
 <p>EDM–$C_{in}$</p>
 <p>损失函数——相邻两个时间输出值差距最小化$$\mathcal{L}^N(\theta)=\mathbb{E}[|f_\theta(\mathbf{x}<em>{t</em>{n+1}},t_{n+1})-f_\theta(\hat{\mathbf{x}}<em>{t_n},t_n)|<em>2^2]$$  再经过EMA,最终$$\mathcal{L}^N(\theta,\theta^-)=\mathbb{E}[|f</em>\theta(\mathbf{x}</em>{t_{n+1}},t_{n+1})-f_{\theta^-}(\hat{\mathbf{x}}_{t_n},t_n)|_2^2]$$</p>
 <h3 id="一致性蒸馏（简称CD，Consistency-Distillation）——从已经学好的score-function蒸馏">一致性蒸馏（简称CD，Consistency Distillation）——从已经学好的score function蒸馏</h3>
-<p><img src="image%5C1747148746366.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="1747148746366.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>已经有了score function $\mathbf{s}_{\phi}(\mathbf{x}(t),t)$</p>
 <h3 id="一致性训练-简称CT，Consistency-Training-——从数据中直接学">一致性训练(简称CT，Consistency Training)——从数据中直接学</h3>
-<p><img src="image%5CSnipaste_2025-05-15_01-19-37.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="Snipaste_2025-05-15_01-19-37.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>用$\nabla\log p_t(\mathbf{x}_t)=-\mathbb{E}\left[\frac{\mathbf{x}_t-\mathbf{x}}{t^2}|\mathbf{x}_t\right]$来代替一致性蒸馏中的已有的sore fuction</p>
 <h2 id="如何通过一致性模型采样获得图像">如何通过一致性模型采样获得图像</h2>
 <h3 id="一步采样">一步采样</h3>
 <p>给定一个$x_t$，带入一致性模型</p>
 <h3 id="多步采样">多步采样</h3>
-<p>可提升图像质量<br>
-<img src="" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>可提升图像质量</p>
 <h1>SR3</h1>
 <p>SR3 is an approach to image super resolution via iterative refinement<br>
 通过迭代优化实现生成图像超分辨率</p>
@@ -463,9 +462,9 @@ avenue for future research.</li>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/05/20/test/" title="test">
+                      <a href="/2025/06/25/week2/" title="week2">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">test</span>
+                        <span class="hidden-mobile">week2</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
