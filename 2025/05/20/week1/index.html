@@ -27,6 +27,7 @@
 <meta property="og:description" content="Consistency Models和SR3的初步学习">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2025/05/20/week1/1747148746366.png">
+<meta property="og:image" content="http://example.com/2025/05/20/week1/Snipaste_2025-05-15_01-19-37.png">
 <meta property="article:published_time" content="2025-05-20T02:14:13.000Z">
 <meta property="article:modified_time" content="2025-06-26T07:36:01.676Z">
 <meta property="article:author" content="John Doe">
@@ -228,7 +229,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          954 字
+          980 字
         
       </span>
     
@@ -239,7 +240,7 @@
         
         
         
-          8 分钟
+          9 分钟
         
       </span>
     
@@ -290,89 +291,64 @@
             
               <div class="markdown-body">
                 
-                <h1 id="一致性模型consistency-modelscm">一致性模型（Consistency
-Models，CM）</h1>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/623402026"
-class="uri">https://zhuanlan.zhihu.com/p/623402026</a>
-一致性模型（Consistency
-Models，CM）主要解决扩散生成模型迭代采样过程缓慢的问题，支持一步采样快速生成和多步采样高精度生成，CM
-的本质就是将任何时间步的点映射到轨迹的起点。CM 的一个关键的性质是
-self-consistency 性：相同轨迹上的点映射到相同的初始点。</p>
-<h2 id="sde与ode">SDE与ODE</h2>
-<p>前向过程满足的SDE： <span
-class="math display">d<strong>x</strong> = <strong>f</strong>(<strong>x</strong>, <em>t</em>)d<em>t</em> + <em>g</em>(<em>t</em>)d<strong>w</strong>(<em>t</em>)</span>
-f:漂移因子 g:扩散因子 w:维纳过程(标准布朗运动) score:<span
-class="math display">∇<sub><em>x</em></sub>log <em>p</em>(<em>x</em>)</span>
-即概率密度对数的梯度</p>
-<p>朗之万动力学<br />
-边缘概率密度<br />
+                <h1>一致性模型（Consistency Models，CM）</h1>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/623402026">https://zhuanlan.zhihu.com/p/623402026</a><br>
+一致性模型（Consistency Models，CM）主要解决扩散生成模型迭代采样过程缓慢的问题，支持一步采样快速生成和多步采样高精度生成，CM 的本质就是将任何时间步的点映射到轨迹的起点。CM 的一个关键的性质是 self-consistency 性：相同轨迹上的点映射到相同的初始点。</p>
+<h2 id="SDE与ODE">SDE与ODE</h2>
+<p>前向过程满足的SDE：<br>
+$$\mathrm{d}\mathbf{x}=\mathbf{f}(\mathbf{x},t)\mathrm{d}t+g(t)\mathrm{d}\mathbf{w}(t) $$<br>
+f:漂移因子 g:扩散因子 w:维纳过程(标准布朗运动)  score:$$\nabla_x\log p(x)$$ 即概率密度对数的梯度</p>
+<p>朗之万动力学<br>
+边缘概率密度<br>
 score matching</p>
-<p>逆向过程的SDE为： <span
-class="math display">$$\mathrm{d}\mathbf{x}=[\mathbf{f}(\mathbf{x},t)-g^2(t)\nabla_\mathbf{x}\log
-p_t(\mathbf{x})]\mathrm{d}t+g(t)\mathrm{d}\bar \\
-{\mathbf{w}}(t)$$</span></p>
-<p>ODE：SDE去掉维纳过程，变成一个常微分方程<br />
-<span class="math display">$$\mathrm{d}\mathbf{x}_t=
-\begin{bmatrix}
-f(\mathbf{x}_t,t)-\frac{1}{2}g^2(t)\nabla\log p_t(\mathbf{x}_t)
-\end{bmatrix}\mathrm{d}t$$</span></p>
+<p>逆向过程的SDE为：<br>
+$$\mathrm{d}\mathbf{x}=[\mathbf{f}(\mathbf{x},t)-g^2(t)\nabla_\mathbf{x}\log p_t(\mathbf{x})]\mathrm{d}t+g(t)\mathrm{d}\bar \ {\mathbf{w}}(t)$$</p>
+<p>ODE：SDE去掉维纳过程，变成一个常微分方程<br>
+$$\mathrm{d}\mathbf{x}_t=<br>
+\begin{bmatrix}<br>
+f(\mathbf{x}_t,t)-\frac{1}{2}g^2(t)\nabla\log p_t(\mathbf{x}_t)<br>
+\end{bmatrix}\mathrm{d}t$$</p>
 <h2 id="如何用神经网络训练一致性模型">如何用神经网络训练一致性模型</h2>
-<p>一致性函数 <span class="math display">$$f(\mathbf{x}_t,t)=
-\begin{cases}
-\mathbf{x}_\varepsilon, &amp; t=\varepsilon \\
-f(\mathbf{x}_{t^{\prime}},t^{\prime}), &amp; t\in(\varepsilon,T],\forall
-t^{\prime}\in[\varepsilon,T] &amp;
-\end{cases}$$</span></p>
-<p>一致性模型：即用神经网络模拟一致性函数的特性<br />
-给定任意神经网络F, <span
-class="math display"><em>f</em><sub><em>θ</em></sub>(<strong>x</strong><sub><em>t</em></sub>, <em>t</em>) = <em>C</em><sub>skip</sub>(<em>t</em>)<strong>x</strong><sub><em>t</em></sub> + <em>C</em><sub>out</sub>(<em>t</em>)<em>F</em><sub><em>θ</em></sub>(<strong>x</strong><sub><em>t</em></sub>, <em>t</em>)</span>
-随t变化时C的变化</p>
-<p>EDM–<span
-class="math inline"><em>C</em><sub><em>i</em><em>n</em></sub></span></p>
-<p>损失函数——相邻两个时间输出值差距最小化<span
-class="math display">$$\mathcal{L}^N(\theta)=\mathbb{E}[\|f_\theta(\mathbf{x}_{t_{n+1}},t_{n+1})-f_\theta(\hat{\mathbf{x}}_{t_n},t_n)\|_2^2]$$</span>
-再经过EMA,最终<span
-class="math display">$$\mathcal{L}^N(\theta,\theta^-)=\mathbb{E}[\|f_\theta(\mathbf{x}_{t_{n+1}},t_{n+1})-f_{\theta^-}(\hat{\mathbf{x}}_{t_n},t_n)\|_2^2]$$</span></p>
-<h3
-id="一致性蒸馏简称cdconsistency-distillation从已经学好的score-function蒸馏">一致性蒸馏（简称CD，Consistency
-Distillation）——从已经学好的score function蒸馏</h3>
-<p><img src="1747148746366.png" srcset="/img/loading.gif" lazyload /></p>
-<p>已经有了score function <span
-class="math inline"><strong>s</strong><sub><em>ϕ</em></sub>(<strong>x</strong>(<em>t</em>), <em>t</em>)</span>
-### 一致性训练(简称CT，Consistency Training)——从数据中直接学 <img
-src="Snipaste_2025-05-15_01-19-37.png" srcset="/img/loading.gif" lazyload /></p>
-<p>用<span class="math inline">$\nabla\log
-p_t(\mathbf{x}_t)=-\mathbb{E}\left[\frac{\mathbf{x}_t-\mathbf{x}}{t^2}|\mathbf{x}_t\right]$</span>来代替一致性蒸馏中的已有的sore
-fuction</p>
-<h2
-id="如何通过一致性模型采样获得图像">如何通过一致性模型采样获得图像</h2>
+<p>一致性函数<br>
+$$f(\mathbf{x}<em>t,t)=<br>
+\begin{cases}<br>
+\mathbf{x}</em>\varepsilon, &amp; t=\varepsilon \<br>
+f(\mathbf{x}_{t^{\prime}},t^{\prime}), &amp; t\in(\varepsilon,T],\forall t^{\prime}\in[\varepsilon,T] &amp;<br>
+\end{cases}$$</p>
+<p>一致性模型：即用神经网络模拟一致性函数的特性<br>
+给定任意神经网络F,<br>
+$$f_\theta(\mathbf{x}<em>t,t)=C</em>{\mathrm{skip}}(t)\mathbf{x}<em>t+C</em>{\mathrm{out}}(t)F_\theta(\mathbf{x}_t,t)$$   随t变化时C的变化</p>
+<p>EDM–$C_{in}$</p>
+<p>损失函数——相邻两个时间输出值差距最小化$$\mathcal{L}^N(\theta)=\mathbb{E}[|f_\theta(\mathbf{x}<em>{t</em>{n+1}},t_{n+1})-f_\theta(\hat{\mathbf{x}}<em>{t_n},t_n)|<em>2^2]$$  再经过EMA,最终$$\mathcal{L}^N(\theta,\theta^-)=\mathbb{E}[|f</em>\theta(\mathbf{x}</em>{t_{n+1}},t_{n+1})-f_{\theta^-}(\hat{\mathbf{x}}_{t_n},t_n)|_2^2]$$</p>
+<h3 id="一致性蒸馏（简称CD，Consistency-Distillation）——从已经学好的score-function蒸馏">一致性蒸馏（简称CD，Consistency Distillation）——从已经学好的score function蒸馏</h3>
+<p><img src="1747148746366.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>已经有了score function $\mathbf{s}_{\phi}(\mathbf{x}(t),t)$</p>
+<h3 id="一致性训练-简称CT，Consistency-Training-——从数据中直接学">一致性训练(简称CT，Consistency Training)——从数据中直接学</h3>
+<p><img src="Snipaste_2025-05-15_01-19-37.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>用$\nabla\log p_t(\mathbf{x}_t)=-\mathbb{E}\left[\frac{\mathbf{x}_t-\mathbf{x}}{t^2}|\mathbf{x}_t\right]$来代替一致性蒸馏中的已有的sore fuction</p>
+<h2 id="如何通过一致性模型采样获得图像">如何通过一致性模型采样获得图像</h2>
 <h3 id="一步采样">一步采样</h3>
-<p>给定一个<span
-class="math inline"><em>x</em><sub><em>t</em></sub></span>，带入一致性模型</p>
+<p>给定一个$x_t$，带入一致性模型</p>
 <h3 id="多步采样">多步采样</h3>
 <p>可提升图像质量</p>
-<h1 id="sr3">SR3</h1>
-<p>SR3 is an approach to image super resolution via iterative refinement
+<h1>SR3</h1>
+<p>SR3 is an approach to image super resolution via iterative refinement<br>
 通过迭代优化实现生成图像超分辨率</p>
 <h2 id="key-words">key words</h2>
-<ol type="1">
+<ol>
 <li>iterative refinement</li>
 <li>both faces and natural images</li>
 <li>bicubic interpolation</li>
-<li>flexibility inchoosing number of diffusion steps, and the noise
-schedule during inference</li>
+<li>flexibility inchoosing number of diffusion steps, and the noise schedule during inference</li>
 <li>FID</li>
-<li>rather than estimating the posterior mean, SR3 generates samples
-from the target posterior.</li>
+<li>rather than estimating the posterior mean, SR3 generates samples from the target posterior.</li>
 <li>constant number of refinement steps (often no more than 100).</li>
-<li>onot requireanyauxiliaryobjective function inorder
-toensureconsistencywith the low resolutioninputs</li>
-<li>our diffusion models do not provide a knob to control sample quality
-vs. sample diversity（如何平衡样本质量与样本多样性吗？）, and finding
-ways to do so isinteresting avenue for future research.</li>
+<li>onot requireanyauxiliaryobjective function inorder toensureconsistencywith the low resolutioninputs</li>
+<li>our diffusion models do not provide a knob to control sample quality vs. sample diversity（如何平衡样本质量与样本多样性吗？）, and finding ways to do so isinteresting<br>
+avenue for future research.</li>
 </ol>
 <h2 id="涉及知识点">涉及知识点</h2>
-<ol type="1">
+<ol>
 <li>score matching</li>
 <li>Langevin dynamics</li>
 <li>PSNR and SSIM</li>
@@ -384,26 +360,23 @@ ways to do so isinteresting avenue for future research.</li>
 <li>Dropout</li>
 </ol>
 <h2 id="总结">总结</h2>
-<ol type="1">
+<ol>
 <li>将LR作为条件输入</li>
-<li>不在取离散的t，而是将同样范围内连续t的采样值（即noise）输入
+<li>不在取离散的t，而是将同样范围内连续t的采样值（即noise）输入<br>
 或许可以减小推理步数，加快速度？</li>
-<li>级联 分阶段生成：
-第一阶段：使用无条件生成模型（如DDPM）生成低分辨率图像（如64×64）。
-第二阶段：将低分辨率图像输入第一个SR3模型，进行4倍上采样（64→256）。
+<li>级联 分阶段生成：<br>
+第一阶段：使用无条件生成模型（如DDPM）生成低分辨率图像（如64×64）。<br>
+第二阶段：将低分辨率图像输入第一个SR3模型，进行4倍上采样（64→256）。<br>
 第三阶段：将256×256图像输入第二个SR3模型，再次4倍上采样至1024×1024。</li>
 </ol>
 <h2 id="问题">问题</h2>
-<ol type="1">
-<li>下采样操作，将 HR 图像的尺⼨减半，⽣成对应的 LR 图像
+<ol>
+<li>下采样操作，将 HR 图像的尺⼨减半，⽣成对应的 LR 图像<br>
 下采样方式如何选择（是否采用SR3论文中提到的双三次插值？），以及为什么规定LR为HR尺寸减半后的结果</li>
 <li>SR3采用的是迭代优化实现图像超分辨率重建的方法，是否面临计算和时间成本高的问题，如何解决是否可以参考连续一致性模型的做法</li>
 <li>连续一致性模型有单步采样和多部采样两种方式，多部采样可以理解为牺牲速度换取高质量？是否可以再次基础上实现超分辨率重建？</li>
-<li>尝试<a target="_blank" rel="noopener" href="https://github.com/openai/consistency_models"
-class="uri">https://github.com/openai/consistency_models</a> 和<a
-target="_blank" rel="noopener" href="https://github.com/Janspiry/Image-Super-Resolution-via-Iterative-Refinement"
-class="uri">https://github.com/Janspiry/Image-Super-Resolution-via-Iterative-Refinement</a>
-时遇到困难</li>
+<li>尝试<a target="_blank" rel="noopener" href="https://github.com/openai/consistency_models">https://github.com/openai/consistency_models</a><br>
+和<a target="_blank" rel="noopener" href="https://github.com/Janspiry/Image-Super-Resolution-via-Iterative-Refinement">https://github.com/Janspiry/Image-Super-Resolution-via-Iterative-Refinement</a> 时遇到困难</li>
 <li>对数学公式的推导要掌握到什么程度？</li>
 </ol>
 
