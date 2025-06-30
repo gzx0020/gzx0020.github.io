@@ -19,12 +19,12 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="一.LoRA原理 参考：https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;702629428 原论文：https:&#x2F;&#x2F;arxiv.org&#x2F;pdf&#x2F;2106.09685 LoRA(Low-Rank Adaptation of LLMs)，即LLMs的低秩适应，是参数高效微调最常用的方法。 LoRA的本质就是用更少的训练参数来近似LLM全参数微调所得的增量参数，从而达到使用更少显存占用的高效微">
+    <meta name="description" content="一.LoRA原理 参考：https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;702629428 原论文：https:&#x2F;&#x2F;arxiv.org&#x2F;pdf&#x2F;2106.09685 LoRA(Low-Rank Adaptation of LLMs)，即LLMs的低秩适应，是参数高效微调最常用的方法。 LoRA的本质就是用更少的训练参数来近似LLM全参数微调所得的增量参数，从而达到使用更少显存占用的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LoRA">
 <meta property="og:url" content="http://example.com/2025/06/26/LoRA/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="一.LoRA原理 参考：https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;702629428 原论文：https:&#x2F;&#x2F;arxiv.org&#x2F;pdf&#x2F;2106.09685 LoRA(Low-Rank Adaptation of LLMs)，即LLMs的低秩适应，是参数高效微调最常用的方法。 LoRA的本质就是用更少的训练参数来近似LLM全参数微调所得的增量参数，从而达到使用更少显存占用的高效微">
+<meta property="og:description" content="一.LoRA原理 参考：https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;702629428 原论文：https:&#x2F;&#x2F;arxiv.org&#x2F;pdf&#x2F;2106.09685 LoRA(Low-Rank Adaptation of LLMs)，即LLMs的低秩适应，是参数高效微调最常用的方法。 LoRA的本质就是用更少的训练参数来近似LLM全参数微调所得的增量参数，从而达到使用更少显存占用的">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2025/06/26/LoRA/v2-10ce9e224defb3732e09a257911821aa_1440w.png">
 <meta property="article:published_time" content="2025-06-26T12:48:33.000Z">
@@ -228,7 +228,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          536 字
+          472 字
         
       </span>
     
@@ -239,7 +239,7 @@
         
         
         
-          5 分钟
+          4 分钟
         
       </span>
     
@@ -290,34 +290,66 @@
             
               <div class="markdown-body">
                 
-                <h1>一.LoRA原理</h1>
-<p>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/702629428">https://zhuanlan.zhihu.com/p/702629428</a><br>
-原论文：<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2106.09685">https://arxiv.org/pdf/2106.09685</a><br>
-LoRA(Low-Rank Adaptation of LLMs)，即LLMs的低秩适应，是参数高效微调最常用的方法。</p>
+                <h1 id="一.lora原理">一.LoRA原理</h1>
+<p>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/702629428"
+class="uri">https://zhuanlan.zhihu.com/p/702629428</a> 原论文：<a
+target="_blank" rel="noopener" href="https://arxiv.org/pdf/2106.09685"
+class="uri">https://arxiv.org/pdf/2106.09685</a> LoRA(Low-Rank
+Adaptation of LLMs)，即LLMs的低秩适应，是参数高效微调最常用的方法。</p>
 <p>LoRA的本质就是用更少的训练参数来近似LLM全参数微调所得的增量参数，从而达到使用更少显存占用的高效微调。</p>
-<h2 id="1-1实现流程">1.1实现流程</h2>
-<p><img src="v2-10ce9e224defb3732e09a257911821aa_1440w.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<ol>
-<li>在原始预训练语言模型旁边增加一个旁路，做降维再升维的操作来模拟内在秩；</li>
-<li>用随机高斯分布初始化 A，用零矩阵初始化B，训练时固定预训练模型的参数，只训练矩阵 A 与矩阵 B；</li>
-<li>训练完成后，将 B 矩阵与 A 矩阵相乘后合并预训练模型参数作为微调后的模型参数。</li>
+<h2 id="实现流程">1.1实现流程</h2>
+<p><img src="v2-10ce9e224defb3732e09a257911821aa_1440w.png" srcset="/img/loading.gif" lazyload /></p>
+<ol type="1">
+<li>在原始预训练语言模型旁边增加一个旁路，做降维再升维的操作来模拟内在秩；<br />
+</li>
+<li>用随机高斯分布初始化
+A，用零矩阵初始化B，训练时固定预训练模型的参数，只训练矩阵 A 与矩阵
+B；</li>
+<li>训练完成后，将 B 矩阵与 A
+矩阵相乘后合并预训练模型参数作为微调后的模型参数。</li>
 </ol>
-<p>具体来讲，预训练权重矩阵 $\mathbf{W}_0\in\mathbb{R}^{d\times d}$ ，</p>
-<p>将增量参数矩阵 $\Delta\mathbf{W}$ ，表示为两个参数量更小的矩阵 B 和 A 的低秩近似,如下式</p>
-<p>$$\mathbf{W}<em>{0}+\Delta\mathbf{W}=\mathbf{W}</em>{0}+\mathbf{BA}$$</p>
-<p>其中 $\mathbf{B}\in\mathbb{R}^{d\times r}$ ，$\mathbf{A}\in\mathbb{R}^{r\times d}$ ，秩$\mathrm{r}$远小于$\mathrm{d}$</p>
-<p>给定输入$.\mathbf{x}\in\mathbb{R}^d$ ,添加LoRA后的输出$.\mathbf{h}\in\mathbb{R}^d$</p>
-<p>$$\mathbf{h}=(\mathbf{W}<em>{0}+\Delta\mathbf{W})\mathbf{x}=\mathbf{W}</em>{0}\mathbf{x}+\mathbf{BA}\mathbf{x}$$</p>
-<p>$$\Delta\mathbf{h}=\mathbf{BAx}$$</p>
-<h2 id="1-2LoRA参数合并系数">1.2LoRA参数合并系数</h2>
-<p>实际实现时以以下形式合并，其中$\alpha$为超参数</p>
-<p>$$\mathbf{h}=(\mathbf{W}_{0}+\frac{\alpha}{r}\Delta\mathbf{W})\mathbf{x}$$</p>
-<p>系数$\frac{\alpha}{r}$越大，LoRA微调权重的影响就越大，在下游任务上越容易过拟合</p>
-<p>系数$\frac{\alpha}{r}$越小，LoRA微调权重的影响就越小（微调的效果不明显，原始模型参数受到的影响也较少）</p>
-<p>一般来说，在给定任务上LoRA微调，让$\alpha$为$\mathbf{r}$的2倍数。</p>
-<h2 id="1-3-LoRA的秩-mathbf-r-如何选择">1.3 LoRA的秩$\mathbf{r}$如何选择</h2>
-<p>目标：找到一个秩$\mathbf{r}$，使$\mathrm{BA}$无限接近$\Delta\mathbf{W}$的表达能力。</p>
-<p>秩$\mathbf{r}$越大，拟合能力越强（甚至出现过拟合），但参与训练的参数量也随之增加。</p>
+<p>具体来讲，预训练权重矩阵 <span
+class="math inline"><strong>W</strong><sub>0</sub> ∈ ℝ<sup><em>d</em> × <em>d</em></sup></span>
+，</p>
+<p>将增量参数矩阵 <span
+class="math inline"><em>Δ</em><strong>W</strong></span>
+，表示为两个参数量更小的矩阵 B 和 A 的低秩近似,如下式</p>
+<p><span
+class="math display"><strong>W</strong><sub>0</sub> + <em>Δ</em><strong>W</strong> = <strong>W</strong><sub>0</sub> + <strong>B</strong><strong>A</strong></span></p>
+<p>其中 <span
+class="math inline"><strong>B</strong> ∈ ℝ<sup><em>d</em> × <em>r</em></sup></span>
+，<span
+class="math inline"><strong>A</strong> ∈ ℝ<sup><em>r</em> × <em>d</em></sup></span>
+，秩<span class="math inline">r</span>远小于<span
+class="math inline">d</span></p>
+<p>给定输入<span
+class="math inline">.<strong>x</strong> ∈ ℝ<sup><em>d</em></sup></span>
+,添加LoRA后的输出<span
+class="math inline">.<strong>h</strong> ∈ ℝ<sup><em>d</em></sup></span></p>
+<p><span
+class="math display"><strong>h</strong> = (<strong>W</strong><sub>0</sub> + <em>Δ</em><strong>W</strong>)<strong>x</strong> = <strong>W</strong><sub>0</sub><strong>x</strong> + <strong>B</strong><strong>A</strong><strong>x</strong></span></p>
+<p><span
+class="math display"><em>Δ</em><strong>h</strong> = <strong>B</strong><strong>A</strong><strong>x</strong></span></p>
+<h2 id="lora参数合并系数">1.2LoRA参数合并系数</h2>
+<p>实际实现时以以下形式合并，其中<span
+class="math inline"><em>α</em></span>为超参数</p>
+<p><span
+class="math display">$$\mathbf{h}=(\mathbf{W}_{0}+\frac{\alpha}{r}\Delta\mathbf{W})\mathbf{x}$$</span></p>
+<p>系数<span
+class="math inline">$\frac{\alpha}{r}$</span>越大，LoRA微调权重的影响就越大，在下游任务上越容易过拟合</p>
+<p>系数<span
+class="math inline">$\frac{\alpha}{r}$</span>越小，LoRA微调权重的影响就越小（微调的效果不明显，原始模型参数受到的影响也较少）</p>
+<p>一般来说，在给定任务上LoRA微调，让<span
+class="math inline"><em>α</em></span>为<span
+class="math inline"><strong>r</strong></span>的2倍数。</p>
+<h2 id="lora的秩mathbfr如何选择">1.3 LoRA的秩<span
+class="math inline"><strong>r</strong></span>如何选择</h2>
+<p>目标：找到一个秩<span
+class="math inline"><strong>r</strong></span>，使<span
+class="math inline">BA</span>无限接近<span
+class="math inline"><em>Δ</em><strong>W</strong></span>的表达能力。</p>
+<p>秩<span
+class="math inline"><strong>r</strong></span>越大，拟合能力越强（甚至出现过拟合），但参与训练的参数量也随之增加。</p>
 
                 
               </div>
