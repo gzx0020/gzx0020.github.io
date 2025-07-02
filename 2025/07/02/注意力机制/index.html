@@ -19,23 +19,19 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Few-Shot Phasic Content Fusing Diffusion Model with Directional Distribution Consistency for Few-Shot Model Adaption https:&#x2F;&#x2F;arxiv.org&#x2F;pdf&#x2F;2309.03729 Abstract  当t较大时学习目标域内容和风格信息，当t较小时学习目标域的局部细节">
-<meta property="og:type" content="article">
-<meta property="og:title" content="week3">
-<meta property="og:url" content="http://example.com/2025/06/30/week3/index.html">
+    <meta property="og:type" content="article">
+<meta property="og:title" content="注意力机制">
+<meta property="og:url" content="http://example.com/2025/07/02/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Few-Shot Phasic Content Fusing Diffusion Model with Directional Distribution Consistency for Few-Shot Model Adaption https:&#x2F;&#x2F;arxiv.org&#x2F;pdf&#x2F;2309.03729 Abstract  当t较大时学习目标域内容和风格信息，当t较小时学习目标域的局部细节">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2025/06/30/week3/v2-10ce9e224defb3732e09a257911821aa_1440w.png">
-<meta property="article:published_time" content="2025-06-30T08:49:08.000Z">
-<meta property="article:modified_time" content="2025-06-30T08:50:50.065Z">
+<meta property="article:published_time" content="2025-07-02T06:05:35.000Z">
+<meta property="article:modified_time" content="2025-07-02T06:09:45.643Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2025/06/30/week3/v2-10ce9e224defb3732e09a257911821aa_1440w.png">
   
   
   
-  <title>week3 - Hexo</title>
+  <title>注意力机制 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -205,7 +201,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="week3"></span>
+            <span id="subtitle" data-typed-text="注意力机制"></span>
           
         </div>
 
@@ -216,8 +212,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-06-30 16:49" pubdate>
-          2025年6月30日 下午
+        <time datetime="2025-07-02 14:05" pubdate>
+          2025年7月2日 下午
         </time>
       </span>
     
@@ -228,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.8k 字
+          0 字
         
       </span>
     
@@ -239,7 +235,7 @@
         
         
         
-          16 分钟
+          1 分钟
         
       </span>
     
@@ -285,187 +281,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">week3</h1>
+            <h1 id="seo-header">注意力机制</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="few-shot">Few-Shot</h1>
-<h2
-id="phasic-content-fusing-diffusion-model-with-directional-distribution-consistency-for-few-shot-model-adaption">Phasic
-Content Fusing Diffusion Model with Directional Distribution Consistency
-for Few-Shot Model Adaption</h2>
-<p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2309.03729"
-class="uri">https://arxiv.org/pdf/2309.03729</a></p>
-<h3 id="abstract">Abstract</h3>
-<ol type="1">
-<li>当t较大时学习目标域内容和风格信息，当t较小时学习目标域的局部细节</li>
-<li>引入一种新的方向分布一致性损失，确保生成分布和原分布之间的一致性，防止过拟合（overfit）</li>
-<li>跨领域情景的结构一致性</li>
-</ol>
-<h3 id="challenges">Challenges</h3>
-<ol type="1">
-<li>overfit</li>
-<li>细节学习阶段（t较小的时候）风格迁移失败</li>
-<li>现有的少样本GAN适应只约束对应点成对距离（相对位置关系），无法约束分布旋转</li>
-</ol>
-<h3 id="method">Method</h3>
-<h4 id="training-with-phasic-content-fusion">Training with Phasic
-Content Fusion</h4>
-<p>在前向加噪过程中学习内容和风格信息，引入权重函数m(t),自适应地融合<span
-class="math inline"><em>E</em>(<em>x</em><sup><em>A</em></sup>)</span>和噪声<span
-class="math inline"><em>z</em> ∼ 𝒩(0, <em>I</em>)</span>， <span
-class="math display"><em>Ê</em>(<em>x</em><sup><em>A</em></sup>) = <em>m</em>(<em>t</em>)<em>E</em>(<em>x</em><sup><em>A</em></sup>) + (1 − <em>m</em>(<em>t</em>))<em>z</em></span>
-然后使用多个卷积块将 <span
-class="math inline"><em>Ê</em>(<em>x</em><sup><em>A</em></sup>)</span>
-与 <span
-class="math inline"><em>E</em>(<em>x</em><sub><em>t</em></sub><sup><em>A</em></sup>)</span>
-融合，得到融合后的特征 <span
-class="math inline"><em>E</em>(<em>x</em><sup><em>A</em></sup>, <em>x</em><sub><em>t</em></sub><sup><em>A</em></sup>)</span>
-，最后将融合后的特征送入UNet解码器对噪声进行预测，得到包含增强内容信息的
-<span
-class="math inline"><em>x</em><sub><em>t</em> − 1</sub><sup><em>A</em></sup></span>
-#### 方向分布一致性损失函数 directional distribution consistency loss
-(DDC) 最终的损失函数由以下三个损失函数构成： 1. Directional distribution
-consistency loss <span
-class="math display">ℒ<sub><em>D</em><em>D</em><em>C</em></sub> = ∥<em>E</em>(<em>x</em><sup><em>A</em></sup>) + <em>w</em>, <em>E</em>(<em>x</em><sub>0</sub><sup><em>A</em> → <em>B</em></sup>)∥<sup>2</sup></span>
-其中w为方向向量，给定源分布 <span
-class="math inline"><em>A</em> = {<em>x</em><sub>1</sub><sup><em>A</em></sup>, ⋯<em>x</em><sub><em>m</em></sub><sup><em>A</em></sup>}</span>
-和目标分布 <span
-class="math inline"><em>B</em> = {<em>x</em><sub>1</sub><sup><em>B</em></sup>, ⋯<em>x</em><sub><em>m</em></sub><sup><em>B</em></sup>}</span>
-,特征空间中从源域中心到目标域中心的跨域方向向量w, <span
-class="math display">$$w=\frac{1}{m}\sum_{i=1}^mE(x_i^B)-\frac{1}{n}\sum_{i=1}^nE(x_i^A)$$</span>
-2. Style loss <span
-class="math display">$$\mathcal{L}_{style}=\frac{1}{m}\sum_{i=1}^{m}\sum_{l}w_{l}\|G^{l}(x_{0}^{A\to
-B})-G^{l}(x_{i}^{B})\|^{2}$$</span>
-用于计算生成图像和目标图像之间的分割损失，基于Gram矩阵 3. Diffusion Loss
-<span
-class="math display">ℒ<sub><em>d</em><em>i</em><em>f</em></sub> = ||<em>ϵ</em><sub><em>θ</em></sub>(<em>x</em><sub><em>t</em></sub><sup><em>B</em></sup>, <em>t</em>) − <em>ϵ</em>||<sup>2</sup></span></p>
-<p>最终的损失函数为： <span
-class="math display">ℒ = <em>m</em>(<em>t</em>)(1 − <em>w</em>(<em>t</em>))(<em>λ</em><sub><em>D</em><em>D</em><em>C</em></sub>ℒ<sub><em>D</em><em>D</em><em>C</em></sub>(<em>x</em><sup><em>A</em></sup>, <em>x</em><sub>0</sub><sup><em>A</em> → <em>B</em></sup>) + <em>λ</em><sub><em>s</em><em>t</em><em>y</em><em>l</em><em>e</em></sub>ℒ<sub><em>s</em><em>t</em><em>y</em><em>l</em><em>e</em></sub>(<em>x</em><sub>0</sub><sup><em>A</em> → <em>B</em></sup>, <em>x</em><sup><em>B</em></sup>)) + <em>w</em>(<em>t</em>)ℒ<sub><em>d</em><em>i</em><em>f</em></sub>(<em>x</em><sup><em>B</em></sup>)</span></p>
-<h4
-id="迭代跨域结构引导-iterative-cross-domain-structure-guidanceicsg">迭代跨域结构引导
-Iterative Cross-domain Structure Guidance(ICSG)</h4>
-<p>需要进一步理解</p>
-<h3 id="实验及评估过程">实验及评估过程</h3>
-<h3 id="相关概念">相关概念</h3>
-<h4 id="图像翻译-image-to-image-translation">图像翻译 Image-to-Image
-Translation</h4>
-<p>将图像中内容从一个图像域Ｘ转换到另一个图像域Ｙ，可以看作是将原始图像的某种属性Ｘ移除，重新赋予其新的属性Ｙ，也即是图像间的跨域转换。
-#### Gram矩阵 ##### 原理
-n维欧式空间中任意k个向量之间两两的内积所组成的矩阵，称为这k个向量的格拉姆矩阵(Gram
-matrix)，很明显，这是一个对称矩阵。 输入图像的feature map为[ ch, h,
-w]。我们经过flatten（即是将h* w
-进行平铺成一维向量）和矩阵转置操作，可以变形为[ ch, h* w]和[ h*w,
-ch]的矩阵。再对两个作内积得到Gram矩阵。 ##### 应用 Gram
-matrix的应用-风格迁移： 1. 准备基准图像和风格图像</p>
-<ol start="2" type="1">
-<li><p>使用深层网络分别提取基准图像（加白噪声）和风格图像的特征向量（或者说是特征图feature
-map）</p></li>
-<li><p>分别计算两个图像的特征向量的Gram矩阵，以两个图像的Gram矩阵的差异最小化为优化目标，不断调整基准图像，使风格不断接近目标风格图像</p></li>
-</ol>
-<p>一般来说浅层网络提取的是局部的细节纹理特征，深层网络提取的是更抽象的轮廓、大小等信息。这些特征总的结合起来表现出来的感觉就是图像的风格，由这些特征向量计算出来的的Gram矩阵，就可以把图像特征之间隐藏的联系提取出来，也就是各个特征之间的相关性高低。</p>
-<h4 id="消融实验-ablation-study">消融实验 Ablation Study</h4>
-<p>类似于“控制变量法”，逐一控制参数来观察结果的变化，以确定不同参数对模型的影响。</p>
-<h2
-id="specialist-diffusion-plug-and-play-sample-efficient-fine-tuning-of-text-to-image-diffusion-models-to-learn-any-unseen-style">Specialist
-Diffusion: Plug-and-Play Sample-Efficient Fine-Tuning of Text-to-Image
-Diffusion Models to Learn Any Unseen Style</h2>
-<p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2211.12572"
-class="uri">https://arxiv.org/pdf/2211.12572</a></p>
-<h3 id="主要内容">主要内容</h3>
-<p>这篇论文提出Specialist
-Diffusion：相当于一个即插即用的微调工具包，包括文本到图像的定制数据增强，content
-loss to facilitate content-style disentanglement，sparsely updating
-diffusion time
-steps。主要适用于以少量已知风格的图片训练模型，使其能够通过特定的文本提示生成相应风格的图片。</p>
-<h4 id="data-augmentations-for-text2image-diffusion数据增强">Data
-Augmentations for Text2Image Diffusion（数据增强）</h4>
-<h5 id="image-augmentation">Image Augmentation</h5>
-<h5 id="text-prompt-augmentation">Text Prompt Augmentation</h5>
-<h6 id="caption-retrieval-augmentation-标题搜索增强">Caption Retrieval
-Augmentation 标题搜索增强</h6>
-<h6 id="synonym-augmentation-同义词增强">Synonym Augmentation
-同义词增强</h6>
-<h6 id="doubled-augmentation-双重增强">Doubled Augmentation
-双重增强</h6>
-<h4 id="content-loss">Content Loss</h4>
-<h4 id="sparse-updating">Sparse Updating</h4>
-<h3 id="相关概念-1">相关概念</h3>
-<h4 id="增强泄露问题-augmentation-leakage">增强泄露问题 augmentation
-leakage</h4>
-<p>生成模型在训练过程中，会记住训练样本及其经过增强后的版本，这样在推理（生成新内容）阶段，就容易生成与训练时相似的图像。
-举个文中例子，很多旋转后的图像理论上算自然照片，但在真实自然图像集合里，它们出现的概率其实更低。要是训练时过度用旋转增强，模型就可能
-“bias（偏向）” 生成更多带旋转的物体，可这些并非实际想要的（“un - tended”
-，即不符合自然场景常见分布 ），相当于增强操作的影响 “泄漏”
-到生成结果里，让生成内容偏离真实自然数据的合理分布，这就是 “augmentation
-leakage” 。简单说，就是数据增强的不当使用，让模型学到了增强带来的
-“虚假模式”，而非真实场景的合理特征，影响生成效果。 #### 正则化
-Regularization
-<strong>正则化是用来防止模型过拟合而采取的手段</strong>，对代价函数增加一个限制条件，限制其较高次的参数大小不能过大
-参考：<a
-target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41960890/article/details/104891561"
-class="uri">https://blog.csdn.net/weixin_41960890/article/details/104891561</a></p>
-<h1 id="一.lora原理">一.LoRA原理</h1>
-<p>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/702629428"
-class="uri">https://zhuanlan.zhihu.com/p/702629428</a> 原论文：<a
-target="_blank" rel="noopener" href="https://arxiv.org/pdf/2106.09685"
-class="uri">https://arxiv.org/pdf/2106.09685</a> LoRA(Low-Rank
-Adaptation of LLMs)，即LLMs的低秩适应，是参数高效微调最常用的方法。</p>
-<p>LoRA的本质就是用更少的训练参数来近似LLM全参数微调所得的增量参数，从而达到使用更少显存占用的高效微调。</p>
-<h2 id="实现流程">1.1实现流程</h2>
-<p><img src="v2-10ce9e224defb3732e09a257911821aa_1440w.png" srcset="/img/loading.gif" lazyload /></p>
-<ol type="1">
-<li>在原始预训练语言模型旁边增加一个旁路，做降维再升维的操作来模拟内在秩；<br />
-</li>
-<li>用随机高斯分布初始化
-A，用零矩阵初始化B，训练时固定预训练模型的参数，只训练矩阵 A 与矩阵
-B；</li>
-<li>训练完成后，将 B 矩阵与 A
-矩阵相乘后合并预训练模型参数作为微调后的模型参数。</li>
-</ol>
-<p>具体来讲，预训练权重矩阵 <span
-class="math inline"><strong>W</strong><sub>0</sub> ∈ ℝ<sup><em>d</em> × <em>d</em></sup></span>
-，</p>
-<p>将增量参数矩阵 <span
-class="math inline"><em>Δ</em><strong>W</strong></span>
-，表示为两个参数量更小的矩阵 B 和 A 的低秩近似,如下式</p>
-<p><span
-class="math display"><strong>W</strong><sub>0</sub> + <em>Δ</em><strong>W</strong> = <strong>W</strong><sub>0</sub> + <strong>B</strong><strong>A</strong></span></p>
-<p>其中 <span
-class="math inline"><strong>B</strong> ∈ ℝ<sup><em>d</em> × <em>r</em></sup></span>
-，<span
-class="math inline"><strong>A</strong> ∈ ℝ<sup><em>r</em> × <em>d</em></sup></span>
-，秩<span class="math inline">r</span>远小于<span
-class="math inline">d</span></p>
-<p>给定输入<span
-class="math inline">.<strong>x</strong> ∈ ℝ<sup><em>d</em></sup></span>
-,添加LoRA后的输出<span
-class="math inline">.<strong>h</strong> ∈ ℝ<sup><em>d</em></sup></span></p>
-<p><span
-class="math display"><strong>h</strong> = (<strong>W</strong><sub>0</sub> + <em>Δ</em><strong>W</strong>)<strong>x</strong> = <strong>W</strong><sub>0</sub><strong>x</strong> + <strong>B</strong><strong>A</strong><strong>x</strong></span></p>
-<p><span
-class="math display"><em>Δ</em><strong>h</strong> = <strong>B</strong><strong>A</strong><strong>x</strong></span></p>
-<h2 id="lora参数合并系数">1.2LoRA参数合并系数</h2>
-<p>实际实现时以以下形式合并，其中<span
-class="math inline"><em>α</em></span>为超参数</p>
-<p><span
-class="math display">$$\mathbf{h}=(\mathbf{W}_{0}+\frac{\alpha}{r}\Delta\mathbf{W})\mathbf{x}$$</span></p>
-<p>系数<span
-class="math inline">$\frac{\alpha}{r}$</span>越大，LoRA微调权重的影响就越大，在下游任务上越容易过拟合</p>
-<p>系数<span
-class="math inline">$\frac{\alpha}{r}$</span>越小，LoRA微调权重的影响就越小（微调的效果不明显，原始模型参数受到的影响也较少）</p>
-<p>一般来说，在给定任务上LoRA微调，让<span
-class="math inline"><em>α</em></span>为<span
-class="math inline"><strong>r</strong></span>的2倍数。</p>
-<h2 id="lora的秩mathbfr如何选择">1.3 LoRA的秩<span
-class="math inline"><strong>r</strong></span>如何选择</h2>
-<p>目标：找到一个秩<span
-class="math inline"><strong>r</strong></span>，使<span
-class="math inline">BA</span>无限接近<span
-class="math inline"><em>Δ</em><strong>W</strong></span>的表达能力。</p>
-<p>秩<span
-class="math inline"><strong>r</strong></span>越大，拟合能力越强（甚至出现过拟合），但参与训练的参数量也随之增加。</p>
+                
 
                 
               </div>
@@ -484,7 +305,7 @@ class="math inline"><strong>r</strong></span>越大，拟合能力越强（甚�
     
       <span class="category-chain">
         
-  <a href="/categories/%E7%A7%91%E7%A0%94%E5%AE%9E%E4%B9%A0-%E5%91%A8%E8%AE%B0/" class="category-chain-item">-科研实习 -周记</a>
+  <a href="/categories/%E7%A7%91%E7%A0%94%E5%AE%9E%E4%B9%A0/" class="category-chain-item">-科研实习</a>
   
   
 
@@ -504,8 +325,8 @@ class="math inline"><strong>r</strong></span>越大，拟合能力越强（甚�
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>week3</div>
-      <div>http://example.com/2025/06/30/week3/</div>
+      <div>注意力机制</div>
+      <div>http://example.com/2025/07/02/注意力机制/</div>
     </div>
     <div class="license-meta">
       
@@ -517,7 +338,7 @@ class="math inline"><strong>r</strong></span>越大，拟合能力越强（甚�
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年6月30日</div>
+          <div>2025年7月2日</div>
         </div>
       
       
@@ -549,18 +370,12 @@ class="math inline"><strong>r</strong></span>越大，拟合能力越强（甚�
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/06/30/week4/" title="week4">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">week4</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/06/29/%E4%BD%BF%E7%94%A8%E5%BE%AA%E7%8E%AF%E7%BC%93%E5%86%B2%E5%8C%BA%E8%BF%9B%E8%A1%8C%E4%B8%B2%E5%8F%A3%E6%95%B0%E6%8D%AE%E8%A7%A3%E6%9E%90/" title="使用循环缓冲区进行串口数据解析">
-                        <span class="hidden-mobile">使用循环缓冲区进行串口数据解析</span>
+                      <a href="/2025/06/30/week4/" title="week4">
+                        <span class="hidden-mobile">week4</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
