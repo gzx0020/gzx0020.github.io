@@ -19,13 +19,15 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
+    <meta name="description" content="一、LoRA微调 test1: 将训练第二阶段注意力机制中的线性层’w_q’,‘w_k’,’w_v’替换为LoRA层 12lora_r: 8                    # LoRA秩大小lora_alpha: 16               # LoRA缩放因子 预训练模型只加载第二阶段扩散网络权重 结果： _IncompatibleKeys 错误（缺少 encoder&#x2F;de">
+<meta property="og:type" content="article">
 <meta property="og:title" content="week4">
 <meta property="og:url" content="http://example.com/2025/06/30/week4/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一、LoRA微调 test1: 将训练第二阶段注意力机制中的线性层’w_q’,‘w_k’,’w_v’替换为LoRA层 12lora_r: 8                    # LoRA秩大小lora_alpha: 16               # LoRA缩放因子 预训练模型只加载第二阶段扩散网络权重 结果： _IncompatibleKeys 错误（缺少 encoder&#x2F;de">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-06-30T14:05:07.000Z">
-<meta property="article:modified_time" content="2025-06-30T14:05:07.462Z">
+<meta property="article:modified_time" content="2025-07-08T09:29:46.100Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -224,7 +226,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          734 字
         
       </span>
     
@@ -235,7 +237,7 @@
         
         
         
-          1 分钟
+          7 分钟
         
       </span>
     
@@ -286,7 +288,129 @@
             
               <div class="markdown-body">
                 
-                
+                <h1 id="一lora微调">一、LoRA微调</h1>
+<h2 id="test1">test1:</h2>
+<p>将训练第二阶段注意力机制中的线性层’w_q’,‘w_k’,’w_v’替换为LoRA层
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs avrasm"><span class="hljs-symbol">lora_r:</span> <span class="hljs-number">8</span>                    <span class="hljs-meta"># LoRA秩大小</span><br><span class="hljs-symbol">lora_alpha:</span> <span class="hljs-number">16</span>               <span class="hljs-meta"># LoRA缩放因子</span><br></code></pre></td></tr></table></figure> 预训练模型只加载第二阶段扩散网络权重</p>
+<p>结果： _IncompatibleKeys 错误（缺少 encoder/decoder 层）
+可能原因：只加载了第二阶段模型，缺少 Autoencoder
+部分，无法将输入图像编码为潜在空间表示，无法将生成的潜在编码解码为图像</p>
+<h2 id="test2">test2:</h2>
+<p>由第一次尝试得，当只微调扩散网络本身时，仍需要</p>
+<ol type="1">
+<li><p>先加载第一阶段Autoencoder</p></li>
+<li><p>再加载第二阶段扩散网络权重</p></li>
+</ol>
+<p>则test2总体流程为：</p>
+<ol type="1">
+<li>加载完整的加载完整的扩散模型（含 Autoencoder + 扩散网络）</li>
+<li>注入 LoRA 参数到扩散网络的特定层</li>
+<li>冻结其他参数，随机选择20张图片训练 LoRA 层</li>
+</ol>
+<p>测试结果：</p>
+<table>
+
+<thead>
+<tr>
+<th>评估指标</th>
+<th>微调前</th>
+<th>微调后</th>
+<th>变化趋势</th>
+<th>变化率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NMSE</td>
+<td>0.006882</td>
+<td>0.005570</td>
+<td>↓</td>
+<td>-19.06%</td>
+</tr>
+<tr>
+<td>RMSE</td>
+<td>0.029842</td>
+<td>0.026012</td>
+<td>↓</td>
+<td>-12.83%</td>
+</tr>
+<tr>
+<td>SSIM</td>
+<td>0.945097</td>
+<td>0.955175</td>
+<td>↑</td>
+<td>+1.07%</td>
+</tr>
+<tr>
+<td>PSNR (dB)</td>
+<td>30.574329</td>
+<td>31.882632</td>
+<td>↑</td>
+<td>+4.28%</td>
+</tr>
+</tbody>
+</table>
+<h1 id="注意力机制">注意力机制</h1>
+<p>原论文：<a
+target="_blank" rel="noopener" href="https://arxiv.org/pdf/1706.03762">https://arxiv.org/pdf/1706.03762</a></p>
+<h2 id="什么是注意力机制">什么是注意力机制</h2>
+<p>注意力机制就是让模型重点关注重要信息，忽略次要信息。注意力机制分为空间注意力和时间注意力，前者用于图像处理，后者用于自然语言处理.</p>
+<h2 id="原理">原理</h2>
+<p>Query：当前需要查询的目标，即当前输入的特征表示。</p>
+<p>Key：可以将每个单词的重要特征表示看作成 Key。</p>
+<p>Value：每个单词本身的特征向量看作为 Value，一般和
+Key成对出现，也就是我们常说的”键-值”对。</p>
+<p><img
+src="注意力机制/mkmroptvcwdrc_2696c13c0c654516bee3bc20714995c6.webp" srcset="/img/loading.gif" lazyload />
+核心公式（原论文中）：</p>
+<p><span class="math display">$$
+Attention(Q,K,V)=Softmax(\frac{QK^\top}{\sqrt{d_k}})V
+$$</span></p>
+<p>步骤：</p>
+<ol type="1">
+<li><p>先根据 Query，Key计算两者的相关性，然后再通过 softmax 函数得到
+注意力分数，使用 softmax 函数是为了使得所有的注意力分数在 [0,1]
+之间，并且和为1。</p>
+<p>相关性公式一般表示如下：</p>
+<p><span class="math display">$$
+score(q,k_i)=softmax(\alpha(q,k_i))=\frac{exp(\alpha(q,k_i))}{\sum_1^jexp(\alpha(q,k_j))}
+$$</span></p>
+<p>其中<span
+class="math inline"><em>α</em>(<em>q</em>, <em>k</em><sub><em>i</em></sub>)</span>有很多变体：</p>
+<p>e.g. 在加性注意力中</p>
+<p><span
+class="math display"><em>α</em>(<em>q</em>, <em>k</em><sub><em>i</em></sub>) = <em>w</em><sub><em>v</em></sub><sup><em>T</em></sup><em>t</em><em>a</em><em>n</em><em>h</em>(<em>W</em><sub><em>q</em></sub><em>q</em> + <em>W</em><sub><em>k</em></sub><em>k</em>)</span></p>
+<p>W_q：Query对应的可训练矩阵</p>
+<p>W_k: Key对应的可训练矩阵</p>
+<p>w_v^T: Value对应的可训练矩阵</p>
+<p>(tanh为双曲正切函数，作为一种常见的激活函数)</p>
+<p>e.g.在缩放点积注意力中</p>
+<p><span class="math display">$$
+\alpha(q,k_i)=\frac{QK^T}{\sqrt{d}}
+$$</span></p>
+<p>其中d为Keys的维度大小，除以sqrt{d}是为了使方差变小，训练梯度更新时更稳定</p></li>
+<li><p>将注意力分数加权求和，得到带注意力分数的Value</p></li>
+</ol>
+<h2
+id="自注意力机制self-attention-mechanism">自注意力机制（Self-Attention
+Mechanism）</h2>
+<p><img
+src="注意力机制/v2-921a6ccdeed095c9940aa52baee85e8c_r.jpg" srcset="/img/loading.gif" lazyload /></p>
+<p>2.1 Embedding 操作, 将向量x转化为a,a作为注意力机制的input data</p>
+<p>2.2 q, k 操作</p>
+<p><span
+class="math display"><em>q</em><sup><em>i</em></sup> = <em>W</em><sup><em>q</em></sup><em>a</em><sup><em>i</em></sup></span></p>
+<p><span
+class="math display"><em>k</em><sup><em>i</em></sup> = <em>W</em><sup><em>k</em></sup><em>a</em><sup><em>i</em></sup></span></p>
+<p><span
+class="math display"><em>v</em><sup><em>i</em></sup> = <em>W</em><sup><em>v</em></sup><em>a</em><sup><em>i</em></sup></span></p>
+<h2
+id="多头注意力机制multi-head-self-attention-machanism">多头注意力机制（Multi-head
+Self-Attention Machanism）</h2>
+<p>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/631398525"
+class="uri">https://zhuanlan.zhihu.com/p/631398525</a> ##
+通道注意力机制</p>
+<h2 id="空间注意力机制">空间注意力机制</h2>
 
                 
               </div>
@@ -294,6 +418,27 @@
             <hr/>
             <div>
               <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%A7%91%E7%A0%94%E5%AE%9E%E4%B9%A0-%E5%91%A8%E8%AE%B0/" class="category-chain-item">-科研实习 -周记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
   
   
 </div>
@@ -426,6 +571,12 @@
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -618,6 +769,49 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 
