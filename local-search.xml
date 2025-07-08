@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>串口重定向</title>
+    <link href="/2025/07/08/%E4%B8%B2%E5%8F%A3%E9%87%8D%E5%AE%9A%E5%90%91/"/>
+    <url>/2025/07/08/%E4%B8%B2%E5%8F%A3%E9%87%8D%E5%AE%9A%E5%90%91/</url>
+    
+    <content type="html"><![CDATA[<p>stm32串口重定向HAL库</p><p>``` #include &lt;stdio.h&gt;// 包含标准输入输出头文件</p><p>int fputc(int ch,FILE <em>f) {//采用轮询方式发送1字节数据，超时时间设置为无限等待HAL_UART_Transmit(&amp;huart1,(uint8_t </em>)&amp;ch,1,HAL_MAX_DELAY);return ch; } int fgetc(FILE <em>f) { uint8_t ch; // 采用轮询方式接收1字节数据，超时时间设置为无限等待 HAL_UART_Receive(&amp;huart1,(uint8_t</em>)&amp;ch,1, HAL_MAX_DELAY ); return ch; }</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>-单片机 -stm32</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>week5</title>
     <link href="/2025/07/08/week5/"/>
     <url>/2025/07/08/week5/</url>

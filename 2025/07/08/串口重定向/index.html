@@ -19,19 +19,21 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
-<meta property="og:title" content="week5">
-<meta property="og:url" content="http://example.com/2025/07/08/week5/index.html">
+    <meta name="description" content="stm32串口重定向HAL库 &#96;&#96;&#96; #include &lt;stdio.h&gt;&#x2F;&#x2F; 包含标准输入输出头文件 int fputc(int ch,FILE f) { &#x2F;&#x2F;采用轮询方式发送1字节数据，超时时间设置为无限等待 HAL_UART_Transmit(&amp;huart1,(uint8_t )&amp;ch,1,HAL_MAX_DELAY); return ch; } int">
+<meta property="og:type" content="article">
+<meta property="og:title" content="串口重定向">
+<meta property="og:url" content="http://example.com/2025/07/08/%E4%B8%B2%E5%8F%A3%E9%87%8D%E5%AE%9A%E5%90%91/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="stm32串口重定向HAL库 &#96;&#96;&#96; #include &lt;stdio.h&gt;&#x2F;&#x2F; 包含标准输入输出头文件 int fputc(int ch,FILE f) { &#x2F;&#x2F;采用轮询方式发送1字节数据，超时时间设置为无限等待 HAL_UART_Transmit(&amp;huart1,(uint8_t )&amp;ch,1,HAL_MAX_DELAY); return ch; } int">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-07-08T08:21:07.000Z">
-<meta property="article:modified_time" content="2025-07-08T08:21:07.373Z">
+<meta property="article:published_time" content="2025-07-08T13:32:54.000Z">
+<meta property="article:modified_time" content="2025-07-08T13:36:33.610Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>week5 - Hexo</title>
+  <title>串口重定向 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -201,7 +203,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="week5"></span>
+            <span id="subtitle" data-typed-text="串口重定向"></span>
           
         </div>
 
@@ -212,8 +214,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-07-08 16:21" pubdate>
-          2025年7月8日 下午
+        <time datetime="2025-07-08 21:32" pubdate>
+          2025年7月8日 晚上
         </time>
       </span>
     
@@ -224,7 +226,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          95 字
         
       </span>
     
@@ -281,12 +283,19 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">week5</h1>
+            <h1 id="seo-header">串口重定向</h1>
             
             
               <div class="markdown-body">
                 
-                
+                <p>stm32串口重定向HAL库</p>
+<p>``` #include &lt;stdio.h&gt;// 包含标准输入输出头文件</p>
+<p>int fputc(int ch,FILE <em>f) {
+//采用轮询方式发送1字节数据，超时时间设置为无限等待
+HAL_UART_Transmit(&amp;huart1,(uint8_t </em>)&amp;ch,1,HAL_MAX_DELAY);
+return ch; } int fgetc(FILE <em>f) { uint8_t ch; // 采用轮询方式接收
+1字节数据，超时时间设置为无限等待 HAL_UART_Receive(
+&amp;huart1,(uint8_t</em>)&amp;ch,1, HAL_MAX_DELAY ); return ch; }</p>
 
                 
               </div>
@@ -294,6 +303,27 @@
             <hr/>
             <div>
               <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%8D%95%E7%89%87%E6%9C%BA-stm32/" class="category-chain-item">-单片机 -stm32</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
   
   
 </div>
@@ -304,8 +334,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>week5</div>
-      <div>http://example.com/2025/07/08/week5/</div>
+      <div>串口重定向</div>
+      <div>http://example.com/2025/07/08/串口重定向/</div>
     </div>
     <div class="license-meta">
       
@@ -349,18 +379,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/07/08/%E4%B8%B2%E5%8F%A3%E9%87%8D%E5%AE%9A%E5%90%91/" title="串口重定向">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">串口重定向</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/07/02/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/" title="注意力机制">
-                        <span class="hidden-mobile">注意力机制</span>
+                      <a href="/2025/07/08/week5/" title="week5">
+                        <span class="hidden-mobile">week5</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -426,6 +450,12 @@
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -618,6 +648,49 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 
