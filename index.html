@@ -195,9 +195,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2025-07-08 21:32:54 / 修改时间：21:36:33" itemprop="dateCreated datePublished" datetime="2025-07-08T21:32:54+08:00">2025-07-08</time>
+      <time title="创建时间：2025-07-08 21:32:54" itemprop="dateCreated datePublished" datetime="2025-07-08T21:32:54+08:00">2025-07-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-07-11 20:09:35" itemprop="dateModified" datetime="2025-07-11T20:09:35+08:00">2025-07-11</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -220,13 +226,7 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>stm32串口重定向HAL库</p>
-<p>``` #include &lt;stdio.h&gt;// 包含标准输入输出头文件</p>
-<p>int fputc(int ch,FILE <em>f) {
-//采用轮询方式发送1字节数据，超时时间设置为无限等待
-HAL_UART_Transmit(&amp;huart1,(uint8_t </em>)&amp;ch,1,HAL_MAX_DELAY);
-return ch; } int fgetc(FILE <em>f) { uint8_t ch; // 采用轮询方式接收
-1字节数据，超时时间设置为无限等待 HAL_UART_Receive(
-&amp;huart1,(uint8_t</em>)&amp;ch,1, HAL_MAX_DELAY ); return ch; }</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;// 包含标准输入输出头文件</span><br><span class="line"> </span><br><span class="line">int fputc(int ch,FILE *f)</span><br><span class="line">&#123;</span><br><span class="line">//采用轮询方式发送1字节数据，超时时间设置为无限等待</span><br><span class="line">HAL_UART_Transmit(&amp;huart1,(uint8_t *)&amp;ch,1,HAL_MAX_DELAY);</span><br><span class="line">return ch;</span><br><span class="line">&#125;</span><br><span class="line">int fgetc(FILE *f)</span><br><span class="line">&#123;</span><br><span class="line">uint8_t ch;</span><br><span class="line">// 采用轮询方式接收 1字节数据，超时时间设置为无限等待</span><br><span class="line">HAL_UART_Receive( &amp;huart1,(uint8_t*)&amp;ch,1, HAL_MAX_DELAY );</span><br><span class="line">return ch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
