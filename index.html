@@ -213,6 +213,171 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/13/week5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="gzx">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="九大山人">
+      <meta itemprop="description" content="这里记录我的学习与生活">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | 九大山人">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/07/13/week5/" class="post-title-link" itemprop="url">week4</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2025-07-13 14:05:07 / Modified: 16:49:35" itemprop="dateCreated datePublished" datetime="2025-07-13T14:05:07+08:00">2025-07-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%A7%91%E7%A0%94%E5%AE%9E%E4%B9%A0%E5%91%A8%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">科研实习周记</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Word count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Word count in article: </span>
+      <span>1.5k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>1 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1
+id="一论文阅读笔记-few-shot-image-generation-with-diffusion-models">一、论文阅读笔记
+Few-shot Image Generation with Diffusion Models</h1>
+<p>论文：<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2211.03264"
+class="uri">https://arxiv.org/pdf/2211.03264</a></p>
+<h2 id="主要内容">主要内容：</h2>
+<p>提出Few-shot Diffusion Models (FDM)，在仅使用 10
+张训练图像时，就能生成具有合理多样性和质量的图像。 ## 主要挑战</p>
+<p>过拟合和模式崩溃（模型只能生成训练集中见过的少数几种样本）</p>
+<h2 id="核心方法">核心方法</h2>
+<h3
+id="结构感知数据增强-structure-aware-data-augmentation">结构感知数据增强
+(Structure-Aware Data Augmentation)</h3>
+<p>使用预训练的CLIP模型提取图像的语义特征，然后基于这些特征计算图像之间的相似性，</p>
+<p>CLIP相似度计算：<span
+class="math inline">$s_{ij}=\frac{\phi(I_i)\cdot\phi(I_j)}{\|\phi(I_i)\|\|\phi(I_j)\|}$</span></p>
+<p>其中 ϕ(⋅) 是CLIP图像编码器，<span
+class="math inline"><em>s</em><sub><em>i</em><em>j</em></sub> ∈ [−1, 1]</span>表示图像
+<span class="math inline"><em>I</em><sub><em>i</em></sub></span> 和
+<span class="math inline"><em>I</em><sub><em>j</em></sub></span>
+的语义相似度</p>
+<p>相似度高的图像对：应用更强的几何变换（如大幅旋转、裁剪），能提供更多样的“视角”而不会完全破坏结构。</p>
+<p>相似度低的图像对：应用较弱的变换，避免破坏其各自独特的结构信息。</p>
+<p>自适应变换强度: <span
+class="math inline"><em>λ</em><sub><em>i</em><em>j</em></sub> = <em>λ</em><sub>min</sub> + (<em>λ</em><sub>max</sub> − <em>λ</em><sub>min</sub>)⋯<sub><em>i</em><em>j</em></sub></span></p>
+<p><span class="math inline"><em>λ</em><sub>min</sub></span>和<span
+class="math inline"><em>λ</em><sub>max</sub></span>是最小/最大变换强度，相似度越高，变换强度越大</p>
+<h3 id="层级优化机制-hierarchical-optimization">层级优化机制
+(Hierarchical Optimization)</h3>
+<p>FDM 将扩散模型（如DDPM）的UNet结构划分为两个层级：</p>
+<ol type="1">
+<li><p>基础层：负责捕捉图像的全局结构和基本语义（一般是UNet的深层/瓶颈层）</p></li>
+<li><p>细节层：负责生成图像的局部细节（一般是UNet的浅层）</p></li>
+</ol>
+<p>采用交替优化策略： 阶段一 (Freeze Detail
+Layers)：冻结西接层参数，只优化基础层 阶段二 (Freeze Base
+Layers)：冻结基础层参数，只优化细节层 ### 自适应卷积模块 (Adaptive
+Convolution Module)
+引入自适应卷积模块，根据输入特征图动态生成卷积核的偏移量 (offset)
+和调制标量 (modulation scalar) 偏移量：
+卷积核的采样位置根据输入内容进行微调</p>
+<p><span
+class="math inline"><em>Δ</em><em>p</em><sub><em>k</em></sub> = <em>f</em><sub>offset</sub>(<strong>F</strong>; <em>ϕ</em>)</span></p>
+<p><span
+class="math inline"><em>f</em><sub>offset</sub></span>是轻量子网络，<span
+class="math inline">F</span>是输入特征图</p>
+<p>调制标量： 动态调整卷积核的权重，增强模型对输入变化的适应能力</p>
+<p><span
+class="math inline"><em>m</em><sub><em>k</em></sub> = <em>σ</em>(<em>g</em><sub>mod</sub>(<strong>F</strong>; <em>ψ</em>))</span></p>
+<p><span class="math inline">o</span>
+是sigmoid激活函数，限制输出在(0,1)范围</p>
+<p>自适应卷积公式： <span
+class="math inline">$\mathbf{y}(p)=\sum_{k=1}^K\mathbf{w}_k\cdot\mathbf{F}(p+p_k+\Delta
+p_k)\cdot m_k$</span></p>
+<h3 id="模式崩溃">模式崩溃</h3>
+<p>对于某一个训练数据集，其中样本的概率分布为一个简单的一维高斯混合分布，包含两个峰，如下图
+<img src="z21ukb0wsa.jpeg" /></p>
+<p>模式崩溃问题是针对于生成样本的多样性，即生成的样本大量重复类似，如下图</p>
+<p><img src="g9kyvxsbu2.jpeg" />
+虽然生成样本的质量比较高，但是生成器完全没有捕捉到右边的峰的模式。</p>
+<p>解决思路：</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1522756"
+class="uri">https://cloud.tencent.com/developer/article/1522756</a></p>
+<h1 id="二代码改进">二、代码改进</h1>
+<p>改进代码，</p>
+<p>（1）由原来只替换注意力层改进为替换UNet的所有线性层和1x1卷积层</p>
+<p>（2）改进数据集的选择，原来是随机挑选了10个样本训练lora参数，应改进为挑选部分dpm和少量的irt4_car样本去训练</p>
+<p>7.9遇到的问题：替换Swin Transformer中的层，需要访问weight属性</p>
+<p>尝试解决 （1）：跳过Swin Transformer中的层 （2）：当win
+Transformer访问qkv.weight时，返回原始层的权重</p>
+<p>7.12 解决了LoRA注入失败的问题 下一步：测试训练效果
+改进用于微调的样本的选择</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/08/%E4%B8%B2%E5%8F%A3%E9%87%8D%E5%AE%9A%E5%90%91/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -288,149 +453,6 @@
     <div class="post-body" itemprop="articleBody">
           <p>stm32串口重定向HAL库</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;// 包含标准输入输出头文件</span><br><span class="line"> </span><br><span class="line">int fputc(int ch,FILE *f)</span><br><span class="line">&#123;</span><br><span class="line">//采用轮询方式发送1字节数据，超时时间设置为无限等待</span><br><span class="line">HAL_UART_Transmit(&amp;huart1,(uint8_t *)&amp;ch,1,HAL_MAX_DELAY);</span><br><span class="line">return ch;</span><br><span class="line">&#125;</span><br><span class="line">int fgetc(FILE *f)</span><br><span class="line">&#123;</span><br><span class="line">uint8_t ch;</span><br><span class="line">// 采用轮询方式接收 1字节数据，超时时间设置为无限等待</span><br><span class="line">HAL_UART_Receive( &amp;huart1,(uint8_t*)&amp;ch,1, HAL_MAX_DELAY );</span><br><span class="line">return ch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/08/week5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="gzx">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="九大山人">
-      <meta itemprop="description" content="这里记录我的学习与生活">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | 九大山人">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/07/08/week5/" class="post-title-link" itemprop="url">week5</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2025-07-08 16:21:07" itemprop="dateCreated datePublished" datetime="2025-07-08T16:21:07+08:00">2025-07-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-07-13 14:50:12" itemprop="dateModified" datetime="2025-07-13T14:50:12+08:00">2025-07-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%A7%91%E7%A0%94%E5%AE%9E%E4%B9%A0%E5%91%A8%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">科研实习周记</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="Word count in article">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">Word count in article: </span>
-      <span>1.1k</span>
-    </span>
-    <span class="post-meta-item" title="Reading time">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>1 mins.</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1>论文阅读笔记 Few-shot Image Generation with Diffusion Models</h1>
-<p>论文：<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2211.03264">https://arxiv.org/pdf/2211.03264</a></p>
-<h2 id="主要内容：">主要内容：</h2>
-<p>提出Few-shot Diffusion Models (FDM)，在仅使用 10 张训练图像时，就能生成具有合理多样性和质量的图像。</p>
-<h2 id="主要挑战">主要挑战</h2>
-<p>过拟合和模式崩溃（模型只能生成训练集中见过的少数几种样本）</p>
-<h2 id="核心方法">核心方法</h2>
-<h3 id="结构感知数据增强-Structure-Aware-Data-Augmentation">结构感知数据增强 (Structure-Aware Data Augmentation)</h3>
-<p>使用预训练的CLIP模型提取图像的语义特征，然后基于这些特征计算图像之间的相似性，</p>
-<p>相似度高的图像对：应用更强的几何变换（如大幅旋转、裁剪），能提供更多样的“视角”而不会完全破坏结构。</p>
-<p>相似度低的图像对：应用较弱的变换，避免破坏其各自独特的结构信息。</p>
-<h3 id="层级优化机制-Hierarchical-Optimization">层级优化机制 (Hierarchical Optimization)</h3>
-<p>FDM 将扩散模型（如DDPM）的UNet结构划分为两个层级：</p>
-<ol>
-<li>
-<p>基础层：负责捕捉图像的全局结构和基本语义（一般是UNet的深层/瓶颈层）</p>
-</li>
-<li>
-<p>细节层：负责生成图像的局部细节（一般是UNet的浅层）</p>
-</li>
-</ol>
-<p>采用交替优化策略：<br>
-阶段一 (Freeze Detail Layers)：冻结西接层参数，只优化基础层<br>
-阶段二 (Freeze Base Layers)：冻结基础层参数，只优化细节层</p>
-<h3 id="自适应卷积模块-Adaptive-Convolution-Module">自适应卷积模块 (Adaptive Convolution Module)</h3>
-<p>引入自适应卷积模块，根据输入特征图动态生成卷积核的偏移量 (offset) 和调制标量 (modulation scalar)<br>
-偏移量： 卷积核的采样位置根据输入内容进行微调</p>
-<p>调制标量： 动态调整卷积核的权重，增强模型对输入变化的适应能力</p>
-<h3 id="模式崩溃">模式崩溃</h3>
-<p>对于某一个训练数据集，其中样本的概率分布为一个简单的一维高斯混合分布，包含两个峰，如下图<br>
-<img src="z21ukb0wsa.jpeg" alt=""></p>
-<p>模式崩溃问题是针对于生成样本的多样性，即生成的样本大量重复类似，如下图</p>
-<p><img src="g9kyvxsbu2.jpeg" alt=""><br>
-虽然生成样本的质量比较高，但是生成器完全没有捕捉到右边的峰的模式。</p>
-<p>解决思路：</p>
-<p>参考：<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1522756">https://cloud.tencent.com/developer/article/1522756</a></p>
-<h1>代码改进</h1>
-<p>改进代码，</p>
-<p>（1）由原来只替换注意力层改进为替换UNet的所有线性层和1x1卷积层</p>
-<p>（2）改进数据集的选择，原来是随机挑选了10个样本训练lora参数，应改进为挑选部分dpm和少量的irt4_car样本去训练</p>
-<p>遇到的问题：替换Swin Transformer中的层，需要访问weight属性</p>
-<p>尝试解决<br>
-（1）：跳过Swin Transformer中的层<br>
-（2）：当win Transformer访问qkv.weight时，返回原始层的权重</p>
-
       
     </div>
 
