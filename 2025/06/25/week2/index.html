@@ -27,13 +27,12 @@
 <meta property="og:site_name" content="九大山人">
 <meta property="og:description" content="diffusion model (李宏毅)笔记">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2025/06/25/week2/image%5C1747666364704.png">
-<meta property="og:image" content="http://example.com/2025/06/25/week2/image%5CSnipaste_2025-05-21_18-49-49.png">
 <meta property="article:published_time" content="2025-06-25T13:41:24.000Z">
-<meta property="article:modified_time" content="2025-07-13T06:47:00.562Z">
+<meta property="article:modified_time" content="2025-07-13T10:31:43.645Z">
 <meta property="article:author" content="gzx">
+<meta property="article:tag" content="diffusion model">
+<meta property="article:tag" content="科研实习周记">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2025/06/25/week2/image%5C1747666364704.png">
 
 
 <link rel="canonical" href="http://example.com/2025/06/25/week2/">
@@ -172,7 +171,8 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">diffusion model (李宏毅)笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5%E9%83%A8%E5%88%86"><span class="nav-number">1.1.</span> <span class="nav-text">概念部分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E8%88%AC%E5%9B%BE%E5%83%8F%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B%E5%9F%BA%E6%9C%AC%E6%A1%86%E6%9E%B6"><span class="nav-number">1.1.1.</span> <span class="nav-text">一般图像生成模型基本框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FID-Frechet-Inception-Distance"><span class="nav-number">1.1.2.</span> <span class="nav-text">FID(Frechet Inception Distance)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E7%90%86%E9%83%A8%E5%88%86"><span class="nav-number">1.2.</span> <span class="nav-text">原理部分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%96%91%E9%97%AE"><span class="nav-number">1.2.1.</span> <span class="nav-text">疑问</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#diffusion-model-%E6%9D%8E%E5%AE%8F%E6%AF%85%E7%AC%94%E8%AE%B0"><span class="nav-number">1.</span> <span class="nav-text">diffusion model (李宏毅)笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5%E9%83%A8%E5%88%86"><span class="nav-number">1.1.</span> <span class="nav-text">概念部分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E8%88%AC%E5%9B%BE%E5%83%8F%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B%E5%9F%BA%E6%9C%AC%E6%A1%86%E6%9E%B6"><span class="nav-number">1.1.1.</span> <span class="nav-text">一般图像生成模型基本框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fidfrechet-inception-distance"><span class="nav-number">1.1.2.</span> <span class="nav-text">FID(Frechet Inception
+Distance)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E7%90%86%E9%83%A8%E5%88%86"><span class="nav-number">1.2.</span> <span class="nav-text">原理部分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%96%91%E9%97%AE"><span class="nav-number">1.2.1.</span> <span class="nav-text">疑问</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -195,6 +195,11 @@
           <a href="/categories/">
         <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -256,7 +261,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-07-13 14:47:00" itemprop="dateModified" datetime="2025-07-13T14:47:00+08:00">2025-07-13</time>
+      <time title="Modified: 2025-07-13 18:31:43" itemprop="dateModified" datetime="2025-07-13T18:31:43+08:00">2025-07-13</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -282,7 +287,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>986</span>
+      <span>890</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -299,43 +304,50 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h1>diffusion model (李宏毅)笔记</h1>
+    <div class="post-body" itemprop="articleBody"><h1 id="diffusion-model-李宏毅笔记">diffusion model (李宏毅)笔记</h1>
 <h2 id="概念部分">概念部分</h2>
 <h3 id="一般图像生成模型基本框架">一般图像生成模型基本框架</h3>
 <p>text encoder → generation model → decoder</p>
-<h3 id="FID-Frechet-Inception-Distance">FID(Frechet Inception Distance)</h3>
+<h3 id="fidfrechet-inception-distance">FID(Frechet Inception
+Distance)</h3>
 <p>FID是一种用于评估生成图像质量的度量标准</p>
-<ol>
-<li>
-<p>特征提取  使用预训练的 Inception V3 模型（在 ImageNet 数据集上训练的图像分类网络）作为特征提取器。输入图像（通常调整为 299×299 的分辨率）会通过 Inception V3 前向传播，提取池化层（即 pool3 层）的输出特征。这个特征是一个 2048 维的向量。</p>
-</li>
-<li>
-<p>特征分布假设  FID 假设提取的特征向量服从多变量正态分布。对于真实图像集合X和生成图像集合G，分别计算特征的均值向量和协方差矩阵：<br>
-真实图像特征均值 $\mu_{r}$   协方差 $\Sigma_{r}$<br>
-生成图像特征均值 $\mu_{g}$   协方差 $\Sigma_{g}$</p>
-</li>
-<li>
-<p>Fréchet 距离计算<br>
-Fréchet 距离用来衡量两个正态分布之间的差异$$\mathrm{FID}=|\mu_r-\mu_g|_2^2+\mathrm{Tr}(\Sigma_r+\Sigma_g-2(\Sigma_r\Sigma_g)^{1/2})$$<br>
-第一项衡量两个分布均值的欧几里得距离，表示分布中心的偏移，第二项衡量协方差矩阵的差异，反映分布形状和分散度的不同</p>
-</li>
+<ol type="1">
+<li><p>特征提取 使用预训练的 Inception V3 模型（在 ImageNet
+数据集上训练的图像分类网络）作为特征提取器。输入图像（通常调整为 299×299
+的分辨率）会通过 Inception V3 前向传播，提取池化层（即 pool3
+层）的输出特征。这个特征是一个 2048 维的向量。</p></li>
+<li><p>特征分布假设 FID
+假设提取的特征向量服从多变量正态分布。对于真实图像集合X和生成图像集合G，分别计算特征的均值向量和协方差矩阵：
+真实图像特征均值 <span
+class="math inline"><em>μ</em><sub><em>r</em></sub></span> 协方差 <span
+class="math inline"><em>Σ</em><sub><em>r</em></sub></span>
+生成图像特征均值 <span
+class="math inline"><em>μ</em><sub><em>g</em></sub></span> 协方差 <span
+class="math inline"><em>Σ</em><sub><em>g</em></sub></span></p></li>
+<li><p>Fréchet 距离计算 Fréchet 距离用来衡量两个正态分布之间的差异<span
+class="math display">FID = ∥<em>μ</em><sub><em>r</em></sub> − <em>μ</em><sub><em>g</em></sub>∥<sub>2</sub><sup>2</sup> + Tr(<em>Σ</em><sub><em>r</em></sub> + <em>Σ</em><sub><em>g</em></sub> − 2(<em>Σ</em><sub><em>r</em></sub><em>Σ</em><sub><em>g</em></sub>)<sup>1/2</sup>)</span>
+第一项衡量两个分布均值的欧几里得距离，表示分布中心的偏移，第二项衡量协方差矩阵的差异，反映分布形状和分散度的不同</p></li>
 </ol>
 <h2 id="原理部分">原理部分</h2>
-<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV14c411J7f2?spm_id_from=333.788.player.switch&amp;vd_source=257a40315247000b85510107fa6b747d&amp;p=4">https://www.bilibili.com/video/BV14c411J7f2?spm_id_from=333.788.player.switch&amp;vd_source=257a40315247000b85510107fa6b747d&amp;p=4</a></p>
-<ol>
-<li>
-<p>最大似然估计 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/55791843">https://zhuanlan.zhihu.com/p/55791843</a><br>
-<img src="image%5C1747666364704.png" alt="1747666364704"></p>
-</li>
-<li>
-<p>扩散模型与能量模型，Score-Matching和SDE，ODE的关系 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/576779879">https://zhuanlan.zhihu.com/p/576779879</a></p>
-</li>
+<p><a
+target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV14c411J7f2?spm_id_from=333.788.player.switch&amp;vd_source=257a40315247000b85510107fa6b747d&amp;p=4"
+class="uri">https://www.bilibili.com/video/BV14c411J7f2?spm_id_from=333.788.player.switch&amp;vd_source=257a40315247000b85510107fa6b747d&amp;p=4</a></p>
+<ol type="1">
+<li><p>最大似然估计 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/55791843"
+class="uri">https://zhuanlan.zhihu.com/p/55791843</a> <img
+src="image\1747666364704.png" alt="1747666364704" /></p></li>
+<li><p>扩散模型与能量模型，Score-Matching和SDE，ODE的关系 <a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/576779879"
+class="uri">https://zhuanlan.zhihu.com/p/576779879</a></p></li>
 </ol>
 <h3 id="疑问">疑问</h3>
-<ol>
-<li>李宏毅认为噪声实际上不是一步一步加进$x_{0}$的,而是一步实现的<br>
-<img src="image%5CSnipaste_2025-05-21_18-49-49.png" alt=""><br>
-但通过对一致性模型的学习，我了解到diffusion model的前向过程和逆向过程实际上都能表示为SDE过程，需要进行多次迭代，而consistency model就是为了解决这个问题，将SDE的随机项消除，转变为ODE过程，从而实现减少迭代次数，这是否与上图观点相悖？</li>
+<ol type="1">
+<li>李宏毅认为噪声实际上不是一步一步加进<span
+class="math inline"><em>x</em><sub>0</sub></span>的,而是一步实现的 <img
+src="image\Snipaste_2025-05-21_18-49-49.png" />
+但通过对一致性模型的学习，我了解到diffusion
+model的前向过程和逆向过程实际上都能表示为SDE过程，需要进行多次迭代，而consistency
+model就是为了解决这个问题，将SDE的随机项消除，转变为ODE过程，从而实现减少迭代次数，这是否与上图观点相悖？</li>
 </ol>
 
     </div>
@@ -345,6 +357,10 @@ Fréchet 距离用来衡量两个正态分布之间的差异$$\mathrm{FID}=|\mu_
     
 
     <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/diffusion-model/" rel="tag"># diffusion model</a>
+              <a href="/tags/%E7%A7%91%E7%A0%94%E5%AE%9E%E4%B9%A0%E5%91%A8%E8%AE%B0/" rel="tag"># 科研实习周记</a>
+          </div>
 
         
 
@@ -388,13 +404,13 @@ Fréchet 距离用来衡量两个正态分布之间的差异$$\mathrm{FID}=|\mu_
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Word count total">21k</span>
+    <span title="Word count total">19k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">19 mins.</span>
+    <span title="Reading time total">18 mins.</span>
   </span>
 </div>
 <div class="busuanzi-count">
