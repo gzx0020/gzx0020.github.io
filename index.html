@@ -419,7 +419,7 @@ class="uri">https://blog.csdn.net/GreenYang5277/article/details/104500739</a></p
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2025-07-15 20:16:46 / Modified: 22:00:59" itemprop="dateCreated datePublished" datetime="2025-07-15T20:16:46+08:00">2025-07-15</time>
+      <time title="Created: 2025-07-15 20:16:46 / Modified: 22:20:25" itemprop="dateCreated datePublished" datetime="2025-07-15T20:16:46+08:00">2025-07-15</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -462,10 +462,16 @@ UART、I2C、GPIO、ADC、定时器等），屏蔽不同厂商、不同系列、
 ARM Cortex-M vs RISC-V）芯片的具体寄存器操作差异。
 相对于BSP抽象层次更高，可移植性更高。</p>
 <p>以stm32HAL库开发为例，流程如下：</p>
-<p>应用程序 │ ↓ 调用统一API HAL 层（如 HAL_UART_Transmit()） │ ↓
-调用板级驱动或直接操作寄存器 BSP 层（如 BSP_UART_Write() 或 直接写
-UART-&gt;DR 寄存器） │ ↓ 操作物理寄存器 硬件寄存器（如 USART1-&gt;DR =
-data）</p>
+<p>应用程序<br />
+│<br />
+↓ 调用统一API<br />
+HAL 层（如 HAL_UART_Transmit()）<br />
+│<br />
+↓ 调用板级驱动或直接操作寄存器<br />
+BSP 层（如 BSP_UART_Write() 或 直接写 UART-&gt;DR 寄存器）<br />
+│<br />
+↓ 操作物理寄存器<br />
+硬件寄存器（如 USART1-&gt;DR = data）</p>
 
       
     </div>
