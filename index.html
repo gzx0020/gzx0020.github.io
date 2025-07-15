@@ -248,7 +248,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2025-07-15 22:00:00 / Modified: 22:02:41" itemprop="dateCreated datePublished" datetime="2025-07-15T22:00:00+08:00">2025-07-15</time>
+      <time title="Created: 2025-07-15 22:00:00 / Modified: 22:12:33" itemprop="dateCreated datePublished" datetime="2025-07-15T22:00:00+08:00">2025-07-15</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -274,13 +274,15 @@
 <p>决策树（Decision
 Tree）是一种以树形数据结构来展示决策规则和分类结果的模型，代表对象属性和对象值之间的一种映射关系。</p>
 <p>以下图为例：</p>
-<p><img src="Snipaste_2025-07-15_20-57-02.png" /></p>
+<p><img
+src="/2025/07/15/%E5%86%B3%E7%AD%96%E6%A0%91/Snipaste_2025-07-15_20-57-02.png" /></p>
 <p>一个决策树包含三种类型的节点：</p>
 <p>1.决策节点：通常用矩形框来表示<br />
 2.机会节点：通常用圆圈来表示<br />
 3.终结节点：通常用三角形来表示</p>
 <p>构建决策树的一般流程如下图：</p>
-<p><img src="Snipaste_2025-07-15_21-01-21.png" /></p>
+<p><img
+src="/2025/07/15/%E5%86%B3%E7%AD%96%E6%A0%91/Snipaste_2025-07-15_21-01-21.png" /></p>
 <h1 id="决策树的构建标准">2.决策树的构建标准</h1>
 <h2 id="信息增益">2.1 信息增益</h2>
 <h3 id="信息熵">2.1.1 信息熵</h3>
@@ -299,7 +301,9 @@ class="math inline"><em>H</em>(<em>X</em>|<em>Y</em>) = −∑<sub><em>x</em
 <p>条件熵<span
 class="math inline"><em>H</em>(<em>X</em>|<em>Y</em>)</span>表示在移植随机变量Y的条件下，随机变量X的不确定性。</p>
 <figure>
-<img src="Snipaste_2025-07-15_21-23-27.png" alt="举例说明条件熵" />
+<img
+src="/2025/07/15/%E5%86%B3%E7%AD%96%E6%A0%91/Snipaste_2025-07-15_21-23-27.png"
+alt="举例说明条件熵" />
 <figcaption aria-hidden="true">举例说明条件熵</figcaption>
 </figure>
 <h3 id="信息增益-1">2.1.3 信息增益</h3>
@@ -343,7 +347,8 @@ class="math inline">$\mathrm{MSE}=\frac{1}{n}\sum_{i=1}^{n}(y_{i}-\hat{y}_{i})^{
 <p>用于回归问题，衡量预测值和真实值的差异。MSE
 越小，表示回归树的预测效果越好。</p>
 <h1 id="算法分类">3.算法分类</h1>
-<p><img src="Snipaste_2025-07-15_21-54-32.png" /></p>
+<p><img
+src="/2025/07/15/%E5%86%B3%E7%AD%96%E6%A0%91/Snipaste_2025-07-15_21-54-32.png" /></p>
 <h1
 id="将使用python的scikit-learn库实现决策树">4.将使用Python的scikit-learn库实现决策树</h1>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install scikit-learn</span><br></pre></td></tr></table></figure>
@@ -436,13 +441,31 @@ class="uri">https://blog.csdn.net/GreenYang5277/article/details/104500739</a></p
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>基本关系如下图所示<br><img src="/Snipaste_2025-07-15_20-23-36.png"></p>
-<h1 id="1-驱动（Driver）"><a href="#1-驱动（Driver）" class="headerlink" title="1.驱动（Driver）"></a>1.驱动（Driver）</h1><p>驱动程序是直接与硬件设备交互的软件组件。它们为操作系统或应用程序提供控制硬件的接口。可以理解为驱动直接与硬件交互。最为底层。</p>
-<h1 id="2-板级支持包（BSP-Board-Support-Package）"><a href="#2-板级支持包（BSP-Board-Support-Package）" class="headerlink" title="2.板级支持包（BSP, Board Support Package）"></a>2.板级支持包（BSP, Board Support Package）</h1><p>是一套针对特定硬件系统的低级软件代码， 其主要作用是抽象硬件细节， 以便操作系统能够顺利运行在特定的硬件平台上。BSP 是高度硬件相关的，为一块板写的 BSP 通常不能直接用在另一块不同的板上，即使它们使用了相同的 MCU&#x2F;MPU（因为外围电路、引脚连接、时钟源等都可能不同）。</p>
-<h1 id="3-硬件抽象层（HAL-Hardware-Abstraction-Layer）"><a href="#3-硬件抽象层（HAL-Hardware-Abstraction-Layer）" class="headerlink" title="3.硬件抽象层（HAL, Hardware Abstraction Layer）"></a>3.硬件抽象层（HAL, Hardware Abstraction Layer）</h1><p>HAL是介于底层硬件和上层软件之间的一层抽象层，用于隐藏硬件的具体实现细节，提供统一的接口。包含一组通用的API接口，可以理解为定义好的一组标准的函数（如 HAL_UART_Transmit(), HAL_GPIO_WritePin(), HAL_ADC_Start()）来执行常见的硬件操作。</p>
-<p>目的是提供统一的、标准化的接口来访问某一类硬件功能（如 UART、I2C、GPIO、ADC、定时器等），屏蔽不同厂商、不同系列、甚至不同架构（如 ARM Cortex-M vs RISC-V）芯片的具体寄存器操作差异。        相对于BSP抽象层次更高，可移植性更高。</p>
+          <p>基本关系如下图所示 <img
+src="/2025/07/15/Driver-BSP%E5%92%8CHAL/Snipaste_2025-07-15_20-23-36.png" /></p>
+<h1 id="驱动driver">1.驱动（Driver）</h1>
+<p>驱动程序是直接与硬件设备交互的软件组件。它们为操作系统或应用程序提供控制硬件的接口。可以理解为驱动直接与硬件交互。最为底层。</p>
+<h1 id="板级支持包bsp-board-support-package">2.板级支持包（BSP, Board
+Support Package）</h1>
+<p>是一套针对特定硬件系统的低级软件代码， 其主要作用是抽象硬件细节，
+以便操作系统能够顺利运行在特定的硬件平台上。BSP
+是高度硬件相关的，为一块板写的 BSP
+通常不能直接用在另一块不同的板上，即使它们使用了相同的
+MCU/MPU（因为外围电路、引脚连接、时钟源等都可能不同）。</p>
+<h1 id="硬件抽象层hal-hardware-abstraction-layer">3.硬件抽象层（HAL,
+Hardware Abstraction Layer）</h1>
+<p>HAL是介于底层硬件和上层软件之间的一层抽象层，用于隐藏硬件的具体实现细节，提供统一的接口。包含一组通用的API接口，可以理解为定义好的一组标准的函数（如
+HAL_UART_Transmit(), HAL_GPIO_WritePin(),
+HAL_ADC_Start()）来执行常见的硬件操作。</p>
+<p>目的是提供统一的、标准化的接口来访问某一类硬件功能（如
+UART、I2C、GPIO、ADC、定时器等），屏蔽不同厂商、不同系列、甚至不同架构（如
+ARM Cortex-M vs RISC-V）芯片的具体寄存器操作差异。
+相对于BSP抽象层次更高，可移植性更高。</p>
 <p>以stm32HAL库开发为例，流程如下：</p>
-<p>应用程序<br>    │<br>    ↓ 调用统一API<br>HAL 层（如 HAL_UART_Transmit()）<br>    │<br>    ↓ 调用板级驱动或直接操作寄存器<br>BSP 层（如 BSP_UART_Write() 或 直接写 UART-&gt;DR 寄存器）<br>    │<br>    ↓ 操作物理寄存器<br>硬件寄存器（如 USART1-&gt;DR &#x3D; data）</p>
+<p>应用程序 │ ↓ 调用统一API HAL 层（如 HAL_UART_Transmit()） │ ↓
+调用板级驱动或直接操作寄存器 BSP 层（如 BSP_UART_Write() 或 直接写
+UART-&gt;DR 寄存器） │ ↓ 操作物理寄存器 硬件寄存器（如 USART1-&gt;DR =
+data）</p>
 
       
     </div>
@@ -532,7 +555,8 @@ c.增加信号在信道中传输时的抗干扰性能，提高频率效率</p>
 b.载波信号<br />
 c.调制信号</p>
 <h1 id="调制的类型">2.调制的类型</h1>
-<p><img src="v2-da2991d933a5ca6dd24f77e03ff87dfd_1440w.jpg" /></p>
+<p><img
+src="/2025/07/13/%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/v2-da2991d933a5ca6dd24f77e03ff87dfd_1440w.jpg" /></p>
 <p>模拟调制：指模拟消息信号直接调制在载波上，让载波的特性跟随其幅度进行变化。包括调幅（AM）、调相（PM）、调频（FM）、模拟脉冲调制（后面会讲）</p>
 <p>数字调制：指调制信号或者消息信号已经不在是模拟形式，而是进行了模数转换，将数字基带信号调制到载波上进行传输，它的优点有高抗噪性、高可用带宽和容许功率。</p>
 <p>数字调控由三种基本的方式：幅移键控(ASK)、频移键控(FSK)和相移键控(PSK)。它们分别对应于用载波（正弦波）的幅度、频率和相位来传递数字基带信号。（后面会仔细讲）</p>
@@ -543,7 +567,8 @@ c.调制信号</p>
 target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_50493296/article/details/121048869"
 class="uri">https://blog.csdn.net/weixin_50493296/article/details/121048869</a></p>
 <h2 id="幅度调制线性调制的原理">4.1 幅度调制（线性调制）的原理</h2>
-<p><img src="62586ba3d5465034349a6e18db69c4a1.png" /></p>
+<p><img
+src="/2025/07/13/%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/62586ba3d5465034349a6e18db69c4a1.png" /></p>
 <p><span
 class="math inline">S<sub>m</sub>(t) = [m(t)cos ω<sub>c</sub>t] * h(t)</span></p>
 <p><span
@@ -558,7 +583,8 @@ class="math inline">$\mathrm{S}_{\mathrm{m}}(\omega)=\frac{1}{2}\left[\mathrm{M}
 <h3 id="宽带-调频">4.2.1 宽带 调频</h3>
 <h2 id="模拟脉冲调制">4.3 模拟脉冲调制</h2>
 <h1 id="数字调制">5.数字调制</h1>
-<p><img src="Snipaste_2025-07-13_20-40-31.png" /></p>
+<p><img
+src="/2025/07/13/%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/Snipaste_2025-07-13_20-40-31.png" /></p>
 <h2 id="ask-幅移键控法">5.1 ASK （幅移键控法）</h2>
 <p>载波幅度是随着调制信号而变化的，分为2ASK（2进制调制）,MASK（多进制数字调制法）</p>
 <h2 id="psk相移键控法">5.2 PSK（相移键控法）</h2>
@@ -574,7 +600,8 @@ class="math inline">$\mathrm{S}_{\mathrm{m}}(\omega)=\frac{1}{2}\left[\mathrm{M}
 <h2 id="qam正交幅度调制法">5.4 QAM（正交幅度调制法）</h2>
 <p>利用正交载波对两路信号分别进行双边带抑制载波调幅形成的。通常有二进制
 QAM，四进制QAM（16QAM），八进制QAM（64QAM）等。</p>
-<p><img src="afc1bf73bff1d6f2ac3b7c5f616c61d7.png" /></p>
+<p><img
+src="/2025/07/13/%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/afc1bf73bff1d6f2ac3b7c5f616c61d7.png" /></p>
 
       
     </div>
@@ -710,9 +737,9 @@ class="math inline">$\mathbf{y}(p)=\sum_{k=1}^K\mathbf{w}_k\cdot\mathbf{F}(p+p_k
 p_k)\cdot m_k$</span></p>
 <h3 id="模式崩溃">模式崩溃</h3>
 <p>对于某一个训练数据集，其中样本的概率分布为一个简单的一维高斯混合分布，包含两个峰，如下图
-<img src="z21ukb0wsa.jpeg" /></p>
+<img src="/2025/07/13/week5/z21ukb0wsa.jpeg" /></p>
 <p>模式崩溃问题是针对于生成样本的多样性，即生成的样本大量重复类似，如下图</p>
-<p><img src="g9kyvxsbu2.jpeg" />
+<p><img src="/2025/07/13/week5/g9kyvxsbu2.jpeg" />
 虽然生成样本的质量比较高，但是生成器完全没有捕捉到右边的峰的模式。</p>
 <p>解决思路：</p>
 <p>参考：<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1522756"
@@ -906,7 +933,8 @@ class="uri">https://arxiv.org/pdf/1706.03762</a></p>
 <p>Key：可以将每个单词的重要特征表示看作成 Key。</p>
 <p>Value：每个单词本身的特征向量看作为 Value，一般和
 Key成对出现，也就是我们常说的”键-值”对。</p>
-<p><img src="mkmroptvcwdrc_2696c13c0c654516bee3bc20714995c6.webp" /></p>
+<p><img
+src="/2025/07/02/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/mkmroptvcwdrc_2696c13c0c654516bee3bc20714995c6.webp" /></p>
 <p>核心公式（原论文中）：</p>
 <p><span
 class="math inline">$Attention(Q,K,V)=Softmax(\frac{QK^\top}{\sqrt{d_k}})V$</span></p>
@@ -936,7 +964,8 @@ class="math inline">$\alpha(q,k_i)=\frac{QK^T}{\sqrt{d}}$</span></p>
 <h2
 id="自注意力机制self-attention-mechanism">自注意力机制（Self-Attention
 Mechanism）</h2>
-<p><img src="v2-921a6ccdeed095c9940aa52baee85e8c_r.jpg" /></p>
+<p><img
+src="/2025/07/02/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/v2-921a6ccdeed095c9940aa52baee85e8c_r.jpg" /></p>
 <p>2.1 Embedding 操作, 将向量x转化为a,a作为注意力机制的input data</p>
 <p>2.2 q, k 操作</p>
 <p><span
@@ -953,14 +982,16 @@ class="math inline"><em>a</em><sup><em>i</em></sup></span>
 <p>其中<span class="math inline">d</span>表示 <span
 class="math inline">q</span>和<span class="math inline">k</span>
 矩阵的维度</p>
-<p><img src="v2-22195b05ea273b6d46ee0a7ff4fe71ed_1440w.jpg" /></p>
+<p><img
+src="/2025/07/02/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/v2-22195b05ea273b6d46ee0a7ff4fe71ed_1440w.jpg" /></p>
 <p>2.3 v操作</p>
 <p><span
 class="math inline"><em>b</em><sup>1</sup> = ∑<sub><em>i</em></sub><em>α̃</em><sub>1, <em>i</em></sub><em>v</em><sup><em>i</em></sup></span></p>
 <p><span
 class="math inline"><em>b</em><sup>2</sup> = ∑<sub><em>i</em></sub><em>α̃</em><sub>2, <em>i</em></sub><em>v</em><sup><em>i</em></sup></span></p>
 <p>以此类推</p>
-<p><img src="v2-0851bb5a4fdeb88efa6f96aabef45b65_1440w.jpg" /></p>
+<p><img
+src="/2025/07/02/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/v2-0851bb5a4fdeb88efa6f96aabef45b65_1440w.jpg" /></p>
 <h2 id="多头注意力机制">多头注意力机制</h2>
 <h3 id="qk操作">q,k操作</h3>
 <p>这里以两头为例</p>
@@ -971,7 +1002,8 @@ class="math inline"><em>q</em><sup><em>i</em>, 2</sup> = <em>W</em><sup><e
 <p>k也是同样的操作</p>
 <h3 id="v操作">v操作</h3>
 <p>与自注意力机制相同</p>
-<p><img src="v2-18638aafea77d3cf87973a59c08315b8_1440w.jpg" /></p>
+<p><img
+src="/2025/07/02/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/v2-18638aafea77d3cf87973a59c08315b8_1440w.jpg" /></p>
 <h2 id="通道注意力机制">通道注意力机制</h2>
 <p>通道注意力机制是通过计算每个通道channel的重要性程度；因此，常常被用在卷积神经网络里面。目前，比较经典的通道注意力机制方法就是SENet模型，SENet通过学习通道间的关系（每个通道的重要性），提升了网络在特征表示中的表达能力，进而提升了模型的性能。</p>
 <h3 id="senet介绍">SENet介绍</h3>
@@ -1143,9 +1175,8 @@ target="_blank" rel="noopener" href="https://arxiv.org/pdf/1706.03762">https://a
 <p>Key：可以将每个单词的重要特征表示看作成 Key。</p>
 <p>Value：每个单词本身的特征向量看作为 Value，一般和
 Key成对出现，也就是我们常说的”键-值”对。</p>
-<p><img
-src="注意力机制/mkmroptvcwdrc_2696c13c0c654516bee3bc20714995c6.webp" />
-核心公式（原论文中）：</p>
+
+<p>核心公式（原论文中）：</p>
 <p><span class="math display">$$
 Attention(Q,K,V)=Softmax(\frac{QK^\top}{\sqrt{d_k}})V
 $$</span></p>
@@ -1177,8 +1208,7 @@ $$</span></p>
 <h2
 id="自注意力机制self-attention-mechanism">自注意力机制（Self-Attention
 Mechanism）</h2>
-<p><img
-src="注意力机制/v2-921a6ccdeed095c9940aa52baee85e8c_r.jpg" /></p>
+
 <p>2.1 Embedding 操作, 将向量x转化为a,a作为注意力机制的input data</p>
 <p>2.2 q, k 操作</p>
 <p><span

@@ -27,16 +27,11 @@
 <meta property="og:site_name" content="九大山人">
 <meta property="og:description" content="1.基本概念 调制时将基带信号搬移到高频载波，实现频谱搬移的过程。解调则是调制的逆过程。 1.1 为什么要进行调制： a.高频信号更容易收发传输，天线尺寸需要是波长的1&#x2F;4，使用高频信号可以减小天线尺寸; b.无线频谱资源有限，需要在指定的频率上进行发射接收，调制实现频率复用 c.增加信号在信道中传输时的抗干扰性能，提高频率效率 1.2 调制中包含哪些信号类型 a.消息信号 b.载">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2025/07/13/%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/v2-da2991d933a5ca6dd24f77e03ff87dfd_1440w.jpg">
-<meta property="og:image" content="http://example.com/2025/07/13/%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/62586ba3d5465034349a6e18db69c4a1.png">
-<meta property="og:image" content="http://example.com/2025/07/13/%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/Snipaste_2025-07-13_20-40-31.png">
-<meta property="og:image" content="http://example.com/2025/07/13/%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/afc1bf73bff1d6f2ac3b7c5f616c61d7.png">
 <meta property="article:published_time" content="2025-07-13T10:09:16.000Z">
 <meta property="article:modified_time" content="2025-07-13T12:49:37.040Z">
 <meta property="article:author" content="gzx">
 <meta property="article:tag" content="信号处理">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2025/07/13/%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/v2-da2991d933a5ca6dd24f77e03ff87dfd_1440w.jpg">
 
 
 <link rel="canonical" href="http://example.com/2025/07/13/%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/">
@@ -297,7 +292,8 @@ c.增加信号在信道中传输时的抗干扰性能，提高频率效率</p>
 b.载波信号<br />
 c.调制信号</p>
 <h1 id="调制的类型">2.调制的类型</h1>
-<p><img src="v2-da2991d933a5ca6dd24f77e03ff87dfd_1440w.jpg" /></p>
+<p><img
+src="/2025/07/13/%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/v2-da2991d933a5ca6dd24f77e03ff87dfd_1440w.jpg" /></p>
 <p>模拟调制：指模拟消息信号直接调制在载波上，让载波的特性跟随其幅度进行变化。包括调幅（AM）、调相（PM）、调频（FM）、模拟脉冲调制（后面会讲）</p>
 <p>数字调制：指调制信号或者消息信号已经不在是模拟形式，而是进行了模数转换，将数字基带信号调制到载波上进行传输，它的优点有高抗噪性、高可用带宽和容许功率。</p>
 <p>数字调控由三种基本的方式：幅移键控(ASK)、频移键控(FSK)和相移键控(PSK)。它们分别对应于用载波（正弦波）的幅度、频率和相位来传递数字基带信号。（后面会仔细讲）</p>
@@ -308,7 +304,8 @@ c.调制信号</p>
 target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_50493296/article/details/121048869"
 class="uri">https://blog.csdn.net/weixin_50493296/article/details/121048869</a></p>
 <h2 id="幅度调制线性调制的原理">4.1 幅度调制（线性调制）的原理</h2>
-<p><img src="62586ba3d5465034349a6e18db69c4a1.png" /></p>
+<p><img
+src="/2025/07/13/%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/62586ba3d5465034349a6e18db69c4a1.png" /></p>
 <p><span
 class="math inline">S<sub>m</sub>(t) = [m(t)cos ω<sub>c</sub>t] * h(t)</span></p>
 <p><span
@@ -323,7 +320,8 @@ class="math inline">$\mathrm{S}_{\mathrm{m}}(\omega)=\frac{1}{2}\left[\mathrm{M}
 <h3 id="宽带-调频">4.2.1 宽带 调频</h3>
 <h2 id="模拟脉冲调制">4.3 模拟脉冲调制</h2>
 <h1 id="数字调制">5.数字调制</h1>
-<p><img src="Snipaste_2025-07-13_20-40-31.png" /></p>
+<p><img
+src="/2025/07/13/%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/Snipaste_2025-07-13_20-40-31.png" /></p>
 <h2 id="ask-幅移键控法">5.1 ASK （幅移键控法）</h2>
 <p>载波幅度是随着调制信号而变化的，分为2ASK（2进制调制）,MASK（多进制数字调制法）</p>
 <h2 id="psk相移键控法">5.2 PSK（相移键控法）</h2>
@@ -339,7 +337,8 @@ class="math inline">$\mathrm{S}_{\mathrm{m}}(\omega)=\frac{1}{2}\left[\mathrm{M}
 <h2 id="qam正交幅度调制法">5.4 QAM（正交幅度调制法）</h2>
 <p>利用正交载波对两路信号分别进行双边带抑制载波调幅形成的。通常有二进制
 QAM，四进制QAM（16QAM），八进制QAM（64QAM）等。</p>
-<p><img src="afc1bf73bff1d6f2ac3b7c5f616c61d7.png" /></p>
+<p><img
+src="/2025/07/13/%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/afc1bf73bff1d6f2ac3b7c5f616c61d7.png" /></p>
 
     </div>
 
