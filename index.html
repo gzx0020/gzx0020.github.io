@@ -181,7 +181,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -192,7 +192,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -209,6 +209,98 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/21/week6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="gzx">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="九大山人">
+      <meta itemprop="description" content="这里记录我的学习与生活">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | 九大山人">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/07/21/week6/" class="post-title-link" itemprop="url">week6</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2025-07-21 17:43:47 / Modified: 17:47:41" itemprop="dateCreated datePublished" datetime="2025-07-21T17:43:47+08:00">2025-07-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%A7%91%E7%A0%94%E5%AE%9E%E4%B9%A0%E5%91%A8%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">科研实习周记</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="微调效果测试"><a href="#微调效果测试" class="headerlink" title="微调效果测试"></a>微调效果测试</h1><p>用lora层替换unet中所有可替换的线性层和1×1卷积层，测试效果较差，有明显失真，指标相比上一次微调均有下降</p>
+<h1 id="论文代码学习"><a href="#论文代码学习" class="headerlink" title="论文代码学习"></a>论文代码学习</h1><p>学习论文 Phasic Content Fusing Diffusion Model with Directional Distribution Consistency for Few-Shot Model Adaption 的开源代码，<br>微调部分实现方法如下：</p>
+<h2 id="1-内容融合模块微调-train-recon-py"><a href="#1-内容融合模块微调-train-recon-py" class="headerlink" title="1. 内容融合模块微调 (train-recon.py)"></a>1. 内容融合模块微调 (train-recon.py)</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#创建一个Adam优化器，只优化扩散模型中条件模块(c_content_condition)的参数</span></span><br><span class="line">optimizer = Adam(diffusion.model.c_content_condition.parameters(), lr=<span class="number">1e-4</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#遍历数据集中的所有批次</span></span><br><span class="line"><span class="keyword">for</span> batch <span class="keyword">in</span> dataloader:   </span><br><span class="line">    real_image = batch.cuda()      </span><br><span class="line">    condition = real_image  <span class="comment"># 使用自身作为条件</span></span><br><span class="line">      </span><br><span class="line">    t, (x, loss_diffusion) = diffusion.few_shot_forward(</span><br><span class="line">        real_image,   </span><br><span class="line">        x_self_cond=condition,  </span><br><span class="line">        max_step=<span class="number">1000</span>  </span><br><span class="line">    )</span><br><span class="line">  </span><br><span class="line">    <span class="comment"># 计算扩散损失的平均值（预测噪声与真实噪声的差异）  </span></span><br><span class="line">    loss_diffusion.mean().backward()  <span class="comment"># 反向传播计算梯度</span></span><br><span class="line">  </span><br><span class="line">    optimizer.step()</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">if</span> global_step % <span class="number">200</span> == <span class="number">0</span>:</span><br><span class="line">        <span class="comment"># 使用DDIM采样器生成重建图像</span></span><br><span class="line">        output_image = diffusion.ddim_sample(</span><br><span class="line">            real_image.shape,  </span><br><span class="line">            condition=condition,  </span><br><span class="line">            sample_step=<span class="number">50</span>,     </span><br><span class="line">            max_step=<span class="number">800</span>          <span class="comment">#从噪声步800开始逆向扩散（跳过前200步）</span></span><br><span class="line">        )</span><br><span class="line">            </span><br><span class="line">  </span><br></pre></td></tr></table></figure>
+
+<p>通过 c_content_condition 模块分离内容&#x2F;风格学习:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">model_target.prepare(style_condition=<span class="literal">True</span>, two_stage_step=<span class="number">300</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-少样本域适应微调-train-whole-py"><a href="#2-少样本域适应微调-train-whole-py" class="headerlink" title="2. 少样本域适应微调 (train-whole.py)"></a>2. 少样本域适应微调 (train-whole.py)</h2><p>a.分阶段训练策略：大t步学内容&#x2F;风格，小t步学细节, 具体是大t：学习全局内容&#x2F;风格 (step&#x3D;300-1000)  小t：学习局部细节 (t~rand(0,300))</p>
+<p>b.方向分布一致性：feature_dir &#x3D; (target_feature - source_feature) 引导特征迁移</p>
+<p>L_DDC &#x3D; ||φ(G(x)) - (φ(x) + Δ)||^2</p>
+<p>其中 Δ &#x3D; E[φ(y)] - E[φ(x)] 是域间特征方向</p>
+<p>c.动态加权</p>
+<p>α &#x3D; 20^{t&#x2F;T} \quad (T&#x3D;1000)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#创建一个优化器，只优化需要梯度的参数</span></span><br><span class="line"><span class="comment"># 使用filter+lambda过滤出requires_grad=True的参数，冻结有些参数</span></span><br><span class="line">optimizer = Adam(</span><br><span class="line">    <span class="built_in">filter</span>(<span class="keyword">lambda</span> p: p.requires_grad, diffusion_target.parameters()), </span><br><span class="line">    lr=<span class="number">1e-4</span>  <span class="comment">#使用相对较小的学习率防止过拟合</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 遍历源域和目标域的数据加载器</span></span><br><span class="line"><span class="comment"># 使用zip确保每次迭代获取一对源域和目标域批次数据</span></span><br><span class="line"><span class="keyword">for</span> (target_batch, source_batch) <span class="keyword">in</span> <span class="built_in">zip</span>(target_dataloader, source_dataloader):</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 阶段1：内容保持（大t）</span></span><br><span class="line">  </span><br><span class="line">    <span class="keyword">if</span> global_step % <span class="number">2</span> == <span class="number">0</span>:  <span class="comment"># 每两步执行一次</span></span><br><span class="line">      </span><br><span class="line">      </span><br><span class="line">        <span class="comment"># step=300 表示在扩散过程的前300步进行内容融合</span></span><br><span class="line">        t, (x, _) = diffusion.few_shot_forward(</span><br><span class="line">            source_image,     <span class="comment"># 源域输入图像</span></span><br><span class="line">            step=<span class="number">300</span>,       </span><br><span class="line">            x_self_cond=condition  <span class="comment">#内容条件输入</span></span><br><span class="line">        )</span><br><span class="line">      </span><br><span class="line">        <span class="comment"># 方向分布一致性损失      </span></span><br><span class="line">        <span class="comment"># 使用CLIP模型提取源域图像特征</span></span><br><span class="line">        feature_source = clip_model.encode_img(source_image)      </span><br><span class="line">        feature_target = clip_model.encode_img(generated_image)      </span><br><span class="line">      </span><br><span class="line">        <span class="comment">#feature_dir = E[φ(y)] - E[φ(x)] 预计算的域间特征方向</span></span><br><span class="line">        loss_feature = mse_loss(</span><br><span class="line">            feature_target, </span><br><span class="line">            feature_source + feature_dir  <span class="comment"># 特征方向约束</span></span><br><span class="line">        ) * opts.beta_f  <span class="comment">#可调节的损失权重</span></span><br><span class="line">      </span><br><span class="line">        <span class="comment"># 风格损失</span></span><br><span class="line">      </span><br><span class="line">        <span class="comment"># 使用预定义的风格损失函数(训练的VGG)      </span></span><br><span class="line">        loss_style = style_loss(generated_image, style_imgs) * opts.beta_style</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">    <span class="comment"># 阶段2：细节学习（小t）   </span></span><br><span class="line">    <span class="keyword">else</span>:  <span class="comment">#与阶段1交替执行</span></span><br><span class="line">      </span><br><span class="line">        t = torch.randint(<span class="number">0</span>, <span class="number">300</span>, (batch_size,))  </span><br><span class="line">      </span><br><span class="line">        <span class="comment">#使用目标域图像进行前向传播     </span></span><br><span class="line">        _, (_, loss_diffusion) = diffusion.few_shot_forward(</span><br><span class="line">            target_image,  </span><br><span class="line">            t=t          </span><br><span class="line">        )</span><br><span class="line">  </span><br><span class="line">   </span><br><span class="line">    <span class="comment">#时间步相关加权   </span></span><br><span class="line">   </span><br><span class="line">    alpha = <span class="number">20</span> ** (t / <span class="number">1000</span>)  <span class="comment">#权重函数</span></span><br><span class="line">  </span><br><span class="line">    <span class="comment">#加权总损失   </span></span><br><span class="line">    total_loss = (alpha * (loss_feature + loss_style)).mean()</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">    total_loss.backward()   </span><br><span class="line">  </span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -417,9 +509,15 @@ class="uri">https://blog.csdn.net/GreenYang5277/article/details/104500739</a></p
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2025-07-15 20:16:46 / Modified: 22:20:25" itemprop="dateCreated datePublished" datetime="2025-07-15T20:16:46+08:00">2025-07-15</time>
+      <time title="Created: 2025-07-15 20:16:46" itemprop="dateCreated datePublished" datetime="2025-07-15T20:16:46+08:00">2025-07-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2025-07-21 17:47:36" itemprop="dateModified" datetime="2025-07-21T17:47:36+08:00">2025-07-21</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -441,37 +539,13 @@ class="uri">https://blog.csdn.net/GreenYang5277/article/details/104500739</a></p
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>基本关系如下图所示 <img
-src="/2025/07/15/Driver-BSP%E5%92%8CHAL/Snipaste_2025-07-15_20-23-36.png" /></p>
-<h1 id="驱动driver">1.驱动（Driver）</h1>
-<p>驱动程序是直接与硬件设备交互的软件组件。它们为操作系统或应用程序提供控制硬件的接口。可以理解为驱动直接与硬件交互。最为底层。</p>
-<h1 id="板级支持包bsp-board-support-package">2.板级支持包（BSP, Board
-Support Package）</h1>
-<p>是一套针对特定硬件系统的低级软件代码， 其主要作用是抽象硬件细节，
-以便操作系统能够顺利运行在特定的硬件平台上。BSP
-是高度硬件相关的，为一块板写的 BSP
-通常不能直接用在另一块不同的板上，即使它们使用了相同的
-MCU/MPU（因为外围电路、引脚连接、时钟源等都可能不同）。</p>
-<h1 id="硬件抽象层hal-hardware-abstraction-layer">3.硬件抽象层（HAL,
-Hardware Abstraction Layer）</h1>
-<p>HAL是介于底层硬件和上层软件之间的一层抽象层，用于隐藏硬件的具体实现细节，提供统一的接口。包含一组通用的API接口，可以理解为定义好的一组标准的函数（如
-HAL_UART_Transmit(), HAL_GPIO_WritePin(),
-HAL_ADC_Start()）来执行常见的硬件操作。</p>
-<p>目的是提供统一的、标准化的接口来访问某一类硬件功能（如
-UART、I2C、GPIO、ADC、定时器等），屏蔽不同厂商、不同系列、甚至不同架构（如
-ARM Cortex-M vs RISC-V）芯片的具体寄存器操作差异。
-相对于BSP抽象层次更高，可移植性更高。</p>
+          <p>基本关系如下图所示<br><img src="/2025/07/15/Driver-BSP%E5%92%8CHAL/Snipaste_2025-07-15_20-23-36.png"></p>
+<h1 id="1-驱动（Driver）"><a href="#1-驱动（Driver）" class="headerlink" title="1.驱动（Driver）"></a>1.驱动（Driver）</h1><p>驱动程序是直接与硬件设备交互的软件组件。它们为操作系统或应用程序提供控制硬件的接口。可以理解为驱动直接与硬件交互。最为底层。</p>
+<h1 id="2-板级支持包（BSP-Board-Support-Package）"><a href="#2-板级支持包（BSP-Board-Support-Package）" class="headerlink" title="2.板级支持包（BSP, Board Support Package）"></a>2.板级支持包（BSP, Board Support Package）</h1><p>是一套针对特定硬件系统的低级软件代码， 其主要作用是抽象硬件细节， 以便操作系统能够顺利运行在特定的硬件平台上。BSP 是高度硬件相关的，为一块板写的 BSP 通常不能直接用在另一块不同的板上，即使它们使用了相同的 MCU&#x2F;MPU（因为外围电路、引脚连接、时钟源等都可能不同）。</p>
+<h1 id="3-硬件抽象层（HAL-Hardware-Abstraction-Layer）"><a href="#3-硬件抽象层（HAL-Hardware-Abstraction-Layer）" class="headerlink" title="3.硬件抽象层（HAL, Hardware Abstraction Layer）"></a>3.硬件抽象层（HAL, Hardware Abstraction Layer）</h1><p>HAL是介于底层硬件和上层软件之间的一层抽象层，用于隐藏硬件的具体实现细节，提供统一的接口。包含一组通用的API接口，可以理解为定义好的一组标准的函数（如 HAL_UART_Transmit(), HAL_GPIO_WritePin(), HAL_ADC_Start()）来执行常见的硬件操作。</p>
+<p>目的是提供统一的、标准化的接口来访问某一类硬件功能（如 UART、I2C、GPIO、ADC、定时器等），屏蔽不同厂商、不同系列、甚至不同架构（如 ARM Cortex-M vs RISC-V）芯片的具体寄存器操作差异。        相对于BSP抽象层次更高，可移植性更高。</p>
 <p>以stm32HAL库开发为例，流程如下：</p>
-<p>应用程序<br />
-│<br />
-↓ 调用统一API<br />
-HAL 层（如 HAL_UART_Transmit()）<br />
-│<br />
-↓ 调用板级驱动或直接操作寄存器<br />
-BSP 层（如 BSP_UART_Write() 或 直接写 UART-&gt;DR 寄存器）<br />
-│<br />
-↓ 操作物理寄存器<br />
-硬件寄存器（如 USART1-&gt;DR = data）</p>
+<p>应用程序<br>    │<br>    ↓ 调用统一API<br>HAL 层（如 HAL_UART_Transmit()）<br>    │<br>    ↓ 调用板级驱动或直接操作寄存器<br>BSP 层（如 BSP_UART_Write() 或 直接写 UART-&gt;DR 寄存器）<br>    │<br>    ↓ 操作物理寄存器<br>硬件寄存器（如 USART1-&gt;DR &#x3D; data）</p>
 
       
     </div>
@@ -821,7 +895,7 @@ Transformer访问qkv.weight时，返回原始层的权重</p>
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-07-13 18:17:16" itemprop="dateModified" datetime="2025-07-13T18:17:16+08:00">2025-07-13</time>
+      <time title="Modified: 2025-07-21 17:47:39" itemprop="dateModified" datetime="2025-07-21T17:47:39+08:00">2025-07-21</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -829,7 +903,7 @@ Transformer访问qkv.weight时，返回原始层的权重</p>
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%8D%95%E7%89%87%E6%9C%BA-stm32/" itemprop="url" rel="index"><span itemprop="name">-单片机 -stm32</span></a>
+          <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F-%E5%8D%95%E7%89%87%E6%9C%BA-stm32/" itemprop="url" rel="index"><span itemprop="name">-嵌入式 -单片机 -stm32</span></a>
         </span>
     </span>
 
@@ -1564,7 +1638,7 @@ class="math inline"><strong>r</strong></span>越大，拟合能力越强（甚�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-07-13 18:17:56" itemprop="dateModified" datetime="2025-07-13T18:17:56+08:00">2025-07-13</time>
+      <time title="Modified: 2025-07-21 17:47:37" itemprop="dateModified" datetime="2025-07-21T17:47:37+08:00">2025-07-21</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1572,7 +1646,7 @@ class="math inline"><strong>r</strong></span>越大，拟合能力越强（甚�
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%8D%95%E7%89%87%E6%9C%BA-stm32/" itemprop="url" rel="index"><span itemprop="name">-单片机 -stm32</span></a>
+          <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F-%E5%8D%95%E7%89%87%E6%9C%BA-stm32/" itemprop="url" rel="index"><span itemprop="name">-嵌入式 -单片机 -stm32</span></a>
         </span>
     </span>
 
@@ -1586,158 +1660,18 @@ class="math inline"><strong>r</strong></span>越大，拟合能力越强（甚�
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="stm32cubemx配置">stm32cubemx配置</h1>
-<p>开启串口收发异步模式，开启串口空闲中断</p>
-<h1 id="代码实现">代码实现</h1>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;command.h&quot;</span><br><span class="line"></span><br><span class="line">// 指令的最小长度</span><br><span class="line">#define COMMAND_MIN_LENGTH 4</span><br><span class="line"></span><br><span class="line">// 循环缓冲区大小</span><br><span class="line">#define BUFFER_SIZE 128</span><br><span class="line">// 循环缓冲区</span><br><span class="line">uint8_t buffer[BUFFER_SIZE];</span><br><span class="line">// 循环缓冲区读索引</span><br><span class="line">uint8_t readIndex = 0;</span><br><span class="line">// 循环缓冲区写索引</span><br><span class="line">uint8_t writeIndex = 0;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">* @brief 增加读索引</span><br><span class="line">* @param length 要增加的长度</span><br><span class="line">*/</span><br><span class="line">void Command_AddReadIndex(uint8_t length) &#123;</span><br><span class="line">    readIndex += length;</span><br><span class="line">    readIndex %= BUFFER_SIZE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">* @brief 读取第i位数据 超过缓存区长度自动循环</span><br><span class="line">* @param i 要读取的数据索引</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">uint8_t Command_Read(uint8_t i) &#123;</span><br><span class="line">    uint8_t index = i % BUFFER_SIZE;</span><br><span class="line">    return buffer[index];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">* @brief 计算未处理的数据长度</span><br><span class="line">* @return 未处理的数据长度</span><br><span class="line">* @retval 0 缓冲区为空</span><br><span class="line">* @retval 1~BUFFER_SIZE-1 未处理的数据长度</span><br><span class="line">* @retval BUFFER_SIZE 缓冲区已满</span><br><span class="line">*/</span><br><span class="line">//uint8_t Command_GetLength() &#123;</span><br><span class="line">//  // 读索引等于写索引时，缓冲区为空</span><br><span class="line">//  if (readIndex == writeIndex) &#123;</span><br><span class="line">//    return 0;</span><br><span class="line">//  &#125;</span><br><span class="line">//  // 如果缓冲区已满,返回BUFFER_SIZE</span><br><span class="line">//  if (writeIndex + 1 == readIndex || (writeIndex == BUFFER_SIZE - 1 &amp;&amp; readIndex == 0)) &#123;</span><br><span class="line">//    return BUFFER_SIZE;</span><br><span class="line">//  &#125;</span><br><span class="line">//  // 如果缓冲区未满,返回未处理的数据长度</span><br><span class="line">//  if (readIndex &lt;= writeIndex) &#123;</span><br><span class="line">//    return writeIndex - readIndex;</span><br><span class="line">//  &#125; else &#123;</span><br><span class="line">//    return BUFFER_SIZE - readIndex + writeIndex;</span><br><span class="line">//  &#125;</span><br><span class="line">//&#125;</span><br><span class="line"></span><br><span class="line">uint8_t Command_GetLength() &#123;</span><br><span class="line">    return (writeIndex + BUFFER_SIZE - readIndex) % BUFFER_SIZE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">* @brief 计算缓冲区剩余空间</span><br><span class="line">* @return 剩余空间</span><br><span class="line">* @retval 0 缓冲区已满</span><br><span class="line">* @retval 1~BUFFER_SIZE-1 剩余空间</span><br><span class="line">* @retval BUFFER_SIZE 缓冲区为空</span><br><span class="line">*/</span><br><span class="line">uint8_t Command_GetRemain() &#123;</span><br><span class="line">    return BUFFER_SIZE - Command_GetLength();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">* @brief 向缓冲区写入数据</span><br><span class="line">* @param data 要写入的数据指针</span><br><span class="line">* @param length 要写入的数据长度</span><br><span class="line">* @return 写入的数据长度</span><br><span class="line">*/</span><br><span class="line">uint8_t Command_Write(uint8_t *data, uint8_t length) &#123;</span><br><span class="line">    // 如果缓冲区不足 则不写入数据 返回0</span><br><span class="line">    if (Command_GetRemain() &lt; length) &#123;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    // 使用memcpy函数将数据写入缓冲区</span><br><span class="line">    if (writeIndex + length &lt; BUFFER_SIZE) &#123;</span><br><span class="line">        memcpy(buffer + writeIndex, data, length);</span><br><span class="line">        writeIndex += length;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        uint8_t firstLength = BUFFER_SIZE - writeIndex;</span><br><span class="line">        memcpy(buffer + writeIndex, data, firstLength);</span><br><span class="line">        memcpy(buffer, data + firstLength, length - firstLength);</span><br><span class="line">        writeIndex = length - firstLength;</span><br><span class="line">    &#125;</span><br><span class="line">    return length;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">* @brief 尝试获取一条指令</span><br><span class="line">* @param command 指令存放指针</span><br><span class="line">* @return 获取的指令长度</span><br><span class="line">* @retval 0 没有获取到指令</span><br><span class="line">*/</span><br><span class="line">uint8_t Command_GetCommand(uint8_t *command) &#123;</span><br><span class="line">    // 寻找完整指令</span><br><span class="line">    while (1) &#123;</span><br><span class="line">        // 如果缓冲区长度小于COMMAND_MIN_LENGTH 则不可能有完整的指令</span><br><span class="line">        if (Command_GetLength() &lt; COMMAND_MIN_LENGTH) &#123;</span><br><span class="line">        return 0;</span><br><span class="line">        &#125;</span><br><span class="line">        // 如果不是包头 则跳过 重新开始寻找</span><br><span class="line">        if (Command_Read(readIndex) != 0xAA) &#123;</span><br><span class="line">        Command_AddReadIndex(1);</span><br><span class="line">        continue;</span><br><span class="line">        &#125;</span><br><span class="line">        // 如果缓冲区长度小于指令长度 则不可能有完整的指令</span><br><span class="line">        uint8_t length = Command_Read(readIndex + 1);</span><br><span class="line">        if (Command_GetLength() &lt; length) &#123;</span><br><span class="line">        return 0;</span><br><span class="line">        &#125;</span><br><span class="line">        // 如果校验和不正确 则跳过 重新开始寻找</span><br><span class="line">        uint8_t sum = 0;</span><br><span class="line">        for (uint8_t i = 0; i &lt; length - 1; i++) &#123;</span><br><span class="line">        sum += Command_Read(readIndex + i);</span><br><span class="line">        &#125;</span><br><span class="line">        if (sum != Command_Read(readIndex + length - 1)) &#123;</span><br><span class="line">        Command_AddReadIndex(1);</span><br><span class="line">        continue;</span><br><span class="line">        &#125;</span><br><span class="line">        // 如果找到完整指令 则将指令写入command 返回指令长度</span><br><span class="line">        for (uint8_t i = 0; i &lt; length; i++) &#123;</span><br><span class="line">        command[i] = Command_Read(readIndex + i);</span><br><span class="line">        &#125;</span><br><span class="line">        Command_AddReadIndex(length);</span><br><span class="line">        return length;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>头文件： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#ifndef INC_COMMAND_H_</span><br><span class="line">#define INC_COMMAND_H_</span><br><span class="line"></span><br><span class="line">#include &quot;main.h&quot;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line"></span><br><span class="line">uint8_t Command_Write(uint8_t *data, uint8_t length);</span><br><span class="line"></span><br><span class="line">uint8_t Command_GetCommand(uint8_t *command);</span><br><span class="line"></span><br><span class="line">#endif /* INC_COMMAND_H_ */</span><br></pre></td></tr></table></figure></p>
-<p>main.c: <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/* Private define ------------------------------------------------------------*/</span><br><span class="line">/* USER CODE BEGIN PD */</span><br><span class="line">uint8_t readBuffer[10];</span><br><span class="line">/* USER CODE END PD */</span><br></pre></td></tr></table></figure></p>
+          <h1 id="stm32cubemx配置"><a href="#stm32cubemx配置" class="headerlink" title="stm32cubemx配置"></a>stm32cubemx配置</h1><p>开启串口收发异步模式，开启串口空闲中断</p>
+<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;command.h&quot;</span><br><span class="line"></span><br><span class="line">// 指令的最小长度</span><br><span class="line">#define COMMAND_MIN_LENGTH 4</span><br><span class="line"></span><br><span class="line">// 循环缓冲区大小</span><br><span class="line">#define BUFFER_SIZE 128</span><br><span class="line">// 循环缓冲区</span><br><span class="line">uint8_t buffer[BUFFER_SIZE];</span><br><span class="line">// 循环缓冲区读索引</span><br><span class="line">uint8_t readIndex = 0;</span><br><span class="line">// 循环缓冲区写索引</span><br><span class="line">uint8_t writeIndex = 0;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">* @brief 增加读索引</span><br><span class="line">* @param length 要增加的长度</span><br><span class="line">*/</span><br><span class="line">void Command_AddReadIndex(uint8_t length) &#123;</span><br><span class="line">    readIndex += length;</span><br><span class="line">    readIndex %= BUFFER_SIZE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">* @brief 读取第i位数据 超过缓存区长度自动循环</span><br><span class="line">* @param i 要读取的数据索引</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">uint8_t Command_Read(uint8_t i) &#123;</span><br><span class="line">    uint8_t index = i % BUFFER_SIZE;</span><br><span class="line">    return buffer[index];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">* @brief 计算未处理的数据长度</span><br><span class="line">* @return 未处理的数据长度</span><br><span class="line">* @retval 0 缓冲区为空</span><br><span class="line">* @retval 1~BUFFER_SIZE-1 未处理的数据长度</span><br><span class="line">* @retval BUFFER_SIZE 缓冲区已满</span><br><span class="line">*/</span><br><span class="line">//uint8_t Command_GetLength() &#123;</span><br><span class="line">//  // 读索引等于写索引时，缓冲区为空</span><br><span class="line">//  if (readIndex == writeIndex) &#123;</span><br><span class="line">//    return 0;</span><br><span class="line">//  &#125;</span><br><span class="line">//  // 如果缓冲区已满,返回BUFFER_SIZE</span><br><span class="line">//  if (writeIndex + 1 == readIndex || (writeIndex == BUFFER_SIZE - 1 &amp;&amp; readIndex == 0)) &#123;</span><br><span class="line">//    return BUFFER_SIZE;</span><br><span class="line">//  &#125;</span><br><span class="line">//  // 如果缓冲区未满,返回未处理的数据长度</span><br><span class="line">//  if (readIndex &lt;= writeIndex) &#123;</span><br><span class="line">//    return writeIndex - readIndex;</span><br><span class="line">//  &#125; else &#123;</span><br><span class="line">//    return BUFFER_SIZE - readIndex + writeIndex;</span><br><span class="line">//  &#125;</span><br><span class="line">//&#125;</span><br><span class="line"></span><br><span class="line">uint8_t Command_GetLength() &#123;</span><br><span class="line">    return (writeIndex + BUFFER_SIZE - readIndex) % BUFFER_SIZE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">* @brief 计算缓冲区剩余空间</span><br><span class="line">* @return 剩余空间</span><br><span class="line">* @retval 0 缓冲区已满</span><br><span class="line">* @retval 1~BUFFER_SIZE-1 剩余空间</span><br><span class="line">* @retval BUFFER_SIZE 缓冲区为空</span><br><span class="line">*/</span><br><span class="line">uint8_t Command_GetRemain() &#123;</span><br><span class="line">    return BUFFER_SIZE - Command_GetLength();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">* @brief 向缓冲区写入数据</span><br><span class="line">* @param data 要写入的数据指针</span><br><span class="line">* @param length 要写入的数据长度</span><br><span class="line">* @return 写入的数据长度</span><br><span class="line">*/</span><br><span class="line">uint8_t Command_Write(uint8_t *data, uint8_t length) &#123;</span><br><span class="line">    // 如果缓冲区不足 则不写入数据 返回0</span><br><span class="line">    if (Command_GetRemain() &lt; length) &#123;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    // 使用memcpy函数将数据写入缓冲区</span><br><span class="line">    if (writeIndex + length &lt; BUFFER_SIZE) &#123;</span><br><span class="line">        memcpy(buffer + writeIndex, data, length);</span><br><span class="line">        writeIndex += length;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        uint8_t firstLength = BUFFER_SIZE - writeIndex;</span><br><span class="line">        memcpy(buffer + writeIndex, data, firstLength);</span><br><span class="line">        memcpy(buffer, data + firstLength, length - firstLength);</span><br><span class="line">        writeIndex = length - firstLength;</span><br><span class="line">    &#125;</span><br><span class="line">    return length;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">* @brief 尝试获取一条指令</span><br><span class="line">* @param command 指令存放指针</span><br><span class="line">* @return 获取的指令长度</span><br><span class="line">* @retval 0 没有获取到指令</span><br><span class="line">*/</span><br><span class="line">uint8_t Command_GetCommand(uint8_t *command) &#123;</span><br><span class="line">    // 寻找完整指令</span><br><span class="line">    while (1) &#123;</span><br><span class="line">        // 如果缓冲区长度小于COMMAND_MIN_LENGTH 则不可能有完整的指令</span><br><span class="line">        if (Command_GetLength() &lt; COMMAND_MIN_LENGTH) &#123;</span><br><span class="line">        return 0;</span><br><span class="line">        &#125;</span><br><span class="line">        // 如果不是包头 则跳过 重新开始寻找</span><br><span class="line">        if (Command_Read(readIndex) != 0xAA) &#123;</span><br><span class="line">        Command_AddReadIndex(1);</span><br><span class="line">        continue;</span><br><span class="line">        &#125;</span><br><span class="line">        // 如果缓冲区长度小于指令长度 则不可能有完整的指令</span><br><span class="line">        uint8_t length = Command_Read(readIndex + 1);</span><br><span class="line">        if (Command_GetLength() &lt; length) &#123;</span><br><span class="line">        return 0;</span><br><span class="line">        &#125;</span><br><span class="line">        // 如果校验和不正确 则跳过 重新开始寻找</span><br><span class="line">        uint8_t sum = 0;</span><br><span class="line">        for (uint8_t i = 0; i &lt; length - 1; i++) &#123;</span><br><span class="line">        sum += Command_Read(readIndex + i);</span><br><span class="line">        &#125;</span><br><span class="line">        if (sum != Command_Read(readIndex + length - 1)) &#123;</span><br><span class="line">        Command_AddReadIndex(1);</span><br><span class="line">        continue;</span><br><span class="line">        &#125;</span><br><span class="line">        // 如果找到完整指令 则将指令写入command 返回指令长度</span><br><span class="line">        for (uint8_t i = 0; i &lt; length; i++) &#123;</span><br><span class="line">        command[i] = Command_Read(readIndex + i);</span><br><span class="line">        &#125;</span><br><span class="line">        Command_AddReadIndex(length);</span><br><span class="line">        return length;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>头文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#ifndef INC_COMMAND_H_</span><br><span class="line">#define INC_COMMAND_H_</span><br><span class="line"></span><br><span class="line">#include &quot;main.h&quot;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line"></span><br><span class="line">uint8_t Command_Write(uint8_t *data, uint8_t length);</span><br><span class="line"></span><br><span class="line">uint8_t Command_GetCommand(uint8_t *command);</span><br><span class="line"></span><br><span class="line">#endif /* INC_COMMAND_H_ */</span><br></pre></td></tr></table></figure>
+
+<p>main.c:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/* Private define ------------------------------------------------------------*/</span><br><span class="line">/* USER CODE BEGIN PD */</span><br><span class="line">uint8_t readBuffer[10];</span><br><span class="line">/* USER CODE END PD */</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/* USER CODE BEGIN 0 */</span><br><span class="line">void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)&#123;</span><br><span class="line">	if (huart == &amp;huart2)&#123;</span><br><span class="line">		Command_Write(readBuffer, Size);</span><br><span class="line">		HAL_UARTEx_ReceiveToIdle_IT(&amp;huart2, readBuffer, sizeof(readBuffer));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">/* USER CODE END 0 */</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">/* USER CODE BEGIN 2 */</span><br><span class="line">HAL_UARTEx_ReceiveToIdle_IT(&amp;huart2, readBuffer, sizeof(readBuffer));</span><br><span class="line">uint8_t command[50];</span><br><span class="line">int commandLength = 0;</span><br><span class="line">/* USER CODE END 2 */</span><br><span class="line"></span><br><span class="line">/* Infinite loop */</span><br><span class="line">/* USER CODE BEGIN WHILE */</span><br><span class="line">while (1)</span><br><span class="line">&#123;</span><br><span class="line">    commandLength = Command_GetCommand(command);</span><br><span class="line">    if (commandLength != 0)&#123;</span><br><span class="line">        HAL_UART_Transmit(&amp;huart2, command, commandLength, HAL_MAX_DELAY);</span><br><span class="line">        for (int i = 2; i &lt; commandLength - 1; i += 2)&#123;</span><br><span class="line">            GPIO_PinState state = GPIO_PIN_SET;</span><br><span class="line">            if (command[i + 1] == 0x00)&#123;</span><br><span class="line">                state = GPIO_PIN_RESET;</span><br><span class="line">            &#125;</span><br><span class="line">            if (command[i] == 0x01)&#123;</span><br><span class="line">                HAL_GPIO_WritePin(RED_GPIO_Port, RED_Pin, state);</span><br><span class="line">            &#125;else if (command[i] == 0x02)&#123;</span><br><span class="line">                HAL_GPIO_WritePin(GREEN_GPIO_Port, GREEN_Pin, state);</span><br><span class="line">            &#125;else if (command[i] == 0x03)&#123;</span><br><span class="line">                HAL_GPIO_WritePin(BLUE_GPIO_Port, BLUE_Pin, state);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">/* USER CODE END WHILE */</span><br><span class="line"></span><br><span class="line">/* USER CODE BEGIN 3 */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/26/LoRA/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="gzx">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="九大山人">
-      <meta itemprop="description" content="这里记录我的学习与生活">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | 九大山人">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/06/26/LoRA/" class="post-title-link" itemprop="url">LoRA</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2025-06-26 20:48:33" itemprop="dateCreated datePublished" datetime="2025-06-26T20:48:33+08:00">2025-06-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-07-13 18:19:01" itemprop="dateModified" datetime="2025-07-13T18:19:01+08:00">2025-07-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%A7%91%E7%A0%94%E5%AE%9E%E4%B9%A0-RadioDiff%E5%BE%AE%E8%B0%83/" itemprop="url" rel="index"><span itemprop="name">-科研实习 -RadioDiff微调</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="一.lora原理">一.LoRA原理</h1>
-<p>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/702629428"
-class="uri">https://zhuanlan.zhihu.com/p/702629428</a> 原论文：<a
-target="_blank" rel="noopener" href="https://arxiv.org/pdf/2106.09685"
-class="uri">https://arxiv.org/pdf/2106.09685</a> LoRA(Low-Rank
-Adaptation of LLMs)，即LLMs的低秩适应，是参数高效微调最常用的方法。</p>
-<p>LoRA的本质就是用更少的训练参数来近似LLM全参数微调所得的增量参数，从而达到使用更少显存占用的高效微调。</p>
-<h2 id="实现流程">1.1实现流程</h2>
-<p><img src="v2-10ce9e224defb3732e09a257911821aa_1440w.png" /></p>
-<ol type="1">
-<li>在原始预训练语言模型旁边增加一个旁路，做降维再升维的操作来模拟内在秩；<br />
-</li>
-<li>用随机高斯分布初始化
-A，用零矩阵初始化B，训练时固定预训练模型的参数，只训练矩阵 A 与矩阵
-B；</li>
-<li>训练完成后，将 B 矩阵与 A
-矩阵相乘后合并预训练模型参数作为微调后的模型参数。</li>
-</ol>
-<p>具体来讲，预训练权重矩阵 <span
-class="math inline"><strong>W</strong><sub>0</sub> ∈ ℝ<sup><em>d</em> × <em>d</em></sup></span>
-，</p>
-<p>将增量参数矩阵 <span
-class="math inline"><em>Δ</em><strong>W</strong></span>
-，表示为两个参数量更小的矩阵 B 和 A 的低秩近似,如下式</p>
-<p><span
-class="math display"><strong>W</strong><sub>0</sub> + <em>Δ</em><strong>W</strong> = <strong>W</strong><sub>0</sub> + <strong>B</strong><strong>A</strong></span></p>
-<p>其中 <span
-class="math inline"><strong>B</strong> ∈ ℝ<sup><em>d</em> × <em>r</em></sup></span>
-，<span
-class="math inline"><strong>A</strong> ∈ ℝ<sup><em>r</em> × <em>d</em></sup></span>
-，秩<span class="math inline">r</span>远小于<span
-class="math inline">d</span></p>
-<p>给定输入<span
-class="math inline">.<strong>x</strong> ∈ ℝ<sup><em>d</em></sup></span>
-,添加LoRA后的输出<span
-class="math inline">.<strong>h</strong> ∈ ℝ<sup><em>d</em></sup></span></p>
-<p><span
-class="math display"><strong>h</strong> = (<strong>W</strong><sub>0</sub> + <em>Δ</em><strong>W</strong>)<strong>x</strong> = <strong>W</strong><sub>0</sub><strong>x</strong> + <strong>B</strong><strong>A</strong><strong>x</strong></span></p>
-<p><span
-class="math display"><em>Δ</em><strong>h</strong> = <strong>B</strong><strong>A</strong><strong>x</strong></span></p>
-<h2 id="lora参数合并系数">1.2LoRA参数合并系数</h2>
-<p>实际实现时以以下形式合并，其中<span
-class="math inline"><em>α</em></span>为超参数</p>
-<p><span
-class="math display">$$\mathbf{h}=(\mathbf{W}_{0}+\frac{\alpha}{r}\Delta\mathbf{W})\mathbf{x}$$</span></p>
-<p>系数<span
-class="math inline">$\frac{\alpha}{r}$</span>越大，LoRA微调权重的影响就越大，在下游任务上越容易过拟合</p>
-<p>系数<span
-class="math inline">$\frac{\alpha}{r}$</span>越小，LoRA微调权重的影响就越小（微调的效果不明显，原始模型参数受到的影响也较少）</p>
-<p>一般来说，在给定任务上LoRA微调，让<span
-class="math inline"><em>α</em></span>为<span
-class="math inline"><strong>r</strong></span>的2倍数。</p>
-<h2 id="lora的秩mathbfr如何选择">1.3 LoRA的秩<span
-class="math inline"><strong>r</strong></span>如何选择</h2>
-<p>目标：找到一个秩<span
-class="math inline"><strong>r</strong></span>，使<span
-class="math inline">BA</span>无限接近<span
-class="math inline"><em>Δ</em><strong>W</strong></span>的表达能力。</p>
-<p>秩<span
-class="math inline"><strong>r</strong></span>越大，拟合能力越强（甚至出现过拟合），但参与训练的参数量也随之增加。</p>
 
       
     </div>

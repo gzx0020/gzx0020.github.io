@@ -20,30 +20,29 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.23.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"show_result":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="Consistency Models和SR3的初步学习">
+    <meta name="description" content="微调效果测试用lora层替换unet中所有可替换的线性层和1×1卷积层，测试效果较差，有明显失真，指标相比上一次微调均有下降 论文代码学习学习论文 Phasic Content Fusing Diffusion Model with Directional Distribution Consistency for Few-Shot Model Adaption 的开源代码，微调部分实现方法如下：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="week1">
-<meta property="og:url" content="http://example.com/2025/05/20/week1/index.html">
+<meta property="og:title" content="week6">
+<meta property="og:url" content="http://example.com/2025/07/21/week6/index.html">
 <meta property="og:site_name" content="九大山人">
-<meta property="og:description" content="Consistency Models和SR3的初步学习">
+<meta property="og:description" content="微调效果测试用lora层替换unet中所有可替换的线性层和1×1卷积层，测试效果较差，有明显失真，指标相比上一次微调均有下降 论文代码学习学习论文 Phasic Content Fusing Diffusion Model with Directional Distribution Consistency for Few-Shot Model Adaption 的开源代码，微调部分实现方法如下：">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2025/05/20/week1/1747148746366.png">
-<meta property="article:published_time" content="2025-05-20T02:14:13.000Z">
-<meta property="article:modified_time" content="2025-07-13T10:31:28.290Z">
+<meta property="article:published_time" content="2025-07-21T09:43:47.000Z">
+<meta property="article:modified_time" content="2025-07-21T09:47:41.252Z">
 <meta property="article:author" content="gzx">
+<meta property="article:tag" content="Few-Shot">
 <meta property="article:tag" content="diffusion model">
 <meta property="article:tag" content="科研实习周记">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2025/05/20/week1/1747148746366.png">
 
 
-<link rel="canonical" href="http://example.com/2025/05/20/week1/">
+<link rel="canonical" href="http://example.com/2025/07/21/week6/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2025/05/20/week1/","path":"2025/05/20/week1/","title":"week1"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2025/07/21/week6/","path":"2025/07/21/week6/","title":"week6"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>week1 | 九大山人</title>
+<title>week6 | 九大山人</title>
   
 
 
@@ -173,9 +172,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E8%87%B4%E6%80%A7%E6%A8%A1%E5%9E%8Bconsistency-modelscm"><span class="nav-number">1.</span> <span class="nav-text">一致性模型（Consistency
-Models，CM）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#sde%E4%B8%8Eode"><span class="nav-number">1.1.</span> <span class="nav-text">SDE与ODE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E7%94%A8%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E8%AE%AD%E7%BB%83%E4%B8%80%E8%87%B4%E6%80%A7%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.2.</span> <span class="nav-text">如何用神经网络训练一致性模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E8%87%B4%E6%80%A7%E8%92%B8%E9%A6%8F%E7%AE%80%E7%A7%B0cdconsistency-distillation%E4%BB%8E%E5%B7%B2%E7%BB%8F%E5%AD%A6%E5%A5%BD%E7%9A%84score-function%E8%92%B8%E9%A6%8F"><span class="nav-number">1.2.1.</span> <span class="nav-text">一致性蒸馏（简称CD，Consistency
-Distillation）——从已经学好的score function蒸馏</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%87%E4%B8%80%E8%87%B4%E6%80%A7%E6%A8%A1%E5%9E%8B%E9%87%87%E6%A0%B7%E8%8E%B7%E5%BE%97%E5%9B%BE%E5%83%8F"><span class="nav-number">1.3.</span> <span class="nav-text">如何通过一致性模型采样获得图像</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E6%AD%A5%E9%87%87%E6%A0%B7"><span class="nav-number">1.3.1.</span> <span class="nav-text">一步采样</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E6%AD%A5%E9%87%87%E6%A0%B7"><span class="nav-number">1.3.2.</span> <span class="nav-text">多步采样</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sr3"><span class="nav-number">2.</span> <span class="nav-text">SR3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#key-words"><span class="nav-number">2.1.</span> <span class="nav-text">key words</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B6%89%E5%8F%8A%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="nav-number">2.2.</span> <span class="nav-text">涉及知识点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">2.3.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-number">2.4.</span> <span class="nav-text">问题</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BE%AE%E8%B0%83%E6%95%88%E6%9E%9C%E6%B5%8B%E8%AF%95"><span class="nav-number">1.</span> <span class="nav-text">微调效果测试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%BA%E6%96%87%E4%BB%A3%E7%A0%81%E5%AD%A6%E4%B9%A0"><span class="nav-number">2.</span> <span class="nav-text">论文代码学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%86%85%E5%AE%B9%E8%9E%8D%E5%90%88%E6%A8%A1%E5%9D%97%E5%BE%AE%E8%B0%83-train-recon-py"><span class="nav-number">2.1.</span> <span class="nav-text">1. 内容融合模块微调 (train-recon.py)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%B0%91%E6%A0%B7%E6%9C%AC%E5%9F%9F%E9%80%82%E5%BA%94%E5%BE%AE%E8%B0%83-train-whole-py"><span class="nav-number">2.2.</span> <span class="nav-text">2. 少样本域适应微调 (train-whole.py)</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -228,7 +225,7 @@ Distillation）——从已经学好的score function蒸馏</span></a></li></ol>
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/05/20/week1/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/21/week6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -241,12 +238,12 @@ Distillation）——从已经学好的score function蒸馏</span></a></li></ol>
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="week1 | 九大山人">
+      <meta itemprop="name" content="week6 | 九大山人">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          week1
+          week6
         </h1>
 
         <div class="post-meta-container">
@@ -256,15 +253,9 @@ Distillation）——从已经学好的score function蒸馏</span></a></li></ol>
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
+      
 
-      <time title="Created: 2025-05-20 10:14:13" itemprop="dateCreated datePublished" datetime="2025-05-20T10:14:13+08:00">2025-05-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-07-13 18:31:28" itemprop="dateModified" datetime="2025-07-13T18:31:28+08:00">2025-07-13</time>
+      <time title="Created: 2025-07-21 17:43:47 / Modified: 17:47:41" itemprop="dateCreated datePublished" datetime="2025-07-21T17:43:47+08:00">2025-07-21</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -292,121 +283,20 @@ Distillation）——从已经学好的score function蒸馏</span></a></li></ol>
     
     
     
-    <div class="post-body" itemprop="articleBody"><h1 id="一致性模型consistency-modelscm">一致性模型（Consistency
-Models，CM）</h1>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/623402026"
-class="uri">https://zhuanlan.zhihu.com/p/623402026</a>
-一致性模型（Consistency
-Models，CM）主要解决扩散生成模型迭代采样过程缓慢的问题，支持一步采样快速生成和多步采样高精度生成，CM
-的本质就是将任何时间步的点映射到轨迹的起点。CM 的一个关键的性质是
-self-consistency 性：相同轨迹上的点映射到相同的初始点。</p>
-<h2 id="sde与ode">SDE与ODE</h2>
-<p>前向过程满足的SDE： $=(,t)t+g(t)(t) $ f:漂移因子 g:扩散因子
-w:维纳过程(标准布朗运动) score:<span
-class="math inline">∇<sub><em>x</em></sub>log <em>p</em>(<em>x</em>)</span>
-即概率密度对数的梯度</p>
-<p>朗之万动力学<br />
-边缘概率密度<br />
-score matching</p>
-<p>逆向过程的SDE为： <span
-class="math inline">$\mathrm{d}\mathbf{x}=[\mathbf{f}(\mathbf{x},t)-g^2(t)\nabla_\mathbf{x}\log
-p_t(\mathbf{x})]\mathrm{d}t+g(t)\mathrm{d}\bar \\
-{\mathbf{w}}(t)$</span></p>
-<p>ODE：SDE去掉维纳过程，变成一个常微分方程<br />
-<span class="math inline">$\mathrm{d}\mathbf{x}_t=
-\begin{bmatrix}
-f(\mathbf{x}_t,t)-\frac{1}{2}g^2(t)\nabla\log p_t(\mathbf{x}_t)
-\end{bmatrix}\mathrm{d}t$</span></p>
-<h2 id="如何用神经网络训练一致性模型">如何用神经网络训练一致性模型</h2>
-<p>一致性函数 <span class="math inline">$f(\mathbf{x}_t,t)=
-\begin{cases}
-\mathbf{x}_\varepsilon, &amp; t=\varepsilon \\
-f(\mathbf{x}_{t^{\prime}},t^{\prime}), &amp; t\in(\varepsilon,T],\forall
-t^{\prime}\in[\varepsilon,T] &amp;
-\end{cases}$</span></p>
-<p>一致性模型：即用神经网络模拟一致性函数的特性<br />
-给定任意神经网络F, <span
-class="math inline"><em>f</em><sub><em>θ</em></sub>(<strong>x</strong><sub><em>t</em></sub>, <em>t</em>) = <em>C</em><sub>skip</sub>(<em>t</em>)<strong>x</strong><sub><em>t</em></sub> + <em>C</em><sub>out</sub>(<em>t</em>)<em>F</em><sub><em>θ</em></sub>(<strong>x</strong><sub><em>t</em></sub>, <em>t</em>)</span>
-随t变化时C的变化</p>
-<p>EDM–<span
-class="math inline"><em>C</em><sub><em>i</em><em>n</em></sub></span></p>
-<p>损失函数——相邻两个时间输出值差距最小化<span
-class="math inline">$\mathcal{L}^N(\theta)=\mathbb{E}[\|f_\theta(\mathbf{x}_{t_{n+1}},t_{n+1})-f_\theta(\hat{\mathbf{x}}_{t_n},t_n)\|_2^2]$</span>
-再经过EMA,最终<span
-class="math inline">$\mathcal{L}^N(\theta,\theta^-)=\mathbb{E}[\|f_\theta(\mathbf{x}_{t_{n+1}},t_{n+1})-f_{\theta^-}(\hat{\mathbf{x}}_{t_n},t_n)\|_2^2]$</span></p>
-<h3
-id="一致性蒸馏简称cdconsistency-distillation从已经学好的score-function蒸馏">一致性蒸馏（简称CD，Consistency
-Distillation）——从已经学好的score function蒸馏</h3>
-<p><img src="1747148746366.png" /></p>
-<p>已经有了score function <span
-class="math inline"><strong>s</strong><sub><em>ϕ</em></sub>(<strong>x</strong>(<em>t</em>), <em>t</em>)</span>
-### 一致性训练(简称CT，Consistency Training)——从数据中直接学 <img
-src="Snipaste_2025-05-15_01-19-37.png" /></p>
-<p>用<span class="math inline">$\nabla\log
-p_t(\mathbf{x}_t)=-\mathbb{E}\left[\frac{\mathbf{x}_t-\mathbf{x}}{t^2}|\mathbf{x}_t\right]$</span>来代替一致性蒸馏中的已有的sore
-fuction</p>
-<h2
-id="如何通过一致性模型采样获得图像">如何通过一致性模型采样获得图像</h2>
-<h3 id="一步采样">一步采样</h3>
-<p>给定一个<span
-class="math inline"><em>x</em><sub><em>t</em></sub></span>，带入一致性模型</p>
-<h3 id="多步采样">多步采样</h3>
-<p>可提升图像质量</p>
-<h1 id="sr3">SR3</h1>
-<p>SR3 is an approach to image super resolution via iterative refinement
-通过迭代优化实现生成图像超分辨率</p>
-<h2 id="key-words">key words</h2>
-<ol type="1">
-<li>iterative refinement</li>
-<li>both faces and natural images</li>
-<li>bicubic interpolation</li>
-<li>flexibility inchoosing number of diffusion steps, and the noise
-schedule during inference</li>
-<li>FID</li>
-<li>rather than estimating the posterior mean, SR3 generates samples
-from the target posterior.</li>
-<li>constant number of refinement steps (often no more than 100).</li>
-<li>onot requireanyauxiliaryobjective function inorder
-toensureconsistencywith the low resolutioninputs</li>
-<li>our diffusion models do not provide a knob to control sample quality
-vs. sample diversity（如何平衡样本质量与样本多样性吗？）, and finding
-ways to do so isinteresting avenue for future research.</li>
-</ol>
-<h2 id="涉及知识点">涉及知识点</h2>
-<ol type="1">
-<li>score matching</li>
-<li>Langevin dynamics</li>
-<li>PSNR and SSIM</li>
-<li>residual blocks</li>
-<li>级联结构</li>
-<li>Normalizing flows</li>
-<li>anti-aliasing</li>
-<li>ImageNet</li>
-<li>Dropout</li>
-</ol>
-<h2 id="总结">总结</h2>
-<ol type="1">
-<li>将LR作为条件输入</li>
-<li>不在取离散的t，而是将同样范围内连续t的采样值（即noise）输入
-或许可以减小推理步数，加快速度？</li>
-<li>级联 分阶段生成：
-第一阶段：使用无条件生成模型（如DDPM）生成低分辨率图像（如64×64）。
-第二阶段：将低分辨率图像输入第一个SR3模型，进行4倍上采样（64→256）。
-第三阶段：将256×256图像输入第二个SR3模型，再次4倍上采样至1024×1024。</li>
-</ol>
-<h2 id="问题">问题</h2>
-<ol type="1">
-<li>下采样操作，将 HR 图像的尺⼨减半，⽣成对应的 LR 图像
-下采样方式如何选择（是否采用SR3论文中提到的双三次插值？），以及为什么规定LR为HR尺寸减半后的结果</li>
-<li>SR3采用的是迭代优化实现图像超分辨率重建的方法，是否面临计算和时间成本高的问题，如何解决是否可以参考连续一致性模型的做法</li>
-<li>连续一致性模型有单步采样和多部采样两种方式，多部采样可以理解为牺牲速度换取高质量？是否可以再次基础上实现超分辨率重建？</li>
-<li>尝试<a target="_blank" rel="noopener" href="https://github.com/openai/consistency_models"
-class="uri">https://github.com/openai/consistency_models</a> 和<a
-target="_blank" rel="noopener" href="https://github.com/Janspiry/Image-Super-Resolution-via-Iterative-Refinement"
-class="uri">https://github.com/Janspiry/Image-Super-Resolution-via-Iterative-Refinement</a>
-时遇到困难</li>
-<li>对数学公式的推导要掌握到什么程度？</li>
-</ol>
+    <div class="post-body" itemprop="articleBody"><h1 id="微调效果测试"><a href="#微调效果测试" class="headerlink" title="微调效果测试"></a>微调效果测试</h1><p>用lora层替换unet中所有可替换的线性层和1×1卷积层，测试效果较差，有明显失真，指标相比上一次微调均有下降</p>
+<h1 id="论文代码学习"><a href="#论文代码学习" class="headerlink" title="论文代码学习"></a>论文代码学习</h1><p>学习论文 Phasic Content Fusing Diffusion Model with Directional Distribution Consistency for Few-Shot Model Adaption 的开源代码，<br>微调部分实现方法如下：</p>
+<h2 id="1-内容融合模块微调-train-recon-py"><a href="#1-内容融合模块微调-train-recon-py" class="headerlink" title="1. 内容融合模块微调 (train-recon.py)"></a>1. 内容融合模块微调 (train-recon.py)</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#创建一个Adam优化器，只优化扩散模型中条件模块(c_content_condition)的参数</span></span><br><span class="line">optimizer = Adam(diffusion.model.c_content_condition.parameters(), lr=<span class="number">1e-4</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#遍历数据集中的所有批次</span></span><br><span class="line"><span class="keyword">for</span> batch <span class="keyword">in</span> dataloader:   </span><br><span class="line">    real_image = batch.cuda()      </span><br><span class="line">    condition = real_image  <span class="comment"># 使用自身作为条件</span></span><br><span class="line">      </span><br><span class="line">    t, (x, loss_diffusion) = diffusion.few_shot_forward(</span><br><span class="line">        real_image,   </span><br><span class="line">        x_self_cond=condition,  </span><br><span class="line">        max_step=<span class="number">1000</span>  </span><br><span class="line">    )</span><br><span class="line">  </span><br><span class="line">    <span class="comment"># 计算扩散损失的平均值（预测噪声与真实噪声的差异）  </span></span><br><span class="line">    loss_diffusion.mean().backward()  <span class="comment"># 反向传播计算梯度</span></span><br><span class="line">  </span><br><span class="line">    optimizer.step()</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">if</span> global_step % <span class="number">200</span> == <span class="number">0</span>:</span><br><span class="line">        <span class="comment"># 使用DDIM采样器生成重建图像</span></span><br><span class="line">        output_image = diffusion.ddim_sample(</span><br><span class="line">            real_image.shape,  </span><br><span class="line">            condition=condition,  </span><br><span class="line">            sample_step=<span class="number">50</span>,     </span><br><span class="line">            max_step=<span class="number">800</span>          <span class="comment">#从噪声步800开始逆向扩散（跳过前200步）</span></span><br><span class="line">        )</span><br><span class="line">            </span><br><span class="line">  </span><br></pre></td></tr></table></figure>
+
+<p>通过 c_content_condition 模块分离内容&#x2F;风格学习:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">model_target.prepare(style_condition=<span class="literal">True</span>, two_stage_step=<span class="number">300</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-少样本域适应微调-train-whole-py"><a href="#2-少样本域适应微调-train-whole-py" class="headerlink" title="2. 少样本域适应微调 (train-whole.py)"></a>2. 少样本域适应微调 (train-whole.py)</h2><p>a.分阶段训练策略：大t步学内容&#x2F;风格，小t步学细节, 具体是大t：学习全局内容&#x2F;风格 (step&#x3D;300-1000)  小t：学习局部细节 (t~rand(0,300))</p>
+<p>b.方向分布一致性：feature_dir &#x3D; (target_feature - source_feature) 引导特征迁移</p>
+<p>L_DDC &#x3D; ||φ(G(x)) - (φ(x) + Δ)||^2</p>
+<p>其中 Δ &#x3D; E[φ(y)] - E[φ(x)] 是域间特征方向</p>
+<p>c.动态加权</p>
+<p>α &#x3D; 20^{t&#x2F;T} \quad (T&#x3D;1000)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#创建一个优化器，只优化需要梯度的参数</span></span><br><span class="line"><span class="comment"># 使用filter+lambda过滤出requires_grad=True的参数，冻结有些参数</span></span><br><span class="line">optimizer = Adam(</span><br><span class="line">    <span class="built_in">filter</span>(<span class="keyword">lambda</span> p: p.requires_grad, diffusion_target.parameters()), </span><br><span class="line">    lr=<span class="number">1e-4</span>  <span class="comment">#使用相对较小的学习率防止过拟合</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 遍历源域和目标域的数据加载器</span></span><br><span class="line"><span class="comment"># 使用zip确保每次迭代获取一对源域和目标域批次数据</span></span><br><span class="line"><span class="keyword">for</span> (target_batch, source_batch) <span class="keyword">in</span> <span class="built_in">zip</span>(target_dataloader, source_dataloader):</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 阶段1：内容保持（大t）</span></span><br><span class="line">  </span><br><span class="line">    <span class="keyword">if</span> global_step % <span class="number">2</span> == <span class="number">0</span>:  <span class="comment"># 每两步执行一次</span></span><br><span class="line">      </span><br><span class="line">      </span><br><span class="line">        <span class="comment"># step=300 表示在扩散过程的前300步进行内容融合</span></span><br><span class="line">        t, (x, _) = diffusion.few_shot_forward(</span><br><span class="line">            source_image,     <span class="comment"># 源域输入图像</span></span><br><span class="line">            step=<span class="number">300</span>,       </span><br><span class="line">            x_self_cond=condition  <span class="comment">#内容条件输入</span></span><br><span class="line">        )</span><br><span class="line">      </span><br><span class="line">        <span class="comment"># 方向分布一致性损失      </span></span><br><span class="line">        <span class="comment"># 使用CLIP模型提取源域图像特征</span></span><br><span class="line">        feature_source = clip_model.encode_img(source_image)      </span><br><span class="line">        feature_target = clip_model.encode_img(generated_image)      </span><br><span class="line">      </span><br><span class="line">        <span class="comment">#feature_dir = E[φ(y)] - E[φ(x)] 预计算的域间特征方向</span></span><br><span class="line">        loss_feature = mse_loss(</span><br><span class="line">            feature_target, </span><br><span class="line">            feature_source + feature_dir  <span class="comment"># 特征方向约束</span></span><br><span class="line">        ) * opts.beta_f  <span class="comment">#可调节的损失权重</span></span><br><span class="line">      </span><br><span class="line">        <span class="comment"># 风格损失</span></span><br><span class="line">      </span><br><span class="line">        <span class="comment"># 使用预定义的风格损失函数(训练的VGG)      </span></span><br><span class="line">        loss_style = style_loss(generated_image, style_imgs) * opts.beta_style</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">    <span class="comment"># 阶段2：细节学习（小t）   </span></span><br><span class="line">    <span class="keyword">else</span>:  <span class="comment">#与阶段1交替执行</span></span><br><span class="line">      </span><br><span class="line">        t = torch.randint(<span class="number">0</span>, <span class="number">300</span>, (batch_size,))  </span><br><span class="line">      </span><br><span class="line">        <span class="comment">#使用目标域图像进行前向传播     </span></span><br><span class="line">        _, (_, loss_diffusion) = diffusion.few_shot_forward(</span><br><span class="line">            target_image,  </span><br><span class="line">            t=t          </span><br><span class="line">        )</span><br><span class="line">  </span><br><span class="line">   </span><br><span class="line">    <span class="comment">#时间步相关加权   </span></span><br><span class="line">   </span><br><span class="line">    alpha = <span class="number">20</span> ** (t / <span class="number">1000</span>)  <span class="comment">#权重函数</span></span><br><span class="line">  </span><br><span class="line">    <span class="comment">#加权总损失   </span></span><br><span class="line">    total_loss = (alpha * (loss_feature + loss_style)).mean()</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">    total_loss.backward()   </span><br><span class="line">  </span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -416,6 +306,7 @@ class="uri">https://github.com/Janspiry/Image-Super-Resolution-via-Iterative-Ref
 
     <footer class="post-footer">
           <div class="post-tags">
+              <a href="/tags/Few-Shot/" rel="tag"># Few-Shot</a>
               <a href="/tags/diffusion-model/" rel="tag"># diffusion model</a>
               <a href="/tags/%E7%A7%91%E7%A0%94%E5%AE%9E%E4%B9%A0%E5%91%A8%E8%AE%B0/" rel="tag"># 科研实习周记</a>
           </div>
@@ -424,11 +315,11 @@ class="uri">https://github.com/Janspiry/Image-Super-Resolution-via-Iterative-Ref
 
           <div class="post-nav">
             <div class="post-nav-item">
+                <a href="/2025/07/15/%E5%86%B3%E7%AD%96%E6%A0%91/" rel="prev" title="决策树">
+                  <i class="fa fa-angle-left"></i> 决策树
+                </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2025/06/25/week2/" rel="next" title="week2">
-                  week2 <i class="fa fa-angle-right"></i>
-                </a>
             </div>
           </div>
     </footer>

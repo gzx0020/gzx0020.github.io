@@ -181,7 +181,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -192,7 +192,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -209,6 +209,150 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/26/LoRA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="gzx">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="九大山人">
+      <meta itemprop="description" content="这里记录我的学习与生活">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | 九大山人">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/06/26/LoRA/" class="post-title-link" itemprop="url">LoRA</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2025-06-26 20:48:33" itemprop="dateCreated datePublished" datetime="2025-06-26T20:48:33+08:00">2025-06-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2025-07-13 18:19:01" itemprop="dateModified" datetime="2025-07-13T18:19:01+08:00">2025-07-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%A7%91%E7%A0%94%E5%AE%9E%E4%B9%A0-RadioDiff%E5%BE%AE%E8%B0%83/" itemprop="url" rel="index"><span itemprop="name">-科研实习 -RadioDiff微调</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="一.lora原理">一.LoRA原理</h1>
+<p>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/702629428"
+class="uri">https://zhuanlan.zhihu.com/p/702629428</a> 原论文：<a
+target="_blank" rel="noopener" href="https://arxiv.org/pdf/2106.09685"
+class="uri">https://arxiv.org/pdf/2106.09685</a> LoRA(Low-Rank
+Adaptation of LLMs)，即LLMs的低秩适应，是参数高效微调最常用的方法。</p>
+<p>LoRA的本质就是用更少的训练参数来近似LLM全参数微调所得的增量参数，从而达到使用更少显存占用的高效微调。</p>
+<h2 id="实现流程">1.1实现流程</h2>
+<p><img src="v2-10ce9e224defb3732e09a257911821aa_1440w.png" /></p>
+<ol type="1">
+<li>在原始预训练语言模型旁边增加一个旁路，做降维再升维的操作来模拟内在秩；<br />
+</li>
+<li>用随机高斯分布初始化
+A，用零矩阵初始化B，训练时固定预训练模型的参数，只训练矩阵 A 与矩阵
+B；</li>
+<li>训练完成后，将 B 矩阵与 A
+矩阵相乘后合并预训练模型参数作为微调后的模型参数。</li>
+</ol>
+<p>具体来讲，预训练权重矩阵 <span
+class="math inline"><strong>W</strong><sub>0</sub> ∈ ℝ<sup><em>d</em> × <em>d</em></sup></span>
+，</p>
+<p>将增量参数矩阵 <span
+class="math inline"><em>Δ</em><strong>W</strong></span>
+，表示为两个参数量更小的矩阵 B 和 A 的低秩近似,如下式</p>
+<p><span
+class="math display"><strong>W</strong><sub>0</sub> + <em>Δ</em><strong>W</strong> = <strong>W</strong><sub>0</sub> + <strong>B</strong><strong>A</strong></span></p>
+<p>其中 <span
+class="math inline"><strong>B</strong> ∈ ℝ<sup><em>d</em> × <em>r</em></sup></span>
+，<span
+class="math inline"><strong>A</strong> ∈ ℝ<sup><em>r</em> × <em>d</em></sup></span>
+，秩<span class="math inline">r</span>远小于<span
+class="math inline">d</span></p>
+<p>给定输入<span
+class="math inline">.<strong>x</strong> ∈ ℝ<sup><em>d</em></sup></span>
+,添加LoRA后的输出<span
+class="math inline">.<strong>h</strong> ∈ ℝ<sup><em>d</em></sup></span></p>
+<p><span
+class="math display"><strong>h</strong> = (<strong>W</strong><sub>0</sub> + <em>Δ</em><strong>W</strong>)<strong>x</strong> = <strong>W</strong><sub>0</sub><strong>x</strong> + <strong>B</strong><strong>A</strong><strong>x</strong></span></p>
+<p><span
+class="math display"><em>Δ</em><strong>h</strong> = <strong>B</strong><strong>A</strong><strong>x</strong></span></p>
+<h2 id="lora参数合并系数">1.2LoRA参数合并系数</h2>
+<p>实际实现时以以下形式合并，其中<span
+class="math inline"><em>α</em></span>为超参数</p>
+<p><span
+class="math display">$$\mathbf{h}=(\mathbf{W}_{0}+\frac{\alpha}{r}\Delta\mathbf{W})\mathbf{x}$$</span></p>
+<p>系数<span
+class="math inline">$\frac{\alpha}{r}$</span>越大，LoRA微调权重的影响就越大，在下游任务上越容易过拟合</p>
+<p>系数<span
+class="math inline">$\frac{\alpha}{r}$</span>越小，LoRA微调权重的影响就越小（微调的效果不明显，原始模型参数受到的影响也较少）</p>
+<p>一般来说，在给定任务上LoRA微调，让<span
+class="math inline"><em>α</em></span>为<span
+class="math inline"><strong>r</strong></span>的2倍数。</p>
+<h2 id="lora的秩mathbfr如何选择">1.3 LoRA的秩<span
+class="math inline"><strong>r</strong></span>如何选择</h2>
+<p>目标：找到一个秩<span
+class="math inline"><strong>r</strong></span>，使<span
+class="math inline">BA</span>无限接近<span
+class="math inline"><em>Δ</em><strong>W</strong></span>的表达能力。</p>
+<p>秩<span
+class="math inline"><strong>r</strong></span>越大，拟合能力越强（甚至出现过拟合），但参与训练的参数量也随之增加。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
