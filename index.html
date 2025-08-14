@@ -244,7 +244,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2025-08-14 14:26:57 / Modified: 21:53:24" itemprop="dateCreated datePublished" datetime="2025-08-14T14:26:57+08:00">2025-08-14</time>
+      <time title="Created: 2025-08-14 14:26:57 / Modified: 22:00:07" itemprop="dateCreated datePublished" datetime="2025-08-14T14:26:57+08:00">2025-08-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -267,14 +267,18 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>前段时间电赛训练时常苦于复杂工程的时间调度问题，由于裸机系统主程序是在一整个while(1)循环中实现的，所以面对需要实现多个功能的情况总会显得力不从心，我只好自己写状态机通过状态判断来优化调度，但这种做法实现起来比较复杂，突然想到或许可以移植FreeRTOS来解决这个问题，遂开始学习。</p>
-<h1>cubemx基本配置</h1>
-<h2 id="Timebase-Source">Timebase Source</h2>
+<h1 id="cubemx基本配置">cubemx基本配置</h1>
+<h2 id="timebase-source">Timebase Source</h2>
 <p>由于FreeTROS使用systick作为心跳，故搭载FreeRTOS时需要为HAL库另外选择一个定时器充当系统时基，推荐选择一个无任何输入输出即功能较少的定时器。</p>
-<h2 id="Middleware-and-Software-Packs">Middleware and Software Packs</h2>
+<h2 id="middleware-and-software-packs">Middleware and Software
+Packs</h2>
 <p>选择FreeRTOS的CMSIS_v2接口</p>
-<p>详细配置参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45396672/article/details/120877303">https://blog.csdn.net/qq_45396672/article/details/120877303</a></p>
-<h1>创建任务与队列</h1>
-<p><img src="/2025/08/14/STM32%E7%A7%BB%E6%A4%8DFreeRTOS-%E5%9F%BA%E4%BA%8EHAL%E5%BA%93/Snipaste_2025-08-14_15-47-03.png" alt=""></p>
+<p>详细配置参考：<a
+target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45396672/article/details/120877303"
+class="uri">https://blog.csdn.net/qq_45396672/article/details/120877303</a></p>
+<h1 id="创建任务与队列">创建任务与队列</h1>
+<p><img
+src="/2025/08/14/STM32%E7%A7%BB%E6%A4%8DFreeRTOS-%E5%9F%BA%E4%BA%8EHAL%E5%BA%93/Snipaste_2025-08-14_15-47-03.png" /></p>
 <h2 id="创建任务">创建任务</h2>
 <p>任务（线程）是操作系统运行的基本单元,点击add并配置相关的任务名称，任务实体（函数名），优先级等</p>
 <h2 id="创建队列">创建队列</h2>
@@ -288,8 +292,9 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">osStatus_t <span class="title">osMessageQueueGet</span> <span class="params">(osMessageQueueId_t mq_id, <span class="type">void</span> *msg_ptr, <span class="type">uint8_t</span> *msg_prio, <span class="type">uint32_t</span> timeout)</span></span>;</span><br></pre></td></tr></table></figure>
 <p>使用示例：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">StartledTask</span><span class="params">(<span class="type">void</span> *argument)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">/* USER CODE BEGIN StartledTask */</span></span><br><span class="line">    osStatus_t result;</span><br><span class="line">    <span class="type">uint8_t</span> dat[<span class="number">10</span>]= &#123;&#125;;</span><br><span class="line">    <span class="type">uint8_t</span> *pro;</span><br><span class="line">    <span class="comment">/* Infinite loop */</span></span><br><span class="line">    <span class="keyword">for</span>(;;)</span><br><span class="line">    &#123;</span><br><span class="line">        result= <span class="built_in">osMessageQueueGet</span>(myQueue01Handle,dat,pro,<span class="number">10</span>);</span><br><span class="line">        <span class="keyword">if</span>(result == osOK)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//接受成功</span></span><br><span class="line">        &#125; <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//接受失败</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">osDelay</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/* USER CODE END StartledTask */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1>创建软件定时器与信号量</h1>
-<p><img src="/2025/08/14/STM32%E7%A7%BB%E6%A4%8DFreeRTOS-%E5%9F%BA%E4%BA%8EHAL%E5%BA%93/Snipaste_2025-08-14_16-28-02.png" alt=""></p>
+<h1 id="创建软件定时器与信号量">创建软件定时器与信号量</h1>
+<p><img
+src="/2025/08/14/STM32%E7%A7%BB%E6%A4%8DFreeRTOS-%E5%9F%BA%E4%BA%8EHAL%E5%BA%93/Snipaste_2025-08-14_16-28-02.png" /></p>
 <h2 id="创建软件定时器">创建软件定时器</h2>
 <p>添加软件定时器之后会生成一个回调函数</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">CallBack01</span><span class="params">()</span></span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -297,24 +302,30 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">osStatus_t <span class="title">osTimerStart</span> <span class="params">(osTimerId_t timer_id, <span class="type">uint32_t</span> ticks)</span></span>;     </span><br><span class="line"><span class="function">osStatus_t <span class="title">osTimerStop</span> <span class="params">(osTimerId_t timer_id)</span></span>;</span><br></pre></td></tr></table></figure>
 <p>ticks是定时器周期</p>
 <h2 id="创建信号量">创建信号量</h2>
-<p>信号量本质上是一个特殊的 RTOS 内核对象，用于任务之间或任务与中断之间的 同步 或 资源管理。</p>
+<p>信号量本质上是一个特殊的 RTOS
+内核对象，用于任务之间或任务与中断之间的 同步 或 资源管理。</p>
 <p>可以理解为定时器，但是装载的不是数字而是信号数目，当信号数目大于0时任务可以进行但要获取一个信号数目（即信号-1），信号数目=0时任务阻塞，等到有信号再唤醒。</p>
-<h3 id="二值信号量-Binary-Semaphore">二值信号量 (Binary Semaphore)</h3>
-<p>只能取值 0 或 1，相当于开关；最常用来让一个任务等待某个事件发生，示例如下</p>
+<h3 id="二值信号量-binary-semaphore">二值信号量 (Binary Semaphore)</h3>
+<p>只能取值 0 或
+1，相当于开关；最常用来让一个任务等待某个事件发生，示例如下</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">StartDefaultTask</span><span class="params">(<span class="type">void</span> *argument)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="comment">/* USER CODE BEGIN StartDefaultTask */</span>		</span><br><span class="line">  <span class="comment">/* Infinite loop */</span></span><br><span class="line">  <span class="keyword">for</span>(;;)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="comment">//等待信号量（注意要有一个事件释放信号，即当这个事件执行一次后，便开始执行以下任务）</span></span><br><span class="line">		<span class="keyword">if</span>( <span class="built_in">osSemaphoreAcquire</span>(myBinarySem01Handle,<span class="number">10</span>)==osOK)&#123;</span><br><span class="line">            <span class="comment">//开始执行任务            </span></span><br><span class="line">        &#125;</span><br><span class="line">		    <span class="built_in">osDelay</span>(<span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">/* USER CODE END StartDefaultTask */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="计数信号量-Counting-Semaphore">计数信号量 (Counting Semaphore)</h3>
+<h3 id="计数信号量-counting-semaphore">计数信号量 (Counting
+Semaphore)</h3>
 <p>计数范围大于 1，可用于控制对某类资源的访问次数</p>
 <p>简单理解，可以这样用：有个事件A释放信号，设置Count（信号量最大数目）为n,当A执行满n次后开始执行任务B</p>
-<h1>创建互斥量</h1>
-<p><img src="/2025/08/14/STM32%E7%A7%BB%E6%A4%8DFreeRTOS-%E5%9F%BA%E4%BA%8EHAL%E5%BA%93/Snipaste_2025-08-14_16-46-21.png" alt=""><br>
-上面是普通互斥量，下面是递归互斥量<br>
+<h1 id="创建互斥量">创建互斥量</h1>
+<p><img
+src="/2025/08/14/STM32%E7%A7%BB%E6%A4%8DFreeRTOS-%E5%9F%BA%E4%BA%8EHAL%E5%BA%93/Snipaste_2025-08-14_16-46-21.png" />
+上面是普通互斥量，下面是递归互斥量<br />
 互斥量可以这样理解：二值信号量 + 优先级</p>
 <p>使用方法与信号量相同</p>
 <h2 id="普通互斥量">普通互斥量</h2>
-<p>只有一个任务能持有（值为 0 时其他任务阻塞），不能由另一个任务释放（必须持有者释放），同一任务如果再次请求同一 Mutex → 死锁（因为它已经占用，自己还在等自己释放），即只能请求一次。</p>
+<p>只有一个任务能持有（值为 0
+时其他任务阻塞），不能由另一个任务释放（必须持有者释放），同一任务如果再次请求同一
+Mutex → 死锁（因为它已经占用，自己还在等自己释放），即只能请求一次。</p>
 <h2 id="递归互斥量">递归互斥量</h2>
 <p>允许同一个任务多次获取同一把锁，每次获取都要匹配一次释放。必须释放和获取次数匹配，计数归零时才真正释放锁。</p>
-<h1>创建事件标志组</h1>
+<h1 id="创建事件标志组">创建事件标志组</h1>
 
       
     </div>
