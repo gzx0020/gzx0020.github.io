@@ -20,28 +20,24 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.23.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"show_result":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="diffusion model (李宏毅)笔记">
-<meta property="og:type" content="article">
-<meta property="og:title" content="week2">
-<meta property="og:url" content="http://example.com/2025/06/25/week2/index.html">
+    <meta name="description" content="这里记录我的学习与生活">
+<meta property="og:type" content="website">
+<meta property="og:title" content="林间有Wi-Fi">
+<meta property="og:url" content="http://example.com/archives/2025/08/index.html">
 <meta property="og:site_name" content="林间有Wi-Fi">
-<meta property="og:description" content="diffusion model (李宏毅)笔记">
+<meta property="og:description" content="这里记录我的学习与生活">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2025-06-25T13:41:24.000Z">
-<meta property="article:modified_time" content="2025-07-13T10:31:43.645Z">
 <meta property="article:author" content="gzx">
-<meta property="article:tag" content="diffusion model">
-<meta property="article:tag" content="科研实习周记">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/2025/06/25/week2/">
+<link rel="canonical" href="http://example.com/archives/2025/08/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2025/06/25/week2/","path":"2025/06/25/week2/","title":"week2"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"en","comments":"","permalink":"","path":"archives/2025/08/index.html","title":""}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>week2 | 林间有Wi-Fi</title>
+<title>Archive | 林间有Wi-Fi</title>
   
 
 
@@ -104,7 +100,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <p class="site-title">林间有Wi-Fi</p>
+      <h1 class="site-title">林间有Wi-Fi</h1>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">在线，但也听风</p>
@@ -158,7 +154,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <div class="sidebar-inner sidebar-overview-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -171,8 +167,6 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#diffusion-model-%E6%9D%8E%E5%AE%8F%E6%AF%85%E7%AC%94%E8%AE%B0"><span class="nav-number">1.</span> <span class="nav-text">diffusion model (李宏毅)笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5%E9%83%A8%E5%88%86"><span class="nav-number">1.1.</span> <span class="nav-text">概念部分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E8%88%AC%E5%9B%BE%E5%83%8F%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B%E5%9F%BA%E6%9C%AC%E6%A1%86%E6%9E%B6"><span class="nav-number">1.1.1.</span> <span class="nav-text">一般图像生成模型基本框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fidfrechet-inception-distance"><span class="nav-number">1.1.2.</span> <span class="nav-text">FID(Frechet Inception
-Distance)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E7%90%86%E9%83%A8%E5%88%86"><span class="nav-number">1.2.</span> <span class="nav-text">原理部分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%96%91%E9%97%AE"><span class="nav-number">1.2.1.</span> <span class="nav-text">疑问</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -214,161 +208,49 @@ Distance)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="na
 
     </div>
 
-    <div class="main-inner post posts-expand">
+    <div class="main-inner archive posts-collapse">
 
 
   
-
-
-<div class="post-block">
   
   
+  <div class="post-block">
+    <div class="post-content">
+      <div class="collection-title">
+        <span class="collection-header">Um..! 19 posts in total. Keep on posting.</span>
+      </div>
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/25/week2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="gzx">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="林间有Wi-Fi">
-      <meta itemprop="description" content="这里记录我的学习与生活">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="week2 | 林间有Wi-Fi">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          week2
-        </h1>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2025-06-25 21:41:24" itemprop="dateCreated datePublished" datetime="2025-06-25T21:41:24+08:00">2025-06-25</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-07-13 18:31:43" itemprop="dateModified" datetime="2025-07-13T18:31:43+08:00">2025-07-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%A7%91%E7%A0%94%E5%AE%9E%E4%B9%A0%E5%91%A8%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">科研实习周记</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">Views: </span>
-      <span id="busuanzi_value_page_pv"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody"><h1 id="diffusion-model-李宏毅笔记">diffusion model (李宏毅)笔记</h1>
-<h2 id="概念部分">概念部分</h2>
-<h3 id="一般图像生成模型基本框架">一般图像生成模型基本框架</h3>
-<p>text encoder → generation model → decoder</p>
-<h3 id="fidfrechet-inception-distance">FID(Frechet Inception
-Distance)</h3>
-<p>FID是一种用于评估生成图像质量的度量标准</p>
-<ol type="1">
-<li><p>特征提取 使用预训练的 Inception V3 模型（在 ImageNet
-数据集上训练的图像分类网络）作为特征提取器。输入图像（通常调整为 299×299
-的分辨率）会通过 Inception V3 前向传播，提取池化层（即 pool3
-层）的输出特征。这个特征是一个 2048 维的向量。</p></li>
-<li><p>特征分布假设 FID
-假设提取的特征向量服从多变量正态分布。对于真实图像集合X和生成图像集合G，分别计算特征的均值向量和协方差矩阵：
-真实图像特征均值 <span
-class="math inline"><em>μ</em><sub><em>r</em></sub></span> 协方差 <span
-class="math inline"><em>Σ</em><sub><em>r</em></sub></span>
-生成图像特征均值 <span
-class="math inline"><em>μ</em><sub><em>g</em></sub></span> 协方差 <span
-class="math inline"><em>Σ</em><sub><em>g</em></sub></span></p></li>
-<li><p>Fréchet 距离计算 Fréchet 距离用来衡量两个正态分布之间的差异<span
-class="math display">FID = ∥<em>μ</em><sub><em>r</em></sub> − <em>μ</em><sub><em>g</em></sub>∥<sub>2</sub><sup>2</sup> + Tr(<em>Σ</em><sub><em>r</em></sub> + <em>Σ</em><sub><em>g</em></sub> − 2(<em>Σ</em><sub><em>r</em></sub><em>Σ</em><sub><em>g</em></sub>)<sup>1/2</sup>)</span>
-第一项衡量两个分布均值的欧几里得距离，表示分布中心的偏移，第二项衡量协方差矩阵的差异，反映分布形状和分散度的不同</p></li>
-</ol>
-<h2 id="原理部分">原理部分</h2>
-<p><a
-target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV14c411J7f2?spm_id_from=333.788.player.switch&amp;vd_source=257a40315247000b85510107fa6b747d&amp;p=4"
-class="uri">https://www.bilibili.com/video/BV14c411J7f2?spm_id_from=333.788.player.switch&amp;vd_source=257a40315247000b85510107fa6b747d&amp;p=4</a></p>
-<ol type="1">
-<li><p>最大似然估计 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/55791843"
-class="uri">https://zhuanlan.zhihu.com/p/55791843</a> <img
-src="image\1747666364704.png" alt="1747666364704" /></p></li>
-<li><p>扩散模型与能量模型，Score-Matching和SDE，ODE的关系 <a
-target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/576779879"
-class="uri">https://zhuanlan.zhihu.com/p/576779879</a></p></li>
-</ol>
-<h3 id="疑问">疑问</h3>
-<ol type="1">
-<li>李宏毅认为噪声实际上不是一步一步加进<span
-class="math inline"><em>x</em><sub>0</sub></span>的,而是一步实现的 <img
-src="image\Snipaste_2025-05-21_18-49-49.png" />
-但通过对一致性模型的学习，我了解到diffusion
-model的前向过程和逆向过程实际上都能表示为SDE过程，需要进行多次迭代，而consistency
-model就是为了解决这个问题，将SDE的随机项消除，转变为ODE过程，从而实现减少迭代次数，这是否与上图观点相悖？</li>
-</ol>
-
+      
+    <div class="collection-year">
+      <span class="collection-header">2025<span class="collection-year-count">19</span></span>
     </div>
 
-    
-    
-    
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <div class="post-meta-container">
+        <time itemprop="dateCreated"
+              datetime="2025-08-14T14:26:57+08:00"
+              content="2025-08-14">
+          08-14
+        </time>
+      </div>
 
-    <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/diffusion-model/" rel="tag"># diffusion model</a>
-              <a href="/tags/%E7%A7%91%E7%A0%94%E5%AE%9E%E4%B9%A0%E5%91%A8%E8%AE%B0/" rel="tag"># 科研实习周记</a>
-          </div>
+      <div class="post-title">
+          <a class="post-title-link" href="/2025/08/14/STM32%E7%A7%BB%E6%A4%8DFreeRTOS-%E5%9F%BA%E4%BA%8EHAL%E5%BA%93/" itemprop="url">
+            <span itemprop="name">STM32移植FreeRTOS-基于HAL库</span>
+          </a>
+      </div>
 
-        
-
-          <div class="post-nav">
-            <div class="post-nav-item">
-                <a href="/2025/05/20/week1/" rel="prev" title="week1">
-                  <i class="fa fa-angle-left"></i> week1
-                </a>
-            </div>
-            <div class="post-nav-item">
-                <a href="/2025/06/26/Phasic%20Content%20Fusing%20Diffusion%20Model%20with%20Directional%20Distribution%20Consistency%20for%20Few-Shot%20Model%20Adaption/" rel="next" title="Phasic Content Fusing Diffusion Model with Directional Distribution Consistency for Few-Shot Model Adaption">
-                  Phasic Content Fusing Diffusion Model with Directional Distribution Consistency for Few-Shot Model Adaption <i class="fa fa-angle-right"></i>
-                </a>
-            </div>
-          </div>
-    </footer>
+      
+    </header>
   </article>
-</div>
 
 
-
-
-
+    </div>
+  </div>
+  
+  
+  
 
 </div>
   </main>
