@@ -76,11 +76,7 @@
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
-<!-- hexo injector head_end start -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --></head>
+</head>
 
 <body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
   <div class="headband"></div>
@@ -286,8 +282,7 @@ class="uri">https://arxiv.org/pdf/1706.03762</a></p>
 <p>Key：可以将每个单词的重要特征表示看作成 Key。</p>
 <p>Value：每个单词本身的特征向量看作为 Value，一般和
 Key成对出现，也就是我们常说的”键-值”对。</p>
-<p><img
-src="/2025/07/02/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/mkmroptvcwdrc_2696c13c0c654516bee3bc20714995c6.webp" /></p>
+<p><img src="mkmroptvcwdrc_2696c13c0c654516bee3bc20714995c6.webp" /></p>
 <p>核心公式（原论文中）：</p>
 <p><span
 class="math inline">$Attention(Q,K,V)=Softmax(\frac{QK^\top}{\sqrt{d_k}})V$</span></p>
@@ -317,8 +312,7 @@ class="math inline">$\alpha(q,k_i)=\frac{QK^T}{\sqrt{d}}$</span></p>
 <h2
 id="自注意力机制self-attention-mechanism">自注意力机制（Self-Attention
 Mechanism）</h2>
-<p><img
-src="/2025/07/02/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/v2-921a6ccdeed095c9940aa52baee85e8c_r.jpg" /></p>
+<p><img src="v2-921a6ccdeed095c9940aa52baee85e8c_r.jpg" /></p>
 <p>2.1 Embedding 操作, 将向量x转化为a,a作为注意力机制的input data</p>
 <p>2.2 q, k 操作</p>
 <p><span
@@ -335,16 +329,14 @@ class="math inline"><em>a</em><sup><em>i</em></sup></span>
 <p>其中<span class="math inline">d</span>表示 <span
 class="math inline">q</span>和<span class="math inline">k</span>
 矩阵的维度</p>
-<p><img
-src="/2025/07/02/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/v2-22195b05ea273b6d46ee0a7ff4fe71ed_1440w.jpg" /></p>
+<p><img src="v2-22195b05ea273b6d46ee0a7ff4fe71ed_1440w.jpg" /></p>
 <p>2.3 v操作</p>
 <p><span
 class="math inline"><em>b</em><sup>1</sup> = ∑<sub><em>i</em></sub><em>α̃</em><sub>1, <em>i</em></sub><em>v</em><sup><em>i</em></sup></span></p>
 <p><span
 class="math inline"><em>b</em><sup>2</sup> = ∑<sub><em>i</em></sub><em>α̃</em><sub>2, <em>i</em></sub><em>v</em><sup><em>i</em></sup></span></p>
 <p>以此类推</p>
-<p><img
-src="/2025/07/02/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/v2-0851bb5a4fdeb88efa6f96aabef45b65_1440w.jpg" /></p>
+<p><img src="v2-0851bb5a4fdeb88efa6f96aabef45b65_1440w.jpg" /></p>
 <h2 id="多头注意力机制">多头注意力机制</h2>
 <h3 id="qk操作">q,k操作</h3>
 <p>这里以两头为例</p>
@@ -355,8 +347,7 @@ class="math inline"><em>q</em><sup><em>i</em>, 2</sup> = <em>W</em><sup><e
 <p>k也是同样的操作</p>
 <h3 id="v操作">v操作</h3>
 <p>与自注意力机制相同</p>
-<p><img
-src="/2025/07/02/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/v2-18638aafea77d3cf87973a59c08315b8_1440w.jpg" /></p>
+<p><img src="v2-18638aafea77d3cf87973a59c08315b8_1440w.jpg" /></p>
 <h2 id="通道注意力机制">通道注意力机制</h2>
 <p>通道注意力机制是通过计算每个通道channel的重要性程度；因此，常常被用在卷积神经网络里面。目前，比较经典的通道注意力机制方法就是SENet模型，SENet通过学习通道间的关系（每个通道的重要性），提升了网络在特征表示中的表达能力，进而提升了模型的性能。</p>
 <h3 id="senet介绍">SENet介绍</h3>

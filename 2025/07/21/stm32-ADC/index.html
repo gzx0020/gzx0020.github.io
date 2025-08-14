@@ -79,11 +79,7 @@
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
-<!-- hexo injector head_end start -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --></head>
+</head>
 
 <body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
   <div class="headband"></div>
@@ -292,8 +288,8 @@
 对于我最近使用的stm32h7,逐次逼近时间为7.5个ADC周期，即：T=采样时间+7.5个ADC时钟周期<br />
 而采样时间可通过 ADCx_SMPR1 和 ADCx_SMPR2 寄存器中的 SMP[2:0]
 位编程，可选采样时间值如下： <img
-src="/2025/07/21/stm32-ADC/Snipaste_2025-07-21_18-49-44.png" /> <img
-src="/2025/07/21/stm32-ADC/Snipaste_2025-07-21_18-50-03.png" /></p>
+src="Snipaste_2025-07-21_18-49-44.png" /> <img
+src="Snipaste_2025-07-21_18-50-03.png" /></p>
 <p>设置ADC采样率时，无论是软件触发还是定时器触发，都要保证ADC采样两次触发之间的时间间隔要大于（等于）完成一次转换的时间。</p>
 <h1 id="定时器触发">定时器触发</h1>
 <p>stm32h7定时器：<br />
