@@ -20,12 +20,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.23.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"show_result":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="一、LoRA微调 test1: 将训练第二阶段注意力机制中的线性层’w_q’,‘w_k’,’w_v’替换为LoRA层 12lora_r: 8                    # LoRA秩大小lora_alpha: 16               # LoRA缩放因子 预训练模型只加载第二阶段扩散网络权重 结果： _IncompatibleKeys 错误（缺少 encoder&#x2F;de">
+    <meta name="description" content="一、LoRA微调 test1: 将训练第二阶段注意力机制中的线性层’w_q’,‘w_k’,&#39;w_v’替换为LoRA层 12lora_r: 8                    # LoRA秩大小lora_alpha: 16               # LoRA缩放因子 预训练模型只加载第二阶段扩散网络权重 结果： _IncompatibleKeys 错误（缺少 encoder&#x2F;decode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="week4">
 <meta property="og:url" content="http://example.com/2025/06/30/week4/index.html">
 <meta property="og:site_name" content="林间有Wi-Fi">
-<meta property="og:description" content="一、LoRA微调 test1: 将训练第二阶段注意力机制中的线性层’w_q’,‘w_k’,’w_v’替换为LoRA层 12lora_r: 8                    # LoRA秩大小lora_alpha: 16               # LoRA缩放因子 预训练模型只加载第二阶段扩散网络权重 结果： _IncompatibleKeys 错误（缺少 encoder&#x2F;de">
+<meta property="og:description" content="一、LoRA微调 test1: 将训练第二阶段注意力机制中的线性层’w_q’,‘w_k’,&#39;w_v’替换为LoRA层 12lora_r: 8                    # LoRA秩大小lora_alpha: 16               # LoRA缩放因子 预训练模型只加载第二阶段扩散网络权重 结果： _IncompatibleKeys 错误（缺少 encoder&#x2F;decode">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-06-30T14:05:07.000Z">
 <meta property="article:modified_time" content="2025-07-13T10:32:25.143Z">
@@ -168,9 +168,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80lora%E5%BE%AE%E8%B0%83"><span class="nav-number">1.</span> <span class="nav-text">一、LoRA微调</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#test1"><span class="nav-number">1.1.</span> <span class="nav-text">test1:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#test2"><span class="nav-number">1.2.</span> <span class="nav-text">test2:</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6"><span class="nav-number">2.</span> <span class="nav-text">注意力机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6"><span class="nav-number">2.1.</span> <span class="nav-text">什么是注意力机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-number">2.2.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6self-attention-mechanism"><span class="nav-number">2.3.</span> <span class="nav-text">自注意力机制（Self-Attention
-Mechanism）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E5%A4%B4%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6multi-head-self-attention-machanism"><span class="nav-number">2.4.</span> <span class="nav-text">多头注意力机制（Multi-head
-Self-Attention Machanism）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A9%BA%E9%97%B4%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6"><span class="nav-number">2.5.</span> <span class="nav-text">空间注意力机制</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">一、LoRA微调</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#test1"><span class="nav-number">1.1.</span> <span class="nav-text">test1:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#test2"><span class="nav-number">1.2.</span> <span class="nav-text">test2:</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">注意力机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6"><span class="nav-number">2.1.</span> <span class="nav-text">什么是注意力机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-number">2.2.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6%EF%BC%88Self-Attention-Mechanism%EF%BC%89"><span class="nav-number">2.3.</span> <span class="nav-text">自注意力机制（Self-Attention Mechanism）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E5%A4%B4%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6%EF%BC%88Multi-head-Self-Attention-Machanism%EF%BC%89"><span class="nav-number">2.4.</span> <span class="nav-text">多头注意力机制（Multi-head Self-Attention Machanism）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E9%81%93%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6"><span class="nav-number">2.5.</span> <span class="nav-text">通道注意力机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A9%BA%E9%97%B4%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6"><span class="nav-number">2.6.</span> <span class="nav-text">空间注意力机制</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -287,34 +285,31 @@ Self-Attention Machanism）</span></a></li><li class="nav-item nav-level-2"><a c
     
     
     
-    <div class="post-body" itemprop="articleBody"><h1 id="一lora微调">一、LoRA微调</h1>
+    <div class="post-body" itemprop="articleBody"><h1>一、LoRA微调</h1>
 <h2 id="test1">test1:</h2>
-<p>将训练第二阶段注意力机制中的线性层’w_q’,‘w_k’,’w_v’替换为LoRA层
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lora_r: 8                    # LoRA秩大小</span><br><span class="line">lora_alpha: 16               # LoRA缩放因子</span><br></pre></td></tr></table></figure> 预训练模型只加载第二阶段扩散网络权重</p>
-<p>结果： _IncompatibleKeys 错误（缺少 encoder/decoder 层）
-可能原因：只加载了第二阶段模型，缺少 Autoencoder
-部分，无法将输入图像编码为潜在空间表示，无法将生成的潜在编码解码为图像</p>
+<p>将训练第二阶段注意力机制中的线性层’w_q’,‘w_k’,'w_v’替换为LoRA层</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lora_r: 8                    # LoRA秩大小</span><br><span class="line">lora_alpha: 16               # LoRA缩放因子</span><br></pre></td></tr></table></figure>
+<p>预训练模型只加载第二阶段扩散网络权重</p>
+<p>结果： _IncompatibleKeys 错误（缺少 encoder/decoder 层）<br>
+可能原因：只加载了第二阶段模型，缺少 Autoencoder 部分，无法将输入图像编码为潜在空间表示，无法将生成的潜在编码解码为图像</p>
 <h2 id="test2">test2:</h2>
 <p>由第一次尝试得，当只微调扩散网络本身时，仍需要</p>
-<ol type="1">
-<li><p>先加载第一阶段Autoencoder</p></li>
-<li><p>再加载第二阶段扩散网络权重</p></li>
+<ol>
+<li>
+<p>先加载第一阶段Autoencoder</p>
+</li>
+<li>
+<p>再加载第二阶段扩散网络权重</p>
+</li>
 </ol>
 <p>则test2总体流程为：</p>
-<ol type="1">
+<ol>
 <li>加载完整的加载完整的扩散模型（含 Autoencoder + 扩散网络）</li>
 <li>注入 LoRA 参数到扩散网络的特定层</li>
 <li>冻结其他参数，随机选择20张图片训练 LoRA 层</li>
 </ol>
 <p>测试结果：</p>
 <table>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 22%" />
-<col style="width: 22%" />
-<col style="width: 13%" />
-<col style="width: 18%" />
-</colgroup>
 <thead>
 <tr>
 <th>评估指标</th>
@@ -355,64 +350,56 @@ Self-Attention Machanism）</span></a></li><li class="nav-item nav-level-2"><a c
 </tr>
 </tbody>
 </table>
-<h1 id="注意力机制">注意力机制</h1>
-<p>原论文：<a
-target="_blank" rel="noopener" href="https://arxiv.org/pdf/1706.03762">https://arxiv.org/pdf/1706.03762</a></p>
+<h1>注意力机制</h1>
+<p>原论文：<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1706.03762">https://arxiv.org/pdf/1706.03762</a></p>
 <h2 id="什么是注意力机制">什么是注意力机制</h2>
 <p>注意力机制就是让模型重点关注重要信息，忽略次要信息。注意力机制分为空间注意力和时间注意力，前者用于图像处理，后者用于自然语言处理.</p>
 <h2 id="原理">原理</h2>
 <p>Query：当前需要查询的目标，即当前输入的特征表示。</p>
 <p>Key：可以将每个单词的重要特征表示看作成 Key。</p>
-<p>Value：每个单词本身的特征向量看作为 Value，一般和
-Key成对出现，也就是我们常说的”键-值”对。</p>
+<p>Value：每个单词本身的特征向量看作为 Value，一般和 Key成对出现，也就是我们常说的&quot;键-值&quot;对。</p>
 
 <p>核心公式（原论文中）：</p>
-<p><span class="math display">$$
-Attention(Q,K,V)=Softmax(\frac{QK^\top}{\sqrt{d_k}})V
-$$</span></p>
+<p>$$<br>
+Attention(Q,K,V)=Softmax(\frac{QK^\top}{\sqrt{d_k}})V<br>
+$$</p>
 <p>步骤：</p>
-<ol type="1">
-<li><p>先根据 Query，Key计算两者的相关性，然后再通过 softmax 函数得到
-注意力分数，使用 softmax 函数是为了使得所有的注意力分数在 [0,1]
-之间，并且和为1。</p>
+<ol>
+<li>
+<p>先根据 Query，Key计算两者的相关性，然后再通过 softmax 函数得到 注意力分数，使用 softmax 函数是为了使得所有的注意力分数在 [0,1] 之间，并且和为1。</p>
 <p>相关性公式一般表示如下：</p>
-<p><span class="math display">$$
-score(q,k_i)=softmax(\alpha(q,k_i))=\frac{exp(\alpha(q,k_i))}{\sum_1^jexp(\alpha(q,k_j))}
-$$</span></p>
-<p>其中<span
-class="math inline"><em>α</em>(<em>q</em>, <em>k</em><sub><em>i</em></sub>)</span>有很多变体：</p>
-<p>e.g. 在加性注意力中</p>
-<p><span
-class="math display"><em>α</em>(<em>q</em>, <em>k</em><sub><em>i</em></sub>) = <em>w</em><sub><em>v</em></sub><sup><em>T</em></sup><em>t</em><em>a</em><em>n</em><em>h</em>(<em>W</em><sub><em>q</em></sub><em>q</em> + <em>W</em><sub><em>k</em></sub><em>k</em>)</span></p>
+<p>$$<br>
+score(q,k_i)=softmax(\alpha(q,k_i))=\frac{exp(\alpha(q,k_i))}{\sum_1^jexp(\alpha(q,k_j))}<br>
+$$</p>
+<p>其中$\alpha(q,k_{i})$有很多变体：</p>
+<p>e.g. 在加性注意力中</p>
+<p>$$<br>
+\alpha(q,k_i)=w_v^Ttanh(W_qq+W_kk)<br>
+$$</p>
 <p>W_q：Query对应的可训练矩阵</p>
 <p>W_k: Key对应的可训练矩阵</p>
 <p>w_v^T: Value对应的可训练矩阵</p>
 <p>(tanh为双曲正切函数，作为一种常见的激活函数)</p>
 <p>e.g.在缩放点积注意力中</p>
-<p><span class="math display">$$
-\alpha(q,k_i)=\frac{QK^T}{\sqrt{d}}
-$$</span></p>
-<p>其中d为Keys的维度大小，除以sqrt{d}是为了使方差变小，训练梯度更新时更稳定</p></li>
-<li><p>将注意力分数加权求和，得到带注意力分数的Value</p></li>
+<p>$$<br>
+\alpha(q,k_i)=\frac{QK^T}{\sqrt{d}}<br>
+$$</p>
+<p>其中d为Keys的维度大小，除以sqrt{d}是为了使方差变小，训练梯度更新时更稳定</p>
+</li>
+<li>
+<p>将注意力分数加权求和，得到带注意力分数的Value</p>
+</li>
 </ol>
-<h2
-id="自注意力机制self-attention-mechanism">自注意力机制（Self-Attention
-Mechanism）</h2>
+<h2 id="自注意力机制（Self-Attention-Mechanism）">自注意力机制（Self-Attention Mechanism）</h2>
 
 <p>2.1 Embedding 操作, 将向量x转化为a,a作为注意力机制的input data</p>
 <p>2.2 q, k 操作</p>
-<p><span
-class="math display"><em>q</em><sup><em>i</em></sup> = <em>W</em><sup><em>q</em></sup><em>a</em><sup><em>i</em></sup></span></p>
-<p><span
-class="math display"><em>k</em><sup><em>i</em></sup> = <em>W</em><sup><em>k</em></sup><em>a</em><sup><em>i</em></sup></span></p>
-<p><span
-class="math display"><em>v</em><sup><em>i</em></sup> = <em>W</em><sup><em>v</em></sup><em>a</em><sup><em>i</em></sup></span></p>
-<h2
-id="多头注意力机制multi-head-self-attention-machanism">多头注意力机制（Multi-head
-Self-Attention Machanism）</h2>
-<p>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/631398525"
-class="uri">https://zhuanlan.zhihu.com/p/631398525</a> ##
-通道注意力机制</p>
+<p>$$q^i=W^qa^i$$</p>
+<p>$$k^i=W^ka^i$$</p>
+<p>$$v^i=W^va^i$$</p>
+<h2 id="多头注意力机制（Multi-head-Self-Attention-Machanism）">多头注意力机制（Multi-head Self-Attention Machanism）</h2>
+<p>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/631398525">https://zhuanlan.zhihu.com/p/631398525</a></p>
+<h2 id="通道注意力机制">通道注意力机制</h2>
 <h2 id="空间注意力机制">空间注意力机制</h2>
 
     </div>
