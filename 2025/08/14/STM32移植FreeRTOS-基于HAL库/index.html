@@ -20,15 +20,20 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.23.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"show_result":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
 
-    <meta property="og:type" content="article">
+    <meta name="description" content="前段时间电赛训练时常苦于复杂工程的时间调度问题，由于裸机系统主程序是在一整个while(1)循环中实现的，所以面对需要实现多个功能的情况总会显得力不从心，我只好自己写状态机通过状态判断来优化调度，但这种做法实现起来比较复杂，突然想到或许可以移植FreeRTOS来解决这个问题，遂开始学习。 cubemx基本配置Timebase Source由于FreeTROS使用systick作为心跳，故搭载Fre">
+<meta property="og:type" content="article">
 <meta property="og:title" content="STM32移植FreeRTOS-基于HAL库">
 <meta property="og:url" content="http://example.com/2025/08/14/STM32%E7%A7%BB%E6%A4%8DFreeRTOS-%E5%9F%BA%E4%BA%8EHAL%E5%BA%93/index.html">
 <meta property="og:site_name" content="林间有Wi-Fi">
+<meta property="og:description" content="前段时间电赛训练时常苦于复杂工程的时间调度问题，由于裸机系统主程序是在一整个while(1)循环中实现的，所以面对需要实现多个功能的情况总会显得力不从心，我只好自己写状态机通过状态判断来优化调度，但这种做法实现起来比较复杂，突然想到或许可以移植FreeRTOS来解决这个问题，遂开始学习。 cubemx基本配置Timebase Source由于FreeTROS使用systick作为心跳，故搭载Fre">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2025/08/14/STM32%E7%A7%BB%E6%A4%8DFreeRTOS-%E5%9F%BA%E4%BA%8EHAL%E5%BA%93/Snipaste_2025-08-14_15-47-03.png">
 <meta property="article:published_time" content="2025-08-14T06:26:57.000Z">
-<meta property="article:modified_time" content="2025-08-14T06:26:57.419Z">
+<meta property="article:modified_time" content="2025-08-14T08:53:48.532Z">
 <meta property="article:author" content="gzx">
+<meta property="article:tag" content="stm32 RTOS">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2025/08/14/STM32%E7%A7%BB%E6%A4%8DFreeRTOS-%E5%9F%BA%E4%BA%8EHAL%E5%BA%93/Snipaste_2025-08-14_15-47-03.png">
 
 
 <link rel="canonical" href="http://example.com/2025/08/14/STM32%E7%A7%BB%E6%A4%8DFreeRTOS-%E5%9F%BA%E4%BA%8EHAL%E5%BA%93/">
@@ -154,7 +159,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -167,6 +172,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#cubemx%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">cubemx基本配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Timebase-Source"><span class="nav-number">1.1.</span> <span class="nav-text">Timebase Source</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Middleware-and-Software-Packs"><span class="nav-number">1.2.</span> <span class="nav-text">Middleware and Software Packs</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E4%BB%BB%E5%8A%A1%E4%B8%8E%E9%98%9F%E5%88%97"><span class="nav-number">2.</span> <span class="nav-text">创建任务与队列</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E4%BB%BB%E5%8A%A1"><span class="nav-number">2.1.</span> <span class="nav-text">创建任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E9%98%9F%E5%88%97"><span class="nav-number">2.2.</span> <span class="nav-text">创建队列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%91%E9%80%81%E5%87%BD%E6%95%B0"><span class="nav-number">2.2.1.</span> <span class="nav-text">发送函数</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -192,7 +198,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -247,8 +253,18 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
+      
 
-      <time title="Created: 2025-08-14 14:26:57" itemprop="dateCreated datePublished" datetime="2025-08-14T14:26:57+08:00">2025-08-14</time>
+      <time title="Created: 2025-08-14 14:26:57 / Modified: 16:53:48" itemprop="dateCreated datePublished" datetime="2025-08-14T14:26:57+08:00">2025-08-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F-%E5%8D%95%E7%89%87%E6%9C%BA-stm32/" itemprop="url" rel="index"><span itemprop="name">-嵌入式 -单片机 -stm32</span></a>
+        </span>
     </span>
 
   
@@ -267,7 +283,59 @@
     
     
     
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body" itemprop="articleBody"><p>前段时间电赛训练时常苦于复杂工程的时间调度问题，由于裸机系统主程序是在一整个while(1)循环中实现的，所以面对需要实现多个功能的情况总会显得力不从心，我只好自己写状态机通过状态判断来优化调度，但这种做法实现起来比较复杂，突然想到或许可以移植FreeRTOS来解决这个问题，遂开始学习。</p>
+<h1 id="cubemx基本配置"><a href="#cubemx基本配置" class="headerlink" title="cubemx基本配置"></a>cubemx基本配置</h1><h2 id="Timebase-Source"><a href="#Timebase-Source" class="headerlink" title="Timebase Source"></a>Timebase Source</h2><p>由于FreeTROS使用systick作为心跳，故搭载FreeRTOS时需要为HAL库另外选择一个定时器充当系统时基，推荐选择一个无任何输入输出即功能较少的定时器。</p>
+<h2 id="Middleware-and-Software-Packs"><a href="#Middleware-and-Software-Packs" class="headerlink" title="Middleware and Software Packs"></a>Middleware and Software Packs</h2><p>选择FreeRTOS的CMSIS_v2接口</p>
+<p>详细配置参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45396672/article/details/120877303">https://blog.csdn.net/qq_45396672/article/details/120877303</a></p>
+<h1 id="创建任务与队列"><a href="#创建任务与队列" class="headerlink" title="创建任务与队列"></a>创建任务与队列</h1><p><img src="/2025/08/14/STM32%E7%A7%BB%E6%A4%8DFreeRTOS-%E5%9F%BA%E4%BA%8EHAL%E5%BA%93/Snipaste_2025-08-14_15-47-03.png"></p>
+<h2 id="创建任务"><a href="#创建任务" class="headerlink" title="创建任务"></a>创建任务</h2><p>任务（线程）是操作系统运行的基本单元,点击add并配置相关的任务名称，任务实体（函数名），优先级等</p>
+<h2 id="创建队列"><a href="#创建队列" class="headerlink" title="创建队列"></a>创建队列</h2><p>队列（消息队列）负责任务之间传输数据，发送数据的任务发送到队列，接收数据的任务挂起到队列的挂起列表。点击add并设置队列名称大小等。</p>
+<p>下面介绍发送队列和接收队列API的调用方法：</p>
+<h3 id="发送函数"><a href="#发送函数" class="headerlink" title="发送函数"></a>发送函数</h3><p>函数原型：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">osStatus_t osMessageQueuePut (osMessageQueueId_t mq_id, const void *msg_ptr, uint8_t msg_prio, uint32_t timeout);  </span><br><span class="line">```   </span><br><span class="line">入参分别为队列句柄的指针，发送内容的指针，发送队列优先级（好像暂时无法使用，默认为1就行），等待超时时间</span><br><span class="line">使用示例：</span><br></pre></td></tr></table></figure>
+<p>void StartuartTask(void <em>argument)<br>{<br>  &#x2F;</em> USER CODE BEGIN StartuartTask <em>&#x2F;<br>    osStatus_t result;<br>    uint8_t dat[]&#x3D;”111\r\n”;<br>  &#x2F;</em> Infinite loop *&#x2F;<br>  for(;;)<br>  {		<br>        result&#x3D; osMessageQueuePut(myQueue01Handle,dat,1,0);<br>        if(result &#x3D;&#x3D; osOK)<br>        {<br>            &#x2F;&#x2F;发送成功<br>        }else<br>        {<br>            &#x2F;&#x2F;发送失败<br>        }</p>
+<pre><code>osDelay(1);
+</code></pre>
+<p>  }<br>  &#x2F;* USER CODE END StartuartTask *&#x2F;<br>}</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 接收函数</span><br><span class="line"></span><br><span class="line">函数原型：</span><br></pre></td></tr></table></figure>
+<p>osStatus_t osMessageQueueGet (osMessageQueueId_t mq_id, void *msg_ptr, uint8_t *msg_prio, uint32_t timeout);</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">使用示例：</span><br></pre></td></tr></table></figure>
+<p>void StartledTask(void <em>argument)<br>{<br>    &#x2F;</em> USER CODE BEGIN StartledTask *&#x2F;<br>    osStatus_t result;<br>    uint8_t dat[10]&#x3D; {};<br>    uint8_t <em>pro;<br>    &#x2F;</em> Infinite loop <em>&#x2F;<br>    for(;;)<br>    {<br>        result&#x3D; osMessageQueueGet(myQueue01Handle,dat,pro,10);<br>        if(result &#x3D;&#x3D; osOK)<br>        {<br>            &#x2F;&#x2F;接受成功<br>        } else<br>        {<br>            &#x2F;&#x2F;接受失败<br>        }<br>        osDelay(1);<br>    }<br>    &#x2F;</em> USER CODE END StartledTask *&#x2F;<br>}</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 创建软件定时器与信号量</span><br><span class="line">![](/2025/08/14/STM32%E7%A7%BB%E6%A4%8DFreeRTOS-%E5%9F%BA%E4%BA%8EHAL%E5%BA%93/Snipaste_2025-08-14_16-28-02.png)</span><br><span class="line">## 创建软件定时器</span><br><span class="line"></span><br><span class="line">添加软件定时器之后会生成一个回调函数</span><br></pre></td></tr></table></figure>
+<p>void CallBack01(){</p>
+<p>}</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">以下分别为定时器启动和停止的函数原型，调用方法与队列的句柄一致</span><br></pre></td></tr></table></figure>
+<p>osStatus_t osTimerStart (osTimerId_t timer_id, uint32_t ticks);<br>osStatus_t osTimerStop (osTimerId_t timer_id);</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ticks是定时器周期</span><br><span class="line"></span><br><span class="line">## 创建信号量</span><br><span class="line"></span><br><span class="line">信号量本质上是一个特殊的 RTOS 内核对象，用于任务之间或任务与中断之间的 同步 或 资源管理。</span><br><span class="line"></span><br><span class="line">可以理解为定时器，但是装载的不是数字而是信号数目，当信号数目大于0时任务可以进行但要获取一个信号数目（即信号-1），信号数目=0时任务阻塞，等到有信号再唤醒。</span><br><span class="line"></span><br><span class="line">### 二值信号量 (Binary Semaphore)</span><br><span class="line"></span><br><span class="line">只能取值 0 或 1，相当于开关；最常用来让一个任务等待某个事件发生，示例如下</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>void StartDefaultTask(void <em>argument)<br>{<br>  &#x2F;</em> USER CODE BEGIN StartDefaultTask *&#x2F;</p>
+<p>  &#x2F;* Infinite loop *&#x2F;<br>  for(;;)<br>  {<br>    &#x2F;&#x2F;等待信号量（注意要有一个事件释放信号，即当这个事件执行一次后，便开始执行以下任务）<br>        if( osSemaphoreAcquire(myBinarySem01Handle,10)&#x3D;&#x3D;osOK){<br>            &#x2F;&#x2F;开始执行任务</p>
+<pre><code>    &#125;
+    
+osDelay(1);
+</code></pre>
+<p>  }<br>  &#x2F;* USER CODE END StartDefaultTask *&#x2F;<br>}</p>
+<pre><code>### 计数信号量 (Counting Semaphore)     
+
+计数范围大于 1，可用于控制对某类资源的访问次数
+
+简单理解，可以这样用：有个事件A释放信号，设置Count（信号量最大数目）为n,当A执行满n次后开始执行任务B
+# 创建互斥量
+![](/2025/08/14/STM32%E7%A7%BB%E6%A4%8DFreeRTOS-%E5%9F%BA%E4%BA%8EHAL%E5%BA%93/Snipaste_2025-08-14_16-46-21.png)
+上面是普通互斥量，下面是递归互斥量      
+互斥量可以这样理解：二值信号量 + 优先级
+
+使用方法与信号量相同
+
+## 普通互斥量
+
+只有一个任务能持有（值为 0 时其他任务阻塞），不能由另一个任务释放（必须持有者释放），同一任务如果再次请求同一 Mutex → 死锁（因为它已经占用，自己还在等自己释放），即只能请求一次。
+
+## 递归互斥量
+
+允许同一个任务多次获取同一把锁，每次获取都要匹配一次释放。必须释放和获取次数匹配，计数归零时才真正释放锁。
+
+# 创建事件标志组
+</code></pre>
 
     </div>
 
@@ -276,6 +344,9 @@
     
 
     <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/stm32-RTOS/" rel="tag"># stm32 RTOS</a>
+          </div>
 
         
 
