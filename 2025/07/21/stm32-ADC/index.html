@@ -20,21 +20,18 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.23.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"show_result":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="采样率和转换时间 对于stm32使用的逐次逼近型ADC，总转换时间计算公式为：T&#x3D;采样时间+逐次逼近时间 对于我最近使用的stm32h7,逐次逼近时间为7.5个ADC周期，即：T&#x3D;采样时间+7.5个ADC时钟周期 而采样时间可通过 ADCx_SMPR1 和 ADCx_SMPR2 寄存器中的 SMP[2:0] 位编程，可选采样时间值如下：   设置ADC采样率时，无论是软件触发还是定时器触发，都要保">
+    <meta name="description" content="采样率和转换时间 对于stm32使用的逐次逼近型ADC，总转换时间计算公式为：T&#x3D;采样时间+逐次逼近时间 对于我最近使用的stm32h7,逐次逼近时间为7.5个ADC周期，即：T&#x3D;采样时间+7.5个ADC时钟周期 而采样时间可通过 ADCx_SMPR1 和 ADCx_SMPR2 寄存器中的 SMP[2:0] 位编程，可选采样时间值如下：   设置ADC采样率时，无论是软件触发还是定时器触">
 <meta property="og:type" content="article">
 <meta property="og:title" content="stm32-ADC">
 <meta property="og:url" content="http://example.com/2025/07/21/stm32-ADC/index.html">
 <meta property="og:site_name" content="林间有Wi-Fi">
-<meta property="og:description" content="采样率和转换时间 对于stm32使用的逐次逼近型ADC，总转换时间计算公式为：T&#x3D;采样时间+逐次逼近时间 对于我最近使用的stm32h7,逐次逼近时间为7.5个ADC周期，即：T&#x3D;采样时间+7.5个ADC时钟周期 而采样时间可通过 ADCx_SMPR1 和 ADCx_SMPR2 寄存器中的 SMP[2:0] 位编程，可选采样时间值如下：   设置ADC采样率时，无论是软件触发还是定时器触发，都要保">
+<meta property="og:description" content="采样率和转换时间 对于stm32使用的逐次逼近型ADC，总转换时间计算公式为：T&#x3D;采样时间+逐次逼近时间 对于我最近使用的stm32h7,逐次逼近时间为7.5个ADC周期，即：T&#x3D;采样时间+7.5个ADC时钟周期 而采样时间可通过 ADCx_SMPR1 和 ADCx_SMPR2 寄存器中的 SMP[2:0] 位编程，可选采样时间值如下：   设置ADC采样率时，无论是软件触发还是定时器触">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2025/07/21/stm32-ADC/Snipaste_2025-07-21_18-49-44.png">
-<meta property="og:image" content="http://example.com/2025/07/21/stm32-ADC/Snipaste_2025-07-21_18-50-03.png">
 <meta property="article:published_time" content="2025-07-21T10:42:53.000Z">
 <meta property="article:modified_time" content="2025-07-25T04:54:46.042Z">
 <meta property="article:author" content="gzx">
 <meta property="article:tag" content="stm32">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2025/07/21/stm32-ADC/Snipaste_2025-07-21_18-49-44.png">
 
 
 <link rel="canonical" href="http://example.com/2025/07/21/stm32-ADC/">
@@ -169,7 +166,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">采样率和转换时间</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">定时器触发</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%87%87%E6%A0%B7%E7%8E%87%E5%92%8C%E8%BD%AC%E6%8D%A2%E6%97%B6%E9%97%B4"><span class="nav-number">1.</span> <span class="nav-text">采样率和转换时间</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9A%E6%97%B6%E5%99%A8%E8%A7%A6%E5%8F%91"><span class="nav-number">2.</span> <span class="nav-text">定时器触发</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -184,18 +181,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-count">20</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -286,16 +283,18 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h1>采样率和转换时间</h1>
-<p>对于stm32使用的逐次逼近型ADC，总转换时间计算公式为：T=采样时间+逐次逼近时间<br>
-对于我最近使用的stm32h7,逐次逼近时间为7.5个ADC周期，即：T=采样时间+7.5个ADC时钟周期<br>
-而采样时间可通过 ADCx_SMPR1 和 ADCx_SMPR2 寄存器中的 SMP[2:0] 位编程，可选采样时间值如下：<br>
-<img src="/2025/07/21/stm32-ADC/Snipaste_2025-07-21_18-49-44.png" alt=""><br>
-<img src="/2025/07/21/stm32-ADC/Snipaste_2025-07-21_18-50-03.png" alt=""></p>
+    <div class="post-body" itemprop="articleBody"><h1 id="采样率和转换时间">采样率和转换时间</h1>
+<p>对于stm32使用的逐次逼近型ADC，总转换时间计算公式为：T=采样时间+逐次逼近时间<br />
+对于我最近使用的stm32h7,逐次逼近时间为7.5个ADC周期，即：T=采样时间+7.5个ADC时钟周期<br />
+而采样时间可通过 ADCx_SMPR1 和 ADCx_SMPR2 寄存器中的 SMP[2:0]
+位编程，可选采样时间值如下： <img
+src="/2025/07/21/stm32-ADC/Snipaste_2025-07-21_18-49-44.png" /> <img
+src="/2025/07/21/stm32-ADC/Snipaste_2025-07-21_18-50-03.png" /></p>
 <p>设置ADC采样率时，无论是软件触发还是定时器触发，都要保证ADC采样两次触发之间的时间间隔要大于（等于）完成一次转换的时间。</p>
-<h1>定时器触发</h1>
-<p>stm32h7定时器：<br>
-APB1 定时器有 TIM2, TIM3 ,TIM4, TIM5, TIM6, TIM7, TIM12, TIM13, TIM14，LPTIM1</p>
+<h1 id="定时器触发">定时器触发</h1>
+<p>stm32h7定时器：<br />
+APB1 定时器有 TIM2, TIM3 ,TIM4, TIM5, TIM6, TIM7, TIM12, TIM13,
+TIM14，LPTIM1</p>
 <p>APB2 定时器有 TIM1, TIM8 , TIM15, TIM16，TIM17</p>
 <p>APB4 定时器有 LPTIM2，LPTIM3，LPTIM4，LPTIM5</p>
 

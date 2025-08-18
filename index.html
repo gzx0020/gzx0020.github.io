@@ -177,18 +177,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-count">20</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -205,6 +205,144 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/08/18/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93%E5%88%9D%E5%B0%9D-%E5%9F%BA%E4%BA%8EFMZ%E5%B9%B3%E5%8F%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="gzx">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="林间有Wi-Fi">
+      <meta itemprop="description" content="这里记录我的学习与生活">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | 林间有Wi-Fi">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/08/18/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93%E5%88%9D%E5%B0%9D-%E5%9F%BA%E4%BA%8EFMZ%E5%B9%B3%E5%8F%B0/" class="post-title-link" itemprop="url">量化交易初尝-基于FMZ平台</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2025-08-18 12:53:50 / Modified: 14:20:16" itemprop="dateCreated datePublished" datetime="2025-08-18T12:53:50+08:00">2025-08-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93/" itemprop="url" rel="index"><span itemprop="name">量化交易</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>量化交易是我第一次接触的领域，以下记录我的初尝经历。</p>
+<h1 id="基于fmz平台部署一个实盘交易">基于FMZ平台部署一个实盘交易</h1>
+<h2 id="部署托管者">部署托管者</h2>
+<h3 id="直接下载托管程序">直接下载托管程序</h3>
+<ol type="1">
+<li>下载 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://www.fmz.com/dist/robot_linux_amd64.tar.gz      </span><br></pre></td></tr></table></figure></li>
+</ol>
+<p><img
+src="/2025/08/18/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93%E5%88%9D%E5%B0%9D-%E5%9F%BA%E4%BA%8EFMZ%E5%B9%B3%E5%8F%B0/Snipaste_2025-08-18_13-02-59.png" /></p>
+<ol start="2" type="1">
+<li>解压</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf robot_linux_amd64.tar.gz</span><br></pre></td></tr></table></figure>
+<ol start="3" type="1">
+<li><p>添加执行权限 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x robot</span><br></pre></td></tr></table></figure></p></li>
+<li><p>screen 窗口运行 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">screen -S fmz_robot</span><br><span class="line"></span><br><span class="line">./robot -s node.fmz.com/120855418 -p 登录密码</span><br><span class="line"></span><br></pre></td></tr></table></figure></p></li>
+</ol>
+<h3 id="docker-部署">Docker 部署</h3>
+<ol type="1">
+<li>拉取镜像</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull fmzcom/docker:latest</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ol start="2" type="1">
+<li>运行</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name FMZDocker -e UID=120855418 -e PASSWORD=登录密码 fmzcom/docker:latest       </span><br></pre></td></tr></table></figure>
+<p>至此，托管者部署成功（如下图），只需要建立实盘时选择托管者。</p>
+<p><img
+src="/2025/08/18/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93%E5%88%9D%E5%B0%9D-%E5%9F%BA%E4%BA%8EFMZ%E5%B9%B3%E5%8F%B0/Snipaste_2025-08-18_13-14-08.png" /></p>
+<h2 id="关联交易所账户">关联交易所账户</h2>
+<ol type="1">
+<li>创建API
+进入你选择的交易平台（我以OKX为例），创建API，系统会自动生成API
+key和Secret key，并修改权限（允许读取和交易）</li>
+<li>关联交易所 FMZ平台配置 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;        </span><br><span class="line">  <span class="string">&quot;accessKey&quot;</span>: <span class="string">&quot;API Key&quot;</span>,</span><br><span class="line">  <span class="string">&quot;secretKey&quot;</span>: <span class="string">&quot;Secret Key&quot;</span>,</span><br><span class="line">  <span class="string">&quot;Passphras&quot;</span>: <span class="string">&quot;password&quot;</span>,   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> ## 创建策略</li>
+</ol>
+<p>新建一个策略并选择你使用的语法，开始编写策略。</p>
+<p>以下是一个基于python编写的获取账户信息的策略，用于调试API是否可用。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    account = exchange.GetAccount()  <span class="comment"># 获取账户信息</span></span><br><span class="line">    Log(<span class="string">&quot;原始账户信息:&quot;</span>, account)    </span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> account <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        Log(<span class="string">&quot;账户信息获取失败，API 或交易所对象未配置&quot;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment"># OKX 返回整数，需要除以 1e8</span></span><br><span class="line">        balance = account.Balance / <span class="number">1e8</span></span><br><span class="line">        stocks = account.Stocks / <span class="number">1e8</span></span><br><span class="line">        Log(<span class="string">&quot;可用余额:&quot;</span>, balance, <span class="string">&quot;持仓:&quot;</span>, stocks)</span><br></pre></td></tr></table></figure>
+<p>以下是一个简单的基于python编写的策略，核心逻辑如下：</p>
+<p>用basePrice记录上一次的参考价格，当价格上涨超过 ratio
+时用账户余额的一部分买入；当价格下跌超过 ratio
+时用持仓的一部分卖出。</p>
+<p>每 5 分钟撤销一次所有挂单，每 2000 毫秒循环一次并更新日志。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">basePrice = -<span class="number">1</span></span><br><span class="line">ratio = <span class="number">0.8</span></span><br><span class="line">acc = _C(exchange.GetAccount)</span><br><span class="line">lastCancelAll = <span class="number">0</span></span><br><span class="line">minStocks = <span class="number">0.1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">CancelAll</span>():</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span> : </span><br><span class="line">        orders = _C(exchange.GetOrders)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(orders)) :</span><br><span class="line">            exchange.CancelOrder(orders[i][<span class="string">&quot;Id&quot;</span>], orders[i])</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(orders) == <span class="number">0</span> :</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        Sleep(<span class="number">1000</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    <span class="keyword">global</span> basePrice, acc, lastCancelAll</span><br><span class="line">    exchange.SetPrecision(<span class="number">4</span>, <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        ticker = _C(exchange.GetTicker)</span><br><span class="line">        <span class="keyword">if</span> basePrice == -<span class="number">1</span> :</span><br><span class="line">            basePrice = ticker.Last</span><br><span class="line">        <span class="keyword">if</span> ticker.Last - basePrice &gt; <span class="number">0</span> <span class="keyword">and</span> (ticker.Last - basePrice) / basePrice &gt; ratio :</span><br><span class="line">            acc = _C(exchange.GetAccount)</span><br><span class="line">            <span class="keyword">if</span> acc.Balance * ratio / ticker.Last &gt; minStocks :</span><br><span class="line">                exchange.Buy(ticker.Last, acc.Balance * ratio / ticker.Last)</span><br><span class="line">                basePrice = ticker.Last</span><br><span class="line">        <span class="keyword">if</span> ticker.Last - basePrice &lt; <span class="number">0</span> <span class="keyword">and</span> (basePrice - ticker.Last) / basePrice &gt; ratio : </span><br><span class="line">            acc = _C(exchange.GetAccount)</span><br><span class="line">            <span class="keyword">if</span> acc.Stocks * ratio &gt; minStocks :</span><br><span class="line">                exchange.Sell(ticker.Last, acc.Stocks * ratio)</span><br><span class="line">                basePrice = ticker.Last</span><br><span class="line">        ts = time.time()</span><br><span class="line">        <span class="keyword">if</span> ts - lastCancelAll &gt; <span class="number">60</span> * <span class="number">5</span> :</span><br><span class="line">            CancelAll()</span><br><span class="line">            lastCancelAll = ts </span><br><span class="line">        LogStatus(_D(), <span class="string">&quot;\n&quot;</span>, <span class="string">&quot;行情信息:&quot;</span>, ticker, <span class="string">&quot;\n&quot;</span>, <span class="string">&quot;账户信息:&quot;</span>, acc)</span><br><span class="line">        Sleep(<span class="number">200</span>)  </span><br></pre></td></tr></table></figure>
+<p>实际运用时需要注意：</p>
+<ol type="1">
+<li><p>要根据自己的余额和所用平台的单次最小金额更改ratio。我当前余额很少，所以选择用80%的仓位下单，否则会下单失败。</p></li>
+<li><p>exchange.SetPrecision(4, 1)
+用来设置价格和数量的小数位精度。我使用的交易对DOGE/USDT → 价格精度
+0.0001，数量精度 0.1，所以设置为4和1。更换交易对时注意修改。</p></li>
+<li><p>minStocks = 0.1
+表示最小下单数量，也要根据交易所和交易对更改。</p></li>
+</ol>
+<h2 id="回测">回测</h2>
+<p>建议在跑实盘之前先运行回测验证逻辑。python支持本地回测，参考：<a
+target="_blank" rel="noopener" href="https://www.fmz.com/bbs-topic/1687"
+class="uri">https://www.fmz.com/bbs-topic/1687</a></p>
+<h2 id="创建实盘">创建实盘</h2>
+<p>选择运行策略和托管主机，配置合适的交易对和交易所，就可以跑实盘了。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -404,10 +542,11 @@ Mutex → 死锁（因为它已经占用，自己还在等自己释放），即�
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1>跑代码</h1>
-<p><a target="_blank" rel="noopener" href="https://github.com/sjtuplayer/few-shot-diffusion">https://github.com/sjtuplayer/few-shot-diffusion</a></p>
+          <h1 id="跑代码">跑代码</h1>
+<p><a target="_blank" rel="noopener" href="https://github.com/sjtuplayer/few-shot-diffusion"
+class="uri">https://github.com/sjtuplayer/few-shot-diffusion</a></p>
 <p>生成效果如下图：</p>
-<p><img src="/2025/07/27/week7/1.jpg" alt=""></p>
+<p><img src="/2025/07/27/week7/1.jpg" /></p>
 
       
     </div>
@@ -492,16 +631,18 @@ Mutex → 死锁（因为它已经占用，自己还在等自己释放），即�
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1>采样率和转换时间</h1>
-<p>对于stm32使用的逐次逼近型ADC，总转换时间计算公式为：T=采样时间+逐次逼近时间<br>
-对于我最近使用的stm32h7,逐次逼近时间为7.5个ADC周期，即：T=采样时间+7.5个ADC时钟周期<br>
-而采样时间可通过 ADCx_SMPR1 和 ADCx_SMPR2 寄存器中的 SMP[2:0] 位编程，可选采样时间值如下：<br>
-<img src="/2025/07/21/stm32-ADC/Snipaste_2025-07-21_18-49-44.png" alt=""><br>
-<img src="/2025/07/21/stm32-ADC/Snipaste_2025-07-21_18-50-03.png" alt=""></p>
+          <h1 id="采样率和转换时间">采样率和转换时间</h1>
+<p>对于stm32使用的逐次逼近型ADC，总转换时间计算公式为：T=采样时间+逐次逼近时间<br />
+对于我最近使用的stm32h7,逐次逼近时间为7.5个ADC周期，即：T=采样时间+7.5个ADC时钟周期<br />
+而采样时间可通过 ADCx_SMPR1 和 ADCx_SMPR2 寄存器中的 SMP[2:0]
+位编程，可选采样时间值如下： <img
+src="/2025/07/21/stm32-ADC/Snipaste_2025-07-21_18-49-44.png" /> <img
+src="/2025/07/21/stm32-ADC/Snipaste_2025-07-21_18-50-03.png" /></p>
 <p>设置ADC采样率时，无论是软件触发还是定时器触发，都要保证ADC采样两次触发之间的时间间隔要大于（等于）完成一次转换的时间。</p>
-<h1>定时器触发</h1>
-<p>stm32h7定时器：<br>
-APB1 定时器有 TIM2, TIM3 ,TIM4, TIM5, TIM6, TIM7, TIM12, TIM13, TIM14，LPTIM1</p>
+<h1 id="定时器触发">定时器触发</h1>
+<p>stm32h7定时器：<br />
+APB1 定时器有 TIM2, TIM3 ,TIM4, TIM5, TIM6, TIM7, TIM12, TIM13,
+TIM14，LPTIM1</p>
 <p>APB2 定时器有 TIM1, TIM8 , TIM15, TIM16，TIM17</p>
 <p>APB4 定时器有 LPTIM2，LPTIM3，LPTIM4，LPTIM5</p>
 
@@ -573,6 +714,7 @@ APB1 定时器有 TIM2, TIM3 ,TIM4, TIM5, TIM6, TIM7, TIM12, TIM13, TIM14，LPTI
     
     <div class="post-body" itemprop="articleBody">
           
+
       
     </div>
 
@@ -650,22 +792,28 @@ APB1 定时器有 TIM2, TIM3 ,TIM4, TIM5, TIM6, TIM7, TIM12, TIM13, TIM14，LPTI
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1>微调效果测试</h1>
+          <h1 id="微调效果测试">微调效果测试</h1>
 <p>用lora层替换unet中所有可替换的线性层和1×1卷积层，测试效果较差，有明显失真，指标相比上一次微调均有下降</p>
-<h1>论文代码学习</h1>
-<p>学习论文 Phasic Content Fusing Diffusion Model with Directional Distribution Consistency for Few-Shot Model Adaption 的开源代码，<br>
+<h1 id="论文代码学习">论文代码学习</h1>
+<p>学习论文 Phasic Content Fusing Diffusion Model with Directional
+Distribution Consistency for Few-Shot Model Adaption 的开源代码，
 微调部分实现方法如下：</p>
-<h2 id="1-内容融合模块微调-train-recon-py">1. 内容融合模块微调 (<a target="_blank" rel="noopener" href="http://train-recon.py">train-recon.py</a>)</h2>
+<h2 id="内容融合模块微调-train-recon.py">1. 内容融合模块微调
+(train-recon.py)</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#创建一个Adam优化器，只优化扩散模型中条件模块(c_content_condition)的参数</span></span><br><span class="line">optimizer = Adam(diffusion.model.c_content_condition.parameters(), lr=<span class="number">1e-4</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#遍历数据集中的所有批次</span></span><br><span class="line"><span class="keyword">for</span> batch <span class="keyword">in</span> dataloader:   </span><br><span class="line">    real_image = batch.cuda()      </span><br><span class="line">    condition = real_image  <span class="comment"># 使用自身作为条件</span></span><br><span class="line">      </span><br><span class="line">    t, (x, loss_diffusion) = diffusion.few_shot_forward(</span><br><span class="line">        real_image,   </span><br><span class="line">        x_self_cond=condition,  </span><br><span class="line">        max_step=<span class="number">1000</span>  </span><br><span class="line">    )</span><br><span class="line">  </span><br><span class="line">    <span class="comment"># 计算扩散损失的平均值（预测噪声与真实噪声的差异）  </span></span><br><span class="line">    loss_diffusion.mean().backward()  <span class="comment"># 反向传播计算梯度</span></span><br><span class="line">  </span><br><span class="line">    optimizer.step()</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">if</span> global_step % <span class="number">200</span> == <span class="number">0</span>:</span><br><span class="line">        <span class="comment"># 使用DDIM采样器生成重建图像</span></span><br><span class="line">        output_image = diffusion.ddim_sample(</span><br><span class="line">            real_image.shape,  </span><br><span class="line">            condition=condition,  </span><br><span class="line">            sample_step=<span class="number">50</span>,     </span><br><span class="line">            max_step=<span class="number">800</span>          <span class="comment">#从噪声步800开始逆向扩散（跳过前200步）</span></span><br><span class="line">        )</span><br><span class="line">            </span><br><span class="line">  </span><br></pre></td></tr></table></figure>
 <p>通过 c_content_condition 模块分离内容/风格学习:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">model_target.prepare(style_condition=<span class="literal">True</span>, two_stage_step=<span class="number">300</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="2-少样本域适应微调-train-whole-py">2. 少样本域适应微调 (<a target="_blank" rel="noopener" href="http://train-whole.py">train-whole.py</a>)</h2>
-<p>a.分阶段训练策略：大t步学内容/风格，小t步学细节, 具体是大t：学习全局内容/风格 (step=300-1000)  小t：学习局部细节 (t~rand(0,300))</p>
-<p>b.方向分布一致性：feature_dir = (target_feature - source_feature) 引导特征迁移</p>
+<h2 id="少样本域适应微调-train-whole.py">2. 少样本域适应微调
+(train-whole.py)</h2>
+<p>a.分阶段训练策略：大t步学内容/风格，小t步学细节,
+具体是大t：学习全局内容/风格 (step=300-1000) 小t：学习局部细节
+(t~rand(0,300))</p>
+<p>b.方向分布一致性：feature_dir = (target_feature - source_feature)
+引导特征迁移</p>
 <p>L_DDC = ||φ(G(x)) - (φ(x) + Δ)||^2</p>
 <p>其中 Δ = E[φ(y)] - E[φ(x)] 是域间特征方向</p>
 <p>c.动态加权</p>
-<p>α = 20^{t/T} \quad (T=1000)</p>
+<p>α = 20^{t/T} (T=1000)</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#创建一个优化器，只优化需要梯度的参数</span></span><br><span class="line"><span class="comment"># 使用filter+lambda过滤出requires_grad=True的参数，冻结有些参数</span></span><br><span class="line">optimizer = Adam(</span><br><span class="line">    <span class="built_in">filter</span>(<span class="keyword">lambda</span> p: p.requires_grad, diffusion_target.parameters()), </span><br><span class="line">    lr=<span class="number">1e-4</span>  <span class="comment">#使用相对较小的学习率防止过拟合</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 遍历源域和目标域的数据加载器</span></span><br><span class="line"><span class="comment"># 使用zip确保每次迭代获取一对源域和目标域批次数据</span></span><br><span class="line"><span class="keyword">for</span> (target_batch, source_batch) <span class="keyword">in</span> <span class="built_in">zip</span>(target_dataloader, source_dataloader):</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 阶段1：内容保持（大t）</span></span><br><span class="line">  </span><br><span class="line">    <span class="keyword">if</span> global_step % <span class="number">2</span> == <span class="number">0</span>:  <span class="comment"># 每两步执行一次</span></span><br><span class="line">      </span><br><span class="line">      </span><br><span class="line">        <span class="comment"># step=300 表示在扩散过程的前300步进行内容融合</span></span><br><span class="line">        t, (x, _) = diffusion.few_shot_forward(</span><br><span class="line">            source_image,     <span class="comment"># 源域输入图像</span></span><br><span class="line">            step=<span class="number">300</span>,       </span><br><span class="line">            x_self_cond=condition  <span class="comment">#内容条件输入</span></span><br><span class="line">        )</span><br><span class="line">      </span><br><span class="line">        <span class="comment"># 方向分布一致性损失      </span></span><br><span class="line">        <span class="comment"># 使用CLIP模型提取源域图像特征</span></span><br><span class="line">        feature_source = clip_model.encode_img(source_image)      </span><br><span class="line">        feature_target = clip_model.encode_img(generated_image)      </span><br><span class="line">      </span><br><span class="line">        <span class="comment">#feature_dir = E[φ(y)] - E[φ(x)] 预计算的域间特征方向</span></span><br><span class="line">        loss_feature = mse_loss(</span><br><span class="line">            feature_target, </span><br><span class="line">            feature_source + feature_dir  <span class="comment"># 特征方向约束</span></span><br><span class="line">        ) * opts.beta_f  <span class="comment">#可调节的损失权重</span></span><br><span class="line">      </span><br><span class="line">        <span class="comment"># 风格损失</span></span><br><span class="line">      </span><br><span class="line">        <span class="comment"># 使用预定义的风格损失函数(训练的VGG)      </span></span><br><span class="line">        loss_style = style_loss(generated_image, style_imgs) * opts.beta_style</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">    <span class="comment"># 阶段2：细节学习（小t）   </span></span><br><span class="line">    <span class="keyword">else</span>:  <span class="comment">#与阶段1交替执行</span></span><br><span class="line">      </span><br><span class="line">        t = torch.randint(<span class="number">0</span>, <span class="number">300</span>, (batch_size,))  </span><br><span class="line">      </span><br><span class="line">        <span class="comment">#使用目标域图像进行前向传播     </span></span><br><span class="line">        _, (_, loss_diffusion) = diffusion.few_shot_forward(</span><br><span class="line">            target_image,  </span><br><span class="line">            t=t          </span><br><span class="line">        )</span><br><span class="line">  </span><br><span class="line">   </span><br><span class="line">    <span class="comment">#时间步相关加权   </span></span><br><span class="line">   </span><br><span class="line">    alpha = <span class="number">20</span> ** (t / <span class="number">1000</span>)  <span class="comment">#权重函数</span></span><br><span class="line">  </span><br><span class="line">    <span class="comment">#加权总损失   </span></span><br><span class="line">    total_loss = (alpha * (loss_feature + loss_style)).mean()</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">    total_loss.backward()   </span><br><span class="line">  </span><br></pre></td></tr></table></figure>
 
       
@@ -745,61 +893,97 @@ APB1 定时器有 TIM2, TIM3 ,TIM4, TIM5, TIM6, TIM7, TIM12, TIM13, TIM14，LPTI
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1>1.决策树介绍</h1>
-<p>决策树（Decision Tree）是一种以树形数据结构来展示决策规则和分类结果的模型，代表对象属性和对象值之间的一种映射关系。</p>
+          <h1 id="决策树介绍">1.决策树介绍</h1>
+<p>决策树（Decision
+Tree）是一种以树形数据结构来展示决策规则和分类结果的模型，代表对象属性和对象值之间的一种映射关系。</p>
 <p>以下图为例：</p>
-<p><img src="/2025/07/15/%E5%86%B3%E7%AD%96%E6%A0%91/Snipaste_2025-07-15_20-57-02.png" alt=""></p>
+<p><img
+src="/2025/07/15/%E5%86%B3%E7%AD%96%E6%A0%91/Snipaste_2025-07-15_20-57-02.png" /></p>
 <p>一个决策树包含三种类型的节点：</p>
-<p>1.决策节点：通常用矩形框来表示<br>
-2.机会节点：通常用圆圈来表示<br>
+<p>1.决策节点：通常用矩形框来表示<br />
+2.机会节点：通常用圆圈来表示<br />
 3.终结节点：通常用三角形来表示</p>
 <p>构建决策树的一般流程如下图：</p>
-<p><img src="/2025/07/15/%E5%86%B3%E7%AD%96%E6%A0%91/Snipaste_2025-07-15_21-01-21.png" alt=""></p>
-<h1>2.决策树的构建标准</h1>
-<h2 id="2-1-信息增益">2.1 信息增益</h2>
-<h3 id="2-1-1-信息熵">2.1.1 信息熵</h3>
-<p>$H\left(S\right)=-\sum_{i=1}^{c}p_{i}\log_{2}\left(p_{i}\right)$</p>
-<p>其中，S 表示样本集，C 表示样本集合中类别个数（只含有正负样本，则 C=2），pᵢ表示第 i 个类的概率，（pᵢ可由类别 i 中含有样本的个数除以总样本数得到）</p>
-<p>取值范围：$0\leq H(X)\leq\log_2n$  即所有结果等概率时熵最大</p>
+<p><img
+src="/2025/07/15/%E5%86%B3%E7%AD%96%E6%A0%91/Snipaste_2025-07-15_21-01-21.png" /></p>
+<h1 id="决策树的构建标准">2.决策树的构建标准</h1>
+<h2 id="信息增益">2.1 信息增益</h2>
+<h3 id="信息熵">2.1.1 信息熵</h3>
+<p><span
+class="math inline">$H\left(S\right)=-\sum_{i=1}^{c}p_{i}\log_{2}\left(p_{i}\right)$</span></p>
+<p>其中，S 表示样本集，C 表示样本集合中类别个数（只含有正负样本，则
+C=2），pᵢ表示第 i 个类的概率，（pᵢ可由类别 i
+中含有样本的个数除以总样本数得到）</p>
+<p>取值范围：<span
+class="math inline">0 ≤ <em>H</em>(<em>X</em>) ≤ log<sub>2</sub><em>n</em></span>
+即所有结果等概率时熵最大</p>
 <p>直观理解：不确定性越大，信息熵越大。</p>
-<h3 id="2-1-2-条件熵">2.1.2 条件熵</h3>
-<p>$H(X|Y)=-\sum_{x,y}p(x,y)\log(p(x|y))$</p>
-<p>条件熵$H(X|Y)$表示在移植随机变量Y的条件下，随机变量X的不确定性。</p>
-<p><img src="/2025/07/15/%E5%86%B3%E7%AD%96%E6%A0%91/Snipaste_2025-07-15_21-23-27.png" alt="举例说明条件熵"></p>
-<h3 id="2-1-3-信息增益">2.1.3 信息增益</h3>
+<h3 id="条件熵">2.1.2 条件熵</h3>
+<p><span
+class="math inline"><em>H</em>(<em>X</em>|<em>Y</em>) = −∑<sub><em>x</em>, <em>y</em></sub><em>p</em>(<em>x</em>, <em>y</em>)log (<em>p</em>(<em>x</em>|<em>y</em>))</span></p>
+<p>条件熵<span
+class="math inline"><em>H</em>(<em>X</em>|<em>Y</em>)</span>表示在移植随机变量Y的条件下，随机变量X的不确定性。</p>
+<figure>
+<img
+src="/2025/07/15/%E5%86%B3%E7%AD%96%E6%A0%91/Snipaste_2025-07-15_21-23-27.png"
+alt="举例说明条件熵" />
+<figcaption aria-hidden="true">举例说明条件熵</figcaption>
+</figure>
+<h3 id="信息增益-1">2.1.3 信息增益</h3>
 <p>信息增益是知道了某个条件后，事件不确定性降低的幅度。信息增益是非对称的，用以度量两种概率分布P和Q的差异，从P到Q的信息增益通常不等于从Q到P的信息增益。</p>
-<p>公式：$IG(S, A) = H(S) - H(S|A)$</p>
-<p>表示特征 $A$ 带来的不确定性减少量</p>
-<h2 id="2-2-基尼系数">2.2 基尼系数</h2>
+<p>公式：<span
+class="math inline"><em>I</em><em>G</em>(<em>S</em>, <em>A</em>) = <em>H</em>(<em>S</em>) − <em>H</em>(<em>S</em>|<em>A</em>)</span></p>
+<p>表示特征 <span class="math inline"><em>A</em></span>
+带来的不确定性减少量</p>
+<h2 id="基尼系数">2.2 基尼系数</h2>
 <p>基尼系数可以在样本集中随机抽出两个样本不同类别的概率。</p>
-<p>数据集的基尼系数：$Gini(D)=\sum_{k=1}^n\sum_{k\prime\neq k}p_kp_{k\prime}=1-\sum_{k=1}^\mathrm{n}p_k^2$</p>
-<p>$p_{k}$表示第k类样本在数据集中的比例</p>
-<p>值域：$[0,0.5]$，（二分类时最大值为 0.5，K分类时最大为1-1/K）</p>
-<p>特征划分后的加权基尼系数：$Gini(S,A)=\sum_{v=1}^m\frac{|S_v|}{|S|}\cdot Gini(S_v)$</p>
-<p>$\mathrm{S}$：特征A取第v个值时对应的子集</p>
-<p>$\frac{|S_{v}|}{|S|}$：子集的样本权重</p>
-<p>$Gini(S_{v})$： 子集的基尼系数</p>
-<h2 id="2-3-增益比">2.3 增益比</h2>
+<p>数据集的基尼系数：<span
+class="math inline">$Gini(D)=\sum_{k=1}^n\sum_{k\prime\neq
+k}p_kp_{k\prime}=1-\sum_{k=1}^\mathrm{n}p_k^2$</span></p>
+<p><span
+class="math inline"><em>p</em><sub><em>k</em></sub></span>表示第k类样本在数据集中的比例</p>
+<p>值域：<span class="math inline">[0, 0.5]</span>，（二分类时最大值为
+0.5，K分类时最大为1-1/K）</p>
+<p>特征划分后的加权基尼系数：<span
+class="math inline">$Gini(S,A)=\sum_{v=1}^m\frac{|S_v|}{|S|}\cdot
+Gini(S_v)$</span></p>
+<p><span class="math inline">S</span>：特征A取第v个值时对应的子集</p>
+<p><span
+class="math inline">$\frac{|S_{v}|}{|S|}$</span>：子集的样本权重</p>
+<p><span
+class="math inline"><em>G</em><em>i</em><em>n</em><em>i</em>(<em>S</em><sub><em>v</em></sub>)</span>：
+子集的基尼系数</p>
+<h2 id="增益比">2.3 增益比</h2>
 <p>信息增益比较偏好可取值较多的属性，比如我们的样本有一个属性叫序号，每一个样本都具有一个单独的序号，因此使用序号划分后，每个子结点只有一个样本，熵为0。这样的话信息增益最大，算法就会以此属性作为最优划分属性。这显然与我们的意愿不同。因此引申出了增益比的思想。可以说，增益比就是为了矫正信息增益偏好的问题。为了使算法不偏向可取值较多的属性。</p>
-<p>$Gain_ratio(D,a)=\frac{Gain(D,a)}{IV(a)}$</p>
-<p>其中$IV(a)=-\sum_{\mathrm{i}=1}^V\frac{|D^i|}{|D|}log_2\frac{|D^i|}{|D|}$，是a的固有属性</p>
-<h2 id="2-4-均方误差">2.4 均方误差</h2>
-<p>$\mathrm{MSE}=\frac{1}{n}\sum_{i=1}^{n}(y_{i}-\hat{y}_{i})^{2}$</p>
-<p>$n$：样本数量</p>
-<p>$y_i$：第 $i$ 个样本的真实值</p>
-<p>$\hat{y}_i$：第 $i$ 个样本的预测值</p>
-<p>用于回归问题，衡量预测值和真实值的差异。MSE 越小，表示回归树的预测效果越好。</p>
-<h1>3.算法分类</h1>
-<p><img src="/2025/07/15/%E5%86%B3%E7%AD%96%E6%A0%91/Snipaste_2025-07-15_21-54-32.png" alt=""></p>
-<h1>4.将使用Python的scikit-learn库实现决策树</h1>
+<p><span
+class="math inline">$Gain_ratio(D,a)=\frac{Gain(D,a)}{IV(a)}$</span></p>
+<p>其中<span
+class="math inline">$IV(a)=-\sum_{\mathrm{i}=1}^V\frac{|D^i|}{|D|}log_2\frac{|D^i|}{|D|}$</span>，是a的固有属性</p>
+<h2 id="均方误差">2.4 均方误差</h2>
+<p><span
+class="math inline">$\mathrm{MSE}=\frac{1}{n}\sum_{i=1}^{n}(y_{i}-\hat{y}_{i})^{2}$</span></p>
+<p><span class="math inline"><em>n</em></span>：样本数量</p>
+<p><span class="math inline"><em>y</em><sub><em>i</em></sub></span>：第
+<span class="math inline"><em>i</em></span> 个样本的真实值</p>
+<p><span class="math inline"><em>ŷ</em><sub><em>i</em></sub></span>：第
+<span class="math inline"><em>i</em></span> 个样本的预测值</p>
+<p>用于回归问题，衡量预测值和真实值的差异。MSE
+越小，表示回归树的预测效果越好。</p>
+<h1 id="算法分类">3.算法分类</h1>
+<p><img
+src="/2025/07/15/%E5%86%B3%E7%AD%96%E6%A0%91/Snipaste_2025-07-15_21-54-32.png" /></p>
+<h1
+id="将使用python的scikit-learn库实现决策树">4.将使用Python的scikit-learn库实现决策树</h1>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install scikit-learn</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier <span class="comment">#导入分类模型</span></span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeRegressor  <span class="comment">#导入回归模型</span></span><br><span class="line"></span><br><span class="line">model_c = DecisionTreeClassifier(max_depth=<span class="number">10</span>,max_features=<span class="number">5</span>) <span class="comment">#括号内加入要人工设定的参数</span></span><br><span class="line">model_r = DecisionTreeRegressor(max_depth=<span class="number">10</span>,max_features=<span class="number">5</span>)  <span class="comment">#同样的，加入参数设定值，不仅局限于这几个</span></span><br><span class="line"></span><br><span class="line">model_c.fit(x_train,y_train)  <span class="comment">#训练分类模型</span></span><br><span class="line">model_r.fit(x_train,y_train)  <span class="comment">#训练回归模型</span></span><br><span class="line"></span><br><span class="line">result_c = model_c.predict(x_test)  <span class="comment">#使用模型预测分类结果</span></span><br><span class="line">result_r = model_r.predict(x_test)  <span class="comment">#使用模型预测回归结果</span></span><br></pre></td></tr></table></figure>
-<p>参数解释参考:<a target="_blank" rel="noopener" href="https://blog.csdn.net/GreenYang5277/article/details/104500739">https://blog.csdn.net/GreenYang5277/article/details/104500739</a></p>
-<h1>5.剪枝处理</h1>
+<p>参数解释参考:<a
+target="_blank" rel="noopener" href="https://blog.csdn.net/GreenYang5277/article/details/104500739"
+class="uri">https://blog.csdn.net/GreenYang5277/article/details/104500739</a></p>
+<h1 id="剪枝处理">5.剪枝处理</h1>
 <p>剪枝处理是防止决策树过拟合的有效手段。剪枝分为“预剪枝”和“后剪枝”。</p>
-<ol>
+<ol type="1">
 <li>预剪枝：在决策树生成过程中，对每个结点在划分前先进性估计，若当前结点的划分不能带来决策树泛化性能提升，则停止划分并将当前结点标记为叶结点。它的位置在每一次生成分支节点前，先判断有没有必要生成，如没有必要，则停止划分。</li>
-<li>后剪枝：先从训练集生成一棵完整的决策树（相当于结束位置），然后自底向上的对非叶结点进行考察，若将该结点对应的子树替换为叶结点能带来决策树泛化性能提升，则将该子树替换为叶结点，相当于将子树剪去。值得注意的是，后剪枝时要用到一个测试数据集合，如果存在某个叶子剪去后能使得在测试集上的准确度或其他测度不降低（不变得更坏），则剪去该叶子。<br>
+<li>后剪枝：先从训练集生成一棵完整的决策树（相当于结束位置），然后自底向上的对非叶结点进行考察，若将该结点对应的子树替换为叶结点能带来决策树泛化性能提升，则将该子树替换为叶结点，相当于将子树剪去。值得注意的是，后剪枝时要用到一个测试数据集合，如果存在某个叶子剪去后能使得在测试集上的准确度或其他测度不降低（不变得更坏），则剪去该叶子。
 理论上讲，后剪枝生成的决策树要比预剪枝生成的效果好，但是后剪枝在计算复杂度上比预剪枝高。</li>
 </ol>
 
@@ -886,26 +1070,31 @@ APB1 定时器有 TIM2, TIM3 ,TIM4, TIM5, TIM6, TIM7, TIM12, TIM13, TIM14，LPTI
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>基本关系如下图所示<br>
-<img src="/2025/07/15/Driver-BSP%E5%92%8CHAL/Snipaste_2025-07-15_20-23-36.png" alt=""></p>
-<h1>1.驱动（Driver）</h1>
+          <p>基本关系如下图所示 <img
+src="/2025/07/15/Driver-BSP%E5%92%8CHAL/Snipaste_2025-07-15_20-23-36.png" /></p>
+<h1 id="驱动driver">1.驱动（Driver）</h1>
 <p>驱动程序是直接与硬件设备交互的软件组件。它们为操作系统或应用程序提供控制硬件的接口。可以理解为驱动直接与硬件交互。最为底层。</p>
-<h1>2.板级支持包（BSP, Board Support Package）</h1>
-<p>是一套针对特定硬件系统的低级软件代码， 其主要作用是抽象硬件细节， 以便操作系统能够顺利运行在特定的硬件平台上。BSP 是高度硬件相关的，为一块板写的 BSP 通常不能直接用在另一块不同的板上，即使它们使用了相同的 MCU/MPU（因为外围电路、引脚连接、时钟源等都可能不同）。</p>
-<h1>3.硬件抽象层（HAL, Hardware Abstraction Layer）</h1>
-<p>HAL是介于底层硬件和上层软件之间的一层抽象层，用于隐藏硬件的具体实现细节，提供统一的接口。包含一组通用的API接口，可以理解为定义好的一组标准的函数（如 HAL_UART_Transmit(), HAL_GPIO_WritePin(), HAL_ADC_Start()）来执行常见的硬件操作。</p>
-<p>目的是提供统一的、标准化的接口来访问某一类硬件功能（如 UART、I2C、GPIO、ADC、定时器等），屏蔽不同厂商、不同系列、甚至不同架构（如 ARM Cortex-M vs RISC-V）芯片的具体寄存器操作差异。        相对于BSP抽象层次更高，可移植性更高。</p>
+<h1 id="板级支持包bsp-board-support-package">2.板级支持包（BSP, Board
+Support Package）</h1>
+<p>是一套针对特定硬件系统的低级软件代码， 其主要作用是抽象硬件细节，
+以便操作系统能够顺利运行在特定的硬件平台上。BSP
+是高度硬件相关的，为一块板写的 BSP
+通常不能直接用在另一块不同的板上，即使它们使用了相同的
+MCU/MPU（因为外围电路、引脚连接、时钟源等都可能不同）。</p>
+<h1 id="硬件抽象层hal-hardware-abstraction-layer">3.硬件抽象层（HAL,
+Hardware Abstraction Layer）</h1>
+<p>HAL是介于底层硬件和上层软件之间的一层抽象层，用于隐藏硬件的具体实现细节，提供统一的接口。包含一组通用的API接口，可以理解为定义好的一组标准的函数（如
+HAL_UART_Transmit(), HAL_GPIO_WritePin(),
+HAL_ADC_Start()）来执行常见的硬件操作。</p>
+<p>目的是提供统一的、标准化的接口来访问某一类硬件功能（如
+UART、I2C、GPIO、ADC、定时器等），屏蔽不同厂商、不同系列、甚至不同架构（如
+ARM Cortex-M vs RISC-V）芯片的具体寄存器操作差异。
+相对于BSP抽象层次更高，可移植性更高。</p>
 <p>以stm32HAL库开发为例，流程如下：</p>
-<p>应用程序<br>
-│<br>
-↓ 调用统一API<br>
-HAL 层（如 HAL_UART_Transmit()）<br>
-│<br>
-↓ 调用板级驱动或直接操作寄存器<br>
-BSP 层（如 BSP_UART_Write() 或 直接写 UART-&gt;DR 寄存器）<br>
-│<br>
-↓ 操作物理寄存器<br>
-硬件寄存器（如 USART1-&gt;DR = data）</p>
+<p>应用程序 │ ↓ 调用统一API HAL 层（如 HAL_UART_Transmit()） │ ↓
+调用板级驱动或直接操作寄存器 BSP 层（如 BSP_UART_Write() 或 直接写
+UART-&gt;DR 寄存器） │ ↓ 操作物理寄存器 硬件寄存器（如 USART1-&gt;DR =
+data）</p>
 
       
     </div>
@@ -984,58 +1173,64 @@ BSP 层（如 BSP_UART_Write() 或 直接写 UART-&gt;DR 寄存器）<br>
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1>1.基本概念</h1>
+          <h1 id="基本概念">1.基本概念</h1>
 <p>调制时将基带信号搬移到高频载波，实现频谱搬移的过程。解调则是调制的逆过程。</p>
-<h2 id="1-1-为什么要进行调制：">1.1 为什么要进行调制：</h2>
-<p>a.高频信号更容易收发传输，天线尺寸需要是波长的1/4，使用高频信号可以减小天线尺寸;<br>
-b.无线频谱资源有限，需要在指定的频率上进行发射接收，调制实现频率复用<br>
+<h2 id="为什么要进行调制">1.1 为什么要进行调制：</h2>
+<p>a.高频信号更容易收发传输，天线尺寸需要是波长的1/4，使用高频信号可以减小天线尺寸;<br />
+b.无线频谱资源有限，需要在指定的频率上进行发射接收，调制实现频率复用
 c.增加信号在信道中传输时的抗干扰性能，提高频率效率</p>
-<h2 id="1-2-调制中包含哪些信号类型">1.2 调制中包含哪些信号类型</h2>
-<p>a.消息信号<br>
-b.载波信号<br>
+<h2 id="调制中包含哪些信号类型">1.2 调制中包含哪些信号类型</h2>
+<p>a.消息信号<br />
+b.载波信号<br />
 c.调制信号</p>
-<h1>2.调制的类型</h1>
-<p><img src="/2025/07/13/%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/v2-da2991d933a5ca6dd24f77e03ff87dfd_1440w.jpg" alt=""></p>
+<h1 id="调制的类型">2.调制的类型</h1>
+<p><img
+src="/2025/07/13/%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/v2-da2991d933a5ca6dd24f77e03ff87dfd_1440w.jpg" /></p>
 <p>模拟调制：指模拟消息信号直接调制在载波上，让载波的特性跟随其幅度进行变化。包括调幅（AM）、调相（PM）、调频（FM）、模拟脉冲调制（后面会讲）</p>
 <p>数字调制：指调制信号或者消息信号已经不在是模拟形式，而是进行了模数转换，将数字基带信号调制到载波上进行传输，它的优点有高抗噪性、高可用带宽和容许功率。</p>
 <p>数字调控由三种基本的方式：幅移键控(ASK)、频移键控(FSK)和相移键控(PSK)。它们分别对应于用载波（正弦波）的幅度、频率和相位来传递数字基带信号。（后面会仔细讲）</p>
-<h1>3.解调的类型</h1>
+<h1 id="解调的类型">3.解调的类型</h1>
 <p>相干解调与非相干解调。相干解调（也被称为同步检波）适用于所有线性调制信号的解调。</p>
-<h1>4.模拟调制与解调</h1>
-<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_50493296/article/details/121048869">https://blog.csdn.net/weixin_50493296/article/details/121048869</a></p>
-<h2 id="4-1-幅度调制（线性调制）的原理">4.1 幅度调制（线性调制）的原理</h2>
-<p><img src="/2025/07/13/%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/62586ba3d5465034349a6e18db69c4a1.png" alt=""></p>
-<p>$\mathrm{S_m(t)=[m(t)\cos\omega_ct]*h(t)}$</p>
-<p>$\mathrm{S}<em>{\mathrm{m}}(\omega)=\frac{1}{2}\left[\mathrm{M}(\omega+\omega</em>{\mathrm{c}})+\mathrm{M}(\omega-\omega_{\mathrm{c}})\right]\mathrm{H}(\omega)$</p>
-<h3 id="4-1-1-常规-调幅（AM）">4.1.1 常规 调幅（AM）</h3>
-<h3 id="4-1-2-双边带调制（DSB-SC）">4.1.2 双边带调制（DSB-SC）</h3>
-<h3 id="4-1-3-单边带调制（SSB）">4.1.3 单边带调制（SSB）</h3>
-<h3 id="4-1-4-残留边带调制（VSB）">4.1.4 残留边带调制（VSB）</h3>
-<h3 id="4-1-5-相干解调与包络检波">4.1.5 相干解调与包络检波</h3>
-<h2 id="4-2-非线性调制（角度调制）原理">4.2 非线性调制（角度调制）原理</h2>
+<h1 id="模拟调制与解调">4.模拟调制与解调</h1>
+<p>参考：<a
+target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_50493296/article/details/121048869"
+class="uri">https://blog.csdn.net/weixin_50493296/article/details/121048869</a></p>
+<h2 id="幅度调制线性调制的原理">4.1 幅度调制（线性调制）的原理</h2>
+<p><img
+src="/2025/07/13/%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/62586ba3d5465034349a6e18db69c4a1.png" /></p>
+<p><span
+class="math inline">S<sub>m</sub>(t) = [m(t)cos ω<sub>c</sub>t] * h(t)</span></p>
+<p><span
+class="math inline">$\mathrm{S}_{\mathrm{m}}(\omega)=\frac{1}{2}\left[\mathrm{M}(\omega+\omega_{\mathrm{c}})+\mathrm{M}(\omega-\omega_{\mathrm{c}})\right]\mathrm{H}(\omega)$</span></p>
+<h3 id="常规-调幅am">4.1.1 常规 调幅（AM）</h3>
+<h3 id="双边带调制dsb-sc">4.1.2 双边带调制（DSB-SC）</h3>
+<h3 id="单边带调制ssb">4.1.3 单边带调制（SSB）</h3>
+<h3 id="残留边带调制vsb">4.1.4 残留边带调制（VSB）</h3>
+<h3 id="相干解调与包络检波">4.1.5 相干解调与包络检波</h3>
+<h2 id="非线性调制角度调制原理">4.2 非线性调制（角度调制）原理</h2>
 <p>角度调制时FM和PM的总称，载波的幅度恒定，而频率或相位受调制，抗噪声性能优于幅度调制</p>
-<h3 id="4-2-1-宽带-调频">4.2.1 宽带 调频</h3>
-<h2 id="4-3-模拟脉冲调制">4.3 模拟脉冲调制</h2>
-<h1>5.数字调制</h1>
-<p><img src="/2025/07/13/%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/Snipaste_2025-07-13_20-40-31.png" alt=""></p>
-<h2 id="5-1-ASK-（幅移键控法）">5.1 ASK （幅移键控法）</h2>
+<h3 id="宽带-调频">4.2.1 宽带 调频</h3>
+<h2 id="模拟脉冲调制">4.3 模拟脉冲调制</h2>
+<h1 id="数字调制">5.数字调制</h1>
+<p><img
+src="/2025/07/13/%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/Snipaste_2025-07-13_20-40-31.png" /></p>
+<h2 id="ask-幅移键控法">5.1 ASK （幅移键控法）</h2>
 <p>载波幅度是随着调制信号而变化的，分为2ASK（2进制调制）,MASK（多进制数字调制法）</p>
-<h2 id="5-2-PSK（相移键控法）">5.2 PSK（相移键控法）</h2>
-<p>根据数字基带信号的两个电平使载波相位在两个不同的数值之间切换的一种相位调制方法。<br>
+<h2 id="psk相移键控法">5.2 PSK（相移键控法）</h2>
+<p>根据数字基带信号的两个电平使载波相位在两个不同的数值之间切换的一种相位调制方法。<br />
 产生PSK信号的两种方法：</p>
-<ol>
-<li>
-<p>调相法：将基带数字信号（双极性）与载波信号直接相乘的方法：</p>
-</li>
-<li>
-<p>选择法：用数字基带信号去对相位相差180度的两个载波进行选择。两个载波相位通常相差180度，此时称为反向键控（PSK）。</p>
-</li>
+<ol type="1">
+<li><p>调相法：将基带数字信号（双极性）与载波信号直接相乘的方法：</p></li>
+<li><p>选择法：用数字基带信号去对相位相差180度的两个载波进行选择。两个载波相位通常相差180度，此时称为反向键控（PSK）。</p></li>
 </ol>
-<h2 id="5-3-FSK（频移键控法）">5.3 FSK（频移键控法）</h2>
-<p>载波信号的频率根据离散数字变化而变化，FSK 调制波的输出对于二进制高电平输入频率较高，对于二进制低电平输入频率较低。</p>
-<h2 id="5-4-QAM（正交幅度调制法）">5.4 QAM（正交幅度调制法）</h2>
-<p>利用正交载波对两路信号分别进行双边带抑制载波调幅形成的。通常有二进制 QAM，四进制QAM（16QAM），八进制QAM（64QAM）等。</p>
-<p><img src="/2025/07/13/%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/afc1bf73bff1d6f2ac3b7c5f616c61d7.png" alt=""></p>
+<h2 id="fsk频移键控法">5.3 FSK（频移键控法）</h2>
+<p>载波信号的频率根据离散数字变化而变化，FSK
+调制波的输出对于二进制高电平输入频率较高，对于二进制低电平输入频率较低。</p>
+<h2 id="qam正交幅度调制法">5.4 QAM（正交幅度调制法）</h2>
+<p>利用正交载波对两路信号分别进行双边带抑制载波调幅形成的。通常有二进制
+QAM，四进制QAM（16QAM），八进制QAM（64QAM）等。</p>
+<p><img
+src="/2025/07/13/%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/afc1bf73bff1d6f2ac3b7c5f616c61d7.png" /></p>
 
       
     </div>
@@ -1114,150 +1309,79 @@ c.调制信号</p>
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1>一、论文阅读笔记 Few-shot Image Generation with Diffusion Models</h1>
-<p>论文：<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2211.03264">https://arxiv.org/pdf/2211.03264</a></p>
-<h2 id="主要内容：">主要内容：</h2>
-<p>提出Few-shot Diffusion Models (FDM)，在仅使用 10 张训练图像时，就能生成具有合理多样性和质量的图像。</p>
+          <h1
+id="一论文阅读笔记-few-shot-image-generation-with-diffusion-models">一、论文阅读笔记
+Few-shot Image Generation with Diffusion Models</h1>
+<p>论文：<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2211.03264"
+class="uri">https://arxiv.org/pdf/2211.03264</a></p>
+<h2 id="主要内容">主要内容：</h2>
+<p>提出Few-shot Diffusion Models (FDM)，在仅使用 10
+张训练图像时，就能生成具有合理多样性和质量的图像。</p>
 <h2 id="主要挑战">主要挑战</h2>
 <p>过拟合和模式崩溃（模型只能生成训练集中见过的少数几种样本）</p>
 <h2 id="核心方法">核心方法</h2>
-<h3 id="结构感知数据增强-Structure-Aware-Data-Augmentation">结构感知数据增强 (Structure-Aware Data Augmentation)</h3>
+<h3
+id="结构感知数据增强-structure-aware-data-augmentation">结构感知数据增强
+(Structure-Aware Data Augmentation)</h3>
 <p>使用预训练的CLIP模型提取图像的语义特征，然后基于这些特征计算图像之间的相似性，</p>
-<p>CLIP相似度计算：$s_{ij}=\frac{\phi(I_i)\cdot\phi(I_j)}{|\phi(I_i)||\phi(I_j)|}$</p>
-<p>其中 ϕ(⋅) 是CLIP图像编码器，$s_{ij}\in[-1,1]$表示图像 $I_{i}$  和 $I_{j}$  的语义相似度</p>
+<p>CLIP相似度计算：<span
+class="math inline">$s_{ij}=\frac{\phi(I_i)\cdot\phi(I_j)}{\|\phi(I_i)\|\|\phi(I_j)\|}$</span></p>
+<p>其中 ϕ(⋅) 是CLIP图像编码器，<span
+class="math inline"><em>s</em><sub><em>i</em><em>j</em></sub> ∈ [−1, 1]</span>表示图像
+<span class="math inline"><em>I</em><sub><em>i</em></sub></span> 和
+<span class="math inline"><em>I</em><sub><em>j</em></sub></span>
+的语义相似度</p>
 <p>相似度高的图像对：应用更强的几何变换（如大幅旋转、裁剪），能提供更多样的“视角”而不会完全破坏结构。</p>
 <p>相似度低的图像对：应用较弱的变换，避免破坏其各自独特的结构信息。</p>
-<p>自适应变换强度:<br>
-$\lambda_{ij}=\lambda_{\min}+(\lambda_{\max}-\lambda_{\min})\cdots_{ij}$</p>
-<p>$\lambda_{\mathrm{min}}$和$\lambda_{\mathrm{max}}$是最小/最大变换强度，相似度越高，变换强度越大</p>
-<h3 id="层级优化机制-Hierarchical-Optimization">层级优化机制 (Hierarchical Optimization)</h3>
+<p>自适应变换强度: <span
+class="math inline"><em>λ</em><sub><em>i</em><em>j</em></sub> = <em>λ</em><sub>min</sub> + (<em>λ</em><sub>max</sub> − <em>λ</em><sub>min</sub>)⋯<sub><em>i</em><em>j</em></sub></span></p>
+<p><span class="math inline"><em>λ</em><sub>min</sub></span>和<span
+class="math inline"><em>λ</em><sub>max</sub></span>是最小/最大变换强度，相似度越高，变换强度越大</p>
+<h3 id="层级优化机制-hierarchical-optimization">层级优化机制
+(Hierarchical Optimization)</h3>
 <p>FDM 将扩散模型（如DDPM）的UNet结构划分为两个层级：</p>
-<ol>
-<li>
-<p>基础层：负责捕捉图像的全局结构和基本语义（一般是UNet的深层/瓶颈层）</p>
-</li>
-<li>
-<p>细节层：负责生成图像的局部细节（一般是UNet的浅层）</p>
-</li>
+<ol type="1">
+<li><p>基础层：负责捕捉图像的全局结构和基本语义（一般是UNet的深层/瓶颈层）</p></li>
+<li><p>细节层：负责生成图像的局部细节（一般是UNet的浅层）</p></li>
 </ol>
-<p>采用交替优化策略：<br>
-阶段一 (Freeze Detail Layers)：冻结西接层参数，只优化基础层<br>
-阶段二 (Freeze Base Layers)：冻结基础层参数，只优化细节层</p>
-<h3 id="自适应卷积模块-Adaptive-Convolution-Module">自适应卷积模块 (Adaptive Convolution Module)</h3>
-<p>引入自适应卷积模块，根据输入特征图动态生成卷积核的偏移量 (offset) 和调制标量 (modulation scalar)<br>
-偏移量： 卷积核的采样位置根据输入内容进行微调</p>
-<p>$\Delta p_k=f_{\mathrm{offset}}(\mathbf{F};\phi)$</p>
-<p>$f_{\mathrm{offset}}$是轻量子网络，$\mathrm{F}$是输入特征图</p>
+<p>采用交替优化策略： 阶段一 (Freeze Detail
+Layers)：冻结西接层参数，只优化基础层 阶段二 (Freeze Base
+Layers)：冻结基础层参数，只优化细节层 ### 自适应卷积模块 (Adaptive
+Convolution Module)
+引入自适应卷积模块，根据输入特征图动态生成卷积核的偏移量 (offset)
+和调制标量 (modulation scalar) 偏移量：
+卷积核的采样位置根据输入内容进行微调</p>
+<p><span
+class="math inline"><em>Δ</em><em>p</em><sub><em>k</em></sub> = <em>f</em><sub>offset</sub>(<strong>F</strong>; <em>ϕ</em>)</span></p>
+<p><span
+class="math inline"><em>f</em><sub>offset</sub></span>是轻量子网络，<span
+class="math inline">F</span>是输入特征图</p>
 <p>调制标量： 动态调整卷积核的权重，增强模型对输入变化的适应能力</p>
-<p>$m_k=\sigma(g_{\mathrm{mod}}(\mathbf{F};\psi))$</p>
-<p>$\mathrm{o}$ 是sigmoid激活函数，限制输出在(0,1)范围</p>
-<p>自适应卷积公式：<br>
-$\mathbf{y}(p)=\sum_{k=1}^K\mathbf{w}_k\cdot\mathbf{F}(p+p_k+\Delta p_k)\cdot m_k$</p>
+<p><span
+class="math inline"><em>m</em><sub><em>k</em></sub> = <em>σ</em>(<em>g</em><sub>mod</sub>(<strong>F</strong>; <em>ψ</em>))</span></p>
+<p><span class="math inline">o</span>
+是sigmoid激活函数，限制输出在(0,1)范围</p>
+<p>自适应卷积公式： <span
+class="math inline">$\mathbf{y}(p)=\sum_{k=1}^K\mathbf{w}_k\cdot\mathbf{F}(p+p_k+\Delta
+p_k)\cdot m_k$</span></p>
 <h3 id="模式崩溃">模式崩溃</h3>
-<p>对于某一个训练数据集，其中样本的概率分布为一个简单的一维高斯混合分布，包含两个峰，如下图<br>
-<img src="/2025/07/13/week5/z21ukb0wsa.jpeg" alt=""></p>
+<p>对于某一个训练数据集，其中样本的概率分布为一个简单的一维高斯混合分布，包含两个峰，如下图
+<img src="/2025/07/13/week5/z21ukb0wsa.jpeg" /></p>
 <p>模式崩溃问题是针对于生成样本的多样性，即生成的样本大量重复类似，如下图</p>
-<p><img src="/2025/07/13/week5/g9kyvxsbu2.jpeg" alt=""><br>
+<p><img src="/2025/07/13/week5/g9kyvxsbu2.jpeg" />
 虽然生成样本的质量比较高，但是生成器完全没有捕捉到右边的峰的模式。</p>
 <p>解决思路：</p>
-<p>参考：<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1522756">https://cloud.tencent.com/developer/article/1522756</a></p>
-<h1>二、代码改进</h1>
+<p>参考：<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1522756"
+class="uri">https://cloud.tencent.com/developer/article/1522756</a></p>
+<h1 id="二代码改进">二、代码改进</h1>
 <p>改进代码，</p>
 <p>（1）由原来只替换注意力层改进为替换UNet的所有线性层和1x1卷积层</p>
 <p>（2）改进数据集的选择，原来是随机挑选了10个样本训练lora参数，应改进为挑选部分dpm和少量的irt4_car样本去训练</p>
 <p>7.9遇到的问题：替换Swin Transformer中的层，需要访问weight属性</p>
-<p>尝试解决<br>
-（1）：跳过Swin Transformer中的层<br>
-（2）：当win Transformer访问qkv.weight时，返回原始层的权重</p>
-<p>7.12 解决了LoRA注入失败的问题<br>
-下一步：测试训练效果<br>
+<p>尝试解决 （1）：跳过Swin Transformer中的层 （2）：当win
+Transformer访问qkv.weight时，返回原始层的权重</p>
+<p>7.12 解决了LoRA注入失败的问题 下一步：测试训练效果
 改进用于微调的样本的选择</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/08/%E4%B8%B2%E5%8F%A3%E9%87%8D%E5%AE%9A%E5%90%91/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="gzx">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="林间有Wi-Fi">
-      <meta itemprop="description" content="这里记录我的学习与生活">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | 林间有Wi-Fi">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/07/08/%E4%B8%B2%E5%8F%A3%E9%87%8D%E5%AE%9A%E5%90%91/" class="post-title-link" itemprop="url">串口重定向</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2025-07-08 21:32:54" itemprop="dateCreated datePublished" datetime="2025-07-08T21:32:54+08:00">2025-07-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-07-21 17:47:39" itemprop="dateModified" datetime="2025-07-21T17:47:39+08:00">2025-07-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F-%E5%8D%95%E7%89%87%E6%9C%BA-stm32/" itemprop="url" rel="index"><span itemprop="name">-嵌入式 -单片机 -stm32</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>stm32串口重定向HAL库</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;// 包含标准输入输出头文件</span><br><span class="line"> </span><br><span class="line">int fputc(int ch,FILE *f)</span><br><span class="line">&#123;</span><br><span class="line">//采用轮询方式发送1字节数据，超时时间设置为无限等待</span><br><span class="line">HAL_UART_Transmit(&amp;huart1,(uint8_t *)&amp;ch,1,HAL_MAX_DELAY);</span><br><span class="line">return ch;</span><br><span class="line">&#125;</span><br><span class="line">int fgetc(FILE *f)</span><br><span class="line">&#123;</span><br><span class="line">uint8_t ch;</span><br><span class="line">// 采用轮询方式接收 1字节数据，超时时间设置为无限等待</span><br><span class="line">HAL_UART_Receive( &amp;huart1,(uint8_t*)&amp;ch,1, HAL_MAX_DELAY );</span><br><span class="line">return ch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>

@@ -20,12 +20,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.23.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"show_result":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="Few-Shot Phasic Content Fusing Diffusion Model with Directional Distribution Consistency for Few-Shot Model Adaption https:&#x2F;&#x2F;arxiv.org&#x2F;pdf&#x2F;2309.03729 Abstract  当t较大时学习目标域内容和风格信息，当t较小时学习目标域的局部细节 引入一种新的">
+    <meta name="description" content="Few-Shot Phasic Content Fusing Diffusion Model with Directional Distribution Consistency for Few-Shot Model Adaption https:&#x2F;&#x2F;arxiv.org&#x2F;pdf&#x2F;2309.03729 Abstract  当t较大时学习目标域内容和风格信息，当t较小时学习目标域的局部细节">
 <meta property="og:type" content="article">
 <meta property="og:title" content="week3">
 <meta property="og:url" content="http://example.com/2025/06/30/week3/index.html">
 <meta property="og:site_name" content="林间有Wi-Fi">
-<meta property="og:description" content="Few-Shot Phasic Content Fusing Diffusion Model with Directional Distribution Consistency for Few-Shot Model Adaption https:&#x2F;&#x2F;arxiv.org&#x2F;pdf&#x2F;2309.03729 Abstract  当t较大时学习目标域内容和风格信息，当t较小时学习目标域的局部细节 引入一种新的">
+<meta property="og:description" content="Few-Shot Phasic Content Fusing Diffusion Model with Directional Distribution Consistency for Few-Shot Model Adaption https:&#x2F;&#x2F;arxiv.org&#x2F;pdf&#x2F;2309.03729 Abstract  当t较大时学习目标域内容和风格信息，当t较小时学习目标域的局部细节">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2025/06/30/week3/v2-10ce9e224defb3732e09a257911821aa_1440w.png">
 <meta property="article:published_time" content="2025-06-30T08:49:08.000Z">
@@ -170,7 +170,20 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Few-Shot</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Phasic-Content-Fusing-Diffusion-Model-with-Directional-Distribution-Consistency-for-Few-Shot-Model-Adaption"><span class="nav-number">1.1.</span> <span class="nav-text">Phasic Content Fusing Diffusion Model with Directional Distribution Consistency for Few-Shot Model Adaption</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Abstract"><span class="nav-number">1.1.1.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Challenges"><span class="nav-number">1.1.2.</span> <span class="nav-text">Challenges</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Method"><span class="nav-number">1.1.3.</span> <span class="nav-text">Method</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Training-with-Phasic-Content-Fusion"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">Training with Phasic Content Fusion</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E5%90%91%E5%88%86%E5%B8%83%E4%B8%80%E8%87%B4%E6%80%A7%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0-directional-distribution-consistency-loss-DDC"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">方向分布一致性损失函数 directional distribution consistency loss (DDC)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%AD%E4%BB%A3%E8%B7%A8%E5%9F%9F%E7%BB%93%E6%9E%84%E5%BC%95%E5%AF%BC-Iterative-Cross-domain-Structure-Guidance-ICSG"><span class="nav-number">1.1.3.3.</span> <span class="nav-text">迭代跨域结构引导 Iterative Cross-domain Structure Guidance(ICSG)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E5%8F%8A%E8%AF%84%E4%BC%B0%E8%BF%87%E7%A8%8B"><span class="nav-number">1.1.4.</span> <span class="nav-text">实验及评估过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="nav-number">1.1.5.</span> <span class="nav-text">相关概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%BE%E5%83%8F%E7%BF%BB%E8%AF%91-Image-to-Image-Translation"><span class="nav-number">1.1.5.1.</span> <span class="nav-text">图像翻译 Image-to-Image Translation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Gram%E7%9F%A9%E9%98%B5"><span class="nav-number">1.1.5.2.</span> <span class="nav-text">Gram矩阵</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-number">1.1.5.2.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BA%94%E7%94%A8"><span class="nav-number">1.1.5.2.2.</span> <span class="nav-text">应用</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B6%88%E8%9E%8D%E5%AE%9E%E9%AA%8C-Ablation-Study"><span class="nav-number">1.1.5.3.</span> <span class="nav-text">消融实验 Ablation Study</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Specialist-Diffusion-Plug-and-Play-Sample-Efficient-Fine-Tuning-of-Text-to-Image-Diffusion-Models-to-Learn-Any-Unseen-Style"><span class="nav-number">1.2.</span> <span class="nav-text">Specialist Diffusion: Plug-and-Play Sample-Efficient Fine-Tuning of Text-to-Image Diffusion Models to Learn Any Unseen Style</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E8%A6%81%E5%86%85%E5%AE%B9"><span class="nav-number">1.2.1.</span> <span class="nav-text">主要内容</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Data-Augmentations-for-Text2Image-Diffusion%EF%BC%88%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%BC%BA%EF%BC%89"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">Data Augmentations for Text2Image Diffusion（数据增强）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Image-Augmentation"><span class="nav-number">1.2.1.1.1.</span> <span class="nav-text">Image Augmentation</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Text-Prompt-Augmentation"><span class="nav-number">1.2.1.1.2.</span> <span class="nav-text">Text Prompt Augmentation</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Caption-Retrieval-Augmentation-%E6%A0%87%E9%A2%98%E6%90%9C%E7%B4%A2%E5%A2%9E%E5%BC%BA"><span class="nav-number">1.2.1.1.2.1.</span> <span class="nav-text">Caption Retrieval Augmentation 标题搜索增强</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Synonym-Augmentation-%E5%90%8C%E4%B9%89%E8%AF%8D%E5%A2%9E%E5%BC%BA"><span class="nav-number">1.2.1.1.2.2.</span> <span class="nav-text">Synonym Augmentation 同义词增强</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Doubled-Augmentation-%E5%8F%8C%E9%87%8D%E5%A2%9E%E5%BC%BA"><span class="nav-number">1.2.1.1.2.3.</span> <span class="nav-text">Doubled Augmentation 双重增强</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Content-Loss"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">Content Loss</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Sparse-Updating"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">Sparse Updating</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5-2"><span class="nav-number">1.2.2.</span> <span class="nav-text">相关概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A2%9E%E5%BC%BA%E6%B3%84%E9%9C%B2%E9%97%AE%E9%A2%98-augmentation-leakage"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">增强泄露问题 augmentation leakage</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%A3%E5%88%99%E5%8C%96-Regularization"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">正则化 Regularization</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">一.LoRA原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1%E5%AE%9E%E7%8E%B0%E6%B5%81%E7%A8%8B"><span class="nav-number">2.1.</span> <span class="nav-text">1.1实现流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2LoRA%E5%8F%82%E6%95%B0%E5%90%88%E5%B9%B6%E7%B3%BB%E6%95%B0"><span class="nav-number">2.2.</span> <span class="nav-text">1.2LoRA参数合并系数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-LoRA%E7%9A%84%E7%A7%A9-mathbf-r-%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9"><span class="nav-number">2.3.</span> <span class="nav-text">1.3 LoRA的秩$\mathbf{r}$如何选择</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#few-shot"><span class="nav-number">1.</span> <span class="nav-text">Few-Shot</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#phasic-content-fusing-diffusion-model-with-directional-distribution-consistency-for-few-shot-model-adaption"><span class="nav-number">1.1.</span> <span class="nav-text">Phasic
+Content Fusing Diffusion Model with Directional Distribution Consistency
+for Few-Shot Model Adaption</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#abstract"><span class="nav-number">1.1.1.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#challenges"><span class="nav-number">1.1.2.</span> <span class="nav-text">Challenges</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#method"><span class="nav-number">1.1.3.</span> <span class="nav-text">Method</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#training-with-phasic-content-fusion"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">Training with Phasic
+Content Fusion</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E5%90%91%E5%88%86%E5%B8%83%E4%B8%80%E8%87%B4%E6%80%A7%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0-directional-distribution-consistency-loss-ddc"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">方向分布一致性损失函数
+directional distribution consistency loss (DDC)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%AD%E4%BB%A3%E8%B7%A8%E5%9F%9F%E7%BB%93%E6%9E%84%E5%BC%95%E5%AF%BC-iterative-cross-domain-structure-guidanceicsg"><span class="nav-number">1.1.3.3.</span> <span class="nav-text">迭代跨域结构引导
+Iterative Cross-domain Structure Guidance(ICSG)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E9%AA%8C%E5%8F%8A%E8%AF%84%E4%BC%B0%E8%BF%87%E7%A8%8B"><span class="nav-number">1.1.4.</span> <span class="nav-text">实验及评估过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="nav-number">1.1.5.</span> <span class="nav-text">相关概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%BE%E5%83%8F%E7%BF%BB%E8%AF%91-image-to-image-translation"><span class="nav-number">1.1.5.1.</span> <span class="nav-text">图像翻译 Image-to-Image
+Translation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gram%E7%9F%A9%E9%98%B5"><span class="nav-number">1.1.5.2.</span> <span class="nav-text">Gram矩阵</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-number">1.1.5.2.1.</span> <span class="nav-text">原理</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B6%88%E8%9E%8D%E5%AE%9E%E9%AA%8C-ablation-study"><span class="nav-number">1.1.5.3.</span> <span class="nav-text">消融实验 Ablation Study</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#specialist-diffusion-plug-and-play-sample-efficient-fine-tuning-of-text-to-image-diffusion-models-to-learn-any-unseen-style"><span class="nav-number">1.2.</span> <span class="nav-text">Specialist
+Diffusion: Plug-and-Play Sample-Efficient Fine-Tuning of Text-to-Image
+Diffusion Models to Learn Any Unseen Style</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E8%A6%81%E5%86%85%E5%AE%B9"><span class="nav-number">1.2.1.</span> <span class="nav-text">主要内容</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#data-augmentations-for-text2image-diffusion%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%BC%BA"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">Data
+Augmentations for Text2Image Diffusion（数据增强）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#image-augmentation"><span class="nav-number">1.2.1.1.1.</span> <span class="nav-text">Image Augmentation</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#text-prompt-augmentation"><span class="nav-number">1.2.1.1.2.</span> <span class="nav-text">Text Prompt Augmentation</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#caption-retrieval-augmentation-%E6%A0%87%E9%A2%98%E6%90%9C%E7%B4%A2%E5%A2%9E%E5%BC%BA"><span class="nav-number">1.2.1.1.2.1.</span> <span class="nav-text">Caption Retrieval
+Augmentation 标题搜索增强</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#synonym-augmentation-%E5%90%8C%E4%B9%89%E8%AF%8D%E5%A2%9E%E5%BC%BA"><span class="nav-number">1.2.1.1.2.2.</span> <span class="nav-text">Synonym Augmentation
+同义词增强</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#doubled-augmentation-%E5%8F%8C%E9%87%8D%E5%A2%9E%E5%BC%BA"><span class="nav-number">1.2.1.1.2.3.</span> <span class="nav-text">Doubled Augmentation
+双重增强</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#content-loss"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">Content Loss</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sparse-updating"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">Sparse Updating</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">相关概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A2%9E%E5%BC%BA%E6%B3%84%E9%9C%B2%E9%97%AE%E9%A2%98-augmentation-leakage"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">增强泄露问题 augmentation
+leakage</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%A3%E5%88%99%E5%8C%96-regularization"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">正则化 Regularization</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80.lora%E5%8E%9F%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">一.LoRA原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E6%B5%81%E7%A8%8B"><span class="nav-number">2.1.</span> <span class="nav-text">1.1实现流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lora%E5%8F%82%E6%95%B0%E5%90%88%E5%B9%B6%E7%B3%BB%E6%95%B0"><span class="nav-number">2.2.</span> <span class="nav-text">1.2LoRA参数合并系数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lora%E7%9A%84%E7%A7%A9mathbfr%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9"><span class="nav-number">2.3.</span> <span class="nav-text">1.3 LoRA的秩r如何选择</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -185,18 +198,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-count">20</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -287,122 +300,194 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h1>Few-Shot</h1>
-<h2 id="Phasic-Content-Fusing-Diffusion-Model-with-Directional-Distribution-Consistency-for-Few-Shot-Model-Adaption">Phasic Content Fusing Diffusion Model with Directional Distribution Consistency for Few-Shot Model Adaption</h2>
-<p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2309.03729">https://arxiv.org/pdf/2309.03729</a></p>
-<h3 id="Abstract">Abstract</h3>
-<ol>
+    <div class="post-body" itemprop="articleBody"><h1 id="few-shot">Few-Shot</h1>
+<h2
+id="phasic-content-fusing-diffusion-model-with-directional-distribution-consistency-for-few-shot-model-adaption">Phasic
+Content Fusing Diffusion Model with Directional Distribution Consistency
+for Few-Shot Model Adaption</h2>
+<p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2309.03729"
+class="uri">https://arxiv.org/pdf/2309.03729</a></p>
+<h3 id="abstract">Abstract</h3>
+<ol type="1">
 <li>当t较大时学习目标域内容和风格信息，当t较小时学习目标域的局部细节</li>
 <li>引入一种新的方向分布一致性损失，确保生成分布和原分布之间的一致性，防止过拟合（overfit）</li>
 <li>跨领域情景的结构一致性</li>
 </ol>
-<h3 id="Challenges">Challenges</h3>
-<ol>
+<h3 id="challenges">Challenges</h3>
+<ol type="1">
 <li>overfit</li>
 <li>细节学习阶段（t较小的时候）风格迁移失败</li>
 <li>现有的少样本GAN适应只约束对应点成对距离（相对位置关系），无法约束分布旋转</li>
 </ol>
-<h3 id="Method">Method</h3>
-<h4 id="Training-with-Phasic-Content-Fusion">Training with Phasic Content Fusion</h4>
-<p>在前向加噪过程中学习内容和风格信息，引入权重函数m(t),自适应地融合$E(x^{A})$和噪声$z\sim\mathcal{N}(0,I)$，</p>
-<p>$\hat{E}(x^A)=m(t)E(x^A)+(1-m(t))z$</p>
-<p>然后使用多个卷积块将 $\hat{E}(x^A)$ 与 $E(x_{t}^{A})$ 融合，得到融合后的特征 $E(x^A,x_t^A)$ ，最后将融合后的特征送入UNet解码器对噪声进行预测，得到包含增强内容信息的 $x_{t-1}^A$</p>
-<h4 id="方向分布一致性损失函数-directional-distribution-consistency-loss-DDC">方向分布一致性损失函数 directional distribution consistency loss (DDC)</h4>
+<h3 id="method">Method</h3>
+<h4 id="training-with-phasic-content-fusion">Training with Phasic
+Content Fusion</h4>
+<p>在前向加噪过程中学习内容和风格信息，引入权重函数m(t),自适应地融合<span
+class="math inline"><em>E</em>(<em>x</em><sup><em>A</em></sup>)</span>和噪声<span
+class="math inline"><em>z</em> ∼ 𝒩(0, <em>I</em>)</span>，</p>
+<p><span
+class="math inline"><em>Ê</em>(<em>x</em><sup><em>A</em></sup>) = <em>m</em>(<em>t</em>)<em>E</em>(<em>x</em><sup><em>A</em></sup>) + (1 − <em>m</em>(<em>t</em>))<em>z</em></span></p>
+<p>然后使用多个卷积块将 <span
+class="math inline"><em>Ê</em>(<em>x</em><sup><em>A</em></sup>)</span>
+与 <span
+class="math inline"><em>E</em>(<em>x</em><sub><em>t</em></sub><sup><em>A</em></sup>)</span>
+融合，得到融合后的特征 <span
+class="math inline"><em>E</em>(<em>x</em><sup><em>A</em></sup>, <em>x</em><sub><em>t</em></sub><sup><em>A</em></sup>)</span>
+，最后将融合后的特征送入UNet解码器对噪声进行预测，得到包含增强内容信息的
+<span
+class="math inline"><em>x</em><sub><em>t</em> − 1</sub><sup><em>A</em></sup></span></p>
+<h4
+id="方向分布一致性损失函数-directional-distribution-consistency-loss-ddc">方向分布一致性损失函数
+directional distribution consistency loss (DDC)</h4>
 <p>最终的损失函数由以下三个损失函数构成：</p>
-<ol>
-<li>
-<p>Directional distribution consistency loss</p>
-<p>$\mathcal{L}_{DDC}=|E(x^A)+w,E(x_0^{A\to B})|^2$</p>
-<p>其中w为方向向量，给定源分布 $A={x_{1}^{A},\cdots x_{m}^{A}}$ 和目标分布 $B={x_{1}^{B},\cdots x_{m}^{B}}$ ,特征空间中从源域中心到目标域中心的跨域方向向量w,</p>
-<p>$w=\frac{1}{m}\sum_{i=1}^mE(x_i^B)-\frac{1}{n}\sum_{i=1}^nE(x_i^A)$</p>
-</li>
-<li>
-<p>Style loss</p>
-<p>$\mathcal{L}<em>{style}=\frac{1}{m}\sum</em>{i=1}^{m}\sum_{l}w_{l}|G^{l}(x_{0}^{A\to B})-G^{l}(x_{i}^{B})|^{2}$</p>
-<p>用于计算生成图像和目标图像之间的分割损失，基于Gram矩阵</p>
-</li>
-<li>
-<p>Diffusion Loss</p>
-</li>
-<li>
-<p>$\mathcal{L}<em>{dif}=||\epsilon</em>\theta(x_t^B,t)-\epsilon||^2$</p>
-</li>
+<ol type="1">
+<li><p>Directional distribution consistency loss</p>
+<p><span
+class="math inline">ℒ<sub><em>D</em><em>D</em><em>C</em></sub> = ∥<em>E</em>(<em>x</em><sup><em>A</em></sup>) + <em>w</em>, <em>E</em>(<em>x</em><sub>0</sub><sup><em>A</em> → <em>B</em></sup>)∥<sup>2</sup></span></p>
+<p>其中w为方向向量，给定源分布 <span
+class="math inline"><em>A</em> = {<em>x</em><sub>1</sub><sup><em>A</em></sup>, ⋯<em>x</em><sub><em>m</em></sub><sup><em>A</em></sup>}</span>
+和目标分布 <span
+class="math inline"><em>B</em> = {<em>x</em><sub>1</sub><sup><em>B</em></sup>, ⋯<em>x</em><sub><em>m</em></sub><sup><em>B</em></sup>}</span>
+,特征空间中从源域中心到目标域中心的跨域方向向量w,</p>
+<p><span
+class="math inline">$w=\frac{1}{m}\sum_{i=1}^mE(x_i^B)-\frac{1}{n}\sum_{i=1}^nE(x_i^A)$</span></p></li>
+<li><p>Style loss</p>
+<p><span
+class="math inline">$\mathcal{L}_{style}=\frac{1}{m}\sum_{i=1}^{m}\sum_{l}w_{l}\|G^{l}(x_{0}^{A\to
+B})-G^{l}(x_{i}^{B})\|^{2}$</span></p>
+<p>用于计算生成图像和目标图像之间的分割损失，基于Gram矩阵</p></li>
+<li><p>Diffusion Loss</p></li>
+<li><p><span
+class="math inline">ℒ<sub><em>d</em><em>i</em><em>f</em></sub> = ||<em>ϵ</em><sub><em>θ</em></sub>(<em>x</em><sub><em>t</em></sub><sup><em>B</em></sup>, <em>t</em>) − <em>ϵ</em>||<sup>2</sup></span></p></li>
 </ol>
 <p>最终的损失函数为：</p>
-<p>$\mathcal{L}=m(t)(1-w(t))(\lambda_{DDC}\mathcal{L}<em>{DDC}(x^{A},x</em>{0}^{A\to B})+\lambda_{style}\mathcal{L}<em>{style}(x</em>{0}^{A\to B},x^{B}))+w(t)\mathcal{L}_{dif}(x^{B})$</p>
-<h4 id="迭代跨域结构引导-Iterative-Cross-domain-Structure-Guidance-ICSG">迭代跨域结构引导 Iterative Cross-domain Structure Guidance(ICSG)</h4>
+<p><span
+class="math inline">ℒ = <em>m</em>(<em>t</em>)(1 − <em>w</em>(<em>t</em>))(<em>λ</em><sub><em>D</em><em>D</em><em>C</em></sub>ℒ<sub><em>D</em><em>D</em><em>C</em></sub>(<em>x</em><sup><em>A</em></sup>, <em>x</em><sub>0</sub><sup><em>A</em> → <em>B</em></sup>) + <em>λ</em><sub><em>s</em><em>t</em><em>y</em><em>l</em><em>e</em></sub>ℒ<sub><em>s</em><em>t</em><em>y</em><em>l</em><em>e</em></sub>(<em>x</em><sub>0</sub><sup><em>A</em> → <em>B</em></sup>, <em>x</em><sup><em>B</em></sup>)) + <em>w</em>(<em>t</em>)ℒ<sub><em>d</em><em>i</em><em>f</em></sub>(<em>x</em><sup><em>B</em></sup>)</span></p>
+<h4
+id="迭代跨域结构引导-iterative-cross-domain-structure-guidanceicsg">迭代跨域结构引导
+Iterative Cross-domain Structure Guidance(ICSG)</h4>
 <p>需要进一步理解</p>
 <h3 id="实验及评估过程">实验及评估过程</h3>
 <h3 id="相关概念">相关概念</h3>
-<h4 id="图像翻译-Image-to-Image-Translation">图像翻译 Image-to-Image Translation</h4>
+<h4 id="图像翻译-image-to-image-translation">图像翻译 Image-to-Image
+Translation</h4>
 <p>将图像中内容从一个图像域Ｘ转换到另一个图像域Ｙ，可以看作是将原始图像的某种属性Ｘ移除，重新赋予其新的属性Ｙ，也即是图像间的跨域转换。</p>
-<h4 id="Gram矩阵">Gram矩阵</h4>
+<h4 id="gram矩阵">Gram矩阵</h4>
 <h5 id="原理">原理</h5>
-<p>n维欧式空间中任意k个向量之间两两的内积所组成的矩阵，称为这k个向量的格拉姆矩阵(Gram matrix)，很明显，这是一个对称矩阵。<br>
-输入图像的feature map为[ ch, h, w]。我们经过flatten（即是将h* w 进行平铺成一维向量）和矩阵转置操作，可以变形为[ ch, h* w]和[ h*w, ch]的矩阵。再对两个作内积得到Gram矩阵。</p>
-<h5 id="应用">应用</h5>
+<p>n维欧式空间中任意k个向量之间两两的内积所组成的矩阵，称为这k个向量的格拉姆矩阵(Gram
+matrix)，很明显，这是一个对称矩阵。 输入图像的feature map为[ ch, h,
+w]。我们经过flatten（即是将h* w
+进行平铺成一维向量）和矩阵转置操作，可以变形为[ ch, h* w]和[ h*w,
+ch]的矩阵。再对两个作内积得到Gram矩阵。 ##### 应用</p>
 <p>Gram matrix的应用-风格迁移：</p>
-<ol>
-<li>
-<p>准备基准图像和风格图像</p>
-</li>
-<li>
-<p>使用深层网络分别提取基准图像（加白噪声）和风格图像的特征向量（或者说是特征图feature map）</p>
-</li>
-<li>
-<p>分别计算两个图像的特征向量的Gram矩阵，以两个图像的Gram矩阵的差异最小化为优化目标，不断调整基准图像，使风格不断接近目标风格图像</p>
-</li>
+<ol type="1">
+<li><p>准备基准图像和风格图像</p></li>
+<li><p>使用深层网络分别提取基准图像（加白噪声）和风格图像的特征向量（或者说是特征图feature
+map）</p></li>
+<li><p>分别计算两个图像的特征向量的Gram矩阵，以两个图像的Gram矩阵的差异最小化为优化目标，不断调整基准图像，使风格不断接近目标风格图像</p></li>
 </ol>
 <p>一般来说浅层网络提取的是局部的细节纹理特征，深层网络提取的是更抽象的轮廓、大小等信息。这些特征总的结合起来表现出来的感觉就是图像的风格，由这些特征向量计算出来的的Gram矩阵，就可以把图像特征之间隐藏的联系提取出来，也就是各个特征之间的相关性高低。</p>
-<h4 id="消融实验-Ablation-Study">消融实验 Ablation Study</h4>
+<h4 id="消融实验-ablation-study">消融实验 Ablation Study</h4>
 <p>类似于“控制变量法”，逐一控制参数来观察结果的变化，以确定不同参数对模型的影响。</p>
-<h2 id="Specialist-Diffusion-Plug-and-Play-Sample-Efficient-Fine-Tuning-of-Text-to-Image-Diffusion-Models-to-Learn-Any-Unseen-Style">Specialist Diffusion: Plug-and-Play Sample-Efficient Fine-Tuning of Text-to-Image Diffusion Models to Learn Any Unseen Style</h2>
-<p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2211.12572">https://arxiv.org/pdf/2211.12572</a></p>
+<h2
+id="specialist-diffusion-plug-and-play-sample-efficient-fine-tuning-of-text-to-image-diffusion-models-to-learn-any-unseen-style">Specialist
+Diffusion: Plug-and-Play Sample-Efficient Fine-Tuning of Text-to-Image
+Diffusion Models to Learn Any Unseen Style</h2>
+<p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2211.12572"
+class="uri">https://arxiv.org/pdf/2211.12572</a></p>
 <h3 id="主要内容">主要内容</h3>
-<p>这篇论文提出Specialist Diffusion：相当于一个即插即用的微调工具包，包括文本到图像的定制数据增强，content loss to facilitate content-style disentanglement，sparsely updating diffusion time steps。主要适用于以少量已知风格的图片训练模型，使其能够通过特定的文本提示生成相应风格的图片。</p>
-<h4 id="Data-Augmentations-for-Text2Image-Diffusion（数据增强）">Data Augmentations for Text2Image Diffusion（数据增强）</h4>
-<h5 id="Image-Augmentation">Image Augmentation</h5>
-<h5 id="Text-Prompt-Augmentation">Text Prompt Augmentation</h5>
-<h6 id="Caption-Retrieval-Augmentation-标题搜索增强">Caption Retrieval Augmentation 标题搜索增强</h6>
-<h6 id="Synonym-Augmentation-同义词增强">Synonym Augmentation 同义词增强</h6>
-<h6 id="Doubled-Augmentation-双重增强">Doubled Augmentation 双重增强</h6>
-<h4 id="Content-Loss">Content Loss</h4>
-<h4 id="Sparse-Updating">Sparse Updating</h4>
-<h3 id="相关概念-2">相关概念</h3>
-<h4 id="增强泄露问题-augmentation-leakage">增强泄露问题 augmentation leakage</h4>
-<p>生成模型在训练过程中，会记住训练样本及其经过增强后的版本，这样在推理（生成新内容）阶段，就容易生成与训练时相似的图像。<br>
-举个文中例子，很多旋转后的图像理论上算自然照片，但在真实自然图像集合里，它们出现的概率其实更低。要是训练时过度用旋转增强，模型就可能 “bias（偏向）” 生成更多带旋转的物体，可这些并非实际想要的（“un - tended” ，即不符合自然场景常见分布 ），相当于增强操作的影响 “泄漏” 到生成结果里，让生成内容偏离真实自然数据的合理分布，这就是 “augmentation leakage” 。简单说，就是数据增强的不当使用，让模型学到了增强带来的 “虚假模式”，而非真实场景的合理特征，影响生成效果。</p>
-<h4 id="正则化-Regularization">正则化 Regularization</h4>
+<p>这篇论文提出Specialist
+Diffusion：相当于一个即插即用的微调工具包，包括文本到图像的定制数据增强，content
+loss to facilitate content-style disentanglement，sparsely updating
+diffusion time
+steps。主要适用于以少量已知风格的图片训练模型，使其能够通过特定的文本提示生成相应风格的图片。</p>
+<h4 id="data-augmentations-for-text2image-diffusion数据增强">Data
+Augmentations for Text2Image Diffusion（数据增强）</h4>
+<h5 id="image-augmentation">Image Augmentation</h5>
+<h5 id="text-prompt-augmentation">Text Prompt Augmentation</h5>
+<h6 id="caption-retrieval-augmentation-标题搜索增强">Caption Retrieval
+Augmentation 标题搜索增强</h6>
+<h6 id="synonym-augmentation-同义词增强">Synonym Augmentation
+同义词增强</h6>
+<h6 id="doubled-augmentation-双重增强">Doubled Augmentation
+双重增强</h6>
+<h4 id="content-loss">Content Loss</h4>
+<h4 id="sparse-updating">Sparse Updating</h4>
+<h3 id="相关概念-1">相关概念</h3>
+<h4 id="增强泄露问题-augmentation-leakage">增强泄露问题 augmentation
+leakage</h4>
+<p>生成模型在训练过程中，会记住训练样本及其经过增强后的版本，这样在推理（生成新内容）阶段，就容易生成与训练时相似的图像。
+举个文中例子，很多旋转后的图像理论上算自然照片，但在真实自然图像集合里，它们出现的概率其实更低。要是训练时过度用旋转增强，模型就可能
+“bias（偏向）” 生成更多带旋转的物体，可这些并非实际想要的（“un - tended”
+，即不符合自然场景常见分布 ），相当于增强操作的影响 “泄漏”
+到生成结果里，让生成内容偏离真实自然数据的合理分布，这就是 “augmentation
+leakage” 。简单说，就是数据增强的不当使用，让模型学到了增强带来的
+“虚假模式”，而非真实场景的合理特征，影响生成效果。</p>
+<h4 id="正则化-regularization">正则化 Regularization</h4>
 <p><strong>正则化是用来防止模型过拟合而采取的手段</strong>，对代价函数增加一个限制条件，限制其较高次的参数大小不能过大</p>
-<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41960890/article/details/104891561">https://blog.csdn.net/weixin_41960890/article/details/104891561</a></p>
-<h1>一.LoRA原理</h1>
-<p>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/702629428">https://zhuanlan.zhihu.com/p/702629428</a><br>
-原论文：<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2106.09685">https://arxiv.org/pdf/2106.09685</a><br>
-LoRA(Low-Rank Adaptation of LLMs)，即LLMs的低秩适应，是参数高效微调最常用的方法。</p>
+<p>参考：<a
+target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41960890/article/details/104891561"
+class="uri">https://blog.csdn.net/weixin_41960890/article/details/104891561</a></p>
+<h1 id="一.lora原理">一.LoRA原理</h1>
+<p>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/702629428"
+class="uri">https://zhuanlan.zhihu.com/p/702629428</a> 原论文：<a
+target="_blank" rel="noopener" href="https://arxiv.org/pdf/2106.09685"
+class="uri">https://arxiv.org/pdf/2106.09685</a> LoRA(Low-Rank
+Adaptation of LLMs)，即LLMs的低秩适应，是参数高效微调最常用的方法。</p>
 <p>LoRA的本质就是用更少的训练参数来近似LLM全参数微调所得的增量参数，从而达到使用更少显存占用的高效微调。</p>
-<h2 id="1-1实现流程">1.1实现流程</h2>
-<p><img src="v2-10ce9e224defb3732e09a257911821aa_1440w.png" alt=""></p>
-<ol>
-<li>在原始预训练语言模型旁边增加一个旁路，做降维再升维的操作来模拟内在秩；</li>
-<li>用随机高斯分布初始化 A，用零矩阵初始化B，训练时固定预训练模型的参数，只训练矩阵 A 与矩阵 B；</li>
-<li>训练完成后，将 B 矩阵与 A 矩阵相乘后合并预训练模型参数作为微调后的模型参数。</li>
+<h2 id="实现流程">1.1实现流程</h2>
+<p><img src="v2-10ce9e224defb3732e09a257911821aa_1440w.png" /></p>
+<ol type="1">
+<li>在原始预训练语言模型旁边增加一个旁路，做降维再升维的操作来模拟内在秩；<br />
+</li>
+<li>用随机高斯分布初始化
+A，用零矩阵初始化B，训练时固定预训练模型的参数，只训练矩阵 A 与矩阵
+B；</li>
+<li>训练完成后，将 B 矩阵与 A
+矩阵相乘后合并预训练模型参数作为微调后的模型参数。</li>
 </ol>
-<p>具体来讲，预训练权重矩阵 $\mathbf{W}_0\in\mathbb{R}^{d\times d}$ ，</p>
-<p>将增量参数矩阵 $\Delta\mathbf{W}$ ，表示为两个参数量更小的矩阵 B 和 A 的低秩近似,如下式</p>
-<p>$\mathbf{W}<em>{0}+\Delta\mathbf{W}=\mathbf{W}</em>{0}+\mathbf{BA}$</p>
-<p>其中 $\mathbf{B}\in\mathbb{R}^{d\times r}$ ，$\mathbf{A}\in\mathbb{R}^{r\times d}$ ，秩$\mathrm{r}$远小于$\mathrm{d}$</p>
-<p>给定输入$.\mathbf{x}\in\mathbb{R}^d$ ,添加LoRA后的输出$.\mathbf{h}\in\mathbb{R}^d$</p>
-<p>$\mathbf{h}=(\mathbf{W}<em>{0}+\Delta\mathbf{W})\mathbf{x}=\mathbf{W}</em>{0}\mathbf{x}+\mathbf{BA}\mathbf{x}$</p>
-<p>$\Delta\mathbf{h}=\mathbf{BAx}$</p>
-<h2 id="1-2LoRA参数合并系数">1.2LoRA参数合并系数</h2>
-<p>实际实现时以以下形式合并，其中$\alpha$为超参数</p>
-<p>$\mathbf{h}=(\mathbf{W}_{0}+\frac{\alpha}{r}\Delta\mathbf{W})\mathbf{x}$</p>
-<p>系数$\frac{\alpha}{r}$越大，LoRA微调权重的影响就越大，在下游任务上越容易过拟合</p>
-<p>系数$\frac{\alpha}{r}$越小，LoRA微调权重的影响就越小（微调的效果不明显，原始模型参数受到的影响也较少）</p>
-<p>一般来说，在给定任务上LoRA微调，让$\alpha$为$\mathbf{r}$的2倍数。</p>
-<h2 id="1-3-LoRA的秩-mathbf-r-如何选择">1.3 LoRA的秩$\mathbf{r}$如何选择</h2>
-<p>目标：找到一个秩$\mathbf{r}$，使$\mathrm{BA}$无限接近$\Delta\mathbf{W}$的表达能力。</p>
-<p>秩$\mathbf{r}$越大，拟合能力越强（甚至出现过拟合），但参与训练的参数量也随之增加。</p>
+<p>具体来讲，预训练权重矩阵 <span
+class="math inline"><strong>W</strong><sub>0</sub> ∈ ℝ<sup><em>d</em> × <em>d</em></sup></span>
+，</p>
+<p>将增量参数矩阵 <span
+class="math inline"><em>Δ</em><strong>W</strong></span>
+，表示为两个参数量更小的矩阵 B 和 A 的低秩近似,如下式</p>
+<p><span
+class="math inline"><strong>W</strong><sub>0</sub> + <em>Δ</em><strong>W</strong> = <strong>W</strong><sub>0</sub> + <strong>B</strong><strong>A</strong></span></p>
+<p>其中 <span
+class="math inline"><strong>B</strong> ∈ ℝ<sup><em>d</em> × <em>r</em></sup></span>
+，<span
+class="math inline"><strong>A</strong> ∈ ℝ<sup><em>r</em> × <em>d</em></sup></span>
+，秩<span class="math inline">r</span>远小于<span
+class="math inline">d</span></p>
+<p>给定输入<span
+class="math inline">.<strong>x</strong> ∈ ℝ<sup><em>d</em></sup></span>
+,添加LoRA后的输出<span
+class="math inline">.<strong>h</strong> ∈ ℝ<sup><em>d</em></sup></span></p>
+<p><span
+class="math inline"><strong>h</strong> = (<strong>W</strong><sub>0</sub> + <em>Δ</em><strong>W</strong>)<strong>x</strong> = <strong>W</strong><sub>0</sub><strong>x</strong> + <strong>B</strong><strong>A</strong><strong>x</strong></span></p>
+<p><span
+class="math inline"><em>Δ</em><strong>h</strong> = <strong>B</strong><strong>A</strong><strong>x</strong></span></p>
+<h2 id="lora参数合并系数">1.2LoRA参数合并系数</h2>
+<p>实际实现时以以下形式合并，其中<span
+class="math inline"><em>α</em></span>为超参数</p>
+<p><span
+class="math inline">$\mathbf{h}=(\mathbf{W}_{0}+\frac{\alpha}{r}\Delta\mathbf{W})\mathbf{x}$</span></p>
+<p>系数<span
+class="math inline">$\frac{\alpha}{r}$</span>越大，LoRA微调权重的影响就越大，在下游任务上越容易过拟合</p>
+<p>系数<span
+class="math inline">$\frac{\alpha}{r}$</span>越小，LoRA微调权重的影响就越小（微调的效果不明显，原始模型参数受到的影响也较少）</p>
+<p>一般来说，在给定任务上LoRA微调，让<span
+class="math inline"><em>α</em></span>为<span
+class="math inline"><strong>r</strong></span>的2倍数。</p>
+<h2 id="lora的秩mathbfr如何选择">1.3 LoRA的秩<span
+class="math inline"><strong>r</strong></span>如何选择</h2>
+<p>目标：找到一个秩<span
+class="math inline"><strong>r</strong></span>，使<span
+class="math inline">BA</span>无限接近<span
+class="math inline"><em>Δ</em><strong>W</strong></span>的表达能力。</p>
+<p>秩<span
+class="math inline"><strong>r</strong></span>越大，拟合能力越强（甚至出现过拟合），但参与训练的参数量也随之增加。</p>
 
     </div>
 
