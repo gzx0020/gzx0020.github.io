@@ -177,7 +177,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -188,7 +188,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -205,6 +205,293 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/13/%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="gzx">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="林间有Wi-Fi">
+      <meta itemprop="description" content="这里记录我的学习与生活">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | 林间有Wi-Fi">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/07/13/%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/" class="post-title-link" itemprop="url">调制与解调</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2025-07-13 18:09:16 / Modified: 20:49:37" itemprop="dateCreated datePublished" datetime="2025-07-13T18:09:16+08:00">2025-07-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">信号处理</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="基本概念">1.基本概念</h1>
+<p>调制时将基带信号搬移到高频载波，实现频谱搬移的过程。解调则是调制的逆过程。</p>
+<h2 id="为什么要进行调制">1.1 为什么要进行调制：</h2>
+<p>a.高频信号更容易收发传输，天线尺寸需要是波长的1/4，使用高频信号可以减小天线尺寸;<br />
+b.无线频谱资源有限，需要在指定的频率上进行发射接收，调制实现频率复用
+c.增加信号在信道中传输时的抗干扰性能，提高频率效率</p>
+<h2 id="调制中包含哪些信号类型">1.2 调制中包含哪些信号类型</h2>
+<p>a.消息信号<br />
+b.载波信号<br />
+c.调制信号</p>
+<h1 id="调制的类型">2.调制的类型</h1>
+<p><img
+src="/2025/07/13/%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/v2-da2991d933a5ca6dd24f77e03ff87dfd_1440w.jpg" /></p>
+<p>模拟调制：指模拟消息信号直接调制在载波上，让载波的特性跟随其幅度进行变化。包括调幅（AM）、调相（PM）、调频（FM）、模拟脉冲调制（后面会讲）</p>
+<p>数字调制：指调制信号或者消息信号已经不在是模拟形式，而是进行了模数转换，将数字基带信号调制到载波上进行传输，它的优点有高抗噪性、高可用带宽和容许功率。</p>
+<p>数字调控由三种基本的方式：幅移键控(ASK)、频移键控(FSK)和相移键控(PSK)。它们分别对应于用载波（正弦波）的幅度、频率和相位来传递数字基带信号。（后面会仔细讲）</p>
+<h1 id="解调的类型">3.解调的类型</h1>
+<p>相干解调与非相干解调。相干解调（也被称为同步检波）适用于所有线性调制信号的解调。</p>
+<h1 id="模拟调制与解调">4.模拟调制与解调</h1>
+<p>参考：<a
+target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_50493296/article/details/121048869"
+class="uri">https://blog.csdn.net/weixin_50493296/article/details/121048869</a></p>
+<h2 id="幅度调制线性调制的原理">4.1 幅度调制（线性调制）的原理</h2>
+<p><img
+src="/2025/07/13/%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/62586ba3d5465034349a6e18db69c4a1.png" /></p>
+<p><span
+class="math inline">S<sub>m</sub>(t) = [m(t)cos ω<sub>c</sub>t] * h(t)</span></p>
+<p><span
+class="math inline">$\mathrm{S}_{\mathrm{m}}(\omega)=\frac{1}{2}\left[\mathrm{M}(\omega+\omega_{\mathrm{c}})+\mathrm{M}(\omega-\omega_{\mathrm{c}})\right]\mathrm{H}(\omega)$</span></p>
+<h3 id="常规-调幅am">4.1.1 常规 调幅（AM）</h3>
+<h3 id="双边带调制dsb-sc">4.1.2 双边带调制（DSB-SC）</h3>
+<h3 id="单边带调制ssb">4.1.3 单边带调制（SSB）</h3>
+<h3 id="残留边带调制vsb">4.1.4 残留边带调制（VSB）</h3>
+<h3 id="相干解调与包络检波">4.1.5 相干解调与包络检波</h3>
+<h2 id="非线性调制角度调制原理">4.2 非线性调制（角度调制）原理</h2>
+<p>角度调制时FM和PM的总称，载波的幅度恒定，而频率或相位受调制，抗噪声性能优于幅度调制</p>
+<h3 id="宽带-调频">4.2.1 宽带 调频</h3>
+<h2 id="模拟脉冲调制">4.3 模拟脉冲调制</h2>
+<h1 id="数字调制">5.数字调制</h1>
+<p><img
+src="/2025/07/13/%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/Snipaste_2025-07-13_20-40-31.png" /></p>
+<h2 id="ask-幅移键控法">5.1 ASK （幅移键控法）</h2>
+<p>载波幅度是随着调制信号而变化的，分为2ASK（2进制调制）,MASK（多进制数字调制法）</p>
+<h2 id="psk相移键控法">5.2 PSK（相移键控法）</h2>
+<p>根据数字基带信号的两个电平使载波相位在两个不同的数值之间切换的一种相位调制方法。<br />
+产生PSK信号的两种方法：</p>
+<ol type="1">
+<li><p>调相法：将基带数字信号（双极性）与载波信号直接相乘的方法：</p></li>
+<li><p>选择法：用数字基带信号去对相位相差180度的两个载波进行选择。两个载波相位通常相差180度，此时称为反向键控（PSK）。</p></li>
+</ol>
+<h2 id="fsk频移键控法">5.3 FSK（频移键控法）</h2>
+<p>载波信号的频率根据离散数字变化而变化，FSK
+调制波的输出对于二进制高电平输入频率较高，对于二进制低电平输入频率较低。</p>
+<h2 id="qam正交幅度调制法">5.4 QAM（正交幅度调制法）</h2>
+<p>利用正交载波对两路信号分别进行双边带抑制载波调幅形成的。通常有二进制
+QAM，四进制QAM（16QAM），八进制QAM（64QAM）等。</p>
+<p><img
+src="/2025/07/13/%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/afc1bf73bff1d6f2ac3b7c5f616c61d7.png" /></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/13/week5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="gzx">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="林间有Wi-Fi">
+      <meta itemprop="description" content="这里记录我的学习与生活">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | 林间有Wi-Fi">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/07/13/week5/" class="post-title-link" itemprop="url">week5</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2025-07-13 14:05:07 / Modified: 18:32:32" itemprop="dateCreated datePublished" datetime="2025-07-13T14:05:07+08:00">2025-07-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%A7%91%E7%A0%94%E5%AE%9E%E4%B9%A0%E5%91%A8%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">科研实习周记</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1
+id="一论文阅读笔记-few-shot-image-generation-with-diffusion-models">一、论文阅读笔记
+Few-shot Image Generation with Diffusion Models</h1>
+<p>论文：<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2211.03264"
+class="uri">https://arxiv.org/pdf/2211.03264</a></p>
+<h2 id="主要内容">主要内容：</h2>
+<p>提出Few-shot Diffusion Models (FDM)，在仅使用 10
+张训练图像时，就能生成具有合理多样性和质量的图像。</p>
+<h2 id="主要挑战">主要挑战</h2>
+<p>过拟合和模式崩溃（模型只能生成训练集中见过的少数几种样本）</p>
+<h2 id="核心方法">核心方法</h2>
+<h3
+id="结构感知数据增强-structure-aware-data-augmentation">结构感知数据增强
+(Structure-Aware Data Augmentation)</h3>
+<p>使用预训练的CLIP模型提取图像的语义特征，然后基于这些特征计算图像之间的相似性，</p>
+<p>CLIP相似度计算：<span
+class="math inline">$s_{ij}=\frac{\phi(I_i)\cdot\phi(I_j)}{\|\phi(I_i)\|\|\phi(I_j)\|}$</span></p>
+<p>其中 ϕ(⋅) 是CLIP图像编码器，<span
+class="math inline"><em>s</em><sub><em>i</em><em>j</em></sub> ∈ [−1, 1]</span>表示图像
+<span class="math inline"><em>I</em><sub><em>i</em></sub></span> 和
+<span class="math inline"><em>I</em><sub><em>j</em></sub></span>
+的语义相似度</p>
+<p>相似度高的图像对：应用更强的几何变换（如大幅旋转、裁剪），能提供更多样的“视角”而不会完全破坏结构。</p>
+<p>相似度低的图像对：应用较弱的变换，避免破坏其各自独特的结构信息。</p>
+<p>自适应变换强度: <span
+class="math inline"><em>λ</em><sub><em>i</em><em>j</em></sub> = <em>λ</em><sub>min</sub> + (<em>λ</em><sub>max</sub> − <em>λ</em><sub>min</sub>)⋯<sub><em>i</em><em>j</em></sub></span></p>
+<p><span class="math inline"><em>λ</em><sub>min</sub></span>和<span
+class="math inline"><em>λ</em><sub>max</sub></span>是最小/最大变换强度，相似度越高，变换强度越大</p>
+<h3 id="层级优化机制-hierarchical-optimization">层级优化机制
+(Hierarchical Optimization)</h3>
+<p>FDM 将扩散模型（如DDPM）的UNet结构划分为两个层级：</p>
+<ol type="1">
+<li><p>基础层：负责捕捉图像的全局结构和基本语义（一般是UNet的深层/瓶颈层）</p></li>
+<li><p>细节层：负责生成图像的局部细节（一般是UNet的浅层）</p></li>
+</ol>
+<p>采用交替优化策略： 阶段一 (Freeze Detail
+Layers)：冻结西接层参数，只优化基础层 阶段二 (Freeze Base
+Layers)：冻结基础层参数，只优化细节层 ### 自适应卷积模块 (Adaptive
+Convolution Module)
+引入自适应卷积模块，根据输入特征图动态生成卷积核的偏移量 (offset)
+和调制标量 (modulation scalar) 偏移量：
+卷积核的采样位置根据输入内容进行微调</p>
+<p><span
+class="math inline"><em>Δ</em><em>p</em><sub><em>k</em></sub> = <em>f</em><sub>offset</sub>(<strong>F</strong>; <em>ϕ</em>)</span></p>
+<p><span
+class="math inline"><em>f</em><sub>offset</sub></span>是轻量子网络，<span
+class="math inline">F</span>是输入特征图</p>
+<p>调制标量： 动态调整卷积核的权重，增强模型对输入变化的适应能力</p>
+<p><span
+class="math inline"><em>m</em><sub><em>k</em></sub> = <em>σ</em>(<em>g</em><sub>mod</sub>(<strong>F</strong>; <em>ψ</em>))</span></p>
+<p><span class="math inline">o</span>
+是sigmoid激活函数，限制输出在(0,1)范围</p>
+<p>自适应卷积公式： <span
+class="math inline">$\mathbf{y}(p)=\sum_{k=1}^K\mathbf{w}_k\cdot\mathbf{F}(p+p_k+\Delta
+p_k)\cdot m_k$</span></p>
+<h3 id="模式崩溃">模式崩溃</h3>
+<p>对于某一个训练数据集，其中样本的概率分布为一个简单的一维高斯混合分布，包含两个峰，如下图
+<img src="/2025/07/13/week5/z21ukb0wsa.jpeg" /></p>
+<p>模式崩溃问题是针对于生成样本的多样性，即生成的样本大量重复类似，如下图</p>
+<p><img src="/2025/07/13/week5/g9kyvxsbu2.jpeg" />
+虽然生成样本的质量比较高，但是生成器完全没有捕捉到右边的峰的模式。</p>
+<p>解决思路：</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1522756"
+class="uri">https://cloud.tencent.com/developer/article/1522756</a></p>
+<h1 id="二代码改进">二、代码改进</h1>
+<p>改进代码，</p>
+<p>（1）由原来只替换注意力层改进为替换UNet的所有线性层和1x1卷积层</p>
+<p>（2）改进数据集的选择，原来是随机挑选了10个样本训练lora参数，应改进为挑选部分dpm和少量的irt4_car样本去训练</p>
+<p>7.9遇到的问题：替换Swin Transformer中的层，需要访问weight属性</p>
+<p>尝试解决 （1）：跳过Swin Transformer中的层 （2）：当win
+Transformer访问qkv.weight时，返回原始层的权重</p>
+<p>7.12 解决了LoRA注入失败的问题 下一步：测试训练效果
+改进用于微调的样本的选择</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1478,192 +1765,8 @@ map）</p></li>
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/25/week2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="gzx">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="林间有Wi-Fi">
-      <meta itemprop="description" content="这里记录我的学习与生活">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | 林间有Wi-Fi">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/06/25/week2/" class="post-title-link" itemprop="url">week2</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2025-06-25 21:41:24" itemprop="dateCreated datePublished" datetime="2025-06-25T21:41:24+08:00">2025-06-25</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-07-13 18:31:43" itemprop="dateModified" datetime="2025-07-13T18:31:43+08:00">2025-07-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%A7%91%E7%A0%94%E5%AE%9E%E4%B9%A0%E5%91%A8%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">科研实习周记</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          diffusion model (李宏毅)笔记
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2025/06/25/week2/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/05/20/week1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="gzx">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="林间有Wi-Fi">
-      <meta itemprop="description" content="这里记录我的学习与生活">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | 林间有Wi-Fi">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/05/20/week1/" class="post-title-link" itemprop="url">week1</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2025-05-20 10:14:13" itemprop="dateCreated datePublished" datetime="2025-05-20T10:14:13+08:00">2025-05-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-07-13 18:31:28" itemprop="dateModified" datetime="2025-07-13T18:31:28+08:00">2025-07-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%A7%91%E7%A0%94%E5%AE%9E%E4%B9%A0%E5%91%A8%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">科研实习周记</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          Consistency Models和SR3的初步学习
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2025/05/20/week1/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" title="Previous page" aria-label="Previous page" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" title="Previous page" aria-label="Previous page" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" title="Next page" aria-label="Next page" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>
