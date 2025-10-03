@@ -20,17 +20,19 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.23.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"show_result":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="基本关系如下图所示  1.驱动（Driver） 驱动程序是直接与硬件设备交互的软件组件。它们为操作系统或应用程序提供控制硬件的接口。可以理解为驱动直接与硬件交互。最为底层。 2.板级支持包（BSP, Board Support Package） 是一套针对特定硬件系统的低级软件代码， 其主要作用是抽象硬件细节， 以便操作系统能够顺利运行在特定的硬件平台上。BSP 是高度硬件相关的，为">
+    <meta name="description" content="基本关系如下图所示  1.驱动（Driver） 驱动程序是直接与硬件设备交互的软件组件。它们为操作系统或应用程序提供控制硬件的接口。可以理解为驱动直接与硬件交互。最为底层。 2.板级支持包（BSP, Board Support Package） 是一套针对特定硬件系统的低级软件代码， 其主要作用是抽象硬件细节， 以便操作系统能够顺利运行在特定的硬件平台上。BSP 是高度硬件相关的，为一块板写的 B">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Driver,BSP和HAL">
 <meta property="og:url" content="http://example.com/2025/07/15/Driver-BSP%E5%92%8CHAL/index.html">
 <meta property="og:site_name" content="林间有Wi-Fi">
-<meta property="og:description" content="基本关系如下图所示  1.驱动（Driver） 驱动程序是直接与硬件设备交互的软件组件。它们为操作系统或应用程序提供控制硬件的接口。可以理解为驱动直接与硬件交互。最为底层。 2.板级支持包（BSP, Board Support Package） 是一套针对特定硬件系统的低级软件代码， 其主要作用是抽象硬件细节， 以便操作系统能够顺利运行在特定的硬件平台上。BSP 是高度硬件相关的，为">
+<meta property="og:description" content="基本关系如下图所示  1.驱动（Driver） 驱动程序是直接与硬件设备交互的软件组件。它们为操作系统或应用程序提供控制硬件的接口。可以理解为驱动直接与硬件交互。最为底层。 2.板级支持包（BSP, Board Support Package） 是一套针对特定硬件系统的低级软件代码， 其主要作用是抽象硬件细节， 以便操作系统能够顺利运行在特定的硬件平台上。BSP 是高度硬件相关的，为一块板写的 B">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2025/07/15/Driver-BSP%E5%92%8CHAL/Snipaste_2025-07-15_20-23-36.png">
 <meta property="article:published_time" content="2025-07-15T12:16:46.000Z">
 <meta property="article:modified_time" content="2025-07-21T09:47:36.410Z">
 <meta property="article:author" content="gzx">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2025/07/15/Driver-BSP%E5%92%8CHAL/Snipaste_2025-07-15_20-23-36.png">
 
 
 <link rel="canonical" href="http://example.com/2025/07/15/Driver-BSP%E5%92%8CHAL/">
@@ -165,9 +167,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A9%B1%E5%8A%A8driver"><span class="nav-number">1.</span> <span class="nav-text">1.驱动（Driver）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9D%BF%E7%BA%A7%E6%94%AF%E6%8C%81%E5%8C%85bsp-board-support-package"><span class="nav-number">2.</span> <span class="nav-text">2.板级支持包（BSP, Board
-Support Package）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A1%AC%E4%BB%B6%E6%8A%BD%E8%B1%A1%E5%B1%82hal-hardware-abstraction-layer"><span class="nav-number">3.</span> <span class="nav-text">3.硬件抽象层（HAL,
-Hardware Abstraction Layer）</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">1.驱动（Driver）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">2.板级支持包（BSP, Board Support Package）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">3.硬件抽象层（HAL, Hardware Abstraction Layer）</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -182,7 +182,7 @@ Hardware Abstraction Layer）</span></a></li></ol></div>
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">21</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -284,31 +284,26 @@ Hardware Abstraction Layer）</span></a></li></ol></div>
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>基本关系如下图所示 <img
-src="/2025/07/15/Driver-BSP%E5%92%8CHAL/Snipaste_2025-07-15_20-23-36.png" /></p>
-<h1 id="驱动driver">1.驱动（Driver）</h1>
+    <div class="post-body" itemprop="articleBody"><p>基本关系如下图所示<br>
+<img src="/2025/07/15/Driver-BSP%E5%92%8CHAL/Snipaste_2025-07-15_20-23-36.png" alt=""></p>
+<h1>1.驱动（Driver）</h1>
 <p>驱动程序是直接与硬件设备交互的软件组件。它们为操作系统或应用程序提供控制硬件的接口。可以理解为驱动直接与硬件交互。最为底层。</p>
-<h1 id="板级支持包bsp-board-support-package">2.板级支持包（BSP, Board
-Support Package）</h1>
-<p>是一套针对特定硬件系统的低级软件代码， 其主要作用是抽象硬件细节，
-以便操作系统能够顺利运行在特定的硬件平台上。BSP
-是高度硬件相关的，为一块板写的 BSP
-通常不能直接用在另一块不同的板上，即使它们使用了相同的
-MCU/MPU（因为外围电路、引脚连接、时钟源等都可能不同）。</p>
-<h1 id="硬件抽象层hal-hardware-abstraction-layer">3.硬件抽象层（HAL,
-Hardware Abstraction Layer）</h1>
-<p>HAL是介于底层硬件和上层软件之间的一层抽象层，用于隐藏硬件的具体实现细节，提供统一的接口。包含一组通用的API接口，可以理解为定义好的一组标准的函数（如
-HAL_UART_Transmit(), HAL_GPIO_WritePin(),
-HAL_ADC_Start()）来执行常见的硬件操作。</p>
-<p>目的是提供统一的、标准化的接口来访问某一类硬件功能（如
-UART、I2C、GPIO、ADC、定时器等），屏蔽不同厂商、不同系列、甚至不同架构（如
-ARM Cortex-M vs RISC-V）芯片的具体寄存器操作差异。
-相对于BSP抽象层次更高，可移植性更高。</p>
+<h1>2.板级支持包（BSP, Board Support Package）</h1>
+<p>是一套针对特定硬件系统的低级软件代码， 其主要作用是抽象硬件细节， 以便操作系统能够顺利运行在特定的硬件平台上。BSP 是高度硬件相关的，为一块板写的 BSP 通常不能直接用在另一块不同的板上，即使它们使用了相同的 MCU/MPU（因为外围电路、引脚连接、时钟源等都可能不同）。</p>
+<h1>3.硬件抽象层（HAL, Hardware Abstraction Layer）</h1>
+<p>HAL是介于底层硬件和上层软件之间的一层抽象层，用于隐藏硬件的具体实现细节，提供统一的接口。包含一组通用的API接口，可以理解为定义好的一组标准的函数（如 HAL_UART_Transmit(), HAL_GPIO_WritePin(), HAL_ADC_Start()）来执行常见的硬件操作。</p>
+<p>目的是提供统一的、标准化的接口来访问某一类硬件功能（如 UART、I2C、GPIO、ADC、定时器等），屏蔽不同厂商、不同系列、甚至不同架构（如 ARM Cortex-M vs RISC-V）芯片的具体寄存器操作差异。        相对于BSP抽象层次更高，可移植性更高。</p>
 <p>以stm32HAL库开发为例，流程如下：</p>
-<p>应用程序 │ ↓ 调用统一API HAL 层（如 HAL_UART_Transmit()） │ ↓
-调用板级驱动或直接操作寄存器 BSP 层（如 BSP_UART_Write() 或 直接写
-UART-&gt;DR 寄存器） │ ↓ 操作物理寄存器 硬件寄存器（如 USART1-&gt;DR =
-data）</p>
+<p>应用程序<br>
+│<br>
+↓ 调用统一API<br>
+HAL 层（如 HAL_UART_Transmit()）<br>
+│<br>
+↓ 调用板级驱动或直接操作寄存器<br>
+BSP 层（如 BSP_UART_Write() 或 直接写 UART-&gt;DR 寄存器）<br>
+│<br>
+↓ 操作物理寄存器<br>
+硬件寄存器（如 USART1-&gt;DR = data）</p>
 
     </div>
 

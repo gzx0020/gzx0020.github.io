@@ -177,7 +177,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">21</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -205,142 +205,6 @@
     </div>
 
     <div class="main-inner index posts-expand">
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/13/%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="gzx">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="林间有Wi-Fi">
-      <meta itemprop="description" content="这里记录我的学习与生活">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | 林间有Wi-Fi">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/07/13/%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/" class="post-title-link" itemprop="url">调制与解调</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2025-07-13 18:09:16 / Modified: 20:49:37" itemprop="dateCreated datePublished" datetime="2025-07-13T18:09:16+08:00">2025-07-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">信号处理</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="基本概念">1.基本概念</h1>
-<p>调制时将基带信号搬移到高频载波，实现频谱搬移的过程。解调则是调制的逆过程。</p>
-<h2 id="为什么要进行调制">1.1 为什么要进行调制：</h2>
-<p>a.高频信号更容易收发传输，天线尺寸需要是波长的1/4，使用高频信号可以减小天线尺寸;<br />
-b.无线频谱资源有限，需要在指定的频率上进行发射接收，调制实现频率复用
-c.增加信号在信道中传输时的抗干扰性能，提高频率效率</p>
-<h2 id="调制中包含哪些信号类型">1.2 调制中包含哪些信号类型</h2>
-<p>a.消息信号<br />
-b.载波信号<br />
-c.调制信号</p>
-<h1 id="调制的类型">2.调制的类型</h1>
-<p><img
-src="/2025/07/13/%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/v2-da2991d933a5ca6dd24f77e03ff87dfd_1440w.jpg" /></p>
-<p>模拟调制：指模拟消息信号直接调制在载波上，让载波的特性跟随其幅度进行变化。包括调幅（AM）、调相（PM）、调频（FM）、模拟脉冲调制（后面会讲）</p>
-<p>数字调制：指调制信号或者消息信号已经不在是模拟形式，而是进行了模数转换，将数字基带信号调制到载波上进行传输，它的优点有高抗噪性、高可用带宽和容许功率。</p>
-<p>数字调控由三种基本的方式：幅移键控(ASK)、频移键控(FSK)和相移键控(PSK)。它们分别对应于用载波（正弦波）的幅度、频率和相位来传递数字基带信号。（后面会仔细讲）</p>
-<h1 id="解调的类型">3.解调的类型</h1>
-<p>相干解调与非相干解调。相干解调（也被称为同步检波）适用于所有线性调制信号的解调。</p>
-<h1 id="模拟调制与解调">4.模拟调制与解调</h1>
-<p>参考：<a
-target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_50493296/article/details/121048869"
-class="uri">https://blog.csdn.net/weixin_50493296/article/details/121048869</a></p>
-<h2 id="幅度调制线性调制的原理">4.1 幅度调制（线性调制）的原理</h2>
-<p><img
-src="/2025/07/13/%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/62586ba3d5465034349a6e18db69c4a1.png" /></p>
-<p><span
-class="math inline">S<sub>m</sub>(t) = [m(t)cos ω<sub>c</sub>t] * h(t)</span></p>
-<p><span
-class="math inline">$\mathrm{S}_{\mathrm{m}}(\omega)=\frac{1}{2}\left[\mathrm{M}(\omega+\omega_{\mathrm{c}})+\mathrm{M}(\omega-\omega_{\mathrm{c}})\right]\mathrm{H}(\omega)$</span></p>
-<h3 id="常规-调幅am">4.1.1 常规 调幅（AM）</h3>
-<h3 id="双边带调制dsb-sc">4.1.2 双边带调制（DSB-SC）</h3>
-<h3 id="单边带调制ssb">4.1.3 单边带调制（SSB）</h3>
-<h3 id="残留边带调制vsb">4.1.4 残留边带调制（VSB）</h3>
-<h3 id="相干解调与包络检波">4.1.5 相干解调与包络检波</h3>
-<h2 id="非线性调制角度调制原理">4.2 非线性调制（角度调制）原理</h2>
-<p>角度调制时FM和PM的总称，载波的幅度恒定，而频率或相位受调制，抗噪声性能优于幅度调制</p>
-<h3 id="宽带-调频">4.2.1 宽带 调频</h3>
-<h2 id="模拟脉冲调制">4.3 模拟脉冲调制</h2>
-<h1 id="数字调制">5.数字调制</h1>
-<p><img
-src="/2025/07/13/%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/Snipaste_2025-07-13_20-40-31.png" /></p>
-<h2 id="ask-幅移键控法">5.1 ASK （幅移键控法）</h2>
-<p>载波幅度是随着调制信号而变化的，分为2ASK（2进制调制）,MASK（多进制数字调制法）</p>
-<h2 id="psk相移键控法">5.2 PSK（相移键控法）</h2>
-<p>根据数字基带信号的两个电平使载波相位在两个不同的数值之间切换的一种相位调制方法。<br />
-产生PSK信号的两种方法：</p>
-<ol type="1">
-<li><p>调相法：将基带数字信号（双极性）与载波信号直接相乘的方法：</p></li>
-<li><p>选择法：用数字基带信号去对相位相差180度的两个载波进行选择。两个载波相位通常相差180度，此时称为反向键控（PSK）。</p></li>
-</ol>
-<h2 id="fsk频移键控法">5.3 FSK（频移键控法）</h2>
-<p>载波信号的频率根据离散数字变化而变化，FSK
-调制波的输出对于二进制高电平输入频率较高，对于二进制低电平输入频率较低。</p>
-<h2 id="qam正交幅度调制法">5.4 QAM（正交幅度调制法）</h2>
-<p>利用正交载波对两路信号分别进行双边带抑制载波调幅形成的。通常有二进制
-QAM，四进制QAM（16QAM），八进制QAM（64QAM）等。</p>
-<p><img
-src="/2025/07/13/%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/afc1bf73bff1d6f2ac3b7c5f616c61d7.png" /></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
 
     
 
@@ -402,78 +266,63 @@ src="/2025/07/13/%E8%B0%83%E5%88%B6%E4%B8%8E%E8%A7%A3%E8%B0%83/afc1bf73bff1d6f2a
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1
-id="一论文阅读笔记-few-shot-image-generation-with-diffusion-models">一、论文阅读笔记
-Few-shot Image Generation with Diffusion Models</h1>
-<p>论文：<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2211.03264"
-class="uri">https://arxiv.org/pdf/2211.03264</a></p>
-<h2 id="主要内容">主要内容：</h2>
-<p>提出Few-shot Diffusion Models (FDM)，在仅使用 10
-张训练图像时，就能生成具有合理多样性和质量的图像。</p>
+          <h1>一、论文阅读笔记 Few-shot Image Generation with Diffusion Models</h1>
+<p>论文：<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2211.03264">https://arxiv.org/pdf/2211.03264</a></p>
+<h2 id="主要内容：">主要内容：</h2>
+<p>提出Few-shot Diffusion Models (FDM)，在仅使用 10 张训练图像时，就能生成具有合理多样性和质量的图像。</p>
 <h2 id="主要挑战">主要挑战</h2>
 <p>过拟合和模式崩溃（模型只能生成训练集中见过的少数几种样本）</p>
 <h2 id="核心方法">核心方法</h2>
-<h3
-id="结构感知数据增强-structure-aware-data-augmentation">结构感知数据增强
-(Structure-Aware Data Augmentation)</h3>
+<h3 id="结构感知数据增强-Structure-Aware-Data-Augmentation">结构感知数据增强 (Structure-Aware Data Augmentation)</h3>
 <p>使用预训练的CLIP模型提取图像的语义特征，然后基于这些特征计算图像之间的相似性，</p>
-<p>CLIP相似度计算：<span
-class="math inline">$s_{ij}=\frac{\phi(I_i)\cdot\phi(I_j)}{\|\phi(I_i)\|\|\phi(I_j)\|}$</span></p>
-<p>其中 ϕ(⋅) 是CLIP图像编码器，<span
-class="math inline"><em>s</em><sub><em>i</em><em>j</em></sub> ∈ [−1, 1]</span>表示图像
-<span class="math inline"><em>I</em><sub><em>i</em></sub></span> 和
-<span class="math inline"><em>I</em><sub><em>j</em></sub></span>
-的语义相似度</p>
+<p>CLIP相似度计算：$s_{ij}=\frac{\phi(I_i)\cdot\phi(I_j)}{|\phi(I_i)||\phi(I_j)|}$</p>
+<p>其中 ϕ(⋅) 是CLIP图像编码器，$s_{ij}\in[-1,1]$表示图像 $I_{i}$  和 $I_{j}$  的语义相似度</p>
 <p>相似度高的图像对：应用更强的几何变换（如大幅旋转、裁剪），能提供更多样的“视角”而不会完全破坏结构。</p>
 <p>相似度低的图像对：应用较弱的变换，避免破坏其各自独特的结构信息。</p>
-<p>自适应变换强度: <span
-class="math inline"><em>λ</em><sub><em>i</em><em>j</em></sub> = <em>λ</em><sub>min</sub> + (<em>λ</em><sub>max</sub> − <em>λ</em><sub>min</sub>)⋯<sub><em>i</em><em>j</em></sub></span></p>
-<p><span class="math inline"><em>λ</em><sub>min</sub></span>和<span
-class="math inline"><em>λ</em><sub>max</sub></span>是最小/最大变换强度，相似度越高，变换强度越大</p>
-<h3 id="层级优化机制-hierarchical-optimization">层级优化机制
-(Hierarchical Optimization)</h3>
+<p>自适应变换强度:<br>
+$\lambda_{ij}=\lambda_{\min}+(\lambda_{\max}-\lambda_{\min})\cdots_{ij}$</p>
+<p>$\lambda_{\mathrm{min}}$和$\lambda_{\mathrm{max}}$是最小/最大变换强度，相似度越高，变换强度越大</p>
+<h3 id="层级优化机制-Hierarchical-Optimization">层级优化机制 (Hierarchical Optimization)</h3>
 <p>FDM 将扩散模型（如DDPM）的UNet结构划分为两个层级：</p>
-<ol type="1">
-<li><p>基础层：负责捕捉图像的全局结构和基本语义（一般是UNet的深层/瓶颈层）</p></li>
-<li><p>细节层：负责生成图像的局部细节（一般是UNet的浅层）</p></li>
+<ol>
+<li>
+<p>基础层：负责捕捉图像的全局结构和基本语义（一般是UNet的深层/瓶颈层）</p>
+</li>
+<li>
+<p>细节层：负责生成图像的局部细节（一般是UNet的浅层）</p>
+</li>
 </ol>
-<p>采用交替优化策略： 阶段一 (Freeze Detail
-Layers)：冻结西接层参数，只优化基础层 阶段二 (Freeze Base
-Layers)：冻结基础层参数，只优化细节层 ### 自适应卷积模块 (Adaptive
-Convolution Module)
-引入自适应卷积模块，根据输入特征图动态生成卷积核的偏移量 (offset)
-和调制标量 (modulation scalar) 偏移量：
-卷积核的采样位置根据输入内容进行微调</p>
-<p><span
-class="math inline"><em>Δ</em><em>p</em><sub><em>k</em></sub> = <em>f</em><sub>offset</sub>(<strong>F</strong>; <em>ϕ</em>)</span></p>
-<p><span
-class="math inline"><em>f</em><sub>offset</sub></span>是轻量子网络，<span
-class="math inline">F</span>是输入特征图</p>
+<p>采用交替优化策略：<br>
+阶段一 (Freeze Detail Layers)：冻结西接层参数，只优化基础层<br>
+阶段二 (Freeze Base Layers)：冻结基础层参数，只优化细节层</p>
+<h3 id="自适应卷积模块-Adaptive-Convolution-Module">自适应卷积模块 (Adaptive Convolution Module)</h3>
+<p>引入自适应卷积模块，根据输入特征图动态生成卷积核的偏移量 (offset) 和调制标量 (modulation scalar)<br>
+偏移量： 卷积核的采样位置根据输入内容进行微调</p>
+<p>$\Delta p_k=f_{\mathrm{offset}}(\mathbf{F};\phi)$</p>
+<p>$f_{\mathrm{offset}}$是轻量子网络，$\mathrm{F}$是输入特征图</p>
 <p>调制标量： 动态调整卷积核的权重，增强模型对输入变化的适应能力</p>
-<p><span
-class="math inline"><em>m</em><sub><em>k</em></sub> = <em>σ</em>(<em>g</em><sub>mod</sub>(<strong>F</strong>; <em>ψ</em>))</span></p>
-<p><span class="math inline">o</span>
-是sigmoid激活函数，限制输出在(0,1)范围</p>
-<p>自适应卷积公式： <span
-class="math inline">$\mathbf{y}(p)=\sum_{k=1}^K\mathbf{w}_k\cdot\mathbf{F}(p+p_k+\Delta
-p_k)\cdot m_k$</span></p>
+<p>$m_k=\sigma(g_{\mathrm{mod}}(\mathbf{F};\psi))$</p>
+<p>$\mathrm{o}$ 是sigmoid激活函数，限制输出在(0,1)范围</p>
+<p>自适应卷积公式：<br>
+$\mathbf{y}(p)=\sum_{k=1}^K\mathbf{w}_k\cdot\mathbf{F}(p+p_k+\Delta p_k)\cdot m_k$</p>
 <h3 id="模式崩溃">模式崩溃</h3>
-<p>对于某一个训练数据集，其中样本的概率分布为一个简单的一维高斯混合分布，包含两个峰，如下图
-<img src="/2025/07/13/week5/z21ukb0wsa.jpeg" /></p>
+<p>对于某一个训练数据集，其中样本的概率分布为一个简单的一维高斯混合分布，包含两个峰，如下图<br>
+<img src="/2025/07/13/week5/z21ukb0wsa.jpeg" alt=""></p>
 <p>模式崩溃问题是针对于生成样本的多样性，即生成的样本大量重复类似，如下图</p>
-<p><img src="/2025/07/13/week5/g9kyvxsbu2.jpeg" />
+<p><img src="/2025/07/13/week5/g9kyvxsbu2.jpeg" alt=""><br>
 虽然生成样本的质量比较高，但是生成器完全没有捕捉到右边的峰的模式。</p>
 <p>解决思路：</p>
-<p>参考：<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1522756"
-class="uri">https://cloud.tencent.com/developer/article/1522756</a></p>
-<h1 id="二代码改进">二、代码改进</h1>
+<p>参考：<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1522756">https://cloud.tencent.com/developer/article/1522756</a></p>
+<h1>二、代码改进</h1>
 <p>改进代码，</p>
 <p>（1）由原来只替换注意力层改进为替换UNet的所有线性层和1x1卷积层</p>
 <p>（2）改进数据集的选择，原来是随机挑选了10个样本训练lora参数，应改进为挑选部分dpm和少量的irt4_car样本去训练</p>
 <p>7.9遇到的问题：替换Swin Transformer中的层，需要访问weight属性</p>
-<p>尝试解决 （1）：跳过Swin Transformer中的层 （2）：当win
-Transformer访问qkv.weight时，返回原始层的权重</p>
-<p>7.12 解决了LoRA注入失败的问题 下一步：测试训练效果
+<p>尝试解决<br>
+（1）：跳过Swin Transformer中的层<br>
+（2）：当win Transformer访问qkv.weight时，返回原始层的权重</p>
+<p>7.12 解决了LoRA注入失败的问题<br>
+下一步：测试训练效果<br>
 改进用于微调的样本的选择</p>
 
       
@@ -645,96 +494,68 @@ Transformer访问qkv.weight时，返回原始层的权重</p>
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="注意力机制">注意力机制</h1>
-<p>原论文：<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1706.03762"
-class="uri">https://arxiv.org/pdf/1706.03762</a></p>
+          <h1>注意力机制</h1>
+<p>原论文：<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1706.03762">https://arxiv.org/pdf/1706.03762</a></p>
 <h2 id="什么是注意力机制">什么是注意力机制</h2>
 <p>注意力机制就是让模型重点关注重要信息，忽略次要信息。注意力机制分为空间注意力和时间注意力，前者用于图像处理，后者用于自然语言处理.</p>
 <h2 id="原理">原理</h2>
 <p>Query：当前需要查询的目标，即当前输入的特征表示。</p>
 <p>Key：可以将每个单词的重要特征表示看作成 Key。</p>
-<p>Value：每个单词本身的特征向量看作为 Value，一般和
-Key成对出现，也就是我们常说的”键-值”对。</p>
-<p><img
-src="/2025/07/02/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/mkmroptvcwdrc_2696c13c0c654516bee3bc20714995c6.webp" /></p>
+<p>Value：每个单词本身的特征向量看作为 Value，一般和 Key成对出现，也就是我们常说的&quot;键-值&quot;对。</p>
+<p><img src="/2025/07/02/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/mkmroptvcwdrc_2696c13c0c654516bee3bc20714995c6.webp" alt=""></p>
 <p>核心公式（原论文中）：</p>
-<p><span
-class="math inline">$Attention(Q,K,V)=Softmax(\frac{QK^\top}{\sqrt{d_k}})V$</span></p>
+<p>$Attention(Q,K,V)=Softmax(\frac{QK^\top}{\sqrt{d_k}})V$</p>
 <p>步骤：</p>
-<ol type="1">
-<li><p>先根据 Query，Key计算两者的相关性，然后再通过 softmax 函数得到
-注意力分数，使用 softmax 函数是为了使得所有的注意力分数在 [0,1]
-之间，并且和为1。</p>
+<ol>
+<li>
+<p>先根据 Query，Key计算两者的相关性，然后再通过 softmax 函数得到 注意力分数，使用 softmax 函数是为了使得所有的注意力分数在 [0,1] 之间，并且和为1。</p>
 <p>相关性公式一般表示如下：</p>
-<p><span
-class="math inline">$score(q,k_i)=softmax(\alpha(q,k_i))=\frac{exp(\alpha(q,k_i))}{\sum_1^jexp(\alpha(q,k_j))}$</span></p>
-<p>其中<span
-class="math inline"><em>α</em>(<em>q</em>, <em>k</em><sub><em>i</em></sub>)</span>有很多变体：</p>
-<p>e.g. 在加性注意力中</p>
-<p><span
-class="math inline"><em>α</em>(<em>q</em>, <em>k</em><sub><em>i</em></sub>) = <em>w</em><sub><em>v</em></sub><sup><em>T</em></sup><em>t</em><em>a</em><em>n</em><em>h</em>(<em>W</em><sub><em>q</em></sub><em>q</em> + <em>W</em><sub><em>k</em></sub><em>k</em>)</span></p>
+<p>$score(q,k_i)=softmax(\alpha(q,k_i))=\frac{exp(\alpha(q,k_i))}{\sum_1^jexp(\alpha(q,k_j))}$</p>
+<p>其中$\alpha(q,k_{i})$有很多变体：</p>
+<p>e.g. 在加性注意力中</p>
+<p>$\alpha(q,k_i)=w_v^Ttanh(W_qq+W_kk)$</p>
 <p>W_q：Query对应的可训练矩阵</p>
 <p>W_k: Key对应的可训练矩阵</p>
 <p>w_v^T: Value对应的可训练矩阵</p>
 <p>(tanh为双曲正切函数，作为一种常见的激活函数)</p>
 <p>e.g.在缩放点积注意力中</p>
-<p><span
-class="math inline">$\alpha(q,k_i)=\frac{QK^T}{\sqrt{d}}$</span></p>
-<p>其中d为Keys的维度大小，除以sqrt{d}是为了使方差变小，训练梯度更新时更稳定</p></li>
-<li><p>将注意力分数加权求和，得到带注意力分数的Value</p></li>
+<p>$\alpha(q,k_i)=\frac{QK^T}{\sqrt{d}}$</p>
+<p>其中d为Keys的维度大小，除以sqrt{d}是为了使方差变小，训练梯度更新时更稳定</p>
+</li>
+<li>
+<p>将注意力分数加权求和，得到带注意力分数的Value</p>
+</li>
 </ol>
-<h2
-id="自注意力机制self-attention-mechanism">自注意力机制（Self-Attention
-Mechanism）</h2>
-<p><img
-src="/2025/07/02/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/v2-921a6ccdeed095c9940aa52baee85e8c_r.jpg" /></p>
+<h2 id="自注意力机制（Self-Attention-Mechanism）">自注意力机制（Self-Attention Mechanism）</h2>
+<p><img src="/2025/07/02/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/v2-921a6ccdeed095c9940aa52baee85e8c_r.jpg" alt=""></p>
 <p>2.1 Embedding 操作, 将向量x转化为a,a作为注意力机制的input data</p>
 <p>2.2 q, k 操作</p>
-<p><span
-class="math inline"><em>q</em><sup><em>i</em></sup> = <em>W</em><sup><em>q</em></sup><em>a</em><sup><em>i</em></sup></span></p>
-<p><span
-class="math inline"><em>k</em><sup><em>i</em></sup> = <em>W</em><sup><em>k</em></sup><em>a</em><sup><em>i</em></sup></span></p>
-<p><span
-class="math inline"><em>v</em><sup><em>i</em></sup> = <em>W</em><sup><em>v</em></sup><em>a</em><sup><em>i</em></sup></span></p>
-<p>一般用 <span class="math inline">$\alpha_{1,i}=q^1\cdot
-k^i/\sqrt{d}$</span> 表示 <span
-class="math inline"><em>a</em><sup>1</sup></span> 与 <span
-class="math inline"><em>a</em><sup><em>i</em></sup></span>
-之间的关系，</p>
-<p>其中<span class="math inline">d</span>表示 <span
-class="math inline">q</span>和<span class="math inline">k</span>
-矩阵的维度</p>
-<p><img
-src="/2025/07/02/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/v2-22195b05ea273b6d46ee0a7ff4fe71ed_1440w.jpg" /></p>
+<p>$q^i=W^qa^i$</p>
+<p>$k^i=W^ka^i$</p>
+<p>$v^i=W^va^i$</p>
+<p>一般用 $\alpha_{1,i}=q^1\cdot k^i/\sqrt{d}$  表示 $a^{1}$ 与 $a^{i}$ 之间的关系，</p>
+<p>其中$\mathrm{d}$表示 $\mathrm{q}$和$\mathrm{k}$ 矩阵的维度</p>
+<p><img src="/2025/07/02/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/v2-22195b05ea273b6d46ee0a7ff4fe71ed_1440w.jpg" alt=""></p>
 <p>2.3 v操作</p>
-<p><span
-class="math inline"><em>b</em><sup>1</sup> = ∑<sub><em>i</em></sub><em>α̃</em><sub>1, <em>i</em></sub><em>v</em><sup><em>i</em></sup></span></p>
-<p><span
-class="math inline"><em>b</em><sup>2</sup> = ∑<sub><em>i</em></sub><em>α̃</em><sub>2, <em>i</em></sub><em>v</em><sup><em>i</em></sup></span></p>
+<p>$b^1=\sum_i\tilde{\alpha}_{1,i}v^i$</p>
+<p>$b^2=\sum_i\tilde{\alpha}_{2,i}v^i$</p>
 <p>以此类推</p>
-<p><img
-src="/2025/07/02/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/v2-0851bb5a4fdeb88efa6f96aabef45b65_1440w.jpg" /></p>
+<p><img src="/2025/07/02/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/v2-0851bb5a4fdeb88efa6f96aabef45b65_1440w.jpg" alt=""></p>
 <h2 id="多头注意力机制">多头注意力机制</h2>
-<h3 id="qk操作">q,k操作</h3>
+<h3 id="q-k操作">q,k操作</h3>
 <p>这里以两头为例</p>
-<p><span
-class="math inline"><em>q</em><sup><em>i</em>, 1</sup> = <em>W</em><sup><em>q</em>, 1</sup><em>q</em><sup><em>i</em></sup></span></p>
-<p><span
-class="math inline"><em>q</em><sup><em>i</em>, 2</sup> = <em>W</em><sup><em>q</em>, 2</sup><em>q</em><sup><em>i</em></sup></span></p>
+<p>$q^{i,1}=W^{q,1}q^i$</p>
+<p>$q^{i,2}=W^{q,2}q^i$</p>
 <p>k也是同样的操作</p>
 <h3 id="v操作">v操作</h3>
 <p>与自注意力机制相同</p>
-<p><img
-src="/2025/07/02/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/v2-18638aafea77d3cf87973a59c08315b8_1440w.jpg" /></p>
+<p><img src="/2025/07/02/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/v2-18638aafea77d3cf87973a59c08315b8_1440w.jpg" alt=""></p>
 <h2 id="通道注意力机制">通道注意力机制</h2>
 <p>通道注意力机制是通过计算每个通道channel的重要性程度；因此，常常被用在卷积神经网络里面。目前，比较经典的通道注意力机制方法就是SENet模型，SENet通过学习通道间的关系（每个通道的重要性），提升了网络在特征表示中的表达能力，进而提升了模型的性能。</p>
-<h3 id="senet介绍">SENet介绍</h3>
-<p>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/631398525"
-class="uri">https://zhuanlan.zhihu.com/p/631398525</a></p>
+<h3 id="SENet介绍">SENet介绍</h3>
+<p>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/631398525">https://zhuanlan.zhihu.com/p/631398525</a></p>
 <h2 id="空间注意力机制">空间注意力机制</h2>
-<p>通过引入注意力模块，使模型能够自适应地学习不同区域的注意力权重。这样，模型可以更加关注重要的图像区域，而忽略不重要的区域。其中，最为典型的是
-CBAM（Convolutional Block Attention Module），CBAM
-是一种结合了通道注意力和空间注意力的模型，旨在增强卷积神经网络对图像的关注能力。</p>
+<p>通过引入注意力模块，使模型能够自适应地学习不同区域的注意力权重。这样，模型可以更加关注重要的图像区域，而忽略不重要的区域。其中，最为典型的是 CBAM（Convolutional Block Attention Module），CBAM 是一种结合了通道注意力和空间注意力的模型，旨在增强卷积神经网络对图像的关注能力。</p>
 
       
     </div>
@@ -819,34 +640,31 @@ CBAM（Convolutional Block Attention Module），CBAM
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="一lora微调">一、LoRA微调</h1>
+          <h1>一、LoRA微调</h1>
 <h2 id="test1">test1:</h2>
-<p>将训练第二阶段注意力机制中的线性层’w_q’,‘w_k’,’w_v’替换为LoRA层
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lora_r: 8                    # LoRA秩大小</span><br><span class="line">lora_alpha: 16               # LoRA缩放因子</span><br></pre></td></tr></table></figure> 预训练模型只加载第二阶段扩散网络权重</p>
-<p>结果： _IncompatibleKeys 错误（缺少 encoder/decoder 层）
-可能原因：只加载了第二阶段模型，缺少 Autoencoder
-部分，无法将输入图像编码为潜在空间表示，无法将生成的潜在编码解码为图像</p>
+<p>将训练第二阶段注意力机制中的线性层’w_q’,‘w_k’,'w_v’替换为LoRA层</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lora_r: 8                    # LoRA秩大小</span><br><span class="line">lora_alpha: 16               # LoRA缩放因子</span><br></pre></td></tr></table></figure>
+<p>预训练模型只加载第二阶段扩散网络权重</p>
+<p>结果： _IncompatibleKeys 错误（缺少 encoder/decoder 层）<br>
+可能原因：只加载了第二阶段模型，缺少 Autoencoder 部分，无法将输入图像编码为潜在空间表示，无法将生成的潜在编码解码为图像</p>
 <h2 id="test2">test2:</h2>
 <p>由第一次尝试得，当只微调扩散网络本身时，仍需要</p>
-<ol type="1">
-<li><p>先加载第一阶段Autoencoder</p></li>
-<li><p>再加载第二阶段扩散网络权重</p></li>
+<ol>
+<li>
+<p>先加载第一阶段Autoencoder</p>
+</li>
+<li>
+<p>再加载第二阶段扩散网络权重</p>
+</li>
 </ol>
 <p>则test2总体流程为：</p>
-<ol type="1">
+<ol>
 <li>加载完整的加载完整的扩散模型（含 Autoencoder + 扩散网络）</li>
 <li>注入 LoRA 参数到扩散网络的特定层</li>
 <li>冻结其他参数，随机选择20张图片训练 LoRA 层</li>
 </ol>
 <p>测试结果：</p>
 <table>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 22%" />
-<col style="width: 22%" />
-<col style="width: 13%" />
-<col style="width: 18%" />
-</colgroup>
 <thead>
 <tr>
 <th>评估指标</th>
@@ -887,64 +705,56 @@ CBAM（Convolutional Block Attention Module），CBAM
 </tr>
 </tbody>
 </table>
-<h1 id="注意力机制">注意力机制</h1>
-<p>原论文：<a
-target="_blank" rel="noopener" href="https://arxiv.org/pdf/1706.03762">https://arxiv.org/pdf/1706.03762</a></p>
+<h1>注意力机制</h1>
+<p>原论文：<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1706.03762">https://arxiv.org/pdf/1706.03762</a></p>
 <h2 id="什么是注意力机制">什么是注意力机制</h2>
 <p>注意力机制就是让模型重点关注重要信息，忽略次要信息。注意力机制分为空间注意力和时间注意力，前者用于图像处理，后者用于自然语言处理.</p>
 <h2 id="原理">原理</h2>
 <p>Query：当前需要查询的目标，即当前输入的特征表示。</p>
 <p>Key：可以将每个单词的重要特征表示看作成 Key。</p>
-<p>Value：每个单词本身的特征向量看作为 Value，一般和
-Key成对出现，也就是我们常说的”键-值”对。</p>
+<p>Value：每个单词本身的特征向量看作为 Value，一般和 Key成对出现，也就是我们常说的&quot;键-值&quot;对。</p>
 
 <p>核心公式（原论文中）：</p>
-<p><span class="math display">$$
-Attention(Q,K,V)=Softmax(\frac{QK^\top}{\sqrt{d_k}})V
-$$</span></p>
+<p>$$<br>
+Attention(Q,K,V)=Softmax(\frac{QK^\top}{\sqrt{d_k}})V<br>
+$$</p>
 <p>步骤：</p>
-<ol type="1">
-<li><p>先根据 Query，Key计算两者的相关性，然后再通过 softmax 函数得到
-注意力分数，使用 softmax 函数是为了使得所有的注意力分数在 [0,1]
-之间，并且和为1。</p>
+<ol>
+<li>
+<p>先根据 Query，Key计算两者的相关性，然后再通过 softmax 函数得到 注意力分数，使用 softmax 函数是为了使得所有的注意力分数在 [0,1] 之间，并且和为1。</p>
 <p>相关性公式一般表示如下：</p>
-<p><span class="math display">$$
-score(q,k_i)=softmax(\alpha(q,k_i))=\frac{exp(\alpha(q,k_i))}{\sum_1^jexp(\alpha(q,k_j))}
-$$</span></p>
-<p>其中<span
-class="math inline"><em>α</em>(<em>q</em>, <em>k</em><sub><em>i</em></sub>)</span>有很多变体：</p>
-<p>e.g. 在加性注意力中</p>
-<p><span
-class="math display"><em>α</em>(<em>q</em>, <em>k</em><sub><em>i</em></sub>) = <em>w</em><sub><em>v</em></sub><sup><em>T</em></sup><em>t</em><em>a</em><em>n</em><em>h</em>(<em>W</em><sub><em>q</em></sub><em>q</em> + <em>W</em><sub><em>k</em></sub><em>k</em>)</span></p>
+<p>$$<br>
+score(q,k_i)=softmax(\alpha(q,k_i))=\frac{exp(\alpha(q,k_i))}{\sum_1^jexp(\alpha(q,k_j))}<br>
+$$</p>
+<p>其中$\alpha(q,k_{i})$有很多变体：</p>
+<p>e.g. 在加性注意力中</p>
+<p>$$<br>
+\alpha(q,k_i)=w_v^Ttanh(W_qq+W_kk)<br>
+$$</p>
 <p>W_q：Query对应的可训练矩阵</p>
 <p>W_k: Key对应的可训练矩阵</p>
 <p>w_v^T: Value对应的可训练矩阵</p>
 <p>(tanh为双曲正切函数，作为一种常见的激活函数)</p>
 <p>e.g.在缩放点积注意力中</p>
-<p><span class="math display">$$
-\alpha(q,k_i)=\frac{QK^T}{\sqrt{d}}
-$$</span></p>
-<p>其中d为Keys的维度大小，除以sqrt{d}是为了使方差变小，训练梯度更新时更稳定</p></li>
-<li><p>将注意力分数加权求和，得到带注意力分数的Value</p></li>
+<p>$$<br>
+\alpha(q,k_i)=\frac{QK^T}{\sqrt{d}}<br>
+$$</p>
+<p>其中d为Keys的维度大小，除以sqrt{d}是为了使方差变小，训练梯度更新时更稳定</p>
+</li>
+<li>
+<p>将注意力分数加权求和，得到带注意力分数的Value</p>
+</li>
 </ol>
-<h2
-id="自注意力机制self-attention-mechanism">自注意力机制（Self-Attention
-Mechanism）</h2>
+<h2 id="自注意力机制（Self-Attention-Mechanism）">自注意力机制（Self-Attention Mechanism）</h2>
 
 <p>2.1 Embedding 操作, 将向量x转化为a,a作为注意力机制的input data</p>
 <p>2.2 q, k 操作</p>
-<p><span
-class="math display"><em>q</em><sup><em>i</em></sup> = <em>W</em><sup><em>q</em></sup><em>a</em><sup><em>i</em></sup></span></p>
-<p><span
-class="math display"><em>k</em><sup><em>i</em></sup> = <em>W</em><sup><em>k</em></sup><em>a</em><sup><em>i</em></sup></span></p>
-<p><span
-class="math display"><em>v</em><sup><em>i</em></sup> = <em>W</em><sup><em>v</em></sup><em>a</em><sup><em>i</em></sup></span></p>
-<h2
-id="多头注意力机制multi-head-self-attention-machanism">多头注意力机制（Multi-head
-Self-Attention Machanism）</h2>
-<p>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/631398525"
-class="uri">https://zhuanlan.zhihu.com/p/631398525</a> ##
-通道注意力机制</p>
+<p>$$q^i=W^qa^i$$</p>
+<p>$$k^i=W^ka^i$$</p>
+<p>$$v^i=W^va^i$$</p>
+<h2 id="多头注意力机制（Multi-head-Self-Attention-Machanism）">多头注意力机制（Multi-head Self-Attention Machanism）</h2>
+<p>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/631398525">https://zhuanlan.zhihu.com/p/631398525</a></p>
+<h2 id="通道注意力机制">通道注意力机制</h2>
 <h2 id="空间注意力机制">空间注意力机制</h2>
 
       
@@ -1030,194 +840,122 @@ class="uri">https://zhuanlan.zhihu.com/p/631398525</a> ##
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="few-shot">Few-Shot</h1>
-<h2
-id="phasic-content-fusing-diffusion-model-with-directional-distribution-consistency-for-few-shot-model-adaption">Phasic
-Content Fusing Diffusion Model with Directional Distribution Consistency
-for Few-Shot Model Adaption</h2>
-<p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2309.03729"
-class="uri">https://arxiv.org/pdf/2309.03729</a></p>
-<h3 id="abstract">Abstract</h3>
-<ol type="1">
+          <h1>Few-Shot</h1>
+<h2 id="Phasic-Content-Fusing-Diffusion-Model-with-Directional-Distribution-Consistency-for-Few-Shot-Model-Adaption">Phasic Content Fusing Diffusion Model with Directional Distribution Consistency for Few-Shot Model Adaption</h2>
+<p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2309.03729">https://arxiv.org/pdf/2309.03729</a></p>
+<h3 id="Abstract">Abstract</h3>
+<ol>
 <li>当t较大时学习目标域内容和风格信息，当t较小时学习目标域的局部细节</li>
 <li>引入一种新的方向分布一致性损失，确保生成分布和原分布之间的一致性，防止过拟合（overfit）</li>
 <li>跨领域情景的结构一致性</li>
 </ol>
-<h3 id="challenges">Challenges</h3>
-<ol type="1">
+<h3 id="Challenges">Challenges</h3>
+<ol>
 <li>overfit</li>
 <li>细节学习阶段（t较小的时候）风格迁移失败</li>
 <li>现有的少样本GAN适应只约束对应点成对距离（相对位置关系），无法约束分布旋转</li>
 </ol>
-<h3 id="method">Method</h3>
-<h4 id="training-with-phasic-content-fusion">Training with Phasic
-Content Fusion</h4>
-<p>在前向加噪过程中学习内容和风格信息，引入权重函数m(t),自适应地融合<span
-class="math inline"><em>E</em>(<em>x</em><sup><em>A</em></sup>)</span>和噪声<span
-class="math inline"><em>z</em> ∼ 𝒩(0, <em>I</em>)</span>，</p>
-<p><span
-class="math inline"><em>Ê</em>(<em>x</em><sup><em>A</em></sup>) = <em>m</em>(<em>t</em>)<em>E</em>(<em>x</em><sup><em>A</em></sup>) + (1 − <em>m</em>(<em>t</em>))<em>z</em></span></p>
-<p>然后使用多个卷积块将 <span
-class="math inline"><em>Ê</em>(<em>x</em><sup><em>A</em></sup>)</span>
-与 <span
-class="math inline"><em>E</em>(<em>x</em><sub><em>t</em></sub><sup><em>A</em></sup>)</span>
-融合，得到融合后的特征 <span
-class="math inline"><em>E</em>(<em>x</em><sup><em>A</em></sup>, <em>x</em><sub><em>t</em></sub><sup><em>A</em></sup>)</span>
-，最后将融合后的特征送入UNet解码器对噪声进行预测，得到包含增强内容信息的
-<span
-class="math inline"><em>x</em><sub><em>t</em> − 1</sub><sup><em>A</em></sup></span></p>
-<h4
-id="方向分布一致性损失函数-directional-distribution-consistency-loss-ddc">方向分布一致性损失函数
-directional distribution consistency loss (DDC)</h4>
+<h3 id="Method">Method</h3>
+<h4 id="Training-with-Phasic-Content-Fusion">Training with Phasic Content Fusion</h4>
+<p>在前向加噪过程中学习内容和风格信息，引入权重函数m(t),自适应地融合$E(x^{A})$和噪声$z\sim\mathcal{N}(0,I)$，</p>
+<p>$\hat{E}(x^A)=m(t)E(x^A)+(1-m(t))z$</p>
+<p>然后使用多个卷积块将 $\hat{E}(x^A)$ 与 $E(x_{t}^{A})$ 融合，得到融合后的特征 $E(x^A,x_t^A)$ ，最后将融合后的特征送入UNet解码器对噪声进行预测，得到包含增强内容信息的 $x_{t-1}^A$</p>
+<h4 id="方向分布一致性损失函数-directional-distribution-consistency-loss-DDC">方向分布一致性损失函数 directional distribution consistency loss (DDC)</h4>
 <p>最终的损失函数由以下三个损失函数构成：</p>
-<ol type="1">
-<li><p>Directional distribution consistency loss</p>
-<p><span
-class="math inline">ℒ<sub><em>D</em><em>D</em><em>C</em></sub> = ∥<em>E</em>(<em>x</em><sup><em>A</em></sup>) + <em>w</em>, <em>E</em>(<em>x</em><sub>0</sub><sup><em>A</em> → <em>B</em></sup>)∥<sup>2</sup></span></p>
-<p>其中w为方向向量，给定源分布 <span
-class="math inline"><em>A</em> = {<em>x</em><sub>1</sub><sup><em>A</em></sup>, ⋯<em>x</em><sub><em>m</em></sub><sup><em>A</em></sup>}</span>
-和目标分布 <span
-class="math inline"><em>B</em> = {<em>x</em><sub>1</sub><sup><em>B</em></sup>, ⋯<em>x</em><sub><em>m</em></sub><sup><em>B</em></sup>}</span>
-,特征空间中从源域中心到目标域中心的跨域方向向量w,</p>
-<p><span
-class="math inline">$w=\frac{1}{m}\sum_{i=1}^mE(x_i^B)-\frac{1}{n}\sum_{i=1}^nE(x_i^A)$</span></p></li>
-<li><p>Style loss</p>
-<p><span
-class="math inline">$\mathcal{L}_{style}=\frac{1}{m}\sum_{i=1}^{m}\sum_{l}w_{l}\|G^{l}(x_{0}^{A\to
-B})-G^{l}(x_{i}^{B})\|^{2}$</span></p>
-<p>用于计算生成图像和目标图像之间的分割损失，基于Gram矩阵</p></li>
-<li><p>Diffusion Loss</p></li>
-<li><p><span
-class="math inline">ℒ<sub><em>d</em><em>i</em><em>f</em></sub> = ||<em>ϵ</em><sub><em>θ</em></sub>(<em>x</em><sub><em>t</em></sub><sup><em>B</em></sup>, <em>t</em>) − <em>ϵ</em>||<sup>2</sup></span></p></li>
+<ol>
+<li>
+<p>Directional distribution consistency loss</p>
+<p>$\mathcal{L}_{DDC}=|E(x^A)+w,E(x_0^{A\to B})|^2$</p>
+<p>其中w为方向向量，给定源分布 $A={x_{1}^{A},\cdots x_{m}^{A}}$ 和目标分布 $B={x_{1}^{B},\cdots x_{m}^{B}}$ ,特征空间中从源域中心到目标域中心的跨域方向向量w,</p>
+<p>$w=\frac{1}{m}\sum_{i=1}^mE(x_i^B)-\frac{1}{n}\sum_{i=1}^nE(x_i^A)$</p>
+</li>
+<li>
+<p>Style loss</p>
+<p>$\mathcal{L}<em>{style}=\frac{1}{m}\sum</em>{i=1}^{m}\sum_{l}w_{l}|G^{l}(x_{0}^{A\to B})-G^{l}(x_{i}^{B})|^{2}$</p>
+<p>用于计算生成图像和目标图像之间的分割损失，基于Gram矩阵</p>
+</li>
+<li>
+<p>Diffusion Loss</p>
+</li>
+<li>
+<p>$\mathcal{L}<em>{dif}=||\epsilon</em>\theta(x_t^B,t)-\epsilon||^2$</p>
+</li>
 </ol>
 <p>最终的损失函数为：</p>
-<p><span
-class="math inline">ℒ = <em>m</em>(<em>t</em>)(1 − <em>w</em>(<em>t</em>))(<em>λ</em><sub><em>D</em><em>D</em><em>C</em></sub>ℒ<sub><em>D</em><em>D</em><em>C</em></sub>(<em>x</em><sup><em>A</em></sup>, <em>x</em><sub>0</sub><sup><em>A</em> → <em>B</em></sup>) + <em>λ</em><sub><em>s</em><em>t</em><em>y</em><em>l</em><em>e</em></sub>ℒ<sub><em>s</em><em>t</em><em>y</em><em>l</em><em>e</em></sub>(<em>x</em><sub>0</sub><sup><em>A</em> → <em>B</em></sup>, <em>x</em><sup><em>B</em></sup>)) + <em>w</em>(<em>t</em>)ℒ<sub><em>d</em><em>i</em><em>f</em></sub>(<em>x</em><sup><em>B</em></sup>)</span></p>
-<h4
-id="迭代跨域结构引导-iterative-cross-domain-structure-guidanceicsg">迭代跨域结构引导
-Iterative Cross-domain Structure Guidance(ICSG)</h4>
+<p>$\mathcal{L}=m(t)(1-w(t))(\lambda_{DDC}\mathcal{L}<em>{DDC}(x^{A},x</em>{0}^{A\to B})+\lambda_{style}\mathcal{L}<em>{style}(x</em>{0}^{A\to B},x^{B}))+w(t)\mathcal{L}_{dif}(x^{B})$</p>
+<h4 id="迭代跨域结构引导-Iterative-Cross-domain-Structure-Guidance-ICSG">迭代跨域结构引导 Iterative Cross-domain Structure Guidance(ICSG)</h4>
 <p>需要进一步理解</p>
 <h3 id="实验及评估过程">实验及评估过程</h3>
 <h3 id="相关概念">相关概念</h3>
-<h4 id="图像翻译-image-to-image-translation">图像翻译 Image-to-Image
-Translation</h4>
+<h4 id="图像翻译-Image-to-Image-Translation">图像翻译 Image-to-Image Translation</h4>
 <p>将图像中内容从一个图像域Ｘ转换到另一个图像域Ｙ，可以看作是将原始图像的某种属性Ｘ移除，重新赋予其新的属性Ｙ，也即是图像间的跨域转换。</p>
-<h4 id="gram矩阵">Gram矩阵</h4>
+<h4 id="Gram矩阵">Gram矩阵</h4>
 <h5 id="原理">原理</h5>
-<p>n维欧式空间中任意k个向量之间两两的内积所组成的矩阵，称为这k个向量的格拉姆矩阵(Gram
-matrix)，很明显，这是一个对称矩阵。 输入图像的feature map为[ ch, h,
-w]。我们经过flatten（即是将h* w
-进行平铺成一维向量）和矩阵转置操作，可以变形为[ ch, h* w]和[ h*w,
-ch]的矩阵。再对两个作内积得到Gram矩阵。 ##### 应用</p>
+<p>n维欧式空间中任意k个向量之间两两的内积所组成的矩阵，称为这k个向量的格拉姆矩阵(Gram matrix)，很明显，这是一个对称矩阵。<br>
+输入图像的feature map为[ ch, h, w]。我们经过flatten（即是将h* w 进行平铺成一维向量）和矩阵转置操作，可以变形为[ ch, h* w]和[ h*w, ch]的矩阵。再对两个作内积得到Gram矩阵。</p>
+<h5 id="应用">应用</h5>
 <p>Gram matrix的应用-风格迁移：</p>
-<ol type="1">
-<li><p>准备基准图像和风格图像</p></li>
-<li><p>使用深层网络分别提取基准图像（加白噪声）和风格图像的特征向量（或者说是特征图feature
-map）</p></li>
-<li><p>分别计算两个图像的特征向量的Gram矩阵，以两个图像的Gram矩阵的差异最小化为优化目标，不断调整基准图像，使风格不断接近目标风格图像</p></li>
+<ol>
+<li>
+<p>准备基准图像和风格图像</p>
+</li>
+<li>
+<p>使用深层网络分别提取基准图像（加白噪声）和风格图像的特征向量（或者说是特征图feature map）</p>
+</li>
+<li>
+<p>分别计算两个图像的特征向量的Gram矩阵，以两个图像的Gram矩阵的差异最小化为优化目标，不断调整基准图像，使风格不断接近目标风格图像</p>
+</li>
 </ol>
 <p>一般来说浅层网络提取的是局部的细节纹理特征，深层网络提取的是更抽象的轮廓、大小等信息。这些特征总的结合起来表现出来的感觉就是图像的风格，由这些特征向量计算出来的的Gram矩阵，就可以把图像特征之间隐藏的联系提取出来，也就是各个特征之间的相关性高低。</p>
-<h4 id="消融实验-ablation-study">消融实验 Ablation Study</h4>
+<h4 id="消融实验-Ablation-Study">消融实验 Ablation Study</h4>
 <p>类似于“控制变量法”，逐一控制参数来观察结果的变化，以确定不同参数对模型的影响。</p>
-<h2
-id="specialist-diffusion-plug-and-play-sample-efficient-fine-tuning-of-text-to-image-diffusion-models-to-learn-any-unseen-style">Specialist
-Diffusion: Plug-and-Play Sample-Efficient Fine-Tuning of Text-to-Image
-Diffusion Models to Learn Any Unseen Style</h2>
-<p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2211.12572"
-class="uri">https://arxiv.org/pdf/2211.12572</a></p>
+<h2 id="Specialist-Diffusion-Plug-and-Play-Sample-Efficient-Fine-Tuning-of-Text-to-Image-Diffusion-Models-to-Learn-Any-Unseen-Style">Specialist Diffusion: Plug-and-Play Sample-Efficient Fine-Tuning of Text-to-Image Diffusion Models to Learn Any Unseen Style</h2>
+<p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2211.12572">https://arxiv.org/pdf/2211.12572</a></p>
 <h3 id="主要内容">主要内容</h3>
-<p>这篇论文提出Specialist
-Diffusion：相当于一个即插即用的微调工具包，包括文本到图像的定制数据增强，content
-loss to facilitate content-style disentanglement，sparsely updating
-diffusion time
-steps。主要适用于以少量已知风格的图片训练模型，使其能够通过特定的文本提示生成相应风格的图片。</p>
-<h4 id="data-augmentations-for-text2image-diffusion数据增强">Data
-Augmentations for Text2Image Diffusion（数据增强）</h4>
-<h5 id="image-augmentation">Image Augmentation</h5>
-<h5 id="text-prompt-augmentation">Text Prompt Augmentation</h5>
-<h6 id="caption-retrieval-augmentation-标题搜索增强">Caption Retrieval
-Augmentation 标题搜索增强</h6>
-<h6 id="synonym-augmentation-同义词增强">Synonym Augmentation
-同义词增强</h6>
-<h6 id="doubled-augmentation-双重增强">Doubled Augmentation
-双重增强</h6>
-<h4 id="content-loss">Content Loss</h4>
-<h4 id="sparse-updating">Sparse Updating</h4>
-<h3 id="相关概念-1">相关概念</h3>
-<h4 id="增强泄露问题-augmentation-leakage">增强泄露问题 augmentation
-leakage</h4>
-<p>生成模型在训练过程中，会记住训练样本及其经过增强后的版本，这样在推理（生成新内容）阶段，就容易生成与训练时相似的图像。
-举个文中例子，很多旋转后的图像理论上算自然照片，但在真实自然图像集合里，它们出现的概率其实更低。要是训练时过度用旋转增强，模型就可能
-“bias（偏向）” 生成更多带旋转的物体，可这些并非实际想要的（“un - tended”
-，即不符合自然场景常见分布 ），相当于增强操作的影响 “泄漏”
-到生成结果里，让生成内容偏离真实自然数据的合理分布，这就是 “augmentation
-leakage” 。简单说，就是数据增强的不当使用，让模型学到了增强带来的
-“虚假模式”，而非真实场景的合理特征，影响生成效果。</p>
-<h4 id="正则化-regularization">正则化 Regularization</h4>
+<p>这篇论文提出Specialist Diffusion：相当于一个即插即用的微调工具包，包括文本到图像的定制数据增强，content loss to facilitate content-style disentanglement，sparsely updating diffusion time steps。主要适用于以少量已知风格的图片训练模型，使其能够通过特定的文本提示生成相应风格的图片。</p>
+<h4 id="Data-Augmentations-for-Text2Image-Diffusion（数据增强）">Data Augmentations for Text2Image Diffusion（数据增强）</h4>
+<h5 id="Image-Augmentation">Image Augmentation</h5>
+<h5 id="Text-Prompt-Augmentation">Text Prompt Augmentation</h5>
+<h6 id="Caption-Retrieval-Augmentation-标题搜索增强">Caption Retrieval Augmentation 标题搜索增强</h6>
+<h6 id="Synonym-Augmentation-同义词增强">Synonym Augmentation 同义词增强</h6>
+<h6 id="Doubled-Augmentation-双重增强">Doubled Augmentation 双重增强</h6>
+<h4 id="Content-Loss">Content Loss</h4>
+<h4 id="Sparse-Updating">Sparse Updating</h4>
+<h3 id="相关概念-2">相关概念</h3>
+<h4 id="增强泄露问题-augmentation-leakage">增强泄露问题 augmentation leakage</h4>
+<p>生成模型在训练过程中，会记住训练样本及其经过增强后的版本，这样在推理（生成新内容）阶段，就容易生成与训练时相似的图像。<br>
+举个文中例子，很多旋转后的图像理论上算自然照片，但在真实自然图像集合里，它们出现的概率其实更低。要是训练时过度用旋转增强，模型就可能 “bias（偏向）” 生成更多带旋转的物体，可这些并非实际想要的（“un - tended” ，即不符合自然场景常见分布 ），相当于增强操作的影响 “泄漏” 到生成结果里，让生成内容偏离真实自然数据的合理分布，这就是 “augmentation leakage” 。简单说，就是数据增强的不当使用，让模型学到了增强带来的 “虚假模式”，而非真实场景的合理特征，影响生成效果。</p>
+<h4 id="正则化-Regularization">正则化 Regularization</h4>
 <p><strong>正则化是用来防止模型过拟合而采取的手段</strong>，对代价函数增加一个限制条件，限制其较高次的参数大小不能过大</p>
-<p>参考：<a
-target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41960890/article/details/104891561"
-class="uri">https://blog.csdn.net/weixin_41960890/article/details/104891561</a></p>
-<h1 id="一.lora原理">一.LoRA原理</h1>
-<p>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/702629428"
-class="uri">https://zhuanlan.zhihu.com/p/702629428</a> 原论文：<a
-target="_blank" rel="noopener" href="https://arxiv.org/pdf/2106.09685"
-class="uri">https://arxiv.org/pdf/2106.09685</a> LoRA(Low-Rank
-Adaptation of LLMs)，即LLMs的低秩适应，是参数高效微调最常用的方法。</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41960890/article/details/104891561">https://blog.csdn.net/weixin_41960890/article/details/104891561</a></p>
+<h1>一.LoRA原理</h1>
+<p>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/702629428">https://zhuanlan.zhihu.com/p/702629428</a><br>
+原论文：<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2106.09685">https://arxiv.org/pdf/2106.09685</a><br>
+LoRA(Low-Rank Adaptation of LLMs)，即LLMs的低秩适应，是参数高效微调最常用的方法。</p>
 <p>LoRA的本质就是用更少的训练参数来近似LLM全参数微调所得的增量参数，从而达到使用更少显存占用的高效微调。</p>
-<h2 id="实现流程">1.1实现流程</h2>
-<p><img src="v2-10ce9e224defb3732e09a257911821aa_1440w.png" /></p>
-<ol type="1">
-<li>在原始预训练语言模型旁边增加一个旁路，做降维再升维的操作来模拟内在秩；<br />
-</li>
-<li>用随机高斯分布初始化
-A，用零矩阵初始化B，训练时固定预训练模型的参数，只训练矩阵 A 与矩阵
-B；</li>
-<li>训练完成后，将 B 矩阵与 A
-矩阵相乘后合并预训练模型参数作为微调后的模型参数。</li>
+<h2 id="1-1实现流程">1.1实现流程</h2>
+<p><img src="v2-10ce9e224defb3732e09a257911821aa_1440w.png" alt=""></p>
+<ol>
+<li>在原始预训练语言模型旁边增加一个旁路，做降维再升维的操作来模拟内在秩；</li>
+<li>用随机高斯分布初始化 A，用零矩阵初始化B，训练时固定预训练模型的参数，只训练矩阵 A 与矩阵 B；</li>
+<li>训练完成后，将 B 矩阵与 A 矩阵相乘后合并预训练模型参数作为微调后的模型参数。</li>
 </ol>
-<p>具体来讲，预训练权重矩阵 <span
-class="math inline"><strong>W</strong><sub>0</sub> ∈ ℝ<sup><em>d</em> × <em>d</em></sup></span>
-，</p>
-<p>将增量参数矩阵 <span
-class="math inline"><em>Δ</em><strong>W</strong></span>
-，表示为两个参数量更小的矩阵 B 和 A 的低秩近似,如下式</p>
-<p><span
-class="math inline"><strong>W</strong><sub>0</sub> + <em>Δ</em><strong>W</strong> = <strong>W</strong><sub>0</sub> + <strong>B</strong><strong>A</strong></span></p>
-<p>其中 <span
-class="math inline"><strong>B</strong> ∈ ℝ<sup><em>d</em> × <em>r</em></sup></span>
-，<span
-class="math inline"><strong>A</strong> ∈ ℝ<sup><em>r</em> × <em>d</em></sup></span>
-，秩<span class="math inline">r</span>远小于<span
-class="math inline">d</span></p>
-<p>给定输入<span
-class="math inline">.<strong>x</strong> ∈ ℝ<sup><em>d</em></sup></span>
-,添加LoRA后的输出<span
-class="math inline">.<strong>h</strong> ∈ ℝ<sup><em>d</em></sup></span></p>
-<p><span
-class="math inline"><strong>h</strong> = (<strong>W</strong><sub>0</sub> + <em>Δ</em><strong>W</strong>)<strong>x</strong> = <strong>W</strong><sub>0</sub><strong>x</strong> + <strong>B</strong><strong>A</strong><strong>x</strong></span></p>
-<p><span
-class="math inline"><em>Δ</em><strong>h</strong> = <strong>B</strong><strong>A</strong><strong>x</strong></span></p>
-<h2 id="lora参数合并系数">1.2LoRA参数合并系数</h2>
-<p>实际实现时以以下形式合并，其中<span
-class="math inline"><em>α</em></span>为超参数</p>
-<p><span
-class="math inline">$\mathbf{h}=(\mathbf{W}_{0}+\frac{\alpha}{r}\Delta\mathbf{W})\mathbf{x}$</span></p>
-<p>系数<span
-class="math inline">$\frac{\alpha}{r}$</span>越大，LoRA微调权重的影响就越大，在下游任务上越容易过拟合</p>
-<p>系数<span
-class="math inline">$\frac{\alpha}{r}$</span>越小，LoRA微调权重的影响就越小（微调的效果不明显，原始模型参数受到的影响也较少）</p>
-<p>一般来说，在给定任务上LoRA微调，让<span
-class="math inline"><em>α</em></span>为<span
-class="math inline"><strong>r</strong></span>的2倍数。</p>
-<h2 id="lora的秩mathbfr如何选择">1.3 LoRA的秩<span
-class="math inline"><strong>r</strong></span>如何选择</h2>
-<p>目标：找到一个秩<span
-class="math inline"><strong>r</strong></span>，使<span
-class="math inline">BA</span>无限接近<span
-class="math inline"><em>Δ</em><strong>W</strong></span>的表达能力。</p>
-<p>秩<span
-class="math inline"><strong>r</strong></span>越大，拟合能力越强（甚至出现过拟合），但参与训练的参数量也随之增加。</p>
+<p>具体来讲，预训练权重矩阵 $\mathbf{W}_0\in\mathbb{R}^{d\times d}$ ，</p>
+<p>将增量参数矩阵 $\Delta\mathbf{W}$ ，表示为两个参数量更小的矩阵 B 和 A 的低秩近似,如下式</p>
+<p>$\mathbf{W}<em>{0}+\Delta\mathbf{W}=\mathbf{W}</em>{0}+\mathbf{BA}$</p>
+<p>其中 $\mathbf{B}\in\mathbb{R}^{d\times r}$ ，$\mathbf{A}\in\mathbb{R}^{r\times d}$ ，秩$\mathrm{r}$远小于$\mathrm{d}$</p>
+<p>给定输入$.\mathbf{x}\in\mathbb{R}^d$ ,添加LoRA后的输出$.\mathbf{h}\in\mathbb{R}^d$</p>
+<p>$\mathbf{h}=(\mathbf{W}<em>{0}+\Delta\mathbf{W})\mathbf{x}=\mathbf{W}</em>{0}\mathbf{x}+\mathbf{BA}\mathbf{x}$</p>
+<p>$\Delta\mathbf{h}=\mathbf{BAx}$</p>
+<h2 id="1-2LoRA参数合并系数">1.2LoRA参数合并系数</h2>
+<p>实际实现时以以下形式合并，其中$\alpha$为超参数</p>
+<p>$\mathbf{h}=(\mathbf{W}_{0}+\frac{\alpha}{r}\Delta\mathbf{W})\mathbf{x}$</p>
+<p>系数$\frac{\alpha}{r}$越大，LoRA微调权重的影响就越大，在下游任务上越容易过拟合</p>
+<p>系数$\frac{\alpha}{r}$越小，LoRA微调权重的影响就越小（微调的效果不明显，原始模型参数受到的影响也较少）</p>
+<p>一般来说，在给定任务上LoRA微调，让$\alpha$为$\mathbf{r}$的2倍数。</p>
+<h2 id="1-3-LoRA的秩-mathbf-r-如何选择">1.3 LoRA的秩$\mathbf{r}$如何选择</h2>
+<p>目标：找到一个秩$\mathbf{r}$，使$\mathrm{BA}$无限接近$\Delta\mathbf{W}$的表达能力。</p>
+<p>秩$\mathbf{r}$越大，拟合能力越强（甚至出现过拟合），但参与训练的参数量也随之增加。</p>
 
       
     </div>
@@ -1302,9 +1040,9 @@ class="math inline"><strong>r</strong></span>越大，拟合能力越强（甚�
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="stm32cubemx配置">stm32cubemx配置</h1>
+          <h1>stm32cubemx配置</h1>
 <p>开启串口收发异步模式，开启串口空闲中断</p>
-<h1 id="代码实现">代码实现</h1>
+<h1>代码实现</h1>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;command.h&quot;</span><br><span class="line"></span><br><span class="line">// 指令的最小长度</span><br><span class="line">#define COMMAND_MIN_LENGTH 4</span><br><span class="line"></span><br><span class="line">// 循环缓冲区大小</span><br><span class="line">#define BUFFER_SIZE 128</span><br><span class="line">// 循环缓冲区</span><br><span class="line">uint8_t buffer[BUFFER_SIZE];</span><br><span class="line">// 循环缓冲区读索引</span><br><span class="line">uint8_t readIndex = 0;</span><br><span class="line">// 循环缓冲区写索引</span><br><span class="line">uint8_t writeIndex = 0;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">* @brief 增加读索引</span><br><span class="line">* @param length 要增加的长度</span><br><span class="line">*/</span><br><span class="line">void Command_AddReadIndex(uint8_t length) &#123;</span><br><span class="line">    readIndex += length;</span><br><span class="line">    readIndex %= BUFFER_SIZE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">* @brief 读取第i位数据 超过缓存区长度自动循环</span><br><span class="line">* @param i 要读取的数据索引</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">uint8_t Command_Read(uint8_t i) &#123;</span><br><span class="line">    uint8_t index = i % BUFFER_SIZE;</span><br><span class="line">    return buffer[index];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">* @brief 计算未处理的数据长度</span><br><span class="line">* @return 未处理的数据长度</span><br><span class="line">* @retval 0 缓冲区为空</span><br><span class="line">* @retval 1~BUFFER_SIZE-1 未处理的数据长度</span><br><span class="line">* @retval BUFFER_SIZE 缓冲区已满</span><br><span class="line">*/</span><br><span class="line">//uint8_t Command_GetLength() &#123;</span><br><span class="line">//  // 读索引等于写索引时，缓冲区为空</span><br><span class="line">//  if (readIndex == writeIndex) &#123;</span><br><span class="line">//    return 0;</span><br><span class="line">//  &#125;</span><br><span class="line">//  // 如果缓冲区已满,返回BUFFER_SIZE</span><br><span class="line">//  if (writeIndex + 1 == readIndex || (writeIndex == BUFFER_SIZE - 1 &amp;&amp; readIndex == 0)) &#123;</span><br><span class="line">//    return BUFFER_SIZE;</span><br><span class="line">//  &#125;</span><br><span class="line">//  // 如果缓冲区未满,返回未处理的数据长度</span><br><span class="line">//  if (readIndex &lt;= writeIndex) &#123;</span><br><span class="line">//    return writeIndex - readIndex;</span><br><span class="line">//  &#125; else &#123;</span><br><span class="line">//    return BUFFER_SIZE - readIndex + writeIndex;</span><br><span class="line">//  &#125;</span><br><span class="line">//&#125;</span><br><span class="line"></span><br><span class="line">uint8_t Command_GetLength() &#123;</span><br><span class="line">    return (writeIndex + BUFFER_SIZE - readIndex) % BUFFER_SIZE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">* @brief 计算缓冲区剩余空间</span><br><span class="line">* @return 剩余空间</span><br><span class="line">* @retval 0 缓冲区已满</span><br><span class="line">* @retval 1~BUFFER_SIZE-1 剩余空间</span><br><span class="line">* @retval BUFFER_SIZE 缓冲区为空</span><br><span class="line">*/</span><br><span class="line">uint8_t Command_GetRemain() &#123;</span><br><span class="line">    return BUFFER_SIZE - Command_GetLength();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">* @brief 向缓冲区写入数据</span><br><span class="line">* @param data 要写入的数据指针</span><br><span class="line">* @param length 要写入的数据长度</span><br><span class="line">* @return 写入的数据长度</span><br><span class="line">*/</span><br><span class="line">uint8_t Command_Write(uint8_t *data, uint8_t length) &#123;</span><br><span class="line">    // 如果缓冲区不足 则不写入数据 返回0</span><br><span class="line">    if (Command_GetRemain() &lt; length) &#123;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    // 使用memcpy函数将数据写入缓冲区</span><br><span class="line">    if (writeIndex + length &lt; BUFFER_SIZE) &#123;</span><br><span class="line">        memcpy(buffer + writeIndex, data, length);</span><br><span class="line">        writeIndex += length;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        uint8_t firstLength = BUFFER_SIZE - writeIndex;</span><br><span class="line">        memcpy(buffer + writeIndex, data, firstLength);</span><br><span class="line">        memcpy(buffer, data + firstLength, length - firstLength);</span><br><span class="line">        writeIndex = length - firstLength;</span><br><span class="line">    &#125;</span><br><span class="line">    return length;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">* @brief 尝试获取一条指令</span><br><span class="line">* @param command 指令存放指针</span><br><span class="line">* @return 获取的指令长度</span><br><span class="line">* @retval 0 没有获取到指令</span><br><span class="line">*/</span><br><span class="line">uint8_t Command_GetCommand(uint8_t *command) &#123;</span><br><span class="line">    // 寻找完整指令</span><br><span class="line">    while (1) &#123;</span><br><span class="line">        // 如果缓冲区长度小于COMMAND_MIN_LENGTH 则不可能有完整的指令</span><br><span class="line">        if (Command_GetLength() &lt; COMMAND_MIN_LENGTH) &#123;</span><br><span class="line">        return 0;</span><br><span class="line">        &#125;</span><br><span class="line">        // 如果不是包头 则跳过 重新开始寻找</span><br><span class="line">        if (Command_Read(readIndex) != 0xAA) &#123;</span><br><span class="line">        Command_AddReadIndex(1);</span><br><span class="line">        continue;</span><br><span class="line">        &#125;</span><br><span class="line">        // 如果缓冲区长度小于指令长度 则不可能有完整的指令</span><br><span class="line">        uint8_t length = Command_Read(readIndex + 1);</span><br><span class="line">        if (Command_GetLength() &lt; length) &#123;</span><br><span class="line">        return 0;</span><br><span class="line">        &#125;</span><br><span class="line">        // 如果校验和不正确 则跳过 重新开始寻找</span><br><span class="line">        uint8_t sum = 0;</span><br><span class="line">        for (uint8_t i = 0; i &lt; length - 1; i++) &#123;</span><br><span class="line">        sum += Command_Read(readIndex + i);</span><br><span class="line">        &#125;</span><br><span class="line">        if (sum != Command_Read(readIndex + length - 1)) &#123;</span><br><span class="line">        Command_AddReadIndex(1);</span><br><span class="line">        continue;</span><br><span class="line">        &#125;</span><br><span class="line">        // 如果找到完整指令 则将指令写入command 返回指令长度</span><br><span class="line">        for (uint8_t i = 0; i &lt; length; i++) &#123;</span><br><span class="line">        command[i] = Command_Read(readIndex + i);</span><br><span class="line">        &#125;</span><br><span class="line">        Command_AddReadIndex(length);</span><br><span class="line">        return length;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>头文件：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#ifndef INC_COMMAND_H_</span><br><span class="line">#define INC_COMMAND_H_</span><br><span class="line"></span><br><span class="line">#include &quot;main.h&quot;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line"></span><br><span class="line">uint8_t Command_Write(uint8_t *data, uint8_t length);</span><br><span class="line"></span><br><span class="line">uint8_t Command_GetCommand(uint8_t *command);</span><br><span class="line"></span><br><span class="line">#endif /* INC_COMMAND_H_ */</span><br></pre></td></tr></table></figure>
@@ -1396,66 +1134,34 @@ class="math inline"><strong>r</strong></span>越大，拟合能力越强（甚�
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="一.lora原理">一.LoRA原理</h1>
-<p>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/702629428"
-class="uri">https://zhuanlan.zhihu.com/p/702629428</a> 原论文：<a
-target="_blank" rel="noopener" href="https://arxiv.org/pdf/2106.09685"
-class="uri">https://arxiv.org/pdf/2106.09685</a> LoRA(Low-Rank
-Adaptation of LLMs)，即LLMs的低秩适应，是参数高效微调最常用的方法。</p>
+          <h1>一.LoRA原理</h1>
+<p>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/702629428">https://zhuanlan.zhihu.com/p/702629428</a><br>
+原论文：<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2106.09685">https://arxiv.org/pdf/2106.09685</a><br>
+LoRA(Low-Rank Adaptation of LLMs)，即LLMs的低秩适应，是参数高效微调最常用的方法。</p>
 <p>LoRA的本质就是用更少的训练参数来近似LLM全参数微调所得的增量参数，从而达到使用更少显存占用的高效微调。</p>
-<h2 id="实现流程">1.1实现流程</h2>
-<p><img src="v2-10ce9e224defb3732e09a257911821aa_1440w.png" /></p>
-<ol type="1">
-<li>在原始预训练语言模型旁边增加一个旁路，做降维再升维的操作来模拟内在秩；<br />
-</li>
-<li>用随机高斯分布初始化
-A，用零矩阵初始化B，训练时固定预训练模型的参数，只训练矩阵 A 与矩阵
-B；</li>
-<li>训练完成后，将 B 矩阵与 A
-矩阵相乘后合并预训练模型参数作为微调后的模型参数。</li>
+<h2 id="1-1实现流程">1.1实现流程</h2>
+<p><img src="v2-10ce9e224defb3732e09a257911821aa_1440w.png" alt=""></p>
+<ol>
+<li>在原始预训练语言模型旁边增加一个旁路，做降维再升维的操作来模拟内在秩；</li>
+<li>用随机高斯分布初始化 A，用零矩阵初始化B，训练时固定预训练模型的参数，只训练矩阵 A 与矩阵 B；</li>
+<li>训练完成后，将 B 矩阵与 A 矩阵相乘后合并预训练模型参数作为微调后的模型参数。</li>
 </ol>
-<p>具体来讲，预训练权重矩阵 <span
-class="math inline"><strong>W</strong><sub>0</sub> ∈ ℝ<sup><em>d</em> × <em>d</em></sup></span>
-，</p>
-<p>将增量参数矩阵 <span
-class="math inline"><em>Δ</em><strong>W</strong></span>
-，表示为两个参数量更小的矩阵 B 和 A 的低秩近似,如下式</p>
-<p><span
-class="math display"><strong>W</strong><sub>0</sub> + <em>Δ</em><strong>W</strong> = <strong>W</strong><sub>0</sub> + <strong>B</strong><strong>A</strong></span></p>
-<p>其中 <span
-class="math inline"><strong>B</strong> ∈ ℝ<sup><em>d</em> × <em>r</em></sup></span>
-，<span
-class="math inline"><strong>A</strong> ∈ ℝ<sup><em>r</em> × <em>d</em></sup></span>
-，秩<span class="math inline">r</span>远小于<span
-class="math inline">d</span></p>
-<p>给定输入<span
-class="math inline">.<strong>x</strong> ∈ ℝ<sup><em>d</em></sup></span>
-,添加LoRA后的输出<span
-class="math inline">.<strong>h</strong> ∈ ℝ<sup><em>d</em></sup></span></p>
-<p><span
-class="math display"><strong>h</strong> = (<strong>W</strong><sub>0</sub> + <em>Δ</em><strong>W</strong>)<strong>x</strong> = <strong>W</strong><sub>0</sub><strong>x</strong> + <strong>B</strong><strong>A</strong><strong>x</strong></span></p>
-<p><span
-class="math display"><em>Δ</em><strong>h</strong> = <strong>B</strong><strong>A</strong><strong>x</strong></span></p>
-<h2 id="lora参数合并系数">1.2LoRA参数合并系数</h2>
-<p>实际实现时以以下形式合并，其中<span
-class="math inline"><em>α</em></span>为超参数</p>
-<p><span
-class="math display">$$\mathbf{h}=(\mathbf{W}_{0}+\frac{\alpha}{r}\Delta\mathbf{W})\mathbf{x}$$</span></p>
-<p>系数<span
-class="math inline">$\frac{\alpha}{r}$</span>越大，LoRA微调权重的影响就越大，在下游任务上越容易过拟合</p>
-<p>系数<span
-class="math inline">$\frac{\alpha}{r}$</span>越小，LoRA微调权重的影响就越小（微调的效果不明显，原始模型参数受到的影响也较少）</p>
-<p>一般来说，在给定任务上LoRA微调，让<span
-class="math inline"><em>α</em></span>为<span
-class="math inline"><strong>r</strong></span>的2倍数。</p>
-<h2 id="lora的秩mathbfr如何选择">1.3 LoRA的秩<span
-class="math inline"><strong>r</strong></span>如何选择</h2>
-<p>目标：找到一个秩<span
-class="math inline"><strong>r</strong></span>，使<span
-class="math inline">BA</span>无限接近<span
-class="math inline"><em>Δ</em><strong>W</strong></span>的表达能力。</p>
-<p>秩<span
-class="math inline"><strong>r</strong></span>越大，拟合能力越强（甚至出现过拟合），但参与训练的参数量也随之增加。</p>
+<p>具体来讲，预训练权重矩阵 $\mathbf{W}_0\in\mathbb{R}^{d\times d}$ ，</p>
+<p>将增量参数矩阵 $\Delta\mathbf{W}$ ，表示为两个参数量更小的矩阵 B 和 A 的低秩近似,如下式</p>
+<p>$$\mathbf{W}<em>{0}+\Delta\mathbf{W}=\mathbf{W}</em>{0}+\mathbf{BA}$$</p>
+<p>其中 $\mathbf{B}\in\mathbb{R}^{d\times r}$ ，$\mathbf{A}\in\mathbb{R}^{r\times d}$ ，秩$\mathrm{r}$远小于$\mathrm{d}$</p>
+<p>给定输入$.\mathbf{x}\in\mathbb{R}^d$ ,添加LoRA后的输出$.\mathbf{h}\in\mathbb{R}^d$</p>
+<p>$$\mathbf{h}=(\mathbf{W}<em>{0}+\Delta\mathbf{W})\mathbf{x}=\mathbf{W}</em>{0}\mathbf{x}+\mathbf{BA}\mathbf{x}$$</p>
+<p>$$\Delta\mathbf{h}=\mathbf{BAx}$$</p>
+<h2 id="1-2LoRA参数合并系数">1.2LoRA参数合并系数</h2>
+<p>实际实现时以以下形式合并，其中$\alpha$为超参数</p>
+<p>$$\mathbf{h}=(\mathbf{W}_{0}+\frac{\alpha}{r}\Delta\mathbf{W})\mathbf{x}$$</p>
+<p>系数$\frac{\alpha}{r}$越大，LoRA微调权重的影响就越大，在下游任务上越容易过拟合</p>
+<p>系数$\frac{\alpha}{r}$越小，LoRA微调权重的影响就越小（微调的效果不明显，原始模型参数受到的影响也较少）</p>
+<p>一般来说，在给定任务上LoRA微调，让$\alpha$为$\mathbf{r}$的2倍数。</p>
+<h2 id="1-3-LoRA的秩-mathbf-r-如何选择">1.3 LoRA的秩$\mathbf{r}$如何选择</h2>
+<p>目标：找到一个秩$\mathbf{r}$，使$\mathrm{BA}$无限接近$\Delta\mathbf{W}$的表达能力。</p>
+<p>秩$\mathbf{r}$越大，拟合能力越强（甚至出现过拟合），但参与训练的参数量也随之增加。</p>
 
       
     </div>
@@ -1540,45 +1246,25 @@ class="math inline"><strong>r</strong></span>越大，拟合能力越强（甚�
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1
-id="specialist-diffusion-plug-and-play-sample-efficient-fine-tuning-of-text-to-image-diffusion-models-to-learn-any-unseen-style">Specialist
-Diffusion: Plug-and-Play Sample-Efficient Fine-Tuning of Text-to-Image
-Diffusion Models to Learn Any Unseen Style</h1>
-<p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2211.12572"
-class="uri">https://arxiv.org/pdf/2211.12572</a></p>
+          <h1>Specialist Diffusion: Plug-and-Play Sample-Efficient Fine-Tuning of Text-to-Image Diffusion Models to Learn Any Unseen Style</h1>
+<p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2211.12572">https://arxiv.org/pdf/2211.12572</a></p>
 <h2 id="主要内容">主要内容</h2>
-<p>这篇论文提出Specialist
-Diffusion：相当于一个即插即用的微调工具包，包括文本到图像的定制数据增强，content
-loss to facilitate content-style disentanglement，sparsely updating
-diffusion time
-steps。主要适用于以少量已知风格的图片训练模型，使其能够通过特定的文本提示生成相应风格的图片。</p>
-<h3 id="data-augmentations-for-text2image-diffusion数据增强">Data
-Augmentations for Text2Image Diffusion（数据增强）</h3>
-<h4 id="image-augmentation">Image Augmentation</h4>
-<h4 id="text-prompt-augmentation">Text Prompt Augmentation</h4>
-<h5 id="caption-retrieval-augmentation-标题搜索增强">Caption Retrieval
-Augmentation 标题搜索增强</h5>
-<h5 id="synonym-augmentation-同义词增强">Synonym Augmentation
-同义词增强</h5>
-<h5 id="doubled-augmentation-双重增强">Doubled Augmentation
-双重增强</h5>
-<h3 id="content-loss">Content Loss</h3>
-<h3 id="sparse-updating">Sparse Updating</h3>
+<p>这篇论文提出Specialist Diffusion：相当于一个即插即用的微调工具包，包括文本到图像的定制数据增强，content loss to facilitate content-style disentanglement，sparsely updating diffusion time steps。主要适用于以少量已知风格的图片训练模型，使其能够通过特定的文本提示生成相应风格的图片。</p>
+<h3 id="Data-Augmentations-for-Text2Image-Diffusion（数据增强）">Data Augmentations for Text2Image Diffusion（数据增强）</h3>
+<h4 id="Image-Augmentation">Image Augmentation</h4>
+<h4 id="Text-Prompt-Augmentation">Text Prompt Augmentation</h4>
+<h5 id="Caption-Retrieval-Augmentation-标题搜索增强">Caption Retrieval Augmentation 标题搜索增强</h5>
+<h5 id="Synonym-Augmentation-同义词增强">Synonym Augmentation 同义词增强</h5>
+<h5 id="Doubled-Augmentation-双重增强">Doubled Augmentation 双重增强</h5>
+<h3 id="Content-Loss">Content Loss</h3>
+<h3 id="Sparse-Updating">Sparse Updating</h3>
 <h2 id="相关概念">相关概念</h2>
-<h3 id="增强泄露问题-augmentation-leakage">增强泄露问题 augmentation
-leakage</h3>
-<p>生成模型在训练过程中，会记住训练样本及其经过增强后的版本，这样在推理（生成新内容）阶段，就容易生成与训练时相似的图像。
-举个文中例子，很多旋转后的图像理论上算自然照片，但在真实自然图像集合里，它们出现的概率其实更低。要是训练时过度用旋转增强，模型就可能
-“bias（偏向）” 生成更多带旋转的物体，可这些并非实际想要的（“un - tended”
-，即不符合自然场景常见分布 ），相当于增强操作的影响 “泄漏”
-到生成结果里，让生成内容偏离真实自然数据的合理分布，这就是 “augmentation
-leakage” 。简单说，就是数据增强的不当使用，让模型学到了增强带来的
-“虚假模式”，而非真实场景的合理特征，影响生成效果。</p>
-<h3 id="正则化-regularization">正则化 Regularization</h3>
-<p><strong>正则化是用来防止模型过拟合而采取的手段</strong>，对代价函数增加一个限制条件，限制其较高次的参数大小不能过大
-参考：<a
-target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41960890/article/details/104891561"
-class="uri">https://blog.csdn.net/weixin_41960890/article/details/104891561</a></p>
+<h3 id="增强泄露问题-augmentation-leakage">增强泄露问题 augmentation leakage</h3>
+<p>生成模型在训练过程中，会记住训练样本及其经过增强后的版本，这样在推理（生成新内容）阶段，就容易生成与训练时相似的图像。<br>
+举个文中例子，很多旋转后的图像理论上算自然照片，但在真实自然图像集合里，它们出现的概率其实更低。要是训练时过度用旋转增强，模型就可能 “bias（偏向）” 生成更多带旋转的物体，可这些并非实际想要的（“un - tended” ，即不符合自然场景常见分布 ），相当于增强操作的影响 “泄漏” 到生成结果里，让生成内容偏离真实自然数据的合理分布，这就是 “augmentation leakage” 。简单说，就是数据增强的不当使用，让模型学到了增强带来的 “虚假模式”，而非真实场景的合理特征，影响生成效果。</p>
+<h3 id="正则化-Regularization">正则化 Regularization</h3>
+<p><strong>正则化是用来防止模型过拟合而采取的手段</strong>，对代价函数增加一个限制条件，限制其较高次的参数大小不能过大<br>
+参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41960890/article/details/104891561">https://blog.csdn.net/weixin_41960890/article/details/104891561</a></p>
 
       
     </div>
@@ -1663,91 +1349,167 @@ class="uri">https://blog.csdn.net/weixin_41960890/article/details/104891561</a><
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="few-shot">Few-Shot</h1>
-<h2
-id="phasic-content-fusing-diffusion-model-with-directional-distribution-consistency-for-few-shot-model-adaption">Phasic
-Content Fusing Diffusion Model with Directional Distribution Consistency
-for Few-Shot Model Adaption</h2>
-<h3 id="abstract">Abstract</h3>
-<ol type="1">
+          <h1>Few-Shot</h1>
+<h2 id="Phasic-Content-Fusing-Diffusion-Model-with-Directional-Distribution-Consistency-for-Few-Shot-Model-Adaption">Phasic Content Fusing Diffusion Model with Directional Distribution Consistency for Few-Shot Model Adaption</h2>
+<h3 id="Abstract">Abstract</h3>
+<ol>
 <li>当t较大时学习目标域内容和风格信息，当t较小时学习目标域的局部细节</li>
 <li>引入一种新的方向分布一致性损失，确保生成分布和原分布之间的一致性，防止过拟合（overfit）</li>
 <li>跨领域情景的结构一致性</li>
 </ol>
-<h3 id="challenges">Challenges</h3>
-<ol type="1">
+<h3 id="Challenges">Challenges</h3>
+<ol>
 <li>overfit</li>
 <li>细节学习阶段（t较小的时候）风格迁移失败</li>
 <li>现有的少样本GAN适应只约束对应点成对距离（相对位置关系），无法约束分布旋转</li>
 </ol>
-<h3 id="method">Method</h3>
-<h4 id="training-with-phasic-content-fusion">Training with Phasic
-Content Fusion</h4>
-<p>在前向加噪过程中学习内容和风格信息，引入权重函数m(t),自适应地融合<span
-class="math inline"><em>E</em>(<em>x</em><sup><em>A</em></sup>)</span>和噪声<span
-class="math inline"><em>z</em> ∼ 𝒩(0, <em>I</em>)</span>， <span
-class="math inline"><em>Ê</em>(<em>x</em><sup><em>A</em></sup>) = <em>m</em>(<em>t</em>)<em>E</em>(<em>x</em><sup><em>A</em></sup>) + (1 − <em>m</em>(<em>t</em>))<em>z</em></span>
-然后使用多个卷积块将 <span
-class="math inline"><em>Ê</em>(<em>x</em><sup><em>A</em></sup>)</span>
-与 <span
-class="math inline"><em>E</em>(<em>x</em><sub><em>t</em></sub><sup><em>A</em></sup>)</span>
-融合，得到融合后的特征 <span
-class="math inline"><em>E</em>(<em>x</em><sup><em>A</em></sup>, <em>x</em><sub><em>t</em></sub><sup><em>A</em></sup>)</span>
-，最后将融合后的特征送入UNet解码器对噪声进行预测，得到包含增强内容信息的
-<span
-class="math inline"><em>x</em><sub><em>t</em> − 1</sub><sup><em>A</em></sup></span>
-#### 方向分布一致性损失函数 directional distribution consistency loss
-(DDC) 最终的损失函数由以下三个损失函数构成：</p>
-<ol type="1">
-<li><p>Directional distribution consistency loss</p>
-<p><span
-class="math inline">ℒ<sub><em>D</em><em>D</em><em>C</em></sub> = ∥<em>E</em>(<em>x</em><sup><em>A</em></sup>) + <em>w</em>, <em>E</em>(<em>x</em><sub>0</sub><sup><em>A</em> → <em>B</em></sup>)∥<sup>2</sup></span></p>
-<p>其中w为方向向量，给定源分布 <span
-class="math inline"><em>A</em> = {<em>x</em><sub>1</sub><sup><em>A</em></sup>, ⋯<em>x</em><sub><em>m</em></sub><sup><em>A</em></sup>}</span>
-和目标分布 <span
-class="math inline"><em>B</em> = {<em>x</em><sub>1</sub><sup><em>B</em></sup>, ⋯<em>x</em><sub><em>m</em></sub><sup><em>B</em></sup>}</span>
-,特征空间中从源域中心到目标域中心的跨域方向向量w,</p>
-<p><span
-class="math inline">$w=\frac{1}{m}\sum_{i=1}^mE(x_i^B)-\frac{1}{n}\sum_{i=1}^nE(x_i^A)$</span></p></li>
-<li><p>Style loss</p>
-<p><span
-class="math inline">$\mathcal{L}_{style}=\frac{1}{m}\sum_{i=1}^{m}\sum_{l}w_{l}\|G^{l}(x_{0}^{A\to
-B})-G^{l}(x_{i}^{B})\|^{2}$</span></p>
-<p>用于计算生成图像和目标图像之间的分割损失，基于Gram矩阵</p></li>
-<li><p>Diffusion Loss</p></li>
-<li><p><span
-class="math inline">ℒ<sub><em>d</em><em>i</em><em>f</em></sub> = ||<em>ϵ</em><sub><em>θ</em></sub>(<em>x</em><sub><em>t</em></sub><sup><em>B</em></sup>, <em>t</em>) − <em>ϵ</em>||<sup>2</sup></span></p></li>
+<h3 id="Method">Method</h3>
+<h4 id="Training-with-Phasic-Content-Fusion">Training with Phasic Content Fusion</h4>
+<p>在前向加噪过程中学习内容和风格信息，引入权重函数m(t),自适应地融合$E(x^{A})$和噪声$z\sim\mathcal{N}(0,I)$，<br>
+$\hat{E}(x^A)=m(t)E(x^A)+(1-m(t))z$<br>
+然后使用多个卷积块将 $\hat{E}(x^A)$ 与 $E(x_{t}^{A})$ 融合，得到融合后的特征 $E(x^A,x_t^A)$ ，最后将融合后的特征送入UNet解码器对噪声进行预测，得到包含增强内容信息的 $x_{t-1}^A$</p>
+<h4 id="方向分布一致性损失函数-directional-distribution-consistency-loss-DDC">方向分布一致性损失函数 directional distribution consistency loss (DDC)</h4>
+<p>最终的损失函数由以下三个损失函数构成：</p>
+<ol>
+<li>
+<p>Directional distribution consistency loss</p>
+<p>$\mathcal{L}_{DDC}=|E(x^A)+w,E(x_0^{A\to B})|^2$</p>
+<p>其中w为方向向量，给定源分布 $A={x_{1}^{A},\cdots x_{m}^{A}}$ 和目标分布 $B={x_{1}^{B},\cdots x_{m}^{B}}$ ,特征空间中从源域中心到目标域中心的跨域方向向量w,</p>
+<p>$w=\frac{1}{m}\sum_{i=1}^mE(x_i^B)-\frac{1}{n}\sum_{i=1}^nE(x_i^A)$</p>
+</li>
+<li>
+<p>Style loss</p>
+<p>$\mathcal{L}<em>{style}=\frac{1}{m}\sum</em>{i=1}^{m}\sum_{l}w_{l}|G^{l}(x_{0}^{A\to B})-G^{l}(x_{i}^{B})|^{2}$</p>
+<p>用于计算生成图像和目标图像之间的分割损失，基于Gram矩阵</p>
+</li>
+<li>
+<p>Diffusion Loss</p>
+</li>
+<li>
+<p>$\mathcal{L}<em>{dif}=||\epsilon</em>\theta(x_t^B,t)-\epsilon||^2$</p>
+</li>
 </ol>
 <p>最终的损失函数为：</p>
-<p><span
-class="math inline">ℒ = <em>m</em>(<em>t</em>)(1 − <em>w</em>(<em>t</em>))(<em>λ</em><sub><em>D</em><em>D</em><em>C</em></sub>ℒ<sub><em>D</em><em>D</em><em>C</em></sub>(<em>x</em><sup><em>A</em></sup>, <em>x</em><sub>0</sub><sup><em>A</em> → <em>B</em></sup>) + <em>λ</em><sub><em>s</em><em>t</em><em>y</em><em>l</em><em>e</em></sub>ℒ<sub><em>s</em><em>t</em><em>y</em><em>l</em><em>e</em></sub>(<em>x</em><sub>0</sub><sup><em>A</em> → <em>B</em></sup>, <em>x</em><sup><em>B</em></sup>)) + <em>w</em>(<em>t</em>)ℒ<sub><em>d</em><em>i</em><em>f</em></sub>(<em>x</em><sup><em>B</em></sup>)</span></p>
-<h4
-id="迭代跨域结构引导-iterative-cross-domain-structure-guidanceicsg">迭代跨域结构引导
-Iterative Cross-domain Structure Guidance(ICSG)</h4>
+<p>$\mathcal{L}=m(t)(1-w(t))(\lambda_{DDC}\mathcal{L}<em>{DDC}(x^{A},x</em>{0}^{A\to B})+\lambda_{style}\mathcal{L}<em>{style}(x</em>{0}^{A\to B},x^{B}))+w(t)\mathcal{L}_{dif}(x^{B})$</p>
+<h4 id="迭代跨域结构引导-Iterative-Cross-domain-Structure-Guidance-ICSG">迭代跨域结构引导 Iterative Cross-domain Structure Guidance(ICSG)</h4>
 <p>需要进一步理解</p>
 <h3 id="实验及评估过程">实验及评估过程</h3>
 <h3 id="相关概念">相关概念</h3>
-<h4 id="图像翻译-image-to-image-translation">图像翻译 Image-to-Image
-Translation</h4>
+<h4 id="图像翻译-Image-to-Image-Translation">图像翻译 Image-to-Image Translation</h4>
 <p>将图像中内容从一个图像域Ｘ转换到另一个图像域Ｙ，可以看作是将原始图像的某种属性Ｘ移除，重新赋予其新的属性Ｙ，也即是图像间的跨域转换。</p>
-<h4 id="gram矩阵">Gram矩阵</h4>
+<h4 id="Gram矩阵">Gram矩阵</h4>
 <h5 id="原理">原理</h5>
-<p>n维欧式空间中任意k个向量之间两两的内积所组成的矩阵，称为这k个向量的格拉姆矩阵(Gram
-matrix)，很明显，这是一个对称矩阵。 输入图像的feature map为[ ch, h,
-w]。我们经过flatten（即是将h* w
-进行平铺成一维向量）和矩阵转置操作，可以变形为[ ch, h* w]和[ h*w,
-ch]的矩阵。再对两个作内积得到Gram矩阵。</p>
+<p>n维欧式空间中任意k个向量之间两两的内积所组成的矩阵，称为这k个向量的格拉姆矩阵(Gram matrix)，很明显，这是一个对称矩阵。<br>
+输入图像的feature map为[ ch, h, w]。我们经过flatten（即是将h* w 进行平铺成一维向量）和矩阵转置操作，可以变形为[ ch, h* w]和[ h*w, ch]的矩阵。再对两个作内积得到Gram矩阵。</p>
 <h5 id="应用">应用</h5>
-<p>Gram matrix的应用-风格迁移： 1. 准备基准图像和风格图像</p>
-<ol start="2" type="1">
-<li><p>使用深层网络分别提取基准图像（加白噪声）和风格图像的特征向量（或者说是特征图feature
-map）</p></li>
-<li><p>分别计算两个图像的特征向量的Gram矩阵，以两个图像的Gram矩阵的差异最小化为优化目标，不断调整基准图像，使风格不断接近目标风格图像</p></li>
+<p>Gram matrix的应用-风格迁移：</p>
+<ol>
+<li>
+<p>准备基准图像和风格图像</p>
+</li>
+<li>
+<p>使用深层网络分别提取基准图像（加白噪声）和风格图像的特征向量（或者说是特征图feature map）</p>
+</li>
+<li>
+<p>分别计算两个图像的特征向量的Gram矩阵，以两个图像的Gram矩阵的差异最小化为优化目标，不断调整基准图像，使风格不断接近目标风格图像</p>
+</li>
 </ol>
 <p>一般来说浅层网络提取的是局部的细节纹理特征，深层网络提取的是更抽象的轮廓、大小等信息。这些特征总的结合起来表现出来的感觉就是图像的风格，由这些特征向量计算出来的的Gram矩阵，就可以把图像特征之间隐藏的联系提取出来，也就是各个特征之间的相关性高低。</p>
-<h4 id="消融实验-ablation-study">消融实验 Ablation Study</h4>
+<h4 id="消融实验-Ablation-Study">消融实验 Ablation Study</h4>
 <p>类似于“控制变量法”，逐一控制参数来观察结果的变化，以确定不同参数对模型的影响。</p>
 
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/25/week2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="gzx">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="林间有Wi-Fi">
+      <meta itemprop="description" content="这里记录我的学习与生活">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | 林间有Wi-Fi">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/06/25/week2/" class="post-title-link" itemprop="url">week2</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2025-06-25 21:41:24" itemprop="dateCreated datePublished" datetime="2025-06-25T21:41:24+08:00">2025-06-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2025-07-13 18:31:43" itemprop="dateModified" datetime="2025-07-13T18:31:43+08:00">2025-07-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%A7%91%E7%A0%94%E5%AE%9E%E4%B9%A0%E5%91%A8%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">科研实习周记</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          diffusion model (李宏毅)笔记
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2025/06/25/week2/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
