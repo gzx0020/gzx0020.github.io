@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.23.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"show_result":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="写在前面：这是我大二时旁听组会时关于电磁与AI结合的一些初步思考。由于基础知识欠缺，目前只是一些浅显的定性的理解，随着学习深入，这篇文档会不断更新。  Q1. AI 是否“理解”了电磁？ 评价 AI 是否有了 EM 理解能力，核心在于它是否掌握了背后的物理规律，而不仅仅是记住了表面的信号特征。 1. 区分两个层次  信号层：波形、谱、CSI 物理层：场、传播、多径、边界">
+<meta property="og:type" content="website">
+<meta property="og:title" content="关于电磁域和AI的六个问题讨论">
+<meta property="og:url" content="http://example.com/%E5%85%B3%E4%BA%8E%E7%94%B5%E7%A3%81%E5%9F%9F%E5%92%8CAI%E7%9A%84%E5%85%AD%E4%B8%AA%E9%97%AE%E9%A2%98%E8%AE%A8%E8%AE%BA.html">
+<meta property="og:site_name" content="林间有Wi-Fi">
+<meta property="og:description" content="写在前面：这是我大二时旁听组会时关于电磁与AI结合的一些初步思考。由于基础知识欠缺，目前只是一些浅显的定性的理解，随着学习深入，这篇文档会不断更新。  Q1. AI 是否“理解”了电磁？ 评价 AI 是否有了 EM 理解能力，核心在于它是否掌握了背后的物理规律，而不仅仅是记住了表面的信号特征。 1. 区分两个层次  信号层：波形、谱、CSI 物理层：场、传播、多径、边界">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-01-29T12:13:28.000Z">
+<meta property="article:modified_time" content="2026-01-30T10:10:28.907Z">
+<meta property="article:author" content="gzx">
+<meta property="article:tag" content="电磁域">
+<meta property="article:tag" content="AI">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/%E5%85%B3%E4%BA%8E%E7%94%B5%E7%A3%81%E5%9F%9F%E5%92%8CAI%E7%9A%84%E5%85%AD%E4%B8%AA%E9%97%AE%E9%A2%98%E8%AE%A8%E8%AE%BA">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"en","comments":true,"permalink":"http://example.com/%E5%85%B3%E4%BA%8E%E7%94%B5%E7%A3%81%E5%9F%9F%E5%92%8CAI%E7%9A%84%E5%85%AD%E4%B8%AA%E9%97%AE%E9%A2%98%E8%AE%A8%E8%AE%BA.html","path":"关于电磁域和AI的六个问题讨论.html","title":"关于电磁域和AI的六个问题讨论"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>关于电磁域和AI的六个问题讨论 | 林间有Wi-Fi
+</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">林间有Wi-Fi</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">在线，但也听风</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-links"><a href="/links" rel="section"><i class="fa fa-link fa-fw"></i>links</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Searching..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#q1.-ai-%E6%98%AF%E5%90%A6%E7%90%86%E8%A7%A3%E4%BA%86%E7%94%B5%E7%A3%81"><span class="nav-number">1.</span> <span class="nav-text">Q1. AI 是否“理解”了电磁？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8C%BA%E5%88%86%E4%B8%A4%E4%B8%AA%E5%B1%82%E6%AC%A1"><span class="nav-number">1.1.</span> <span class="nav-text">1. 区分两个层次</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E5%88%A4%E6%96%AD%E6%A0%87%E5%87%86"><span class="nav-number">1.2.</span> <span class="nav-text">2. 核心判断标准</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#q2.-%E7%94%B5%E7%A3%81%E5%9F%9F%E7%9A%84%E4%BF%A1%E6%81%AF%E6%9C%89%E5%93%AA%E4%BA%9B%E6%80%8E%E4%B9%88%E8%A1%A8%E5%BE%81%E8%BF%99%E4%BA%9B%E4%BF%A1%E6%81%AF"><span class="nav-number">2.</span> <span class="nav-text">Q2.
+电磁域的信息有哪些，怎么表征这些信息？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E7%9A%84%E7%89%A9%E7%90%86%E5%B1%82%E7%BA%A7"><span class="nav-number">2.1.</span> <span class="nav-text">1. 信息的物理层级</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E5%BE%81"><span class="nav-number">2.2.</span> <span class="nav-text">2. 信息的表征</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#q3.-%E5%93%AA%E4%BA%9B%E6%98%AF%E7%94%B5%E7%A3%81%E5%9F%9F%E7%9A%84%E6%9C%80%E5%9F%BA%E7%A1%80%E4%BF%A1%E6%81%AF"><span class="nav-number">3.</span> <span class="nav-text">Q3.
+哪些是电磁域的最基础信息？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%A9%E7%90%86%E5%9B%A0%E6%9E%9C%E9%93%BE%E7%9A%84%E8%B5%B7%E7%82%B9"><span class="nav-number">3.0.1.</span> <span class="nav-text">1. 物理因果链的起点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%A1%E5%8F%B7%E8%A7%82%E6%B5%8B%E9%93%BE%E7%9A%84%E5%8E%9F%E5%AD%90"><span class="nav-number">3.0.2.</span> <span class="nav-text">2. 信号观测链的原子</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#q4.-adps%E8%B0%B1doa-dod%E8%B0%B1rss%E8%B0%B1%E6%80%8E%E4%B9%88%E5%AF%B9%E9%BD%90"><span class="nav-number">4.</span> <span class="nav-text">Q4.
+ADPS谱、DoA-DoD谱、RSS谱怎么对齐？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#q5.-%E7%94%B5%E7%A3%81%E5%9F%9F%E7%9A%84%E5%88%9D%E5%A7%8B%E6%9D%A1%E4%BB%B6%E5%92%8C%E8%BE%B9%E7%95%8C%E6%9D%A1%E4%BB%B6%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="nav-number">5.</span> <span class="nav-text">Q5.
+电磁域的初始条件和边界条件有哪些？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E6%9D%A1%E4%BB%B6"><span class="nav-number">5.1.</span> <span class="nav-text">1. 初始条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%B9%E7%95%8C%E6%9D%A1%E4%BB%B6"><span class="nav-number">5.2.</span> <span class="nav-text">2. 边界条件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#q6.-%E5%81%9A%E7%94%B5%E7%A3%81%E5%A4%A7%E6%A8%A1%E5%9E%8Bdinoclipbertgpt-%E6%80%8E%E4%B9%88%E5%AF%B9%E5%BA%94"><span class="nav-number">6.</span> <span class="nav-text">Q6.
+做电磁大模型，DINO、CLIP、BERT、GPT 怎么对应？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#em-bert%E6%8E%A9%E7%A0%81%E9%A2%84%E6%B5%8B%E4%B8%8E%E8%A1%A8%E5%BE%81%E5%8E%8B%E7%BC%A9"><span class="nav-number">6.1.</span> <span class="nav-text">1. EM-BERT：掩码预测与表征压缩</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#em-dino%E8%87%AA%E8%92%B8%E9%A6%8F%E4%B8%8E%E8%A7%86%E7%82%B9%E4%B8%8D%E5%8F%98%E6%80%A7"><span class="nav-number">6.2.</span> <span class="nav-text">2. EM-DINO：自蒸馏与视点不变性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#em-clip%E8%B7%A8%E6%A8%A1%E6%80%81%E5%AF%B9%E9%BD%90"><span class="nav-number">6.3.</span> <span class="nav-text">3. EM-CLIP：跨模态对齐</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#em-gpt-%E7%94%9F%E6%88%90%E5%BC%8F%E5%BB%BA%E6%A8%A1"><span class="nav-number">6.4.</span> <span class="nav-text">4. EM-GPT ：生成式建模</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="gzx"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">gzx</p>
+  <div class="site-description" itemprop="description">这里记录我的学习与生活</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner page posts-expand">
+
+
+    
+    
+    
+    <div class="post-block" lang="en"><header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">关于电磁域和AI的六个问题讨论
+</h1>
+
+<div class="post-meta-container">
+</div>
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+          <blockquote>
+<p><strong>写在前面</strong>：这是我大二时旁听组会时关于电磁与AI结合的一些初步思考。由于基础知识欠缺，目前只是一些浅显的定性的理解，随着学习深入，这篇文档会不断更新。</p>
+</blockquote>
+<h1 id="q1.-ai-是否理解了电磁">Q1. AI 是否“理解”了电磁？</h1>
+<p>评价 AI 是否有了 EM
+理解能力，核心在于它是否掌握了背后的物理规律，而不仅仅是记住了表面的信号特征。</p>
+<h2 id="区分两个层次">1. 区分两个层次</h2>
+<ul>
+<li><strong>信号层</strong>：波形、谱、CSI</li>
+<li><strong>物理层</strong>：场、传播、多径、边界</li>
+</ul>
+<h2 id="核心判断标准">2. 核心判断标准</h2>
+<ul>
+<li><p><strong>泛化能力</strong></p></li>
+<li><p><strong>物理一致性</strong>
+黑箱模型指数据驱动型模型，可能输出不符合物理规律的结果
+白箱模型中间层具有物理意义，输出不会违反物理规律，不只是做端到端的拟合</p></li>
+</ul>
+<h1 id="q2.-电磁域的信息有哪些怎么表征这些信息">Q2.
+电磁域的信息有哪些，怎么表征这些信息？</h1>
+<p>从AI建模的角度，我们需要建立从“物理实体”到“数据张量”的映射。电磁域的信息可以严谨地划分为以下三个物理层级：</p>
+<h2 id="信息的物理层级">1. 信息的物理层级</h2>
+<ul>
+<li><p><strong>场层级</strong> 麦克斯韦方程组描述的空间连续场量 (<span
+class="math inline"><strong>E</strong>, <strong>H</strong></span>)。</p></li>
+<li><p><strong>波形层级</strong> 接收机天线端口感应到的时变电压信号。
+复数域（I/Q通道）、高采样率。它承载了调制信息，同时也通过衰落和畸变隐含了环境特征。</p></li>
+<li><p><strong>信道层级</strong>
+描述发射机与接收机之间系统级响应的特征。 通常是变换域的特征，如 CSI
+(Channel State Information)、CIR (Impulse
+Response)。它是对复杂电磁环境的一种线性系统建模简化。</p></li>
+</ul>
+<h2 id="信息的表征">2. 信息的表征</h2>
+<p>针对 Diffusion Model 等生成式模型，我们需要根据数据特性选择合适的
+Embedding 方式：</p>
+<ul>
+<li><strong>网格化表征 —— 适合 CNN/U-Net 架构</strong>
+<ul>
+<li><strong>时频图/谱图</strong>：利用 STFT
+将一维信号升维为二维图像。优势是能利用计算机视觉成熟的特征提取能力；缺点是相位信息丢失（通常只取模值），难以重构原始波形。</li>
+<li><strong>ADPS
+</strong>：在“角度-时延”域上的能量分布，直观反映多径结构。</li>
+</ul></li>
+<li><strong>序列化表征 —— 适合 Transformer/DiT 架构</strong>
+<ul>
+<li><strong>Raw I/Q</strong>：直接将 <span
+class="math inline"><em>x</em>[<em>n</em>] = <em>I</em>[<em>n</em>] + <em>j</em><em>Q</em>[<em>n</em>]</span>
+作为 Token
+序列。这是无损的表征，保留了最完整的微结构，但序列长度通常极长，计算复杂度高。</li>
+</ul></li>
+<li><strong>潜空间表征 —— 适合 Latent Diffusion</strong>
+<ul>
+<li><strong>流形假设</strong>：虽然电磁数据维度极高（如 Massive MIMO
+全维度张量），但受物理规律（有限散射体）约束，有效数据其实分布在一个低维流形上。</li>
+<li><strong>VAE/VQ-VAE</strong>：通过编码器找到这个“本质维度”，在压缩空间进行扩散生成，既降低了计算量，又隐式地学习到了数据的物理结构分布。</li>
+</ul></li>
+</ul>
+<h1 id="q3.-哪些是电磁域的最基础信息">Q3.
+哪些是电磁域的最基础信息？</h1>
+<h3 id="物理因果链的起点">1. 物理因果链的起点</h3>
+<p>这是正向问题的输入，决定了电磁现象的产生。 *
+<strong>环境几何与电磁参数</strong>：<span
+class="math inline"><em>ϵ</em>(<strong>r</strong>), <em>μ</em>(<strong>r</strong>), <em>σ</em>(<strong>r</strong>)</span>
+的空间分布。即“所有的边界条件”。 * <strong>激励源
+(Source)</strong>：<span
+class="math inline"><strong>J</strong>(<strong>r</strong>, <em>t</em>)</span>。如果没有源，空间中本无场。</p>
+<h3 id="信号观测链的原子">2. 信号观测链的原子</h3>
+<p>这是逆向问题中观测端的起点。 * <strong>原始 I/Q 序列 (Raw
+I/Q)</strong>： * 这是 ADC 采样后的第一手数据。 *
+<strong>不可导出性</strong>： * 从 I/Q 可以计算出 RSS（能量），但从 RSS
+无法还原 I/Q（相位丢失）。 * 从 I/Q 可以计算出 CSI（频域响应）。</p>
+<p><strong>结论</strong>：在做大模型预训练时，若追求物理完备性，应尽可能使用
+<strong>Raw I/Q</strong> 或 <strong>3D 环境模型</strong> 作为 Ground
+Truth，而非仅使用处理过的 CSI 或 RSS 热力图。</p>
+<h1 id="q4.-adps谱doa-dod谱rss谱怎么对齐">Q4.
+ADPS谱、DoA-DoD谱、RSS谱怎么对齐？</h1>
+<p>想象在一个黑暗房间里，有一个复杂的物体（多径传播网络）。 *
+<strong>ADPS谱</strong>：是把这个物体投射到“角度-时间”的墙面上。 *
+<strong>DoA-DoD谱</strong>：是把这个物体投射到“接收角度-发射角度”的墙面上。
+*
+<strong>RSS（能量）</strong>：是把所有多径的能量加起来，或者说是这个物体在某一点的“重量”。</p>
+<p><strong>怎么对齐？</strong> 在做多模态 AI
+时，对齐的关键在于物理一致性。 *
+<strong>轴对齐</strong>：大家都有角度这个轴，那就必须保证我的角度 30 度
+和你的角度 30 度指的是同一个方向。 *
+<strong>能量守恒</strong>：无论怎么投影，总能量应该是一致的。 *
+在模型训练中，我们通过 Loss Function 来强迫它们对齐：比如，生成的 ADPS
+谱把能量加起来，必须等于 RSS 值。</p>
+<h1 id="q5.-电磁域的初始条件和边界条件有哪些">Q5.
+电磁域的初始条件和边界条件有哪些？</h1>
+<h2 id="初始条件">1. 初始条件</h2>
+<p>通常假设 <span class="math inline"><em>t</em> = 0</span>
+时刻，空间里没有波，或者电荷分布是已知的。</p>
+<h2 id="边界条件">2. 边界条件</h2>
+<p>边界条件决定了波遇到物体时怎么表现。AI
+生成的数据必须遵守这些物理潜规则。</p>
+<ul>
+<li><strong>PEC（理想导体/金属）</strong>：简单的理解就是不可穿透且完全反射。电场不能沿着金属表面切向存在（会被短路）。AI
+生成车体反射信号时，必须体现出这种强反射特性。</li>
+<li><strong>ABC/PML（吸收边界）</strong>：这通常是为了计算方便人为加的黑洞。波打过去就消失了，模拟无限大的空间。在这个边界上波是不会反弹回来的。</li>
+</ul>
+<p>可以将建筑物墙壁、汽车外壳等作为 Condition 输入给模型</p>
+<h1 id="q6.-做电磁大模型dinoclipbertgpt-怎么对应">Q6.
+做电磁大模型，DINO、CLIP、BERT、GPT 怎么对应？</h1>
+<h2 id="em-bert掩码预测与表征压缩">1. EM-BERT：掩码预测与表征压缩</h2>
+<p>核心逻辑：基于上下文的掩码重构。即随机遮挡一部分信号，利用其余部分恢复它。
+例如在 CSI 反馈 (CSI Feedback) 任务中，接收端只需要反馈一小部分稀疏的
+CSI 数据，发送端的 Transformer
+就能像做完形填空一样，利用信号在频域和时域的相关性，准确“脑补”出完整的信道矩阵，从而大幅节省反馈开销。它通过这种方式学到了信号的内部结构特征。</p>
+<h2 id="em-dino自蒸馏与视点不变性">2. EM-DINO：自蒸馏与视点不变性</h2>
+<p>核心逻辑：学习特征的鲁棒性。通过对同一样本施加不同的随机增强，迫使模型输出一致的特征。
+在电磁传播中，信号很容易受到噪声、微小扰动或多普勒频移的干扰。
+通过自蒸馏训练，模型可以学会忽略这些非本质的干扰，而提取出本质特征</p>
+<h2 id="em-clip跨模态对齐">3. EM-CLIP：跨模态对齐</h2>
+<p>核心逻辑：多模态对比学习。在共享的潜空间中拉近匹配的图文对（或信号-图像对），推开不匹配的。</p>
+<h2 id="em-gpt-生成式建模">4. EM-GPT ：生成式建模</h2>
+<p>核心逻辑：对数据分布 <span
+class="math inline"><em>P</em>(<em>x</em>)</span> 的显式建模与采样。
+基于历史序列预测下一个 Token。
+针对高移动性场景（如高铁、车联网），根据过去几毫秒的信道变化趋势，预测未来的信道状态，以提前进行波束切换，避免断连。</p>
+
+      </div>
+      
+      
+      
+    </div>
+
+    
+    
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">gzx</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+<!-- 网站运行时间的设置 -->
+<span id="timeDate">载入天数...</span>
+<span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("05/01/2025 10:00:00"); //此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒.";
+    }
+setInterval("createtime()",250);
+</script>
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap')
+      $(e).after($wrap)
+      $wrap.append($('<button>').addClass('copy-btn').append('copy').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text()
+        }).toArray().join('\n')
+        var ta = document.createElement('textarea')
+        document.body.appendChild(ta)
+        ta.style.position = 'absolute'
+        ta.style.top = '0px'
+        ta.style.left = '0px'
+        ta.value = code
+        ta.select()
+        ta.focus()
+        var result = document.execCommand('copy')
+        document.body.removeChild(ta)
+        
+          if(result)$(this).text('Copied')
+          else $(this).text('Copy failed')
+        
+        $(this).blur()
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn')
+        setTimeout(function () {
+          $b.text('copy')
+        }, 300)
+      }).append(e)
+    })
+  </script>
+
+
+</body>
+</html>

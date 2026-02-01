@@ -20,12 +20,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.23.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"show_result":true,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="微调效果测试 用lora层替换unet中所有可替换的线性层和1×1卷积层，测试效果较差，有明显失真，指标相比上一次微调均有下降 论文代码学习 学习论文 Phasic Content Fusing Diffusion Model with Directional Distribution Consistency for Few-Shot Model Adaption 的开源代码， 微调部分实现方法如">
+    <meta name="description" content="微调效果测试 用lora层替换unet中所有可替换的线性层和1×1卷积层，测试效果较差，有明显失真，指标相比上一次微调均有下降 论文代码学习 学习论文 Phasic Content Fusing Diffusion Model with Directional Distribution Consistency for Few-Shot Model Adaption 的开源代码， 微调部分">
 <meta property="og:type" content="article">
 <meta property="og:title" content="week6">
 <meta property="og:url" content="http://example.com/2025/07/21/week6/index.html">
 <meta property="og:site_name" content="林间有Wi-Fi">
-<meta property="og:description" content="微调效果测试 用lora层替换unet中所有可替换的线性层和1×1卷积层，测试效果较差，有明显失真，指标相比上一次微调均有下降 论文代码学习 学习论文 Phasic Content Fusing Diffusion Model with Directional Distribution Consistency for Few-Shot Model Adaption 的开源代码， 微调部分实现方法如">
+<meta property="og:description" content="微调效果测试 用lora层替换unet中所有可替换的线性层和1×1卷积层，测试效果较差，有明显失真，指标相比上一次微调均有下降 论文代码学习 学习论文 Phasic Content Fusing Diffusion Model with Directional Distribution Consistency for Few-Shot Model Adaption 的开源代码， 微调部分">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-07-21T09:43:47.000Z">
 <meta property="article:modified_time" content="2025-07-21T09:47:41.252Z">
@@ -168,7 +168,9 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">微调效果测试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">论文代码学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%86%85%E5%AE%B9%E8%9E%8D%E5%90%88%E6%A8%A1%E5%9D%97%E5%BE%AE%E8%B0%83-train-recon-py"><span class="nav-number">2.1.</span> <span class="nav-text">1. 内容融合模块微调 (train-recon.py)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%B0%91%E6%A0%B7%E6%9C%AC%E5%9F%9F%E9%80%82%E5%BA%94%E5%BE%AE%E8%B0%83-train-whole-py"><span class="nav-number">2.2.</span> <span class="nav-text">2. 少样本域适应微调 (train-whole.py)</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BE%AE%E8%B0%83%E6%95%88%E6%9E%9C%E6%B5%8B%E8%AF%95"><span class="nav-number">1.</span> <span class="nav-text">微调效果测试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%BA%E6%96%87%E4%BB%A3%E7%A0%81%E5%AD%A6%E4%B9%A0"><span class="nav-number">2.</span> <span class="nav-text">论文代码学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E5%AE%B9%E8%9E%8D%E5%90%88%E6%A8%A1%E5%9D%97%E5%BE%AE%E8%B0%83-train-recon.py"><span class="nav-number">2.1.</span> <span class="nav-text">1. 内容融合模块微调
+(train-recon.py)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%91%E6%A0%B7%E6%9C%AC%E5%9F%9F%E9%80%82%E5%BA%94%E5%BE%AE%E8%B0%83-train-whole.py"><span class="nav-number">2.2.</span> <span class="nav-text">2. 少样本域适应微调
+(train-whole.py)</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -183,18 +185,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -279,22 +281,28 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h1>微调效果测试</h1>
+    <div class="post-body" itemprop="articleBody"><h1 id="微调效果测试">微调效果测试</h1>
 <p>用lora层替换unet中所有可替换的线性层和1×1卷积层，测试效果较差，有明显失真，指标相比上一次微调均有下降</p>
-<h1>论文代码学习</h1>
-<p>学习论文 Phasic Content Fusing Diffusion Model with Directional Distribution Consistency for Few-Shot Model Adaption 的开源代码，<br>
+<h1 id="论文代码学习">论文代码学习</h1>
+<p>学习论文 Phasic Content Fusing Diffusion Model with Directional
+Distribution Consistency for Few-Shot Model Adaption 的开源代码，
 微调部分实现方法如下：</p>
-<h2 id="1-内容融合模块微调-train-recon-py">1. 内容融合模块微调 (<a target="_blank" rel="noopener" href="http://train-recon.py">train-recon.py</a>)</h2>
+<h2 id="内容融合模块微调-train-recon.py">1. 内容融合模块微调
+(train-recon.py)</h2>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#创建一个Adam优化器，只优化扩散模型中条件模块(c_content_condition)的参数</span></span><br><span class="line">optimizer = Adam(diffusion.model.c_content_condition.parameters(), lr=<span class="number">1e-4</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#遍历数据集中的所有批次</span></span><br><span class="line"><span class="keyword">for</span> batch <span class="keyword">in</span> dataloader:   </span><br><span class="line">    real_image = batch.cuda()      </span><br><span class="line">    condition = real_image  <span class="comment"># 使用自身作为条件</span></span><br><span class="line">      </span><br><span class="line">    t, (x, loss_diffusion) = diffusion.few_shot_forward(</span><br><span class="line">        real_image,   </span><br><span class="line">        x_self_cond=condition,  </span><br><span class="line">        max_step=<span class="number">1000</span>  </span><br><span class="line">    )</span><br><span class="line">  </span><br><span class="line">    <span class="comment"># 计算扩散损失的平均值（预测噪声与真实噪声的差异）  </span></span><br><span class="line">    loss_diffusion.mean().backward()  <span class="comment"># 反向传播计算梯度</span></span><br><span class="line">  </span><br><span class="line">    optimizer.step()</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">if</span> global_step % <span class="number">200</span> == <span class="number">0</span>:</span><br><span class="line">        <span class="comment"># 使用DDIM采样器生成重建图像</span></span><br><span class="line">        output_image = diffusion.ddim_sample(</span><br><span class="line">            real_image.shape,  </span><br><span class="line">            condition=condition,  </span><br><span class="line">            sample_step=<span class="number">50</span>,     </span><br><span class="line">            max_step=<span class="number">800</span>          <span class="comment">#从噪声步800开始逆向扩散（跳过前200步）</span></span><br><span class="line">        )</span><br><span class="line">            </span><br><span class="line">  </span><br></pre></td></tr></table></figure>
 <p>通过 c_content_condition 模块分离内容/风格学习:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">model_target.prepare(style_condition=<span class="literal">True</span>, two_stage_step=<span class="number">300</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="2-少样本域适应微调-train-whole-py">2. 少样本域适应微调 (<a target="_blank" rel="noopener" href="http://train-whole.py">train-whole.py</a>)</h2>
-<p>a.分阶段训练策略：大t步学内容/风格，小t步学细节, 具体是大t：学习全局内容/风格 (step=300-1000)  小t：学习局部细节 (t~rand(0,300))</p>
-<p>b.方向分布一致性：feature_dir = (target_feature - source_feature) 引导特征迁移</p>
+<h2 id="少样本域适应微调-train-whole.py">2. 少样本域适应微调
+(train-whole.py)</h2>
+<p>a.分阶段训练策略：大t步学内容/风格，小t步学细节,
+具体是大t：学习全局内容/风格 (step=300-1000) 小t：学习局部细节
+(t~rand(0,300))</p>
+<p>b.方向分布一致性：feature_dir = (target_feature - source_feature)
+引导特征迁移</p>
 <p>L_DDC = ||φ(G(x)) - (φ(x) + Δ)||^2</p>
 <p>其中 Δ = E[φ(y)] - E[φ(x)] 是域间特征方向</p>
 <p>c.动态加权</p>
-<p>α = 20^{t/T} \quad (T=1000)</p>
+<p>α = 20^{t/T} (T=1000)</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#创建一个优化器，只优化需要梯度的参数</span></span><br><span class="line"><span class="comment"># 使用filter+lambda过滤出requires_grad=True的参数，冻结有些参数</span></span><br><span class="line">optimizer = Adam(</span><br><span class="line">    <span class="built_in">filter</span>(<span class="keyword">lambda</span> p: p.requires_grad, diffusion_target.parameters()), </span><br><span class="line">    lr=<span class="number">1e-4</span>  <span class="comment">#使用相对较小的学习率防止过拟合</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 遍历源域和目标域的数据加载器</span></span><br><span class="line"><span class="comment"># 使用zip确保每次迭代获取一对源域和目标域批次数据</span></span><br><span class="line"><span class="keyword">for</span> (target_batch, source_batch) <span class="keyword">in</span> <span class="built_in">zip</span>(target_dataloader, source_dataloader):</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 阶段1：内容保持（大t）</span></span><br><span class="line">  </span><br><span class="line">    <span class="keyword">if</span> global_step % <span class="number">2</span> == <span class="number">0</span>:  <span class="comment"># 每两步执行一次</span></span><br><span class="line">      </span><br><span class="line">      </span><br><span class="line">        <span class="comment"># step=300 表示在扩散过程的前300步进行内容融合</span></span><br><span class="line">        t, (x, _) = diffusion.few_shot_forward(</span><br><span class="line">            source_image,     <span class="comment"># 源域输入图像</span></span><br><span class="line">            step=<span class="number">300</span>,       </span><br><span class="line">            x_self_cond=condition  <span class="comment">#内容条件输入</span></span><br><span class="line">        )</span><br><span class="line">      </span><br><span class="line">        <span class="comment"># 方向分布一致性损失      </span></span><br><span class="line">        <span class="comment"># 使用CLIP模型提取源域图像特征</span></span><br><span class="line">        feature_source = clip_model.encode_img(source_image)      </span><br><span class="line">        feature_target = clip_model.encode_img(generated_image)      </span><br><span class="line">      </span><br><span class="line">        <span class="comment">#feature_dir = E[φ(y)] - E[φ(x)] 预计算的域间特征方向</span></span><br><span class="line">        loss_feature = mse_loss(</span><br><span class="line">            feature_target, </span><br><span class="line">            feature_source + feature_dir  <span class="comment"># 特征方向约束</span></span><br><span class="line">        ) * opts.beta_f  <span class="comment">#可调节的损失权重</span></span><br><span class="line">      </span><br><span class="line">        <span class="comment"># 风格损失</span></span><br><span class="line">      </span><br><span class="line">        <span class="comment"># 使用预定义的风格损失函数(训练的VGG)      </span></span><br><span class="line">        loss_style = style_loss(generated_image, style_imgs) * opts.beta_style</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">    <span class="comment"># 阶段2：细节学习（小t）   </span></span><br><span class="line">    <span class="keyword">else</span>:  <span class="comment">#与阶段1交替执行</span></span><br><span class="line">      </span><br><span class="line">        t = torch.randint(<span class="number">0</span>, <span class="number">300</span>, (batch_size,))  </span><br><span class="line">      </span><br><span class="line">        <span class="comment">#使用目标域图像进行前向传播     </span></span><br><span class="line">        _, (_, loss_diffusion) = diffusion.few_shot_forward(</span><br><span class="line">            target_image,  </span><br><span class="line">            t=t          </span><br><span class="line">        )</span><br><span class="line">  </span><br><span class="line">   </span><br><span class="line">    <span class="comment">#时间步相关加权   </span></span><br><span class="line">   </span><br><span class="line">    alpha = <span class="number">20</span> ** (t / <span class="number">1000</span>)  <span class="comment">#权重函数</span></span><br><span class="line">  </span><br><span class="line">    <span class="comment">#加权总损失   </span></span><br><span class="line">    total_loss = (alpha * (loss_feature + loss_style)).mean()</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">    total_loss.backward()   </span><br><span class="line">  </span><br></pre></td></tr></table></figure>
 
     </div>
@@ -341,7 +349,7 @@
 
   <div class="copyright">
     &copy; 
-    <span itemprop="copyrightYear">2025</span>
+    <span itemprop="copyrightYear">2026</span>
     <span class="with-love">
       <i class="fa fa-heart"></i>
     </span>
